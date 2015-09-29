@@ -7,10 +7,9 @@ app.controller('homeController', function($http, $scope, $rootScope, $controller
     $scope.$on('$viewContentLoaded', function() {
         siteMainFn();
     });
-    $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
-   siteMainFn();
-
-    });
+    $rootScope.myFunc = function(){
+    siteMainFn();
+};
 
 });
 
@@ -20,15 +19,4 @@ app.controller('scrapbookController', function($http, $scope, $rootScope, $contr
     });
 
 });
-app.directive('onFinishRender', function($timeout) {
-    return {
-        restrict: 'A',
-        link: function(scope, element, attr) {
-            if (scope.$last === true) {
-                $timeout(function() {
-                    scope.$emit('ngRepeatFinished');
-                });
-            }
-        }
-    }
-});
+ 

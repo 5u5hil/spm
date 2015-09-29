@@ -16,10 +16,10 @@
 <ul class="sidebar-navigation">
     <li><a href="/scrapbook"><i class="fa fa-edit"></i>Scrapbook<i class="fa fa-circle"></i></a></li>
     <li><a href="#"><i class="fa fa-tag"></i>New Arrivals<i class="fa fa-circle"></i></a></li>
-    <li class="has-submenu" on-finish-render="ngRepeatFinished" ng-repeat="cat in categories" >
+    <li class="has-submenu"  ng-repeat="cat in categories" >
         <a class="deploy-submenu" href="#"><i class="fa fa-cog"></i>{{ cat.category}}<i class="fa fa-plus"></i></a>
         <ul class="submenu">
-            <li   on-finish-render="ngRepeatFinished"  ng-repeat="child in cat.children"  >
+            <li    ng-repeat="child in cat.children"  >
             <a href="sarees.html" class="active-menu"><i class="fa fa-angle-right"></i>
             {{ child.category}}<i class="fa fa-circle"></i></a>
             </li>
