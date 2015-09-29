@@ -7,8 +7,7 @@ var app = angular.module('StylePanache', ['ngResource', 'ngSanitize', 'ngRoute',
 
 app.config(['$routeProvider', '$locationProvider',
     function ($routeProvider, $locationProvider) {
-        $locationProvider.html5Mode({enabled: true, requireBase: false});
-        $routeProvider.
+         $routeProvider.
                 when('/', {
                     templateUrl: 'pages/home.html',
                     controller: 'homeController'
