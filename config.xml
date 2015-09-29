@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns="http://www.w3.org/ns/widgets"  xmlns:gap="http://phonegap.com/ns/1.0" id="com.style.panache" >
+
+    <name>Style Panache</name>
+    <preference name="orientation" value="portrait" />
+    <preference name="fullscreen" value="true" />
+    
+    <gap:platform name="ios" />
+    <gap:platform name="android" />
+    
+    <description>
+        Your Personal Style Guide !!
+    </description>
+
+    <author href="http://www.infinisystem.com" email="support@infiniteit.biz">
+        Infini Systems
+    </author>
+    
+    <icon src="icon.png" />
+    <gap:splash src="splash.jpg" />
+    <gap:plugin name="org.apache.cordova.splashscreen" />
+    <gap:plugin name="nl.x-services.plugins.socialsharing" />
+    <gap:plugin name="de.appplant.cordova.plugin.hidden-statusbar-overlay" />
+    <gap:plugin name="org.apache.cordova.inappbrowser"/>
+    <gap:plugin name="com.pushwoosh.plugins.pushwoosh" />
+    <gap:plugin name="nl.x-services.plugins.calendar" />  
+    <gap:plugin name="org.apache.cordova.file" />
+    <gap:plugin name="org.apache.cordova.file-transfer" />
+  
+
+    <access origin="*"/> <!-- allow all pages, use for development -->
+    <access origin="*.pushwoosh.com"/> <!-- allow pushwoosh service -->
+    
+    
+    <gap:plugin name="com.phonegap.plugins.facebookconnect">
+        <param name="APP_ID" value="937502589613535" />
+        <param name="APP_NAME" value="Pluckk" />
+    </gap:plugin>
+    
+    
+
+</widget>
