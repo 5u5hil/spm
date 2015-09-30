@@ -1,35 +1,27 @@
 <div class="sidebar-header">
-                <a ng-href=""><i class="fa fa-facebook"></i></a>
-                <a ng-href=""><i class="fa fa-twitter"></i></a>
-                <a ng-href=""><i class="fa fa-instagram"></i></a>
-                <a ng-href=""><i class="fa fa-pinterest"></i></a>
-                <a ng-href=""><i class="fa fa-youtube"></i></a>                
-            </div>
-            
-            
-            
-                
-            
-            <ul class="sidebar-navigation">
-                <li><a ng-href=""><i class="fa fa-user"></i>My Profile<i class="fa fa-caret-right"></i></a></li>
-                <li><a href="#/login"><i class="fa fa-user"></i>Login / Register<i class="fa fa-caret-right"></i></a></li>
-                <li><a href="wardrobe.html"><i class="fa fa-thumb-tack"></i>My Wardrobe<i class="fa fa-caret-right"></i></a></li>
-                <li><a ng-href=""><i class="fa fa-heart"></i>My Favourite<i class="fa fa-caret-right"></i></a></li>
-            
-            </ul>
-            
-            <div class="sidebar-divider">
-                get social
-            </div>
-            
-            <ul class="sidebar-navigation">
-                <li><a ng-href=""><i class="fa fa-facebook"></i>Facebook<i class="fa fa-caret-right"></i></a></li>
-                <li><a ng-href=""><i class="fa fa-twitter"></i>Twitter<i class="fa fa-caret-right"></i></a></li>
-                <li><a ng-href=""><i class="fa fa-youtube-play"></i>YouTube<i class="fa fa-caret-right"></i></a></li>
-            </ul>
-            
-           
-            <div class="sidebar-divider">
-                Copyright 2015. All rights reserved.
-            </div>
-		 
+    <a ng-href=""><i class="fa fa-facebook"></i></a>
+    <a ng-href=""><i class="fa fa-twitter"></i></a>
+    <a ng-href=""><i class="fa fa-instagram"></i></a>
+    <a ng-href=""><i class="fa fa-pinterest"></i></a>
+    <a ng-href=""><i class="fa fa-youtube"></i></a>                
+</div>
+
+
+
+
+
+<ul class="sidebar-navigation clearfix">
+  <li><a href='#{{ loggedIn == 1 ? "/profile" : "/login"}}'><i class="fa fa-user"></i>My Profile<i class="fa fa-caret-right"></i></a></li>
+    <li><a href='#{{ loggedIn == 1 ? "/wardrobe" : "/login"}}'><i class="fa fa-thumb-tack"></i>My Wardrobe<i class="fa fa-caret-right"></i></a></li>
+    <li><a href='#{{ loggedIn == 1 ? "/add-new-wardrobe" : "/login"}}'><i class="fa fa-magic"></i>Add to Wardrobe<i class="fa fa-caret-right"></i></a></li>
+    <li><a href='#{{ loggedIn == 1 ? "/my-scrapbook" : "/login"}}'><i class="fa fa-book"></i>My Scrapbook<i class="fa fa-caret-right"></i></a></li>
+    <li><a href='#{{ loggedIn == 1 ? "/create-scrapbook" : "/login"}}'><i class="fa fa-bookmark-o"></i>Create Scrapbook<i class="fa fa-caret-right"></i></a></li>
+    <li><a href='#{{ loggedIn == 1 ? "/favorites" : "/login"}}'><i class="fa fa-heart"></i>My Favourite<i class="fa fa-caret-right"></i></a></li>
+    <li><a href='#{{ loggedIn == 1 ? "/logout" : "/login"}}'><i class="fa fa-user"></i>{{ loggedIn == 1 ? 'Logout' : 'Login / Register'}}<i class="fa fa-caret-right"></i></a></li>
+
+</ul>
+
+
+<div class="sidebar-divider">
+    Copyright 2015. All rights reserved.
+</div>

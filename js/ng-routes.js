@@ -36,9 +36,21 @@ app.config(['$routeProvider', '$locationProvider',
                     templateUrl: 'pages/scrapbook.html',
                     controller: 'scrapbookController'
                 }).
+                when('/my-scrapbook', {
+                    templateUrl: 'pages/scrapbook.html',
+                    controller: 'myScrapbookController'
+                }).
+                when('/create-scrapbook', {
+                    templateUrl: 'pages/create-scrapbook.html',
+                    controller: 'createScrapbookController'
+                }).
                 when('/wardrobe', {
-                    templateUrl: 'resources/views/frontend/pages/wardrobe.html',
+                    templateUrl: 'pages/wardrobe.html',
                     controller: 'wardrobeController'
+                }).
+                when('/wardrobe-listing/:id', {
+                    templateUrl: 'pages/wardrobe-listing.html',
+                    controller: 'wardrobeListingController'
                 }).
                 when('/contact', {
                     templateUrl: 'resources/views/frontend/pages/contact.html',
@@ -53,12 +65,8 @@ app.config(['$routeProvider', '$locationProvider',
                     controller: 'bodyCharacteristicsController'
                 }).
                 when('/add-new-wardrobe', {
-                    templateUrl: 'resources/views/frontend/pages/add-new-wardrobe.html',
-                    controller: 'wardrobeController'
-                }).
-                when('/create-scrapbook', {
-                    templateUrl: 'resources/views/frontend/pages/create-scrapbook.html',
-                    controller: 'scrapbookController'
+                    templateUrl: 'pages/add-new-wardrobe.html',
+                    controller: 'addWardrobeController'
                 }).
                 otherwise({
                     redirectTo: '/'

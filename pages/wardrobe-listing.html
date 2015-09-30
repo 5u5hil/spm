@@ -1,0 +1,38 @@
+<div id="content" class="snap-content">
+    <div class="header-clear"></div>   
+
+    <div class="content">
+        <div class="widget container">
+            <h4>{{ wardrobeList.category}}</h4>
+
+
+            <ul class="wardroblisting">
+                <li ng-repeat="wcat in wardrobeList.wardrobe" >
+                    <div class="col-half">
+                        <div class="thumb">
+                            <img ng-src="{{imgPath + wcat.image}}" alt="img"/>
+                        </div>
+                    </div>
+                    <div class="col-half">
+                        <div class="thumb_descr">
+                            <span>{{wcat.name}}</span><br/>
+                            Brand: {{wcat.brand}}<br/>
+                            Color: {{wcat.color}}
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+
+
+        </div> 
+
+
+
+
+    </div>
+
+    <!-- Page Footer-->
+
+</div>
+
