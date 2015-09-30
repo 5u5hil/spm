@@ -17,15 +17,12 @@
     </author>
     
     <icon src="icon.png" />
-    <gap:splash src="splash.jpg" />
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="nl.x-services.plugins.socialsharing" />
     <gap:plugin name="de.appplant.cordova.plugin.hidden-statusbar-overlay" />
     <gap:plugin name="org.apache.cordova.inappbrowser"/>
     <gap:plugin name="com.pushwoosh.plugins.pushwoosh" />
     <gap:plugin name="nl.x-services.plugins.calendar" />  
-    <gap:plugin name="org.apache.cordova.file" />
-    <gap:plugin name="org.apache.cordova.file-transfer" />
   
 
     <access origin="*"/> <!-- allow all pages, use for development -->
