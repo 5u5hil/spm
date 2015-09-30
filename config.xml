@@ -17,19 +17,19 @@
     </author>
     
     <icon src="icon.png" />
-    <gap:plugin name="org.apache.cordova.splashscreen" />
-    <gap:plugin name="nl.x-services.plugins.socialsharing" />
-    <gap:plugin name="de.appplant.cordova.plugin.hidden-statusbar-overlay" />
-    <gap:plugin name="org.apache.cordova.inappbrowser"/>
-    <gap:plugin name="com.pushwoosh.plugins.pushwoosh" />
-    <gap:plugin name="nl.x-services.plugins.calendar" />  
+    <gap:plugin name="org.apache.cordova.splashscreen" version="0.3.4" />
+    <gap:plugin name="nl.x-services.plugins.socialsharing" version="4.3.8" />
+    <gap:plugin name="de.appplant.cordova.plugin.hidden-statusbar-overlay"  version="1.2.0" />
+    <gap:plugin name="org.apache.cordova.inappbrowser" version="0.5.2"/>
+    <gap:plugin name="com.pushwoosh.plugins.pushwoosh" version="3.4.2" />
+    <gap:plugin name="nl.x-services.plugins.calendar"  version="3.2" />  
   
 
     <access origin="*"/> <!-- allow all pages, use for development -->
     <access origin="*.pushwoosh.com"/> <!-- allow pushwoosh service -->
     
     
-    <gap:plugin name="com.phonegap.plugins.facebookconnect">
+    <gap:plugin name="com.phonegap.plugins.facebookconnect" version="0.9.0">
         <param name="APP_ID" value="937502589613535" />
         <param name="APP_NAME" value="Pluckk" />
     </gap:plugin>

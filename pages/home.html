@@ -1,12 +1,11 @@
 <div id="content" class="snap-content">
     <div class="slider-container full-bottom">
         <div class="homepage-slider" data-snap-ignore="true">                
-            <div ng-repeat="slider in sliders">
+            <div ng-repeat="slider in sliders" on-finish-render="ngRepeatFinished">
                 <img ng-src="{{ imgPath + slider.slider_img}}" class="responsive-image" alt="img">
             </div>
         </div>
     </div>
-
 
     <div class="content">       
         <div class="container large-title no-bottom">
