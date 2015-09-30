@@ -1,0 +1,43 @@
+<div id="content" class="snap-content">
+    <div class="header-clear"></div>
+
+    <div class="content">
+        <div class="adaptive-style">
+            <h3>Add a New Style!</h3>
+        </div>
+        <div class="clear"></div>
+
+        <div class="decoration"></div>
+        <form name="addStyleForm" ng-submit="addPref()">
+            <input type="text" name="styleName" style="margin-top: 10px;" class="signup-password" placeholder="Style Name"/>
+            <input type="hidden" name="id" />
+
+            <div class="clearfix" ng-repeat="cat in categories" >
+                <h4>Select your {{cat.category}}</h4>
+                <div class="portfolio-adaptive adaptive-three listing">
+                    <div class="adaptive-item" ng-repeat="child in cat.children"  >
+                        <a ng-href=""  title="{{product.product}}">
+                            <img class="responsive-image" ng-src="{{imgPath + child.image}}"  alt="{{child.category}}"> 
+                        </a>
+                        <h4 class="pname">
+                            <a ng-href="" class="lname"> 
+                                <label for="{{child.id}}"> <input type="radio" name="cat[{{cat.id}}][]" value="{{child.id}}" id="{{child.id}}" />
+                                    {{child.category}}
+                                </label>
+                            </a> 
+                        </h4>
+                    </div>
+
+                </div>
+
+            </div>
+            <p class="form-row">
+                <input type="submit" class="button" value="submit">
+            </p>
+        </form>
+
+    </div>
+
+
+
+</div>

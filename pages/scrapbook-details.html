@@ -1,0 +1,43 @@
+<div id="content" class="snap-content">
+    <div class="header-clear"></div>
+
+    <div class="content">
+
+        <h3>{{scrapbookproducts.product}}</h3>
+
+        <p class="sdetail">
+            <br/>
+            {{scrapbookproducts.added_by.first_name}}<br/><br/>
+            {{scrapbookproducts.short_desc}}
+        </p>
+
+        <img class="responsive-image" src="{{imgPath + scrapbookproducts.small_image}}" alt="img">
+
+        <div class="clear"></div>
+
+        <div class="decoration"></div>
+
+        <div class="portfolio-adaptive adaptive-two listing">
+            <div class="adaptive-item" ng-repeat="product in scrapbookproducts.comboproducts">
+                <a href="#/product/{{product.url_key}}"  title="{{product.product}}">
+                    <img class="responsive-image" ng-src="{{product.small_image != '' ? product.small_image : (product.medium_image != '' ? product.medium_image : product.large_image) }}" alt="img">
+                </a>
+                <h4 class="pname">
+                    <a href="#/product/{{product.url_key}}" class="lname">{{product.product}}</a> 
+                    <a href="" ng-click="addToWishlist(product.id)" class="lwishlit"><i class="fa fa-heart"></i></a></h4>
+                <p class="sdetail">
+                    <a href="#/product/{{product.url_key}}" class=""> 
+                        <span class="fprice" ng-if="product.spl_price > 0"><i class="fa fa-rupee"></i>{{product.price}}</span>   
+                        <span class="dprice"><i class="fa fa-rupee"></i>{{product.spl_price > 0 ? product.spl_price : product.price }}</span> 
+                    </a> 
+                </p>
+            </div>
+
+
+
+        </div>
+
+
+    </div>
+
+</div>

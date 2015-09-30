@@ -1,0 +1,34 @@
+<div id="content" class="snap-content">
+    <div class="header-clear"></div>
+
+    <div class="content">
+        <div class="portfolio-one">
+            <div class="portfolio-one-item full-bottom">
+                <div class="portfolio-one-image">
+                    <a href="{{product.large_image != '' ? product.large_image : (product.medium_image != '' ? product.medium_image : product.small_image) }}" class="swipebox" title="{{product.product}}"><i class="fa fa-plus"></i></a>
+                    <img src="{{product.large_image != '' ? product.large_image : (product.medium_image != '' ? product.medium_image : product.small_image) }}" class="responsive-image">
+                </div>
+
+                <div class="portfolio-one-text">
+                    <h3 class="title">
+                        <a class="lname">{{product.product}}</a> 
+                        <a href="#" class="lwishlit"><i class="fa fa-heart"></i></a>
+                    </h3>
+                    <em class="subtitle">From {{product.store}}</em>
+                    <h3 class="desc_title"> 
+                        <span class="fprice" ng-if="product.spl_price > 0"><i class="fa fa-rupee"></i>{{product.price}}</span>   
+                        <span class="dprice"><i class="fa fa-rupee"></i>{{product.spl_price > 0 ? product.spl_price : product.price }}</span> 
+                    </h3>
+                    <div class="portfolio-one-details">
+                        <a href="#">In Stock</a>
+                    </div>
+                    <p class="half-bottom">
+                       {{ product.short_desc }}
+                    </p>            
+
+                </div>       
+            </div>
+        </div>
+    </div>
+
+</div>

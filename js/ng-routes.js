@@ -7,21 +7,21 @@ var app = angular.module('StylePanache', ['ngResource', 'ngSanitize', 'ngRoute',
 
 app.config(['$routeProvider', '$locationProvider',
     function ($routeProvider, $locationProvider) {
-         $routeProvider.
+        $routeProvider.
                 when('/', {
                     templateUrl: 'pages/home.html',
                     controller: 'homeController'
                 }).
                 when('/explore/:url_key', {
-                    templateUrl: 'resources/views/frontend/pages/product-listing.html',
-                    controller: 'productListingController'
+                    templateUrl: 'pages/category.html',
+                    controller: 'categoryController'
                 }).
-                when('/product-detail', {
-                    templateUrl: 'resources/views/frontend/pages/product-detail.html',
+                when('/product/:url_key', {
+                    templateUrl: 'pages/product.html',
                     controller: 'productController'
                 }).
                 when('/login', {
-                    templateUrl: 'resources/views/frontend/pages/login.html',
+                    templateUrl: 'pages/login.html',
                     controller: 'loginController'
                 }).
                 when('/logout', {
@@ -29,7 +29,7 @@ app.config(['$routeProvider', '$locationProvider',
                     controller: 'logoutController'
                 }).
                 when('/scrapbook/:url_key', {
-                    templateUrl: 'resources/views/frontend/pages/scrapbook-detail.html',
+                    templateUrl: 'pages/scrapbook-details.html',
                     controller: 'scrapbookDetailsController'
                 }).
                 when('/scrapbook', {
@@ -49,7 +49,7 @@ app.config(['$routeProvider', '$locationProvider',
                     controller: 'mainController'
                 }).
                 when('/add-new-style', {
-                    templateUrl: 'resources/views/frontend/pages/add-new-style.html',
+                    templateUrl: 'pages/add-new-style.html',
                     controller: 'bodyCharacteristicsController'
                 }).
                 when('/add-new-wardrobe', {

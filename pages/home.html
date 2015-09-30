@@ -1,26 +1,17 @@
 <div id="content" class="snap-content">
     <div class="slider-container full-bottom">
         <div class="homepage-slider" data-snap-ignore="true">                
-            <div>
-
-                <img src="images/pictures/3.jpg" class="responsive-image" alt="img">
-            </div>
-            <div>
-
-                <img src="images/pictures/5.jpg" class="responsive-image" alt="img">
-            </div>
-            <div>
-
-                <img src="images/pictures/6.jpg" class="responsive-image" alt="img">
+            <div ng-repeat="slider in sliders">
+                <img ng-src="{{ imgPath + slider.slider_img}}" class="responsive-image" alt="img">
             </div>
         </div>
     </div>
-    
+
 
     <div class="content">       
         <div class="container large-title no-bottom">
-            
-            
+
+
             <h3>Your Personalised Automated Stylist</h3>
             <p>Receive suggestions from your personal stylist to fill your wardrobe with a versatile balance of trendy pieces.</p>
             <p><a href="#" class="button button-blue full-button" style="background-color: #1f1f1f;">Choose Your Style Now!</a></p>
@@ -79,112 +70,18 @@
     <h3 class="mbtm30 txtcenter">New Arrivals</h3>
     <div class="content">
         <div class="portfolio-adaptive adaptive-two listing">
-            <div class="adaptive-item">
-                <a href="detail.html"  title="Caption Goes Here">
-                    <img class="responsive-image" src="images/1.jpg" alt="img">
+            <div class="adaptive-item" ng-repeat="product in new">
+                <a href="#/product/{{product.url_key}}"  title="{{product.product}}">
+                    <img class="responsive-image" ng-src="{{product.small_image != '' ? product.small_image : (product.medium_image != '' ? product.medium_image : product.large_image) }}" alt="img">
                 </a>
-                <h4 class="pname"><a href="detail.html" class="lname">SP-1234</a> <a href="#" class="lwishlit"><i class="fa fa-heart"></i></a></h4>
+                <h4 class="pname">
+                    <a href="#/product/{{product.url_key}}" class="lname">{{product.product}}</a> 
+                    <a href="" ng-click="addToWishlist(product.id)" class="lwishlit"><i class="fa fa-heart"></i></a></h4>
                 <p class="sdetail">
-                    <a href="detail.html" class=""> <span class="fprice">$1290</span>   <span class="dprice">$800</span> <span class="save">(Save 70%)</span></a> 
-                </p>
-            </div>
-            <div class="adaptive-item">
-                <a href="#" title="Caption Goes Here">
-                    <img class="responsive-image" src="images/2.jpg" alt="img">
-                </a>
-                <h4 class="pname"><a href="#" class="lname">SP1234</a> <a href="#" class="lwishlit"><i class="fa fa-heart"></i></a></h4>
-                <p class="sdetail">
-                    <span class="fprice">$1590</span>   <span class="dprice">$1000</span> <span class="save">(Save 10%)</span>
-                </p>
-            </div>
-            <div class="adaptive-item">
-                <a href="#" title="Caption Goes Here">
-                    <img class="responsive-image" src="images/3.jpg" alt="img">
-                </a>
-                <h4 class="pname"><a href="#" class="lname">Item One</a> <a href="#" class="lwishlit"><i class="fa fa-heart"></i></a></h4>
-                <p class="sdetail">
-                    <span class="fprice">$1000</span>   <span class="dprice">$500</span> <span class="save">(Save 50%)</span>
-                </p>
-            </div>
-            <div class="adaptive-item">
-                <a href="#"  title="Caption Goes Here">
-                    <img class="responsive-image" src="images/1.jpg" alt="img">
-                </a>
-                <h4 class="pname"><a href="#" class="lname">Item One</a> <a href="#" class="lwishlit"><i class="fa fa-heart"></i></a></h4>
-                <p class="sdetail">
-                    <span class="fprice">$1290</span>   <span class="dprice">$800</span> <span class="save">(Save 70%)</span>
-                </p>
-            </div>
-            <div class="adaptive-item">
-                <a href="detail.html"  title="Caption Goes Here">
-                    <img class="responsive-image" src="images/1.jpg" alt="img">
-                </a>
-                <h4 class="pname"><a href="detail.html" class="lname">SP-1234</a> <a href="#" class="lwishlit"><i class="fa fa-heart"></i></a></h4>
-                <p class="sdetail">
-                    <a href="detail.html" class=""> <span class="fprice">$1290</span>   <span class="dprice">$800</span> <span class="save">(Save 70%)</span></a> 
-                </p>
-            </div>
-            <div class="adaptive-item">
-                <a href="#" title="Caption Goes Here">
-                    <img class="responsive-image" src="images/2.jpg" alt="img">
-                </a>
-                <h4 class="pname"><a href="#" class="lname">SP1234</a> <a href="#" class="lwishlit"><i class="fa fa-heart"></i></a></h4>
-                <p class="sdetail">
-                    <span class="fprice">$1590</span>   <span class="dprice">$1000</span> <span class="save">(Save 10%)</span>
-                </p>
-            </div>
-            <div class="adaptive-item">
-                <a href="#" title="Caption Goes Here">
-                    <img class="responsive-image" src="images/3.jpg" alt="img">
-                </a>
-                <h4 class="pname"><a href="#" class="lname">Item One</a> <a href="#" class="lwishlit"><i class="fa fa-heart"></i></a></h4>
-                <p class="sdetail">
-                    <span class="fprice">$1000</span>   <span class="dprice">$500</span> <span class="save">(Save 50%)</span>
-                </p>
-            </div>
-            <div class="adaptive-item">
-                <a href="#"  title="Caption Goes Here">
-                    <img class="responsive-image" src="images/1.jpg" alt="img">
-                </a>
-                <h4 class="pname"><a href="#" class="lname">Item One</a> <a href="#" class="lwishlit"><i class="fa fa-heart"></i></a></h4>
-                <p class="sdetail">
-                    <span class="fprice">$1290</span>   <span class="dprice">$800</span> <span class="save">(Save 70%)</span>
-                </p>
-            </div>
-            <div class="adaptive-item">
-                <a href="detail.html"  title="Caption Goes Here">
-                    <img class="responsive-image" src="images/1.jpg" alt="img">
-                </a>
-                <h4 class="pname"><a href="detail.html" class="lname">SP-1234</a> <a href="#" class="lwishlit"><i class="fa fa-heart"></i></a></h4>
-                <p class="sdetail">
-                    <a href="detail.html" class=""> <span class="fprice">$1290</span>   <span class="dprice">$800</span> <span class="save">(Save 70%)</span></a> 
-                </p>
-            </div>
-            <div class="adaptive-item">
-                <a href="#" title="Caption Goes Here">
-                    <img class="responsive-image" src="images/2.jpg" alt="img">
-                </a>
-                <h4 class="pname"><a href="#" class="lname">SP1234</a> <a href="#" class="lwishlit"><i class="fa fa-heart"></i></a></h4>
-                <p class="sdetail">
-                    <span class="fprice">$1590</span>   <span class="dprice">$1000</span> <span class="save">(Save 10%)</span>
-                </p>
-            </div>
-            <div class="adaptive-item">
-                <a href="#" title="Caption Goes Here">
-                    <img class="responsive-image" src="images/3.jpg" alt="img">
-                </a>
-                <h4 class="pname"><a href="#" class="lname">Item One</a> <a href="#" class="lwishlit"><i class="fa fa-heart"></i></a></h4>
-                <p class="sdetail">
-                    <span class="fprice">$1000</span>   <span class="dprice">$500</span> <span class="save">(Save 50%)</span>
-                </p>
-            </div>
-            <div class="adaptive-item">
-                <a href="#"  title="Caption Goes Here">
-                    <img class="responsive-image" src="images/1.jpg" alt="img">
-                </a>
-                <h4 class="pname"><a href="#" class="lname">Item One</a> <a href="#" class="lwishlit"><i class="fa fa-heart"></i></a></h4>
-                <p class="sdetail">
-                    <span class="fprice">$1290</span>   <span class="dprice">$800</span> <span class="save">(Save 70%)</span>
+                    <a href="#/product/{{product.url_key}}" class=""> 
+                        <span class="fprice" ng-if="product.spl_price > 0"><i class="fa fa-rupee"></i>{{product.price}}</span>   
+                        <span class="dprice"><i class="fa fa-rupee"></i>{{product.spl_price > 0 ? product.spl_price : product.price }}</span> 
+                    </a> 
                 </p>
             </div>
 

@@ -1,0 +1,57 @@
+<div id="content" class="snap-content">
+
+    <div class="signup-page bg5">
+        <div class="signup-page-overlay"></div>
+        <div class="signup-page-wrapper">
+
+            <div class="login">
+                <div class="signup-socials">
+                    <a href="#" class="facebook"><i class="fa fa-facebook"></i>Signup with Facebook</a>
+                </div>
+
+                <div class="or-button">
+                    <em></em>
+                    <strong>or</strong>
+                    <em></em>
+                </div>
+
+
+
+                <div class="clearfix"></div>
+                <p> Create New account bellow, it's really easy! </p>
+                <form method="post" id="loginuser" >              
+
+                    <input type="email" class="signup-email" name="useremail"  placeholder="Email">
+                    <input type="password" class="signup-password"  name="password" placeholder="Password">
+                    <div class="one-half"><a ng-href="" ng-click="login()" class="button button-blue full-button">Login</a></div>
+                    <div class="one-half last-column">
+                        <a href="#/signup" class="button button-green full-button">Signup</a>
+                    </div>
+                </form>
+                <div class="clear"></div>
+
+            </div>
+
+
+            <div class="selectStyle">
+
+                <p> Create New Style or Select from bellow, it's really easy! </p>
+                <form method="post" id="setPreference" >              
+                    <select id="preference" name="preference" ng-model="preference" class="signup-password"> 
+                        <option value="">Add New</option>
+                        <option ng-repeat="preference in preferences" value="{{ preference.id}}">{{ preference.style_name}}</option>
+                    </select>
+                    <div class="one-half"><a ng-href="" ng-click="setPreference()" class="button button-blue full-button">Select</a></div>
+                    <div class="one-half last-column">
+                        <a href="#/" class="button button-green full-button">Skip</a>
+                    </div>
+                </form>
+                <div class="clear"></div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
