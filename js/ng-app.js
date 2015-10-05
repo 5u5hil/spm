@@ -332,3 +332,13 @@ app.controller('createScrapbookController', function ($http, $scope, $rootScope,
         siteMainFn();
     });
 });
+
+app.controller('chatController', function ($http, $scope, $rootScope, $controller) {
+
+    loaderHide();
+
+    $scope.$on('$viewContentLoaded', function () {
+        siteMainFn();
+    });
+
+});

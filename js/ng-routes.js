@@ -68,6 +68,10 @@ app.config(['$routeProvider', '$locationProvider',
                     templateUrl: 'pages/add-new-wardrobe.html',
                     controller: 'addWardrobeController'
                 }).
+                when('/chat', {
+                    templateUrl: 'pages/chat.html',
+                    controller: 'chatController'
+                }).
                 otherwise({
                     redirectTo: '/'
                 });
