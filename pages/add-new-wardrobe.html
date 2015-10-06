@@ -24,7 +24,7 @@
                 <input type="text" class="inputfield"  placeholder="Brand" ng-model="wbrand" name="wbrand" id="wbrand">
                 <input type="text" class="inputfield" ng-model="wcolor" name="wcolor" id="wcolor" placeholder="Color" required>
 
-                <input type="file" class='inputfield' ng-model="wimg" name="wimg" id="wimg" required >
+                <input type="file" class='inputfield' ng-model="wimg" accept="image/*;capture=camera"  name="wimg" id="wimg" required >
                 <input type="hidden" name="userId" value='{{ userId}}'>
 
                 <input type='submit' name='submit' class="button button-blue full-button">

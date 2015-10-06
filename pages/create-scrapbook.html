@@ -12,7 +12,7 @@
             <input type="text" name="sname" id="sname" class="inputfield" placeholder="Scrabook Title"/>
             <input type="text" class="inputfield" name="sdescription" id="sdescription" placeholder="Description" required>
             <input type="text" class="inputfield"  placeholder="Add Products" name="pdcts" ng-focus="autoCompleteFn()" ng-blur="autoCompleteFn()" id="pdcts">
-            <input type="file" class='inputfield' name="simg" id="simg" required >
+            <input type="file" class='inputfield' accept="image/*;capture=camera"  name="simg" id="simg" required >
             <input type="hidden" name="userId" value='{{ userId}}'>
             <label for="sdescription">Selected Products</label>
             <div id="log" style="height: 200px; width: 100%; overflow: auto;margin-bottom: 10px;" class="ui-widget-content"></div>

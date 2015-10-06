@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml source="npm"  version="1.0" encoding="UTF-8" ?>
 <widget xmlns="http://www.w3.org/ns/widgets"  xmlns:gap="http://phonegap.com/ns/1.0" id="com.style.panache" >
 
     <name>Style Panache</name>
@@ -17,21 +17,23 @@
     </author>
     
     <icon src="icon.png" />
-    <gap:plugin name="org.apache.cordova.splashscreen" version="0.3.4" />
-    <gap:plugin name="nl.x-services.plugins.socialsharing" version="4.3.8" />
-    <gap:plugin name="de.appplant.cordova.plugin.hidden-statusbar-overlay"  version="1.2.0" />
-    <gap:plugin name="com.pushwoosh.plugins.pushwoosh" version="3.4.2" />
-    <gap:plugin name="nl.x-services.plugins.calendar"  version="3.2" />  
-    <gap:plugin name="org.apache.cordova.inappbrowser" version="0.5.2" />
-    <gap:plugin name="org.apache.cordova.file" version="1.3.1" />
-    <gap:plugin name="org.apache.cordova.file-transfer" version="0.4.6" />
+    <preference name="phonegap-version" value="cli-5.2.0" />             
+    <gap:plugin name="org.apache.cordova.splashscreen" source="npm"  version="0.3.4" />
+    <gap:plugin name="nl.x-services.plugins.socialsharing" source="npm"  version="4.3.8" />
+    <gap:plugin name="de.appplant.cordova.plugin.hidden-statusbar-overlay"  source="npm"  version="1.2.0" />
+    <gap:plugin name="com.pushwoosh.plugins.pushwoosh" source="npm"  version="3.4.2" />
+    <gap:plugin name="nl.x-services.plugins.calendar"  source="npm"  version="3.2" />  
+    <gap:plugin name="org.apache.cordova.inappbrowser" source="npm"  version="0.5.2" />
+    <gap:plugin name="org.apache.cordova.file" source="npm"  version="1.3.1" />
+    <gap:plugin name="org.apache.cordova.file-transfer" source="npm"  version="0.4.6" />
+    <gap:plugin name="org.apache.cordova.camera" source="npm"  version="0.3.2" />
   
 
     <access origin="*"/> <!-- allow all pages, use for development -->
     <access origin="*.pushwoosh.com"/> <!-- allow pushwoosh service -->
     
     
-    <gap:plugin name="com.phonegap.plugins.facebookconnect" version="0.9.0">
+    <gap:plugin name="com.phonegap.plugins.facebookconnect" source="npm"  version="0.9.0">
         <param name="APP_ID" value="937502589613535" />
         <param name="APP_NAME" value="Pluckk" />
     </gap:plugin>
