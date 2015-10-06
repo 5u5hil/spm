@@ -243,27 +243,7 @@ app.controller('addWardrobeController', function ($http, $scope, $rootScope, $lo
 
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
-
-        var $ = jQuery;
-        $("input[type='file']").click(function (e) {
-            e.preventDefault();
-
-            navigator.notification.confirm(
-                    'Please select image', // message
-                    function (buttonIndex) {
-                        if (buttonIndex === 1) {
-                            photoFromSource(navigator.camera.PictureSourceType.CAMERA);
-                        } else {
-                            photoFromSource(navigator.camera.PictureSourceType.PHOTOLIBRARY);
-                        }
-                    }, // callback to invoke with index of button pressed
-                    'Image capture', // title
-                    ['Camera', 'Gallery']     // buttonLabels
-                    );
-
-
-
-        });
+        fileUp();
     });
 });
 
@@ -351,27 +331,7 @@ app.controller('createScrapbookController', function ($http, $scope, $rootScope,
 
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
-
-        $ = jQuery;
-        $("input[type='file']").click(function (e) {
-            e.preventDefault();
-
-            navigator.notification.confirm(
-                    'Please select image', // message
-                    function (buttonIndex) {
-                        if (buttonIndex === 1) {
-                            photoFromSource(navigator.camera.PictureSourceType.CAMERA);
-                        } else {
-                            photoFromSource(navigator.camera.PictureSourceType.PHOTOLIBRARY);
-                        }
-                    }, // callback to invoke with index of button pressed
-                    'Image capture', // title
-                    ['Camera', 'Gallery']     // buttonLabels
-                    );
-
-
-
-        });
+        fileUp();
     });
 });
 

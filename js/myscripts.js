@@ -31,6 +31,29 @@ function loaderHide() {
     jQuery("#preloader,#status").hide();
 }
 
+function fileUp() {
+    var $ = jQuery;
+    $("input[type='file']").click(function (e) {
+        e.preventDefault();
+        console.log("here");
+        navigator.notification.confirm(
+                'Please select image', // message
+                function (buttonIndex) {
+                    if (buttonIndex === 1) {
+                        photoFromSource(navigator.camera.PictureSourceType.CAMERA);
+                    } else {
+                        photoFromSource(navigator.camera.PictureSourceType.PHOTOLIBRARY);
+                    }
+                }, // callback to invoke with index of button pressed
+                'Image capture', // title
+                ['Camera', 'Gallery']     // buttonLabels
+                );
+
+
+
+    });
+}
+
 function photoFromSource(source) {
     var targetWidth = 640,
             targetHeight = 640,
