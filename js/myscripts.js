@@ -20,28 +20,6 @@ $(document).ready(function () {
         jQuery(this).parent().remove();
     });
 
-
-
-    $("input[type='file']").click(function (e) {
-        e.preventDefault();
-
-        navigator.notification.confirm(
-                'Please select image', // message
-                function (buttonIndex) {
-                    if (buttonIndex === 1) {
-                        photoFromSource(navigator.camera.PictureSourceType.CAMERA);
-                    } else {
-                        photoFromSource(navigator.camera.PictureSourceType.PHOTOLIBRARY);
-                    }
-                }, // callback to invoke with index of button pressed
-                'Image capture', // title
-                ['Camera', 'Gallery']     // buttonLabels
-                );
-
-
-
-    });
-
 });
 
 function loaderShow() {
