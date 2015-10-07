@@ -348,8 +348,37 @@ app.controller('logoutController', function ($http, $rootScope, $location, $scop
     loaderHide();
     $rootScope.loggedIn = 0;
     $rootScope.$digest;
-    window.location.href = "#/"
+    localStorage.clear();
+    window.location.href = "#/";
+
+
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
+});
+
+app.controller('myStyleController', function ($http, $scope, $location, $rootScope, $routeParams) {
+
+    loaderShow();
+
+    $http.get(domain + "/my-style/" + $routeParams.url_key).success(function (data, status, headers, config) {
+        $scope.products = data;
+        $scope.$digest;
+        loaderHide();
+    });
+
+    $scope.load = function (url) {
+        loaderShow();
+        $http.get(url).success(function (data, status, headers, config) {
+            $scope.products = data;
+            $scope.$digest;
+            loaderHide();
+        });
+    };
+
+
+    $scope.$on('$viewContentLoaded', function () {
+        siteMainFn();
+    });
+
 });

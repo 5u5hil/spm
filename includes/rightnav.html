@@ -21,6 +21,13 @@
     <li ng-if="loggedIn == 1" class="has-submenu">
         <a class="deploy-submenu" ng-href=""><i class="fa fa-cog"></i>Your Styles<i class="fa fa-plus"></i></a>
         <ul class="submenu">
+            <li>
+                <a ng-href="#/add-new-style" class="active-menu">
+                    <i class="fa fa-angle-right"></i>
+                    Add New Style
+                    <i class="fa fa-circle"></i>
+                </a>  
+            </li>
             <li ng-repeat="child in styles"  on-finish-render="ngRepeatFinished">
                 <a ng-href="#/explore-style/{{child.id}}" class="active-menu">
                     <i class="fa fa-angle-right"></i>

@@ -16,6 +16,10 @@ app.config(['$routeProvider', '$locationProvider',
                     templateUrl: 'pages/category.html',
                     controller: 'categoryController'
                 }).
+                when('/explore-style/:url_key', {
+                    templateUrl: 'pages/mystyleproducts.html',
+                    controller: 'myStyleController'
+                }).
                 when('/product/:url_key', {
                     templateUrl: 'pages/product.html',
                     controller: 'productController'
@@ -25,6 +29,7 @@ app.config(['$routeProvider', '$locationProvider',
                     controller: 'loginController'
                 }).
                 when('/logout', {
+                    templateUrl: 'pages/logout.html',
                     controller: 'logoutController'
                 }).
                 when('/scrapbook/:url_key', {
