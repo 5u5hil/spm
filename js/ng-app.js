@@ -243,7 +243,6 @@ app.controller('addWardrobeController', function ($http, $scope, $rootScope, $lo
 
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
-        fileUp();
     });
 });
 
@@ -331,7 +330,6 @@ app.controller('createScrapbookController', function ($http, $scope, $rootScope,
 
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
-        fileUp();
     });
 });
 
