@@ -32,9 +32,21 @@ function loaderHide() {
 }
 
 
+function checkPLogin() {
+    if (window.localStorage.getItem('member') == 0) {
+        var r = confirm("Are you sure you want to subscribe to SP and be a Member?");
+        if (r == true) {
+            window.localStorage.setItem('member', 1);
+            window.open("http://sp.boxcommerce.in/personal-chat.php?name=" + window.localStorage.getItem("name") + "&email=" + window.localStorage.getItem("email") + "&dep=" + window.localStorage.getItem("department"), '_blank', 'EnableViewPortScale=yes,location=no,closebuttoncaption=Close');
+        }
+    } else {
+        window.open("http://sp.boxcommerce.in/personal-chat.php?name=" + window.localStorage.getItem("name") + "&email=" + window.localStorage.getItem("email") + "&dep=" + window.localStorage.getItem("department"), '_blank', 'EnableViewPortScale=yes,location=no,closebuttoncaption=Close');
+    }
+}
+
 function checkLogin() {
     if (window.localStorage.getItem('id') != null) {
-        window.open("http://sp.boxcommerce.in/personal-chat.php?name=" + window.localStorage.getItem("name") + "&email=" + window.localStorage.getItem("name") + "&dep=Karishma", '_blank', 'EnableViewPortScale=yes,location=no,closebuttoncaption=Close');
+        window.open("http://sp.boxcommerce.in/chat.php?name=" + window.localStorage.getItem("name") + "&email=" + window.localStorage.getItem("email"), '_blank', 'EnableViewPortScale=yes,location=no,closebuttoncaption=Close');
     } else {
         jQuery("a:contains('Login')").click();
     }

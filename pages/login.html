@@ -37,11 +37,9 @@
 
                 <p> Create New Style or Select from bellow, it's really easy! </p>
                 <form method="post" id="setPreference" >              
-                    <select id="preference" name="preference" ng-model="preference" class="signup-password"> 
-                        <option value="">Add New</option>
-                        <option ng-repeat="preference in preferences" value="{{ preference.id}}">{{ preference.style_name}}</option>
-                    </select>
-                    <div class="one-half"><a ng-href="" ng-click="setPreference()" class="button button-blue full-button">Select</a></div>
+                    <input type="hidden" value="0" id="preference" name="preference" ng-model="preference" class="signup-password" /> 
+
+                    <div class="one-half"><a ng-href="" ng-click="setPreference()" class="button button-blue full-button">Add New Style</a></div>
                     <div class="one-half last-column">
                         <a href="#/" class="button button-green full-button">Skip</a>
                     </div>

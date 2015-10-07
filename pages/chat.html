@@ -4,39 +4,15 @@
 
     <div class="content">
         <div class="adaptive-style">
-            <h3>Chat with our Stylist</h3>
+            <h3>Chat with your Personal Stylist</h3>
         </div>
+        <p>
+            <button onclick="checkPLogin()">Start Chat</button>
+        </p>
+        
         <div class="clear"></div>
 
         <div class="decoration"></div>
-        <!--Start of Zopim Live Chat Script-->
-        <script type="text/javascript">
-            window.$zopim || (function (d, s) {
-                var z = $zopim = function (c) {
-                    z._.push(c)
-                }, $ = z.s =
-                        d.createElement(s), e = d.getElementsByTagName(s)[0];
-                z.set = function (o) {
-                    z.set.
-                            _.push(o)
-                };
-                z._ = [];
-                z.set._ = [];
-                $.async = !0;
-                $.setAttribute("charset", "utf-8");
-                $.src = "//v2.zopim.com/?3MH0QQPMCvVB2z9115rt1VPzMKR5UKBz";
-                z.t = +new Date;
-                $.
-                        type = "text/javascript";
-                e.parentNode.insertBefore($, e)
-            })(document, "script");
-
-            $zopim(function () {
-                $zopim.livechat.setName(window.localStorage.getItem("name"));
-                $zopim.livechat.setEmail(window.localStorage.getItem("email"));
-               
-            });
-        </script>
-
+       
     </div>
 </div>

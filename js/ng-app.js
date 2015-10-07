@@ -1,4 +1,3 @@
-// Directive - event on ng-repeat finish
 app.directive('onFinishRender', function ($timeout) {
     return {
         restrict: 'A',
@@ -147,11 +146,15 @@ app.controller('loginController', function ($http, $rootScope, $location, $scope
                     window.localStorage.setItem('id', data.id);
                     window.localStorage.setItem('name', data.first_name);
                     window.localStorage.setItem('email', data.email);
-
+                    window.localStorage.setItem('member', data.is_member);
+                    window.localStorage.setItem('department', data.department.name);
                     $scope.$apply(function () {
                         $scope.preferences = data.preferences;
                     });
 
+                    $rootScope.$apply(function () {
+                        $rootScope.styles = data.preferences;
+                    });
                     $rootScope.$digest;
                     jQuery(".login").hide();
                     jQuery(".selectStyle").show();
@@ -164,20 +167,9 @@ app.controller('loginController', function ($http, $rootScope, $location, $scope
 
         loaderShow();
 
-        if (jQuery("#preference").val() == "") {
-            window.location.href = "#/add-new-style";
-        } else {
 
-            jQuery.ajax({
-                type: "POST",
-                url: domain + "/get-style-preference",
-                data: jQuery("#setPreference").serialize(),
-                cache: false,
-                success: function (data) {
-                    window.location.href = "#/";
-                }
-            });
-        }
+        window.location.href = "#/add-new-style";
+
     };
 
     $scope.$on('$viewContentLoaded', function () {
@@ -194,7 +186,16 @@ app.controller('bodyCharacteristicsController', function ($http, $scope, $rootSc
         $scope.imgPath = domain + "/public/admin/uploads/catalog/category/";
         loaderHide();
     });
+    $scope.getGallery = function ()
+    {
 
+        jQuery('.to-cat-select').click(function (event) { /* Act on the event */
+            event.preventDefault();
+            jQuery(this).closest("div.child").find(".item-selected").removeClass("item-selected");
+            jQuery(this).addClass("item-selected").prev(":radio").click();
+        })
+
+    };
     $scope.addPref = function () {
         loaderShow();
         jQuery.ajax({
@@ -341,4 +342,14 @@ app.controller('chatController', function ($http, $scope, $rootScope, $controlle
         siteMainFn();
     });
 
+});
+
+app.controller('logoutController', function ($http, $rootScope, $location, $scope) {
+    loaderHide();
+    $rootScope.loggedIn = 0;
+    $rootScope.$digest;
+    window.location.href = "#/"
+    $scope.$on('$viewContentLoaded', function () {
+        siteMainFn();
+    });
 });

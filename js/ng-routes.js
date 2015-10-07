@@ -25,7 +25,6 @@ app.config(['$routeProvider', '$locationProvider',
                     controller: 'loginController'
                 }).
                 when('/logout', {
-                    templateUrl: 'resources/views/frontend/pages/home.html',
                     controller: 'logoutController'
                 }).
                 when('/scrapbook/:url_key', {

@@ -14,9 +14,11 @@
 
             <div class="clearfix" ng-repeat="cat in categories" >
                 <h4>Select your {{cat.category}}</h4>
-                <div class="portfolio-adaptive adaptive-three listing">
+                <div class="portfolio-adaptive adaptive-three listing child">
                     <div class="adaptive-item" ng-repeat="child in cat.children"  >
-                        <a ng-href=""  title="{{product.product}}">
+                        <input type="radio" name="cat[{{cat.id}}][]" value="{{child.id}}" id="{{child.id}}" style="display:none  ;" />
+
+                        <a href class="to-cat-select" ng-click="getGallery()" title="{{product.product}}">
                             <img class="responsive-image" ng-src="{{imgPath + child.image}}"  alt="{{child.category}}"> 
                         </a>
                         <h4 class="pname">
@@ -41,3 +43,27 @@
 
 
 </div>
+
+<script type="text/javascript">
+
+</script>
+<style>
+    a.item-selected, a.item-selected:hover {
+    box-shadow: 0px 1px 11px 3px #157913 !important;
+    -webkit-box-shadow: 0px 1px 11px 3px #157913;
+    -moz-box-shadow: 0px 1px 11px 3px #157913;
+    transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -webkit-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+}
+a.to-cat-select:hover {
+    box-shadow: 0px 1px 11px 3px #b1b4b4;
+    -webkit-box-shadow: 0px 1px 11px 3px #b1b4b4;
+    -moz-box-shadow: 0px 1px 11px 3px #b1b4b4;
+    transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -webkit-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+}
+</style>
