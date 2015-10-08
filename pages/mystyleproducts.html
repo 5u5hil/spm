@@ -25,6 +25,9 @@
                         <span class="fprice" ng-if="product.spl_price > 0"><i class="fa fa-rupee"></i>{{product.price}}</span>   
                         <span class="dprice"><i class="fa fa-rupee"></i>{{product.spl_price > 0 ? product.spl_price : product.price }}</span> 
                     </a> 
+                     <span class="add-cart-wrap">
+                    <button class="button add-cart-btn"  ng-click="addToCart($event, product)">Add to Cart</button>
+                     </span>
                 </p>
             </div>
 

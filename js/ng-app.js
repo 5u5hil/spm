@@ -11,6 +11,24 @@ app.directive('onFinishRender', function ($timeout) {
     };
 });
 
+angular.module('ChangePasswordConfirm', []).directive('changePasswordC', function () {
+    return {
+        require: 'ngModel',
+        link: function (scope, elm, attrs, ctrl) {
+
+            ctrl.$setValidity('noMatch1', true);
+
+            attrs.$observe('changePasswordC', function (newVal) {
+                if (newVal === 'true') {
+                    ctrl.$setValidity('noMatch1', true);
+                } else {
+                    ctrl.$setValidity('noMatch1', false);
+                }
+            });
+        }
+    };
+});
+
 app.controller('homeController', function ($http, $scope, $rootScope, $controller) {
 
     loaderShow();
@@ -31,6 +49,25 @@ app.controller('homeController', function ($http, $scope, $rootScope, $controlle
         };
 
     });
+
+    $scope.addToList = function (event, id) {
+        if (window.localStorage.getItem('id') != null) {
+            $http.get(domain + "/add-to-savedlist?productID=" + id + "&userId=" + window.localStorage.getItem('id')).success(function (response) {
+                console.log(angular.element(event.target).parent());
+                if (response == 1) {
+                    angular.element(event.target).addClass("puffIn liked");
+
+                } else {
+                    angular.element(event.target).removeClass("puffIn liked");
+                }
+            });
+
+        } else {
+            window.location.href = '#/login';
+        }
+
+
+    };
 
 });
 
@@ -181,6 +218,8 @@ app.controller('bodyCharacteristicsController', function ($http, $scope, $rootSc
 
     loaderShow();
 
+    $scope.userId = window.localStorage.getItem('id');
+
     $http.get(domain + '/body-characteristics').success(function (data, response, status, headers, config) {
         $scope.categories = data;
         $scope.imgPath = domain + "/public/admin/uploads/catalog/category/";
@@ -205,7 +244,8 @@ app.controller('bodyCharacteristicsController', function ($http, $scope, $rootSc
             cache: false,
             success: function (data) {
 
-                window.location.href = "#/";
+                jQuery(".newStyle").append('<li><a ng-href="#/explore-style/' + data.id + '" class="active-menu"><i class="fa fa-angle-right"></i>' + data.style_name + '<i class="fa fa-circle"></i></a></li>');
+                window.location.href = "#/explore-style/" + data.id;
             }
         });
     };
@@ -382,3 +422,60 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
     });
 
 });
+
+app.controller('signupController', function ($http, $scope, $location, $rootScope, $routeParams) {
+
+    loaderHide();
+
+    $scope.signup = function () {
+        jQuery.ajax({
+            type: "POST",
+            url: domain + "/save-reg",
+            data: jQuery("#signup input").serialize(),
+            cache: false,
+            success: function (data) {
+                // console.log(data);
+
+                if (data == "register") {
+                    alert("Email is already registered.");
+                } else {
+                    window.location.href = "#/login";
+                }
+            }
+        });
+    }
+
+    $scope.$on('$viewContentLoaded', function () {
+        siteMainFn();
+    });
+
+});
+
+app.controller('cartController', function ($http, $scope, $location, $rootScope, $routeParams) {
+
+    loaderShow();
+
+    $scope.cart = jQuery.parseJSON(window.localStorage.getItem("cart"));
+    $scope.cart.Total = 0;
+    jQuery.each(jQuery.parseJSON(window.localStorage.getItem("cart")), function (k, v) {
+        $scope.cart.Total += parseInt(v.price);
+    });
+
+    loaderHide();
+    $scope.$on('$viewContentLoaded', function () {
+        siteMainFn();
+    });
+
+});
+
+app.controller('contactController', function ($http, $scope, $location, $rootScope, $routeParams) {
+
+
+
+    loaderHide();
+    $scope.$on('$viewContentLoaded', function () {
+        siteMainFn();
+    });
+
+});
+

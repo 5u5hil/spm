@@ -1,0 +1,65 @@
+<!-- Page Content-->
+<div id="content" class="snap-content">
+
+    <div class="signup-page bg2">
+        <div class="signup-page-overlay"></div>
+        <div class="signup-page-wrapper">
+            <a href="#" class="signup-logo"></a>
+
+            <div class="signup-socials">
+                <a href="#" class="facebook"><i class="fa fa-facebook"></i>Signup with Facebook</a>
+            </div>
+
+            <div class="or-button">
+                <em></em>
+                <strong>or</strong>
+                <em></em>
+            </div>
+
+            <div class="clearfix"></div>
+            <form name="log" id="signup" ng-controller="signupController" novalidate ng-cloak method="post" ng-submit="signup()">
+                <p> Create New account below, it's really easy! </p>
+    
+                    <input type="text" class="inputfield" name="fname" value="" placeholder="First Name" ng-model='fname' required/>
+                    <span style="color:red" ng-show="log.fname.$dirty && log.fname.$invalid">
+                        <span ng-show="log.fname.$error.required">First name is required.</span>
+                    </span>    
+               
+                <input type="text" class="inputfield" name="lname" value="" placeholder="Last Name" ng-model='lname' required/>
+                <span style="color:red" ng-show="log.lname.$dirty && log.lname.$invalid">
+                    <span ng-show="log.lname.$error.required">Last name is required.</span>
+                </span>   
+
+                <input type="email" class="inputfield" name="email" value="" placeholder="Email" ng-model='email' required/>                    
+                <span style="color:red" ng-show="log.email.$dirty && log.email.$invalid">
+                    <span ng-show="log.email.$error.required">Email is required.</span>
+                    <span ng-show="log.email.$error.email">Invalid email address.</span>
+                </span>   
+
+                <input type="password" class="inputfield" name="password" value="" placeholder="Password" ng-model='password' id="password" ng-minlength='6' required />                    
+                <span style="color:red" ng-show="log.password.$dirty && log.password.$invalid">                        
+                    <span ng-show="log.password.$dirty && log.password.$error.required">Password is required.</span>  
+                    <span style="color:red" ng-show="log.password.$error.minlength">Password Should Contain Atleast 6 Characters</span>
+                </span>    
+
+                <input type="password" class="inputfield" name="repassword" value="" placeholder="Confirm Password" name="repassword" ng-model='repassword' id="repassword" ng-minlength='6' change-password-c="{{password === repassword}}"/>                    
+                <span style="color:red" ng-show="log.repassword.$error.noMatch1 && log.password.$dirty">Passwords do not match.</span>
+                <span style="color:red" ng-show="log.repassword.$dirty && log.repassword.$invalid">
+                    <span style="color:red" ng-show="log.repassword.$error.required">password is required.</span>
+                    <span style="color:red" ng-show="log.repassword.$error.minlength">Password Should Contain Atleast 6 Characters</span>   
+                </span>
+
+                <input type="text" class="inputfield" name="phone" value="" placeholder="Phone" ng-model='phone' required/>    
+                <span style="color:red" ng-show="log.phone.$dirty && log.phone.$invalid">
+                    <span ng-show="log.phone.$error.required">Phone number is required.</span>
+                </span>    
+
+                <button type="submit" ng-disabled="log.$invalid" class="button button-blue full-button">Submit</button>
+            </form>
+            <div class="clear"></div>
+
+
+        </div>
+    </div>
+
+</div>

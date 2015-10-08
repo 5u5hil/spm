@@ -1170,7 +1170,7 @@ body{
                  display: inline-block;}
 .pname{    margin-bottom: 5px !important;}
 .lname{ color:#000;}
-.lwishlit{ color:#3498db; display:inline-block; float:right;}
+.lwishlit{ color:#D6D6D6; display:inline-block; float:right;}
 .fprice,.dprice,.save{ display:inline-block; padding-right:8px;}
 .fprice{text-decoration: line-through;}
 .dprice{}
@@ -1270,4 +1270,46 @@ table.cartable tr:last-child td{border-bottom:1px #eee solid;}
 
 .ui-autocomplete-loading {
     background: white url("https://jqueryui.com/resources/demos/autocomplete/images/ui-anim_basic_16x16.gif") right center no-repeat;
+}
+.add-cart-btn{
+padding: 6px 14px !important;
+font-family: inherit;
+}
+.add-cart-wrap{
+    float: right;
+}
+.add-cart-btn:hover{
+    cursor: pointer;
+    color: #000 !important;
+}
+.add-cart-home{
+   float: left;
+}
+.mt7   {
+    margin-top: 7px;
+}
+
+@media (min-width: 768px)
+{
+.custom-blog-posts {
+    width: 100% !important;
+ 
+}
+}
+.button:hover{
+    cursor: pointer;
+    color: #000;
+}
+.open-cart{
+        float: right;
+    width: 60px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    text-align: center;
+    color: #1f1f1f;
+    border-right: dashed 1px #cacaca;
+}
+.full-button{
+    background-color: #1f1f1f !important;
 }

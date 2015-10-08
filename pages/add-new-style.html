@@ -10,7 +10,7 @@
         <div class="decoration"></div>
         <form name="addStyleForm" ng-submit="addPref()">
             <input type="text" name="styleName" style="margin-top: 10px;" class="signup-password" placeholder="Style Name"/>
-            <input type="hidden" name="id" />
+            <input type="hidden" name="userId" value='{{ userId}}' />
 
             <div class="clearfix" ng-repeat="cat in categories" >
                 <h4>Select your {{cat.category}}</h4>
@@ -33,7 +33,7 @@
                 </div>
 
             </div>
-            <p class="form-row">
+            <p class="form-row clearfix">
                 <input type="submit" class="button" value="submit">
             </p>
         </form>
@@ -49,21 +49,21 @@
 </script>
 <style>
     a.item-selected, a.item-selected:hover {
-    box-shadow: 0px 1px 11px 3px #157913 !important;
-    -webkit-box-shadow: 0px 1px 11px 3px #157913;
-    -moz-box-shadow: 0px 1px 11px 3px #157913;
-    transition: all 0.3s ease 0s;
-    -moz-transition: all 0.3s ease 0s;
-    -webkit-transition: all 0.3s ease 0s;
-    -o-transition: all 0.3s ease 0s;
-}
-a.to-cat-select:hover {
-    box-shadow: 0px 1px 11px 3px #b1b4b4;
-    -webkit-box-shadow: 0px 1px 11px 3px #b1b4b4;
-    -moz-box-shadow: 0px 1px 11px 3px #b1b4b4;
-    transition: all 0.3s ease 0s;
-    -moz-transition: all 0.3s ease 0s;
-    -webkit-transition: all 0.3s ease 0s;
-    -o-transition: all 0.3s ease 0s;
-}
+        box-shadow: 0px 1px 11px 3px #157913 !important;
+        -webkit-box-shadow: 0px 1px 11px 3px #157913;
+        -moz-box-shadow: 0px 1px 11px 3px #157913;
+        transition: all 0.3s ease 0s;
+        -moz-transition: all 0.3s ease 0s;
+        -webkit-transition: all 0.3s ease 0s;
+        -o-transition: all 0.3s ease 0s;
+    }
+    a.to-cat-select:hover {
+        box-shadow: 0px 1px 11px 3px #b1b4b4;
+        -webkit-box-shadow: 0px 1px 11px 3px #b1b4b4;
+        -moz-box-shadow: 0px 1px 11px 3px #b1b4b4;
+        transition: all 0.3s ease 0s;
+        -moz-transition: all 0.3s ease 0s;
+        -webkit-transition: all 0.3s ease 0s;
+        -o-transition: all 0.3s ease 0s;
+    }
 </style>

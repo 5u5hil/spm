@@ -1,7 +1,7 @@
 var domain = "http://sp.boxcommerce.in";
 
 
-var app = angular.module('StylePanache', ['ngResource', 'ngSanitize', 'ngRoute', 'ngTouch']);
+var app = angular.module('StylePanache', ['ngResource', 'ngSanitize', 'ngRoute', 'ngTouch', 'ChangePasswordConfirm']);
 
 
 
@@ -11,6 +11,10 @@ app.config(['$routeProvider', '$locationProvider',
                 when('/', {
                     templateUrl: 'pages/home.html',
                     controller: 'homeController'
+                }).
+                when('/cart', {
+                    templateUrl: 'pages/cart.html',
+                    controller: 'cartController'
                 }).
                 when('/explore/:url_key', {
                     templateUrl: 'pages/category.html',
@@ -56,14 +60,6 @@ app.config(['$routeProvider', '$locationProvider',
                     templateUrl: 'pages/wardrobe-listing.html',
                     controller: 'wardrobeListingController'
                 }).
-                when('/contact', {
-                    templateUrl: 'resources/views/frontend/pages/contact.html',
-                    controller: 'mainController'
-                }).
-                when('/style-profile', {
-                    templateUrl: 'resources/views/frontend/pages/contact.html',
-                    controller: 'mainController'
-                }).
                 when('/add-new-style', {
                     templateUrl: 'pages/add-new-style.html',
                     controller: 'bodyCharacteristicsController'
@@ -75,6 +71,14 @@ app.config(['$routeProvider', '$locationProvider',
                 when('/chat', {
                     templateUrl: 'pages/chat.html',
                     controller: 'chatController'
+                }).
+                when('/signup', {
+                    templateUrl: 'pages/signup.html',
+                    controller: 'signupController'
+                }).
+                when('/contact', {
+                    templateUrl: 'pages/contact.html',
+                    controller: 'contactController'
                 }).
                 otherwise({
                     redirectTo: '/'

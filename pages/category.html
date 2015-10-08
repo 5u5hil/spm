@@ -21,10 +21,16 @@
                     <a href="#/product/{{product.url_key}}" class="lname">{{product.product}}</a> 
                     <a href="" ng-click="addToWishlist(product.id)" class="lwishlit"><i class="fa fa-heart"></i></a></h4>
                 <p class="sdetail">
+                <span class="price-wrap">
                     <a href="#/product/{{product.url_key}}" class=""> 
                         <span class="fprice" ng-if="product.spl_price > 0"><i class="fa fa-rupee"></i>{{product.price}}</span>   
                         <span class="dprice"><i class="fa fa-rupee"></i>{{product.spl_price > 0 ? product.spl_price : product.price }}</span> 
                     </a> 
+                    </span>
+                       <br>
+                         <span class="dd-cart-home ">
+                    <button class="button add-cart-btn mt7"  ng-click="addToCart($event, product)">Add to Cart</button>
+                     </span>
                 </p>
             </div>
 
@@ -41,3 +47,4 @@
 
 
 </div>
+ 

@@ -1,7 +1,22 @@
 $(document).ready(function () {
+
+    if (window.localStorage.getItem('cart') === null) {
+        window.localStorage.setItem('cart', JSON.stringify([]));
+    }
+
     var elem = angular.element(document.querySelector('[ng-app]'));
     var injector = elem.injector();
     var $rootScope = injector.get('$rootScope');
+
+    $rootScope.addToCart = function (e, p) {
+        var $ = jQuery;
+        e.preventDefault();
+        var cart = $.parseJSON(window.localStorage.getItem("cart"));
+        cart.push(p);
+        window.localStorage.setItem("cart", JSON.stringify(cart));
+        alert("Product Added to Cart");
+    };
+
     if (window.localStorage.getItem('id') != null) {
 
         $rootScope.$apply(function () {
@@ -51,3 +66,4 @@ function checkLogin() {
         jQuery("a:contains('Login')").click();
     }
 }
+
