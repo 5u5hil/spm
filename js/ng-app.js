@@ -479,3 +479,28 @@ app.controller('contactController', function ($http, $scope, $location, $rootSco
 
 });
 
+app.controller('userDashboardController', function ($http, $scope, $location, $rootScope, $routeParams) {
+    $scope.userId = window.localStorage.getItem('id');
+    
+    $http.get(domain + "/get-user-details?userId=" + window.localStorage.getItem('id')).success(function (data, status, headers, config) {
+        $scope.userDetails = data;
+        $scope.$digest;
+    });
+    
+    $scope.updateUDetails = function () {        
+        var data = new FormData(jQuery("[name='profilefrm']")[0]);
+        jQuery.ajax({
+            type: "POST",
+            url: domain + "/update-user-details",
+            data: data,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                window.location.href = "#/profile";
+            }
+        });
+    };
+        
+});
+

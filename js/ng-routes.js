@@ -80,6 +80,10 @@ app.config(['$routeProvider', '$locationProvider',
                     templateUrl: 'pages/contact.html',
                     controller: 'contactController'
                 }).
+                when('/profile', {
+                    templateUrl: 'pages/profile.html',
+                    controller: 'userDashboardController'
+                }).
                 otherwise({
                     redirectTo: '/'
                 });
