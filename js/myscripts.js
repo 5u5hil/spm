@@ -13,7 +13,7 @@ function initPushwoosh() {
         var notification = event.notification;
 
         //display alert to the user for example
-        alert(notification.aps.alert);
+        //alert(notification.aps.alert);
 
         //clear the app badge
         pushNotification.setApplicationIconBadgeNumber(0);
@@ -55,7 +55,7 @@ $(document).ready(function () {
     var $rootScope = injector.get('$rootScope');
     
     $rootScope.share = function (e, p) {
-        window.plugins.socialsharing.share(product.product, 'Hey! Checkout this cool Product from Style Panache', (product.large_image != '' ? product.large_image : (product.medium_image != '' ? product.medium_image : product.small_image)), 'http://www.x-services.nl');
+        window.plugins.socialsharing.share(p.product, 'Hey! Checkout this cool Product from Style Panache', (p.large_image != '' ? p.large_image : (p.medium_image != '' ? p.medium_image : p.small_image)), 'http://www.x-services.nl');
     };
 
     $rootScope.addToCart = function (e, p) {
