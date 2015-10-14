@@ -482,9 +482,15 @@ app.controller('contactController', function ($http, $scope, $location, $rootSco
 app.controller('userDashboardController', function ($http, $scope, $location, $rootScope, $routeParams) {
     $scope.userId = window.localStorage.getItem('id');
     
+    loaderShow();
     $http.get(domain + "/get-user-details?userId=" + window.localStorage.getItem('id')).success(function (data, status, headers, config) {
         $scope.userDetails = data;
         $scope.$digest;
+            loaderHide();
+    });
+
+    $scope.$on('$viewContentLoaded', function () {
+        siteMainFn();
     });
     
     $scope.updateUDetails = function () {        
