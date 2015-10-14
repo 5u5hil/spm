@@ -28,8 +28,7 @@
     <gap:plugin name="nl.x-services.plugins.socialsharing" version="4.3.8" />
     <gap:plugin name="de.appplant.cordova.plugin.hidden-statusbar-overlay"  version="1.2.0" />
     <gap:plugin name="com.pushwoosh.plugins.pushwoosh" version="3.4.2" />
-    <gap:plugin name="nl.x-services.plugins.calendar"  version="3.2" />  
-   
+    
     <access origin="*"/> <!-- allow all pages, use for development -->
     <access origin="*.pushwoosh.com"/> <!-- allow pushwoosh service -->
     <allow-navigation href="*" />
