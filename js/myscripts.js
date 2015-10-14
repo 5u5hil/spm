@@ -53,9 +53,9 @@ $(document).ready(function () {
     var elem = angular.element(document.querySelector('[ng-app]'));
     var injector = elem.injector();
     var $rootScope = injector.get('$rootScope');
-    
+
     $rootScope.share = function (e, p) {
-        window.plugins.socialsharing.share(p.product, 'Hey! Checkout this cool Product from Style Panache', (p.large_image != '' ? p.large_image : (p.medium_image != '' ? p.medium_image : p.small_image)), 'http://www.x-services.nl');
+        window.plugins.socialsharing.share(p.product, 'Hey! Checkout this cool Product from Style Panache', (p.large_image != '' ? p.large_image : (p.medium_image != '' ? p.medium_image : p.small_image)), 'http://stylepanache.clu.pw/#/' + p.url_key);
     };
 
     $rootScope.addToCart = function (e, p) {
@@ -114,5 +114,39 @@ function checkLogin() {
     } else {
         jQuery("a:contains('Login')").click();
     }
+}
+
+
+
+
+function fbLogin() {
+
+    var fbLoginSuccess = function (userData) {
+        if (userData.authResponse) {
+            loaderShow();
+            facebookConnectPlugin.api('/me', null,
+                    function (response) {
+                        alert(JSON.stringify(response));
+                        user_email = response.email;
+                        user_id = response.id;
+                        firstname = response.first_name;
+                        lastname = response.last_name;
+
+                        loaderHide();
+                    });
+        }
+    };
+
+
+
+    facebookConnectPlugin.login(["public_profile", "email"], fbLoginSuccess,
+            function (error) {
+
+                alert("Error " + JSON.stringify(error))
+
+            }
+
+    );
+
 }
 
