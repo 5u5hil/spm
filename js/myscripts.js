@@ -1,3 +1,49 @@
+document.addEventListener('deviceready', function () {
+    initPushwoosh();
+
+
+}, false);
+
+function initPushwoosh() {
+    var pushNotification = cordova.require("com.pushwoosh.plugins.pushwoosh.PushNotification");
+
+    //set push notification callback before we initialize the plugin
+    document.addEventListener('push-notification', function (event) {
+        //get the notification payload
+        var notification = event.notification;
+
+        //display alert to the user for example
+        alert(notification.aps.alert);
+
+        //clear the app badge
+        pushNotification.setApplicationIconBadgeNumber(0);
+    });
+
+    //initialize the plugin
+    pushNotification.onDeviceReady({pw_appid: "03DBD-4FF6F"});
+
+    //register for pushes
+    pushNotification.registerDevice(
+            function (status) {
+                var deviceToken = status['deviceToken'];
+                window.localStorage.setItem("deviceToken", deviceToken);
+                console.warn('registerDevice: ' + deviceToken);
+            },
+            function (status) {
+                console.warn('failed to register : ' + JSON.stringify(status));
+                alert(JSON.stringify(['failed to register ', status]));
+            }
+    );
+
+    //reset badges on app start
+    pushNotification.setApplicationIconBadgeNumber(0);
+
+}
+
+
+
+
+
 $(document).ready(function () {
 
     if (window.localStorage.getItem('cart') === null) {
@@ -7,6 +53,10 @@ $(document).ready(function () {
     var elem = angular.element(document.querySelector('[ng-app]'));
     var injector = elem.injector();
     var $rootScope = injector.get('$rootScope');
+    
+    $rootScope.share = function (e, p) {
+        window.plugins.socialsharing.share(product.product, 'Hey! Checkout this cool Product from Style Panache', (product.large_image != '' ? product.large_image : (product.medium_image != '' ? product.medium_image : product.small_image)), 'http://www.x-services.nl');
+    };
 
     $rootScope.addToCart = function (e, p) {
         var $ = jQuery;
@@ -22,8 +72,7 @@ $(document).ready(function () {
         $rootScope.$apply(function () {
             $rootScope.loggedIn = 1;
         });
-    }
-    else {
+    } else {
         $rootScope.$apply(function () {
             $rootScope.loggedIn = 0;
         });

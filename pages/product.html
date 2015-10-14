@@ -23,11 +23,14 @@
                         <a href="#">In Stock</a>
                     </div>
                     <p class="half-bottom">
-                       {{ product.short_desc }}
+                        {{ product.short_desc}}
                     </p>            
- <span class="add-cart-wrap add-cart-home">
-                    <button class="button add-cart-btn "  ng-click="addToCart($event, product)">Add to Cart</button>
-                     </span>
+                    <span class="add-cart-wrap add-cart-home">
+                        <button class="button add-cart-btn "  ng-click="addToCart($event, product)">Add to Cart</button>
+                    </span>
+                    <p>
+                        <button ng-click="share($event, product)" ><i class="fa fa-share-alt-square"></i> Share</button>
+                    </p>
                 </div>       
             </div>
         </div>
