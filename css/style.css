@@ -1313,3 +1313,15 @@ font-family: inherit;
 .full-button{
     background-color: #1f1f1f !important;
 }
+
+.sticyfooter{width:100%; position:fixed; bottom:0px;  z-index: 999; right:0px; left:0px; display: none; }
+.sticyfooter a{float:left; width:33.33%; text-align:center; padding:20px 0px; font-size:25px;}
+.sticyfooter a i{color: #fff; border-radius: 50%;}
+.sticyfooter a i.fa.fa-facebook {
+    padding-left: 13px;
+    padding-right: 13px;
+    color: #fff;
+}
+.face{background: #3765A3;}
+.what{background: #369505;}
+.chat{background: #25499F;}
