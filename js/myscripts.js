@@ -124,7 +124,7 @@ function fbLogin() {
     var fbLoginSuccess = function (userData) {
         if (userData.authResponse) {
             loaderShow();
-            facebookConnectPlugin.api('/me', null,
+            facebookConnectPlugin.api('/me?fields=id,name,email', null,
                     function (response) {
                         alert(JSON.stringify(response));
                         user_email = response.email;
