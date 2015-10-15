@@ -33,10 +33,11 @@ app.controller('homeController', function ($http, $scope, $rootScope, $controlle
 
     loaderShow();
 
-    $http.get(domain + '/home').success(function (data, response, status, headers, config) {
+    $http.get(domain + "/home?userId=" + window.localStorage.getItem('id')).success(function (data, response, status, headers, config) {
         $rootScope.categories = data.categories;
         $scope.sliders = data.sliders;
         $scope.new = data.new;
+        console.log(data.new);
         $scope.imgPath = domain + "/public/admin/uploads/slider/";
         $rootScope.$digest;
         loaderHide();
@@ -50,22 +51,22 @@ app.controller('homeController', function ($http, $scope, $rootScope, $controlle
 
     });
 
-    $scope.addToList = function (event, id) {
-        if (window.localStorage.getItem('id') != null) {
-            $http.get(domain + "/add-to-savedlist?productID=" + id + "&userId=" + window.localStorage.getItem('id')).success(function (response) {
-                console.log(angular.element(event.target).parent());
-                if (response == 1) {
-                    angular.element(event.target).addClass("puffIn liked");
-
-                } else {
-                    angular.element(event.target).removeClass("puffIn liked");
-                }
-            });
-
-        } else {
-            window.location.href = '#/login';
-        }
-    };
+//    $scope.addToList = function (event, id) {
+//        if (window.localStorage.getItem('id') != null) {
+//            $http.get(domain + "/add-to-savedlist?productID=" + id + "&userId=" + window.localStorage.getItem('id')).success(function (response) {
+//                console.log(angular.element(event.target).parent());
+//                if (response == 1) {
+//                    angular.element(event.target).addClass("puffIn liked");
+//
+//                } else {
+//                    angular.element(event.target).removeClass("puffIn liked");
+//                }
+//            });
+//
+//        } else {
+//            window.location.href = '#/login';
+//        }
+//    };
 
 });
 
@@ -73,7 +74,7 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
 
     loaderShow();
 
-    $http.get(domain + "/get-category-products/" + $routeParams.url_key).success(function (data, status, headers, config) {
+    $http.get(domain + "/get-category-products/" + $routeParams.url_key + "?userId=" + window.localStorage.getItem('id')).success(function (data, status, headers, config) {
         $scope.products = data;
         $scope.$digest;
         loaderHide();
@@ -149,8 +150,9 @@ app.controller('scrapbookDetailsController', function ($http, $scope, $rootScope
 
     loaderShow();
 
-    $http.get(domain + "/scrapbook/" + $routeParams.url_key).success(function (data, status, headers, config) {
+    $http.get(domain + "/scrapbook/" + $routeParams.url_key + "?userId=" + window.localStorage.getItem('id')).success(function (data, status, headers, config) {
         $scope.scrapbookproducts = data;
+        console.log(data);
         $scope.imgPath = domain + "/public/frontend/uploads/scrapbooks/";
         loaderHide();
     });
@@ -492,15 +494,18 @@ app.controller('userDashboardController', function ($http, $scope, $location, $r
     });
     
     $scope.updateUDetails = function () {        
-        var data = new FormData(jQuery("[name='profilefrm']")[0]);
         jQuery.ajax({
             type: "POST",
             url: domain + "/update-user-details",
-            data: data,
+            data: jQuery("#userDetailsfrm input").serialize(),
             cache: false,
-            contentType: false,
-            processData: false,
             success: function (data) {
+                console.log(data);
+                if(data[0] == "success")
+                    alert("Profile updated!");
+                else
+                    alert("Error:Please try again later!");
+                
                 window.location.href = "#/profile";
             }
         });

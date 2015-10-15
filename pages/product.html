@@ -12,7 +12,7 @@
                 <div class="portfolio-one-text">
                     <h3 class="title">
                         <a class="lname">{{product.product}}</a> 
-                        <a href="#" class="lwishlit"><i class="fa fa-heart"></i></a>
+                        <a href="#" class="lwishlit"><i class="fa fa-heart {{product.wishlist == 1? 'liked':''}}" ng-click="addToList($event, product.id)"></i></a>
                     </h3>
                     <em class="subtitle">From {{product.store}}</em>
                     <h3 class="desc_title"> 
