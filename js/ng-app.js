@@ -65,8 +65,6 @@ app.controller('homeController', function ($http, $scope, $rootScope, $controlle
         } else {
             window.location.href = '#/login';
         }
-
-
     };
 
 });
@@ -508,5 +506,22 @@ app.controller('userDashboardController', function ($http, $scope, $location, $r
         });
     };
         
+});
+
+app.controller('favoritesController', function ($http, $scope, $location, $rootScope, $routeParams) {
+    $scope.userId = window.localStorage.getItem('id');
+    
+    loaderShow();
+
+    $scope.$on('$viewContentLoaded', function () {
+        siteMainFn();
+    });
+    
+    $http.get(domain + "/wish-list-products?userId=" + window.localStorage.getItem('id')).success(function (data, status, headers, config) {
+        $scope.userFavorites = data;
+        console.log(data);
+        $scope.$digest;
+        loaderHide();
+    });    
 });
 

@@ -99,6 +99,25 @@ $(document).ready(function () {
         window.localStorage.setItem("cart", JSON.stringify(cart));
         alert("Product Added to Cart");
     };
+    
+    
+    $rootScope.addToList = function (event, id) {
+        if (window.localStorage.getItem('id') != null) {
+            jQuery.get(domain + "/add-to-savedlist?productID=" + id + "&userId=" + window.localStorage.getItem('id')).success(function (response) {
+//                console.log(angular.element(event.target).parent());
+//                console.log(response);
+                if (response == 1) {
+                    angular.element(event.target).addClass("puffIn liked");
+
+                } else {
+                    angular.element(event.target).removeClass("puffIn liked");
+                }
+            });
+
+        } else {
+            window.location.href = '#/login';
+        }
+    };
 
     if (window.localStorage.getItem('id') != null) {
 

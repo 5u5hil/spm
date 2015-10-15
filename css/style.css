@@ -1325,3 +1325,7 @@ font-family: inherit;
 .face{background: #3765A3;}
 .what{background: #369505;}
 .chat{background: #25499F;}
+
+.liked {
+    color: red;
+}

@@ -84,6 +84,10 @@ app.config(['$routeProvider', '$locationProvider',
                     templateUrl: 'pages/profile.html',
                     controller: 'userDashboardController'
                 }).
+                when('/favorites', {
+                    templateUrl: 'pages/favorites.html',
+                    controller: 'favoritesController'
+                }).
                 otherwise({
                     redirectTo: '/'
                 });
