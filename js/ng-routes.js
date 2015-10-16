@@ -1,4 +1,4 @@
-var domain = "http://stylepanache.clu.pw/";
+var domain = "http://stylepanache.clu.pw";
 
 
 var app = angular.module('StylePanache', ['ngResource', 'ngSanitize', 'ngRoute', 'ngTouch', 'ChangePasswordConfirm']);
