@@ -150,7 +150,7 @@ function checkPLogin() {
     if (window.localStorage.getItem('member') == 0) {
         var r = confirm("Are you sure you want to subscribe to SP and be a Member?");
         if (r == true) {
-            $http.get(domain + "/update-membership?userId=" + window.localStorage.getItem('id')).success(function (data, status, headers, config) {
+            jQuery.get(domain + "/update-membership?userId=" + window.localStorage.getItem('id')).success(function (data, status, headers, config) {
                 window.location.href = "#/questionnaire";
             });
             window.localStorage.setItem('member', 1);
