@@ -391,6 +391,10 @@ app.controller('questionnaireController', function ($http, $scope, $rootScope, $
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
+    
+    $scope.submitAns = function() {
+        console.warn('submit');
+    };
 
 });
 
