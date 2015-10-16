@@ -393,7 +393,7 @@ app.controller('questionnaireController', function ($http, $scope, $rootScope, $
     });
     
     $scope.submitAns = function() {
-        console.warn('submit');
+        console.log('submit');
     };
 
 });
