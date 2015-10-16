@@ -1,10 +1,10 @@
 document.addEventListener('deviceready', function () {
-    
-    if(device.platform == "iOS"){
-    initPushwoosh();
-} else {
-    initPushwooshAndroid();
-}
+
+    if (device.platform == "iOS") {
+        initPushwoosh();
+    } else {
+        initPushwooshAndroid();
+    }
 
 
 }, false);
@@ -45,33 +45,33 @@ function initPushwoosh() {
 
 }
 
-function  initPushwooshAndroid(){
+function  initPushwooshAndroid() {
     var pushNotification = cordova.require("com.pushwoosh.plugins.pushwoosh.PushNotification");
- 
+
     //set push notifications handler
-    document.addEventListener('push-notification', function(event) {
+    document.addEventListener('push-notification', function (event) {
         var title = event.notification.title;
         var userData = event.notification.userdata;
-                                 
-        if(typeof(userData) != "undefined") {
+
+        if (typeof (userData) != "undefined") {
             console.warn('user data: ' + JSON.stringify(userData));
         }
-                                     
+
         alert(title);
     });
- 
+
     //initialize Pushwoosh with projectid: "GOOGLE_PROJECT_ID", pw_appid : "PUSHWOOSH_APP_ID". This will trigger all pending push notifications on start.
-    pushNotification.onDeviceReady({ projectid: "830986347372", pw_appid : "03DBD-4FF6F" });
- 
+    pushNotification.onDeviceReady({projectid: "830986347372", pw_appid: "03DBD-4FF6F"});
+
     //register for pushes
     pushNotification.registerDevice(
-        function(status) {
-            var pushToken = status;
-            console.warn('push token: ' + pushToken);
-        },
-        function(status) {
-            console.warn(JSON.stringify(['failed to register ', status]));
-        }
+            function (status) {
+                var pushToken = status;
+                console.warn('push token: ' + pushToken);
+            },
+            function (status) {
+                console.warn(JSON.stringify(['failed to register ', status]));
+            }
     );
 }
 
@@ -99,7 +99,7 @@ $(document).ready(function () {
         window.localStorage.setItem("cart", JSON.stringify(cart));
         alert("Product Added to Cart");
     };
-    
+
     $rootScope.addToList = function (event, id) {
         if (window.localStorage.getItem('id') != null) {
             jQuery.get(domain + "/add-to-savedlist?productID=" + id + "&userId=" + window.localStorage.getItem('id')).success(function (response) {
@@ -150,6 +150,9 @@ function checkPLogin() {
     if (window.localStorage.getItem('member') == 0) {
         var r = confirm("Are you sure you want to subscribe to SP and be a Member?");
         if (r == true) {
+            $http.get(domain + "/update-membership?userId=" + window.localStorage.getItem('id')).success(function (data, status, headers, config) {
+                window.location.href = "#/questionnaire";
+            });
             window.localStorage.setItem('member', 1);
             window.open("http://sp.boxcommerce.in/personal-chat.php?name=" + window.localStorage.getItem("name") + "&email=" + window.localStorage.getItem("email") + "&dep=" + window.localStorage.getItem("department"), '_blank', 'EnableViewPortScale=yes,location=no,closebuttoncaption=Close');
         }

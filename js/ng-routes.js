@@ -72,6 +72,10 @@ app.config(['$routeProvider', '$locationProvider',
                     templateUrl: 'pages/chat.html',
                     controller: 'chatController'
                 }).
+                when('/questionnaire', {
+                    templateUrl: 'pages/questionnaire.html',
+                    controller: 'questionnaireController'
+                }).
                 when('/signup', {
                     templateUrl: 'pages/signup.html',
                     controller: 'signupController'
