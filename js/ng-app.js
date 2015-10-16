@@ -384,6 +384,16 @@ app.controller('chatController', function ($http, $scope, $rootScope, $controlle
 
 });
 
+app.controller('questionnaireController', function ($http, $scope, $rootScope, $controller) {
+
+    loaderHide();
+
+    $scope.$on('$viewContentLoaded', function () {
+        siteMainFn();
+    });
+
+});
+
 app.controller('logoutController', function ($http, $rootScope, $location, $scope) {
     loaderHide();
     $rootScope.loggedIn = 0;
