@@ -155,7 +155,7 @@ function checkPLogin() {
 //                window.location.href = "#/questionnaire";
                 //            window.localStorage.setItem('member', 1);
                 console.log(data);
-                if (data[0] == 'saved') {
+                if (data == 'saved') {
                     window.localStorage.setItem('department', 1);
                     window.open("http://sp.boxcommerce.in/personal-chat.php?name=" + window.localStorage.getItem("name") + "&email=" + window.localStorage.getItem("email") + "&dep=" + window.localStorage.getItem("department"), '_blank', 'EnableViewPortScale=yes,location=no,closebuttoncaption=Close');
                 }
