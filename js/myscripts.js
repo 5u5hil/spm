@@ -186,6 +186,7 @@ function fbLogin() {
                         image = "http://graph.facebook.com/" + response.id + "/picture?type=large";
 
                         jQuery.get(domain + "/check-create-user?email=" + email + '&first_name=' + first_name + "&last_name=" + last_name + "&image=" + image).success(function (data, status, headers, config) {
+
                             window.localStorage.setItem('id', data.id);
                             window.localStorage.setItem('name', data.first_name);
                             window.localStorage.setItem('email', data.email);
@@ -202,6 +203,9 @@ function fbLogin() {
                             var elem = angular.element(document.querySelector('[ng-app]'));
                             var injector = elem.injector();
                             var $rootScope = injector.get('$rootScope');
+
+                            $rootScope.loggedIn = 1;
+
                             $rootScope.$apply(function () {
                                 $rootScope.preferences = data.preferences;
                             });
@@ -263,6 +267,8 @@ function fbSignUp() {
                             var elem = angular.element(document.querySelector('[ng-app]'));
                             var injector = elem.injector();
                             var $rootScope = injector.get('$rootScope');
+                            $rootScope.loggedIn = 1;
+
                             $rootScope.$apply(function () {
                                 $rootScope.preferences = data.preferences;
                             });
