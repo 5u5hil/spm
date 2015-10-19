@@ -402,7 +402,7 @@ app.controller('questionnaireController', function ($http, $scope, $rootScope, $
     });
 
     $scope.submitAns = function () {
-        console.log(window.localStorage.getItem('id'));
+        
         jQuery.ajax({
             type: "POST",
             url: domain + "/save-questionnaire?userId=" + window.localStorage.getItem('id'),
