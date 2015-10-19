@@ -8,38 +8,103 @@
 
                 <form method="post" name="questionnairefrm" id="questionnairefrm" class="" ng-submit="submitAns()">              
 
-                <p class="blog-post-text">Describe Your Ideal Style</p>
-                
-                <input type="checkbox" name="vehicle" value="Bike">I have a bike<br>
-                
-                <p>
-                    <input type="checkbox" name="idealStyle[]" class="inputfield" value="Sophisticated" />Sophisticated<br/>
-                    <input type="checkbox" name="idealStyle[]" value="Creative" />Creative<br/>
-                    <input type="checkbox" name="idealStyle[]" value="Comfortable" />Comfortable<br/>
-                    <input type="checkbox" name="idealStyle[]" value="Minimalist" />Minimalist<br/>
-                    <input type="checkbox" name="idealStyle[]" value="Conservative" />Conservative<br/>
-                    <input type="checkbox" name="idealStyle[]" value="Uniform" />Uniform
-                </p>
+                    <h4>Describe Your Ideal Style</h4>
 
-                <p class="blog-post-text">Do you have a celebrity style icon?</p>
-                
-                <p>
-                
-                <input type="radio" name="styleIcon" value="Yes" />Yes<br/>
-                <input type="radio" name="styleIcon" value="No" />No<br/>
-                
-                </p>
-                
+                    <p>
+                        <input type="checkbox" name="idealStyle[]" value="Sophisticated" />Sophisticated<br/>
+                        <input type="checkbox" name="idealStyle[]" value="Creative" />Creative<br/>
+                        <input type="checkbox" name="idealStyle[]" value="Comfortable" />Comfortable<br/>
+                        <input type="checkbox" name="idealStyle[]" value="Minimalist" />Minimalist<br/>
+                        <input type="checkbox" name="idealStyle[]" value="Conservative" />Conservative<br/>
+                        <input type="checkbox" name="idealStyle[]" value="Uniform" />Uniform
+                    </p>
+
+                    <h4>Do you have a celebrity style icon?</h4>
+
+                    <p>
+                        <input type="radio" name="styleIcon" value="Yes" />Yes<br/>
+                        <input type="radio" name="styleIcon" value="No" />No<br/>
+                    </p>
+                    
+                    <h4>How often do you want to wear clothes that are for?</h4>
+                    
+                    <p>
+                        <input type="checkbox" name="styleFreq[]" value="Leisure" />
+                        Leisure  ( Almost Daily , 1-2 days a week, 3- 4 days a week, Rarely or Never )
+                        <br/>
+                        <input type="checkbox" name="styleFreq[]" value="GoingOut" />
+                        Going Out  ( Almost Daily , 1-2 days a week, 3- 4 days a week, Rarely or Never )
+                        <br/>
+                        <input type="checkbox" name="styleFreq[]" value="Smart" />
+                        Smart  ( Almost Daily , 1-2 days a week, 3- 4 days a week, Rarely or Never )
+                        <br/>
+                        <input type="checkbox" name="styleFreq[]" value="SuitingUpFormal" />
+                        Suiting Up/Formal   ( Almost Daily , 1-2 days a week, 3- 4 days a week, Rarely or Never )
+                    </p>
+                    
+                    <h4>On a scale of 1-10, how important is it for you to follow current trends?</h4>
+                    
+                    <p>
+                        <input type="radio" name="styleIcon" value="1" />1 
+                        <input type="radio" name="styleIcon" value="2" />2 
+                        <input type="radio" name="styleIcon" value="3" />3 
+                        <input type="radio" name="styleIcon" value="4" />4 
+                        <input type="radio" name="styleIcon" value="5" />5 
+                        <input type="radio" name="styleIcon" value="6" />6 
+                        <input type="radio" name="styleIcon" value="7" />7 
+                        <input type="radio" name="styleIcon" value="8" />8 
+                        <input type="radio" name="styleIcon" value="9" />9 
+                        <input type="radio" name="styleIcon" value="10" />10 
+                    </p>
+                    
+                    <h4>What is your fashion fear?</h4>
+
+                    <p>
+                        <input type="radio" name="styleIcon" value="1" />Overdressed 
+                        <input type="radio" name="styleIcon" value="2" />Not Matching 
+                        <input type="radio" name="styleIcon" value="3" />Not Dressing for My Shape and Feature
+                        <input type="radio" name="styleIcon" value="4" />Not appearing profession at work
+                        <input type="radio" name="styleIcon" value="5" />Lacking confidence
+                        <input type="radio" name="styleIcon" value="5" />Looking underdressed
+                    </p>
+                    
+                    <h4>Given a choice, what would you rather do?</h4>
+                    
+                    <p>
+                        <input type="radio" name="styleIcon" value="1" />
+                        Buy high quality smart pieces that are sure to be in 
+                        <input type="radio" name="styleIcon" value="2" />
+                        Purchase practical & basic stuff
+                        <input type="radio" name="styleIcon" value="3" />
+                        Get something with a splash of color
+                        <input type="radio" name="styleIcon" value="4" />
+                        Find that unusual piece to add to the wardrobe that no one else would have
+                    </p>
+                    
+                    <h4>Which city do you live in ?</h4>
+                    
+                    <input type="text" required class="inputfield" name="city_name" id="city_name" placeholder="City Name">
+                    
+                    <h4>Do you enjoy shopping?</h4>
+                    
+                    <p>
+                        <input type="radio" name="styleIcon" value="1" />
+                        Love it!! 
+                        <input type="radio" name="styleIcon" value="2" />
+                        It depends on what I'm shopping for
+                        <input type="radio" name="styleIcon" value="3" />
+                        I can only shop for an hour or so at a time
+                        <input type="radio" name="styleIcon" value="4" />
+                        I can't stand it!
+                    </p>
+                    
+                    <h4>Do you have any other special requests or things you think I should know, 
+                        including specific stores you want to visit and brands you absolutely love?</h4>
+                    
+                    <h4>What do you hope to achieve from your Personal Styling?</h4>
+                        
+                        
                 </form>
-
-
-                <p class="blog-post-text">
-                    Traveling abroad, confused what to wear to suit the latest fashionistas there, talk to us. A simple method- tell us the country you are visiting, and the purpose of your visit, we will suggest you with the most amazing apparels, so that you are no less in matching the localites there.
-                </p>
-                <p class="blog-post-text">
-                    With an Annual Membership, you can avail the most personalized styling option, so that you are confident to know that you dress the best everytime you talk to her.
-                </p>
-
 
             </div>
 
