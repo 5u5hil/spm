@@ -89,7 +89,10 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
         });
     };
 
-
+    $scope.sizeOf = function (obj) {
+        return Object.keys(obj).length;
+    };
+    
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
@@ -402,13 +405,13 @@ app.controller('questionnaireController', function ($http, $scope, $rootScope, $
     });
 
     $scope.submitAns = function () {
-        
+
         jQuery.ajax({
             type: "POST",
             url: domain + "/save-questionnaire?userId=" + window.localStorage.getItem('id'),
             data: jQuery("#questionnairefrm input").serialize(),
             cache: false,
-            success: function(data) {
+            success: function (data) {
                 console.log(data);
 
                 //                if (data == "register") {
