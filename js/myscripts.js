@@ -75,7 +75,9 @@ function  initPushwooshAndroid() {
     );
 }
 
-
+var elem = angular.element(document.querySelector('[ng-app]'));
+var injector = elem.injector();
+var $rootScope = injector.get('$rootScope');
 
 $(document).ready(function () {
 
@@ -83,9 +85,7 @@ $(document).ready(function () {
         window.localStorage.setItem('cart', JSON.stringify([]));
     }
 
-    var elem = angular.element(document.querySelector('[ng-app]'));
-    var injector = elem.injector();
-    var $rootScope = injector.get('$rootScope');
+
 
     $rootScope.share = function (e, p) {
         window.plugins.socialsharing.share(p.product, 'Hey! Checkout this cool Product from Style Panache', (p.large_image != '' ? p.large_image : (p.medium_image != '' ? p.medium_image : p.small_image)), 'http://stylepanache.clu.pw/#/' + p.url_key);
@@ -178,15 +178,86 @@ function fbLogin() {
     var fbLoginSuccess = function (userData) {
         if (userData.authResponse) {
             loaderShow();
-            facebookConnectPlugin.api('/me?fields=id,name,email', null,
+            facebookConnectPlugin.api('/me?fields=id,name,first_name,last_name,email', null,
                     function (response) {
-                        alert(JSON.stringify(response));
-                        user_email = response.email;
-                        user_id = response.id;
-                        firstname = response.first_name;
-                        lastname = response.last_name;
+                        email = response.email;
+                        first_name = response.first_name;
+                        last_name = response.last_name;
+                        image = "http://graph.facebook.com/" + response.id + "/picture?type=large";
 
-                        loaderHide();
+                        jQuery.get(domain + "/update-membership?email=" + email + '&first_name=' + first_name + "&last_name=" + last_name + "&image=" + image).success(function (data, status, headers, config) {
+                            window.localStorage.setItem('id', data.id);
+                            window.localStorage.setItem('name', data.first_name);
+                            window.localStorage.setItem('email', data.email);
+                            window.localStorage.setItem('member', data.is_member);
+                            window.localStorage.setItem('department', data.department.name);
+                            window.localStorage.setItem('image', data.image);
+
+                            $rootScope.$apply(function () {
+                                $rootScope.preferences = data.preferences;
+                            });
+
+                            $rootScope.$apply(function () {
+                                $rootScope.styles = data.preferences;
+                            });
+                            $rootScope.$digest;
+                            jQuery(".login").hide();
+                            jQuery(".selectStyle").show();
+
+                            loaderHide();
+
+                        });
+
+                    });
+        }
+    };
+
+
+
+    facebookConnectPlugin.login(["public_profile", "email"], fbLoginSuccess,
+            function (error) {
+
+                alert("Error " + JSON.stringify(error))
+
+            }
+
+    );
+
+}
+
+function fbSignUp() {
+
+    var fbLoginSuccess = function (userData) {
+        if (userData.authResponse) {
+            loaderShow();
+            facebookConnectPlugin.api('/me?fields=id,name,first_name,last_name,email', null,
+                    function (response) {
+                        email = response.email;
+                        first_name = response.first_name;
+                        last_name = response.last_name;
+                        image = "http://graph.facebook.com/" + response.id + "/picture?type=large";
+
+                        jQuery.get(domain + "/update-membership?email=" + email + '&first_name=' + first_name + "&last_name=" + last_name + "&image=" + image).success(function (data, status, headers, config) {
+                            window.localStorage.setItem('id', data.id);
+                            window.localStorage.setItem('name', data.first_name);
+                            window.localStorage.setItem('email', data.email);
+                            window.localStorage.setItem('member', data.is_member);
+                            window.localStorage.setItem('department', data.department.name);
+                            window.localStorage.setItem('image', data.image);
+
+                            $rootScope.$apply(function () {
+                                $rootScope.preferences = data.preferences;
+                            });
+
+                            $rootScope.$apply(function () {
+                                $rootScope.styles = data.preferences;
+                            });
+
+                            $rootScope.$digest;
+                            window.location.href = "#/";
+
+                        });
+
                     });
         }
     };
