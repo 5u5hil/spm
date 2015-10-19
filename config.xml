@@ -33,7 +33,7 @@
     
     <access origin="*"/> <!-- allow all pages, use for development -->
     <access origin="*.pushwoosh.com"/>  
-    <access origin="http://stylepanace.clu.pw"/>
+    <access origin="http://stylepanache.clu.pw"/>
     <allow-navigation href="*" />
     
     <gap:plugin name="com.phonegap.plugins.facebookconnect" version="0.9.0">
