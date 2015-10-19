@@ -423,7 +423,7 @@ app.controller('questionnaireController', function ($http, $scope, $rootScope, $
 //                console.log(data);
 
                 if (data == "saved") {
-                    window.localStorage.setItem('member', 1);
+                    window.localStorage.setItem('department', 1);
                     window.open("http://sp.boxcommerce.in/personal-chat.php?name=" + window.localStorage.getItem("name") + "&email=" + window.localStorage.getItem("email") + "&dep=" + window.localStorage.getItem("department"), '_blank', 'EnableViewPortScale=yes,location=no,closebuttoncaption=Close');
                 }
             }
