@@ -353,7 +353,7 @@ app.controller('createScrapbookController', function ($http, $scope, $rootScope,
             select: function (event, ui) {
                 $("#pdcts").val("");
                 log(ui.item ?
-                "<img  style='vertical-align: middle; margin-bottom: 5px;'src='" + (ui.item.large_image != '' ? ui.item.large_image : (ui.item.medium_image != '' ? ui.item.medium_image : ui.item.small_image)) + "' width='50px;' >" + ui.item.label + "<input type='hidden' name='pid[]' value='" + ui.item.id + "' ><a href='#' class='pull-right remove-rag'  ><i class='fa fa-trash'></i></a>" : "");
+                        "<img  style='vertical-align: middle; margin-bottom: 5px;'src='" + (ui.item.large_image != '' ? ui.item.large_image : (ui.item.medium_image != '' ? ui.item.medium_image : ui.item.small_image)) + "' width='50px;' >" + ui.item.label + "<input type='hidden' name='pid[]' value='" + ui.item.id + "' ><a href='#' class='pull-right remove-rag'  ><i class='fa fa-trash'></i></a>" : "");
             }
 
         });
@@ -361,8 +361,8 @@ app.controller('createScrapbookController', function ($http, $scope, $rootScope,
         $products.data("ui-autocomplete")._renderItem = function (ul, item) {
             $("#pdcts").val("");
             return $("<li>")
-                .append("<a><img style='vertical-align:middle' src='" + (item.large_image != '' ? item.large_image : (item.medium_image != '' ? item.medium_image : item.small_image)) + "' width='25px;'>" + item.label + "</a>")
-                .appendTo(ul);
+                    .append("<a><img style='vertical-align:middle' src='" + (item.large_image != '' ? item.large_image : (item.medium_image != '' ? item.medium_image : item.small_image)) + "' width='25px;'>" + item.label + "</a>")
+                    .appendTo(ul);
 
         };
     };
@@ -420,13 +420,12 @@ app.controller('questionnaireController', function ($http, $scope, $rootScope, $
             data: jQuery("#questionnairefrm input").serialize(),
             cache: false,
             success: function (data) {
-                console.log(data);
+//                console.log(data);
 
-                //                if (data == "register") {
-                //                    alert("Email is already registered.");
-                //                } else {
-                //                    window.location.href = "#/login";
-                //                }
+                if (data == "saved") {
+                    window.localStorage.setItem('member', 1);
+                    window.open("http://sp.boxcommerce.in/personal-chat.php?name=" + window.localStorage.getItem("name") + "&email=" + window.localStorage.getItem("email") + "&dep=" + window.localStorage.getItem("department"), '_blank', 'EnableViewPortScale=yes,location=no,closebuttoncaption=Close');
+                }
             }
         });
     };
