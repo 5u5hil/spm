@@ -405,7 +405,7 @@ app.controller('questionnaireController', function ($http, $scope, $rootScope, $
         
         jQuery.ajax({
             type: "POST",
-            url: domain + "/save-questionnaire",
+            url: domain + "/save-questionnaire?userId=" + window.localStorage.getItem('id'),
             data: jQuery("#questionnairefrm input").serialize(),
             cache: false,
             success: function(data) {
