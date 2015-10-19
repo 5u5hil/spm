@@ -1325,7 +1325,23 @@ font-family: inherit;
 .face{background: #3765A3;}
 .what{background: #369505;}
 .chat{background: #25499F;}
-
 .liked {
     color: red;
+}
+.questionnaire input[type="checkbox"]   {
+    appearance: checkbox !important;
+    -webkit-appearance: checkbox !important;
+    -moz-appearance: checkbox !important;
+     display: inline;
+}
+.questionnaire input[type="radio"]   {
+    appearance: radio !important;
+    -webkit-appearance: radio !important;
+    -moz-appearance: radio !important;
+    display: inline;
+}
+
+.ui-autocomplete img{
+    display: block !important;
+    margin-right: 5px;
 }

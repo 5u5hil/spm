@@ -402,7 +402,22 @@ app.controller('questionnaireController', function ($http, $scope, $rootScope, $
     });
 
     $scope.submitAns = function () {
-        console.log('submit');
+        
+        jQuery.ajax({
+            type: "POST",
+            url: domain + "/save-questionnaire",
+            data: jQuery("#questionnairefrm input").serialize(),
+            cache: false,
+            success: function(data) {
+                console.log(data);
+
+                //                if (data == "register") {
+                //                    alert("Email is already registered.");
+                //                } else {
+                //                    window.location.href = "#/login";
+                //                }
+            }
+        });
     };
 
 });
