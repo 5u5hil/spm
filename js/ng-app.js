@@ -234,8 +234,7 @@ app.controller('bodyCharacteristicsController', function ($http, $scope, $rootSc
         $scope.imgPath = domain + "/public/admin/uploads/catalog/category/";
         loaderHide();
     });
-    $scope.getGallery = function ()
-    {
+    $scope.getGallery = function () {
 
         jQuery('.to-cat-select').click(function (event) { /* Act on the event */
             event.preventDefault();
@@ -330,6 +329,7 @@ app.controller('createScrapbookController', function ($http, $scope, $rootScope,
 
     $scope.autoCompleteFn = function () {
         var $ = jQuery;
+
         function log(message) {
             $("<div>").html(message).prependTo("#log");
             $("#pdcts").val("");
@@ -345,7 +345,7 @@ app.controller('createScrapbookController', function ($http, $scope, $rootScope,
             select: function (event, ui) {
                 $("#pdcts").val("");
                 log(ui.item ?
-                        "<img  style='vertical-align: middle; margin-bottom: 5px;'src='" + (ui.item.large_image != '' ? ui.item.large_image : (ui.item.medium_image != '' ? ui.item.medium_image : ui.item.small_image)) + "' width='50px;' >" + ui.item.label + "<input type='hidden' name='pid[]' value='" + ui.item.id + "' ><a href='#' class='pull-right remove-rag'  ><i class='fa fa-trash'></i></a>" : "");
+                "<img  style='vertical-align: middle; margin-bottom: 5px;'src='" + (ui.item.large_image != '' ? ui.item.large_image : (ui.item.medium_image != '' ? ui.item.medium_image : ui.item.small_image)) + "' width='50px;' >" + ui.item.label + "<input type='hidden' name='pid[]' value='" + ui.item.id + "' ><a href='#' class='pull-right remove-rag'  ><i class='fa fa-trash'></i></a>" : "");
             }
 
         });
@@ -353,8 +353,8 @@ app.controller('createScrapbookController', function ($http, $scope, $rootScope,
         $products.data("ui-autocomplete")._renderItem = function (ul, item) {
             $("#pdcts").val("");
             return $("<li>")
-                    .append("<a><img style='vertical-align:middle' src='" + (item.large_image != '' ? item.large_image : (item.medium_image != '' ? item.medium_image : item.small_image)) + "' width='25px;'>" + item.label + "</a>")
-                    .appendTo(ul);
+                .append("<a><img style='vertical-align:middle' src='" + (item.large_image != '' ? item.large_image : (item.medium_image != '' ? item.medium_image : item.small_image)) + "' width='25px;'>" + item.label + "</a>")
+                .appendTo(ul);
 
         };
     };
@@ -510,7 +510,6 @@ app.controller('cartController', function ($http, $scope, $location, $rootScope,
 });
 
 app.controller('contactController', function ($http, $scope, $location, $rootScope, $routeParams) {
-
 
 
     loaderHide();
