@@ -92,7 +92,15 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
     $scope.sizeOf = function (obj) {
         return Object.keys(obj).length;
     };
-    
+
+    $scope.showFilters = function () {
+        jQuery(".big-notification.yellow-notification").toggle("slideDown");
+    }
+
+    $scope.showOptions = function (e) {
+        jQuery("#" + e).toggle();
+    }
+
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });

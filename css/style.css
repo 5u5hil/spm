@@ -1345,3 +1345,7 @@ font-family: inherit;
     display: block !important;
     margin-right: 5px;
 }
+
+#filters .accordion-body {
+    display: none;
+}

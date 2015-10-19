@@ -4,12 +4,42 @@
     <div class="content">
         <div class="adaptive-style">
             <h4>{{products.maincat}}</h4>
-            <a class=""><i class="fa fa-filter"></i></a>
+            <a class="" ng-click="showFilters()" ><i class="fa fa-filter"></i></a>
             <a class="adaptive-two-activate active-adaptive-style"><i class="fa fa-th-large"></i></a>
             <a class="adaptive-one-activate"><i class="fa fa-navicon"></i></a>
         </div>
-        <div class="clear"></div>
 
+
+        <div class="clear"></div>
+        <div class="big-notification yellow-notification" style="display:none;">
+            <div id="filters">
+                <div class="filters">
+                    <h3 class="widget-title">Filter by price</h3>
+                    <input type="number" id="min_price" name="min_price"  min="0" placeholder="Min price">
+                    <input type="number" id="max_price" name="max_price"  placeholder="Max price">
+
+                </div>
+
+
+                <div class="filters" on-finish-render="ngRepeatFinished" ng-repeat="filter in products.filters">
+
+                    <h3 class="widget-title" ng-click="showOptions('filter{{$index}}')">{{ filter.category}} <i class="fa fa-caret-right pull-right"></i></h3>
+
+                    <div id="filter{{$index}}" class="accordion-body collapse {{ $index == 0 ? ' in' : ''}} ">
+                        <input type="text" placeholder="Search" ng-if="sizeOf(filter.child) > 10" ng-model="filterz[$index]" />
+                        <div class="accordion-inner">
+                            <label ng-repeat="option in filter.child" class="category-filter">
+                                <input type="checkbox" name="filter[]" value="{{  option.id}}" ng-checked="filtered.indexOf(option.id) > -1" ng-click="filterProds(option.id, filter.category)"> {{ option.category}}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+
+                <button type="submit" class="button">Filter</button>
+
+            </div>
+        </div>
         <div class="decoration"></div>
 
         <div class="portfolio-adaptive adaptive-two listing">
@@ -46,43 +76,4 @@
 
 
 
-</div>
 
-<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <section id="woocommerce_price_filter-3" class="widget woocommerce widget_price_filter">
-                <h3 class="widget-title">Filter by price</h3>
-                <form method="get" action="#">
-                    <div class="price_slider_wrapper">
-                        <div class="price_slider" style="display:none;"></div>
-                        <div class="price_slider_amount">
-                            <input type="text" id="min_price" name="min_price" value="" data-min="25" placeholder="Min price">
-                            <input type="text" id="max_price" name="max_price" value="" data-max="460" placeholder="Max price">
-                            <button type="submit" class="button">Filter</button>
-                            <div class="price_label" style="display:none;">
-                                Price: <span class="from"></span> — <span class="to"></span>
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-                    </div>
-                </form>
-            </section>
-            <section class="widget woocommerce widget_price_filter product-sidebar-filter" on-finish-render="ngRepeatFinished" ng-repeat="filter in products.filters">
-                <div class="accordion-heading">
-                    <a class="accordion-toggle {{ $index == 0 ? '' : 'collapsed' }}" href="#filter{{$index}}">{{ filter.category}}<b class="caret" style="
-                                                                                                                                     margin-left: 6px;
-                                                                                                                                     "></b><i class="fa fa-caret-right"></i></a>
-                </div>
-                <div id="filter{{$index}}" class="accordion-body collapse {{ $index == 0 ? ' in' : ''}} ">
-                    <input type="text" placeholder="Search" ng-if="sizeOf(filter.child) > 10" ng-model="filterz[$index]" />
-                    <div class="accordion-inner">
-                        <label ng-repeat="option in filter.child" class="category-filter">
-                            <input type="checkbox" name="filter[]" value="{{  option.id}}" ng-checked="filtered.indexOf(option.id) > -1" ng-click="filterProds(option.id, filter.category)"> {{ option.category}}
-                        </label>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </div>
-</div>
