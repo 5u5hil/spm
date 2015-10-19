@@ -39,14 +39,15 @@
                     <img class="responsive-image" ng-src="{{product.small_image != '' ? product.small_image : (product.medium_image != '' ? product.medium_image : product.large_image) }}" alt="img">
                 </a>
                 <h4 class="pname">
-                    <a href="#/product/{{product.url_key}}" class="lname">{{product.product}}</a> 
-                    <a href="" class="lwishlit"><i class="fa fa-heart {{product.wishlist == 1? 'liked':''}}" ng-click="addToList($event, product.id)"></i></a></h4>
+                    <a href="#/product/{{product.url_key}}" class="lname">{{product.product}}</a> </h4>
                 <p class="sdetail">
                     <span class="price-wrap">
                         <a href="#/product/{{product.url_key}}" class=""> 
                             <span class="fprice" ng-if="product.spl_price > 0"><i class="fa fa-rupee"></i>{{product.price}}</span>
                     <span class="dprice"><i class="fa fa-rupee"></i>{{product.spl_price > 0 ? product.spl_price : product.price }}</span>
                     </a>
+                    
+                    <a href="" class="lwishlit"><i class="fa fa-heart {{product.wishlist == 1? 'liked':''}}" ng-click="addToList($event, product.id)"></i></a>
                     </span>
                     <br>
                     <span class="dd-cart-home ">
