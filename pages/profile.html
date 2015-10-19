@@ -9,13 +9,13 @@
 
         <div class="decoration"></div>
         <form method="post" name="userDetailsfrm" id="userDetailsfrm" class="login custom-woo-login" ng-submit="updateUDetails()">              
-            <input type="text" ng-model="first_name" required class="inputfield" name="first_name" id="first_name" placeholder="First Name" value="{{userDetails.first_name}}">
+            <input type="text" required class="inputfield" name="first_name" id="first_name" placeholder="First Name" value="{{userDetails.first_name}}">
             
-            <input type="text" ng-model="last_name" required class="inputfield" name="last_name" id="last_name" placeholder="Last Name" value="{{userDetails.last_name}}">
+            <input type="text"  required class="inputfield" name="last_name" id="last_name" placeholder="Last Name" value="{{userDetails.last_name}}">
             
-            <input type="email" ng-model="user_email" required class="inputfield" name="user_email" id="user_email" placeholder="Email" value="{{userDetails.email}}">
+            <input type="email"  required class="inputfield" name="user_email" id="user_email" placeholder="Email" value="{{userDetails.email}}">
             
-            <input type="tel" ng-model="user_phone" required class="inputfield" name="user_phone" id="user_phone" placeholder="Phone" value="{{userDetails.phone}}">
+            <input type="tel"  required class="inputfield" name="user_phone" id="user_phone" placeholder="Phone" value="{{userDetails.phone}}">
             
             <input type="hidden" name="userId" value='{{userId}}'>
             
