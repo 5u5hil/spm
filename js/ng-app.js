@@ -76,6 +76,7 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
 
     $http.get(domain + "/get-category-products/" + $routeParams.url_key + "?userId=" + window.localStorage.getItem('id')).success(function (data, status, headers, config) {
         $scope.products = data;
+        $scope.filters = data.filters;
         $scope.$digest;
         loaderHide();
     });
@@ -88,6 +89,33 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
             loaderHide();
         });
     };
+
+    $scope.filtered = {};
+
+    $scope.filterProds = function (option, parent) {
+        if (option) {
+            if (!(parent in $scope.filtered))
+                $scope.filtered[parent] = [];
+
+            var idx = $scope.filtered[parent].indexOf(option);
+
+            if (idx > -1)
+                $scope.filtered[parent].splice(idx, 1);
+            else
+                $scope.filtered[parent].push(option);
+
+            if ($scope.filtered[parent].length <= 0)
+                delete $scope.filtered[parent];
+        }
+    };
+
+    $scope.applyFilters = function () {
+        $http.get(domain + "/get-filtered-products", {params: {'filters': $scope.filtered}}).success(function (response) {
+            $scope.products = response;
+            $scope.$digest;
+            jQuery(".big-notification.yellow-notification").toggle("slideDown");
+        });
+    }
 
     $scope.sizeOf = function (obj) {
         return Object.keys(obj).length;
