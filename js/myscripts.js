@@ -185,7 +185,7 @@ function fbLogin() {
                         last_name = response.last_name;
                         image = "http://graph.facebook.com/" + response.id + "/picture?type=large";
 
-                        jQuery.get(domain + "/update-membership?email=" + email + '&first_name=' + first_name + "&last_name=" + last_name + "&image=" + image).success(function (data, status, headers, config) {
+                        jQuery.get(domain + "/check-create-user?email=" + email + '&first_name=' + first_name + "&last_name=" + last_name + "&image=" + image).success(function (data, status, headers, config) {
                             window.localStorage.setItem('id', data.id);
                             window.localStorage.setItem('name', data.first_name);
                             window.localStorage.setItem('email', data.email);
@@ -237,7 +237,7 @@ function fbSignUp() {
                         last_name = response.last_name;
                         image = "http://graph.facebook.com/" + response.id + "/picture?type=large";
 
-                        jQuery.get(domain + "/update-membership?email=" + email + '&first_name=' + first_name + "&last_name=" + last_name + "&image=" + image).success(function (data, status, headers, config) {
+                        jQuery.get(domain + "/check-create-user?email=" + email + '&first_name=' + first_name + "&last_name=" + last_name + "&image=" + image).success(function (data, status, headers, config) {
                             window.localStorage.setItem('id', data.id);
                             window.localStorage.setItem('name', data.first_name);
                             window.localStorage.setItem('email', data.email);
