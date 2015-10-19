@@ -300,6 +300,7 @@ app.controller('wardrobeController', function ($http, $scope, $rootScope, $locat
     $http.get(domain + "/get-wardrobe-products?userId=" + window.localStorage.getItem('id')).success(function (data, status, headers, config) {
         $scope.name = window.localStorage.getItem('name');
         $scope.wardrobeprods = data;
+        console.log(JSON.stringify(data));
         window.localStorage.setItem('wardrobeprods', JSON.stringify(data));
         loaderHide();
     });
@@ -313,7 +314,7 @@ app.controller('wardrobeListingController', function ($http, $scope, $rootScope,
 
     loaderShow();
     $scope.imgPath = domain + "/public/frontend/uploads/wardrobes/";
-    $scope.wardrobeList = $filter('filter')(jQuery.parseJSON(window.localStorage.getItem('wardrobeprods')), {id: $routeParams.id}, true)[0];
+    $scope.wardrobeList = $filter('filter')(jQuery.parseJSON(window.localStorage.getItem('wardrobeprods')), {id: $routeParams.id})[0];
     loaderHide();
 
     $scope.$on('$viewContentLoaded', function () {
@@ -338,7 +339,7 @@ app.controller('createScrapbookController', function ($http, $scope, $rootScope,
             source: domain + "/search-products",
             minLength: 2,
             select: function (event, ui) {
-
+                $("#pdcts").val("");
                 log(ui.item ?
                         "<img  style='vertical-align: middle; margin-bottom: 5px;'src='" + (ui.item.large_image != '' ? ui.item.large_image : (ui.item.medium_image != '' ? ui.item.medium_image : ui.item.small_image)) + "' width='50px;' >" + ui.item.label + "<input type='hidden' name='pid[]' value='" + ui.item.id + "' ><a href='#' class='pull-right remove-rag'  ><i class='fa fa-trash'></i></a>" : "");
             }
