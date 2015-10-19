@@ -33,7 +33,7 @@ app.controller('homeController', function ($http, $scope, $rootScope, $controlle
 
     loaderShow();
 
-    $http.get(domain + "/home"+ (window.localStorage.getItem('id') != null ? "?userId="+window.localStorage.getItem('id') : "" )).success(function (data, response, status, headers, config) {
+    $http.get(domain + "/home" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, response, status, headers, config) {
         $rootScope.categories = data.categories;
         $scope.sliders = data.sliders;
         $scope.new = data.new;
@@ -184,7 +184,13 @@ app.controller('loginController', function ($http, $rootScope, $location, $scope
                     window.localStorage.setItem('name', data.first_name);
                     window.localStorage.setItem('email', data.email);
                     window.localStorage.setItem('member', data.is_member);
-                    window.localStorage.setItem('department', data.department.name);
+                    try {
+                        window.localStorage.setItem('department', data.department.name);
+
+                    }
+                    catch (err) {
+                        console.log(err);
+                    }
                     $scope.$apply(function () {
                         $scope.preferences = data.preferences;
                     });
@@ -391,8 +397,8 @@ app.controller('questionnaireController', function ($http, $scope, $rootScope, $
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
-    
-    $scope.submitAns = function() {
+
+    $scope.submitAns = function () {
         console.log('submit');
     };
 
@@ -495,19 +501,19 @@ app.controller('contactController', function ($http, $scope, $location, $rootSco
 
 app.controller('userDashboardController', function ($http, $scope, $location, $rootScope, $routeParams) {
     $scope.userId = window.localStorage.getItem('id');
-    
+
     loaderShow();
     $http.get(domain + "/get-user-details?userId=" + window.localStorage.getItem('id')).success(function (data, status, headers, config) {
         $scope.userDetails = data;
         $scope.$digest;
-            loaderHide();
+        loaderHide();
     });
 
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
-    
-    $scope.updateUDetails = function () {        
+
+    $scope.updateUDetails = function () {
         jQuery.ajax({
             type: "POST",
             url: domain + "/update-user-details",
@@ -515,32 +521,32 @@ app.controller('userDashboardController', function ($http, $scope, $location, $r
             cache: false,
             success: function (data) {
                 console.log(data);
-                if(data[0] == "success")
+                if (data[0] == "success")
                     alert("Profile updated!");
                 else
                     alert("Error:Please try again later!");
-                
+
                 window.location.href = "#/profile";
             }
         });
     };
-        
+
 });
 
 app.controller('favoritesController', function ($http, $scope, $location, $rootScope, $routeParams) {
     $scope.userId = window.localStorage.getItem('id');
-    
+
     loaderShow();
 
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
-    
+
     $http.get(domain + "/wish-list-products?userId=" + window.localStorage.getItem('id')).success(function (data, status, headers, config) {
         $scope.userFavorites = data;
         console.log(data);
         $scope.$digest;
         loaderHide();
-    });    
+    });
 });
 

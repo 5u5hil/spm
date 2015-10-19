@@ -190,7 +190,13 @@ function fbLogin() {
                             window.localStorage.setItem('name', data.first_name);
                             window.localStorage.setItem('email', data.email);
                             window.localStorage.setItem('member', data.is_member);
-                            window.localStorage.setItem('department', data.department.name);
+                            try {
+                                window.localStorage.setItem('department', data.department.name);
+
+                            }
+                            catch (err) {
+                                console.log(err);
+                            }
                             window.localStorage.setItem('image', data.image);
 
                             var elem = angular.element(document.querySelector('[ng-app]'));
@@ -245,7 +251,13 @@ function fbSignUp() {
                             window.localStorage.setItem('name', data.first_name);
                             window.localStorage.setItem('email', data.email);
                             window.localStorage.setItem('member', data.is_member);
-                            window.localStorage.setItem('department', data.department.name);
+                            try {
+                                window.localStorage.setItem('department', data.department.name);
+
+                            }
+                            catch (err) {
+                                console.log(err);
+                            }
                             window.localStorage.setItem('image', data.image);
 
                             var elem = angular.element(document.querySelector('[ng-app]'));
