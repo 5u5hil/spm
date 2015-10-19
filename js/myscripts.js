@@ -75,9 +75,7 @@ function  initPushwooshAndroid() {
     );
 }
 
-var elem = angular.element(document.querySelector('[ng-app]'));
-var injector = elem.injector();
-var $rootScope = injector.get('$rootScope');
+
 
 $(document).ready(function () {
 
@@ -85,7 +83,9 @@ $(document).ready(function () {
         window.localStorage.setItem('cart', JSON.stringify([]));
     }
 
-
+    var elem = angular.element(document.querySelector('[ng-app]'));
+    var injector = elem.injector();
+    var $rootScope = injector.get('$rootScope');
 
     $rootScope.share = function (e, p) {
         window.plugins.socialsharing.share(p.product, 'Hey! Checkout this cool Product from Style Panache', (p.large_image != '' ? p.large_image : (p.medium_image != '' ? p.medium_image : p.small_image)), 'http://stylepanache.clu.pw/#/' + p.url_key);
@@ -193,6 +193,9 @@ function fbLogin() {
                             window.localStorage.setItem('department', data.department.name);
                             window.localStorage.setItem('image', data.image);
 
+                            var elem = angular.element(document.querySelector('[ng-app]'));
+                            var injector = elem.injector();
+                            var $rootScope = injector.get('$rootScope');
                             $rootScope.$apply(function () {
                                 $rootScope.preferences = data.preferences;
                             });
@@ -245,6 +248,9 @@ function fbSignUp() {
                             window.localStorage.setItem('department', data.department.name);
                             window.localStorage.setItem('image', data.image);
 
+                            var elem = angular.element(document.querySelector('[ng-app]'));
+                            var injector = elem.injector();
+                            var $rootScope = injector.get('$rootScope');
                             $rootScope.$apply(function () {
                                 $rootScope.preferences = data.preferences;
                             });
@@ -252,6 +258,7 @@ function fbSignUp() {
                             $rootScope.$apply(function () {
                                 $rootScope.styles = data.preferences;
                             });
+
 
                             $rootScope.$digest;
                             window.location.href = "#/";
