@@ -32,8 +32,6 @@
     <gap:plugin name="com.pushwoosh.plugins.pushwoosh" version="3.4.2" />
     
     <access origin="*"/> <!-- allow all pages, use for development -->
-    <access origin="*.pushwoosh.com"/>  
-    <access origin="http://stylepanache.clu.pw"/>
     <allow-navigation href="*" />
     
     <gap:plugin name="com.phonegap.plugins.facebookconnect" version="0.9.0">

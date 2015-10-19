@@ -33,7 +33,7 @@ app.controller('homeController', function ($http, $scope, $rootScope, $controlle
 
     loaderShow();
 
-    $http.get(domain + "/home?userId=" + window.localStorage.getItem('id')).success(function (data, response, status, headers, config) {
+    $http.get(domain + "/home"+ (window.localStorage.getItem('id') != null ? "?userId="+window.localStorage.getItem('id') : "" )).success(function (data, response, status, headers, config) {
         $rootScope.categories = data.categories;
         $scope.sliders = data.sliders;
         $scope.new = data.new;
