@@ -552,7 +552,7 @@ app.controller('contactController', function ($http, $scope, $location, $rootSco
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
-
+console.log('contact me');
     $scope.submitContact = function () {
         console.log('contact');
         jQuery.ajax({
