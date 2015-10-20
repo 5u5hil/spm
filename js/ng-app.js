@@ -548,11 +548,28 @@ app.controller('cartController', function ($http, $scope, $location, $rootScope,
 
 app.controller('contactController', function ($http, $scope, $location, $rootScope, $routeParams) {
 
-
     loaderHide();
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
+
+    $scope.submitContact = function () {
+        jQuery.ajax({
+            type: "POST",
+            url: domain + "/save-contact",
+            data: jQuery("#contactForm input").serialize(),
+            cache: false,
+            success: function (data) {
+                // console.log(data);
+
+                if (data == "sent") {
+                    alert("Thank you! Will contact you soon.");
+                
+                    window.location.href = "#/";
+                }
+            }
+        });
+    };
 
 });
 
