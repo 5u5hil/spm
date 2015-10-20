@@ -15,6 +15,8 @@
                     <img class="responsive-image" ng-src="{{imgPath + sp.small_image}}" alt="img">
                 </a>
                 <h4 class="pname"><a ng-href="#/scrapbook/{{sp.url_key}}"  class="lname">{{sp.product}}</a></h4>
+                <span><i class="fa fa-heart {{sp.liked == 1? 'liked':''}}" ng-click="addToList($event, sp.id)"></i></span>
+                <div class="meta meta--preview"><span>Total Likes: {{sp.scrapbooklikes.length}}</span></div>
                 <p class="sdetail">
                     <a ng-href="#/scrapbook/{{sp.url_key}}"  class=""> 
                         <span class="save"><i class="fa fa-gift"></i> Total Products: {{sp.comboproducts.length}}</span>
