@@ -158,6 +158,7 @@ app.controller('scrapbookController', function ($http, $scope, $rootScope, $cont
 
     $http.get(domain + "/get-scrapbook-products").success(function (data, status, headers, config) {
         $scope.products = data;
+        console.log(data);
         $scope.imgPath = domain + "/public/frontend/uploads/scrapbooks/";
         loaderHide();
     });
