@@ -30,7 +30,7 @@
             <input type="hidden" name="userId" value='{{ userId}}'>
             <label for="sdescription">Selected Products</label>
             <div id="log" style="height: 200px; width: 100%; overflow: auto;margin-bottom: 10px;" class="ui-widget-content"></div>
-            <input type='submit' name='submit' class="button button-blue full-button">
+            <input type='submit' ng-disabled="scrapbookfrm.$invalid" name='submit' class="button button-blue full-button">
         </form>
     </div>
 </div>
