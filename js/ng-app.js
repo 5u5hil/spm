@@ -139,8 +139,9 @@ app.controller('productController', function ($http, $rootScope, $scope, $locati
 
     loaderShow();
 
-    $http.get(domain + "/product-details/" + $routeParams.url_key).success(function (data, status, headers, config) {
+    $http.get(domain + "/product-details/" + $routeParams.url_key + "?userId=" + window.localStorage.getItem('id')).success(function (data, status, headers, config) {
         $scope.product = data;
+        console.log(data);
         $scope.$digest;
         loaderHide();
     });
@@ -157,6 +158,7 @@ app.controller('scrapbookController', function ($http, $scope, $rootScope, $cont
 
     $http.get(domain + "/get-scrapbook-products").success(function (data, status, headers, config) {
         $scope.products = data;
+        console.log(data);
         $scope.imgPath = domain + "/public/frontend/uploads/scrapbooks/";
         loaderHide();
     });
@@ -546,11 +548,29 @@ app.controller('cartController', function ($http, $scope, $location, $rootScope,
 
 app.controller('contactController', function ($http, $scope, $location, $rootScope, $routeParams) {
 
-
     loaderHide();
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
+console.log('contact me');
+    $scope.submitContact = function () {
+        console.log('contact');
+        jQuery.ajax({
+            type: "POST",
+            url: domain + "/save-contact",
+            data: jQuery("#contactForm input").serialize(),
+            cache: false,
+            success: function (data) {
+                 console.log(data);
+
+                if (data == "sent") {
+                    alert("Thank you! Will contact you soon.");
+                
+                    window.location.href = "#/";
+                }
+            }
+        });
+    };
 
 });
 

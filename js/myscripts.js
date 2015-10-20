@@ -117,6 +117,23 @@ $(document).ready(function () {
         }
     };
 
+    $rootScope.addToSList = function (event, id) {
+        if (window.localStorage.getItem('id') != null) {
+            jQuery.get(domain + "/scrapbook-like?productID=" + id + "&userId=" + window.localStorage.getItem('id')).success(function (response) {
+                console.log(response);
+                if (response == 1) {
+                    angular.element(event.target).addClass("liked");
+
+                } else {
+                    angular.element(event.target).removeClass("liked");
+                }
+            });
+
+        } else {
+            window.location.href = '#/login';
+        }
+    };
+
     if (window.localStorage.getItem('id') != null) {
 
         $rootScope.$apply(function () {

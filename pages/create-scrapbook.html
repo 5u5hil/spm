@@ -6,19 +6,31 @@
         </div>
         <div class="clear"></div>
         <div class="decoration"></div>
-        <form method="post" name="scrapbookfrm" enctype="multipart/form-data" id="scrapbookfrm"
-              class="login custom-woo-login" ng-submit="addScrapbook()">
+        <form method="post" novalidate ng-cloak ng-controller="createScrapbookController" name="scrapbookfrm" enctype="multipart/form-data" id="scrapbookfrm" class="login custom-woo-login" ng-submit="addScrapbook()">
             <input type="text" name="sname" id="sname" class="inputfield" placeholder="Scrabook Title"/>
-            <input type="text" class="inputfield" name="sdescription" id="sdescription" placeholder="Description"
-                   required>
-            <input type="text" class="inputfield" placeholder="Add Products" name="pdcts" ng-focus="autoCompleteFn()"
-                   ng-blur="autoCompleteFn()" id="pdcts">
+            <span style="color:red" ng-show="scrapbookfrm.sname.$dirty && scrapbookfrm.sname.$invalid">
+                <span ng-show="scrapbookfrm.sname.$error.required">Title is required.</span>
+            </span>
+
+            <input type="text" class="inputfield" name="sdescription" id="sdescription" placeholder="Description" required>
+            <span style="color:red" ng-show="scrapbookfrm.sdescription.$dirty && scrapbookfrm.sdescription.$invalid">
+                <span ng-show="scrapbookfrm.sdescription.$error.required">Description is required.</span>
+            </span>
+            
+            <input type="text" class="inputfield" placeholder="Add Products" name="pdcts" ng-focus="autoCompleteFn()" ng-blur="autoCompleteFn()" id="pdcts">
+            <span style="color:red" ng-show="scrapbookfrm.pdcts.$dirty && scrapbookfrm.pdcts.$invalid">
+                <span ng-show="scrapbookfrm.pdcts.$error.required">Add product is required.</span>
+            </span>
+            
             <input type="file" class='inputfield' accept="image/*;capture=camera" name="simg" id="simg" required>
+            <span style="color:red" ng-show="scrapbookfrm.simg.$dirty && scrapbookfrm.simg.$invalid">
+                <span ng-show="scrapbookfrm.simg.$error.required">Image is required.</span>
+            </span>
+            
             <input type="hidden" name="userId" value='{{ userId}}'>
             <label for="sdescription">Selected Products</label>
-            <div id="log" style="height: 200px; width: 100%; overflow: auto;margin-bottom: 10px;"
-                 class="ui-widget-content"></div>
-            <input type='submit' name='submit' class="button button-blue full-button">
+            <div id="log" style="height: 200px; width: 100%; overflow: auto;margin-bottom: 10px;" class="ui-widget-content"></div>
+            <input type='submit' ng-disabled="scrapbookfrm.$invalid" name='submit' class="button button-blue full-button">
         </form>
     </div>
 </div>

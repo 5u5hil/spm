@@ -20,7 +20,7 @@
                         </div>
                     </div>
 
-                    <form action="php/contact.php" method="post" class="contactForm" id="contactForm" name="contactForm" novalidate>
+                    <form ng-cloak method="post" class="contactForm" id="contactForm" name="contactForm" novalidate ng-submit="submitContact()">
                         <fieldset>
 <!--                            <div class="formValidationError" id="contactNameFieldError">
                                 <div class="static-notification-red tap-dismiss-notification">
