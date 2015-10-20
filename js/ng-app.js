@@ -355,6 +355,7 @@ app.controller('wardrobeListingController', function ($http, $scope, $rootScope,
     loaderShow();
     $scope.imgPath = domain + "/public/frontend/uploads/wardrobes/";
     $scope.wardrobeList = $filter('filter')(jQuery.parseJSON(window.localStorage.getItem('wardrobeprods')), {id: $routeParams.id})[0];
+    console.log($scope.wardrobeList);
     loaderHide();
 
     $scope.$on('$viewContentLoaded', function () {
