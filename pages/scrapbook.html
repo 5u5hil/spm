@@ -1,33 +1,36 @@
 <div id="content" class="snap-content">
     <div class="header-clear"></div>
-
     <div class="content">
-
         <div class="adaptive-style">
             <h4 style="font-size:17px;">Scrapbook</h4>
-            <a class="" href="#"><i class="fa fa-filter"></i></a>
         </div>
         <div class="clear"></div>
         <div class="decoration"></div>
-
         <div class="portfolio-adaptive adaptive-one">
+          <div ng-hide="products.length">
+                    <p>Oops, No Scrapbook found!</p>
+                    <a ng-href="#/create-scrapbook" class="create-scrap-link" title="">
+                    Create New Scrapbook </a><br>
+                </div>
             <div class="adaptive-item" ng-repeat="sp in products">
+              
                 <a ng-href="#/scrapbook/{{sp.url_key}}" title="{{sp.product}}">
                     <img class="responsive-image" ng-src="{{imgPath + sp.small_image}}" alt="img">
                 </a>
                 <h4 class="pname"><a ng-href="#/scrapbook/{{sp.url_key}}"  class="lname">{{sp.product}}</a></h4>
                 <p class="sdetail">
-                    <a ng-href="#/scrapbook/{{sp.url_key}}"  class=""> 
-                        <span class="save"><i class="fa fa-gift"></i> Total Products: {{sp.comboproducts.length}}</span>
-                    </a> 
-                    <br/>
-                    {{sp.added_by.first_name}}
+                    <a ng-href="#/scrapbook/{{sp.url_key}}" class="">
+                        <span class="save">  Total Products: {{sp.comboproducts.length}}</span>
+                    </a>
+                    <br/> {{sp.added_by.first_name}}
                 </p>
-
             </div>
         </div>
         <div class="decoration"></div>
+          <div class="pagination clearfix">
+            <button class="button">Previous</button>
+            <button class="button pull-right">Next</button>
+        </div>
     </div>
     <!-- Page Footer-->
 </div>
-

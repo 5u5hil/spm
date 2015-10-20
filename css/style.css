@@ -1672,3 +1672,36 @@ h4.pname {
     width: 10px;
 
 }
+.adaptive-style h4 {
+    width: 500px !important;
+  
+}
+.create-scrap-link{
+    appearance:button !important;
+    -webkit-appearance:button !important;
+    -moz-appearance:button !important; 
+       width: 100%;
+    padding: 10px;
+    text-align: center;
+    color: #333;
+}
+.custom-add-cart .add-cart-btn{
+        width: 100%;
+    
+}
+.custom-add-cart{
+    width: 48%;
+}
+div.img-wrapper-product {
+  
+    max-height: 315px;
+    min-height: 315px;
+    overflow: hidden;
+}
+ 
+
+.img-wrapper-product img {
+    min-width: 100%;
+    min-height: 100%;
+}
+ 
