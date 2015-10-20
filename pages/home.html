@@ -78,7 +78,7 @@
                     <a href="" class="lwishlit"><i class="fa fa-heart {{product.wishlist == 1? 'liked':''}}" ng-click="addToList($event, product.id)"></i></a></h4>
                 <p class="sdetail">
                     <a href="#/product/{{product.url_key}}" class=""> 
-                        <span class="fprice" ng-if="product.spl_price == 0"><i class="fa fa-rupee"></i>{{product.price}}</span>   
+                        <span class="fprice" ng-if="product.spl_price|num == 0"><i class="fa fa-rupee"></i>{{product.price}}</span>   
                         <span class="fprice" ng-if="((product.spl_price > 0) && (product.spl_price < product.price))"><strike><i class="fa fa-rupee"></i>{{product.price}}</strike> <i class="fa fa-rupee"></i>{{product.spl_price}}</span>   
                         <!--<span class="dprice"><i class="fa fa-rupee"></i>{{ ((product.spl_price > 0) && (product.spl_price < product.price)) ? "<strike>" product.price "<strike>" product.spl_price : product.price }}</span>--> 
                         <br>
