@@ -14,7 +14,7 @@
                 <span ng-show="userDetailsfrm.first_name.$error.required">First name is required.</span>
             </span>
             
-            <input type="text"  required class="inputfield" ng-model="last_name" ng-model="userDetails.last_name" name="last_name" id="last_name" placeholder="Last Name" value="{{userDetails.last_name}}">
+            <input type="text"  required class="inputfield" name="last_name" id="last_name" ng-model="last_name" ng-model="userDetails.last_name" placeholder="Last Name" value="{{userDetails.last_name}}">
             <span style="color:red" ng-show="userDetailsfrm.last_name.$dirty && userDetailsfrm.last_name.$invalid">
                 <span ng-show="userDetailsfrm.last_name.$error.required">Last name is required.</span>
             </span>
