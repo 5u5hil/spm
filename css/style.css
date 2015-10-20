@@ -206,7 +206,7 @@ body {
 }
 
 .submenu a {
-    padding-left: 95px!important;
+    padding-left: 70px!important;
     color: #7e7e7e!important;
     font-size: 11px;
 }
@@ -1667,4 +1667,8 @@ h4.pname {
     width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+.submenu i.fa.fa-angle-right {
+    width: 10px;
+
 }
