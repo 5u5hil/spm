@@ -139,7 +139,7 @@ app.controller('productController', function ($http, $rootScope, $scope, $locati
 
     loaderShow();
 
-    $http.get(domain + "/product-details/" + $routeParams.url_key).success(function (data, status, headers, config) {
+    $http.get(domain + "/product-details/" + $routeParams.url_key + "?userId=" + window.localStorage.getItem('id')).success(function (data, status, headers, config) {
         $scope.product = data;
         console.log(data);
         $scope.$digest;
