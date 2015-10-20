@@ -9,7 +9,7 @@
 
         <div class="decoration"></div>
         <form method="post" novalidate ng-cloak name="userDetailsfrm" id="userDetailsfrm" class="login custom-woo-login" ng-submit="updateUDetails()">              
-            <input type="text" required class="inputfield" name="first_name" ng-model="" id="first_name" placeholder="First Name" value="{{userDetails.first_name}}">
+            <input type="text" required class="inputfield" name="first_name" ng-model="userDetails.first_name" id="first_name" placeholder="First Name" value="{{userDetails.first_name}}">
             <span style="color:red" ng-show="userDetailsfrm.first_name.$dirty && userDetailsfrm.first_name.$invalid">
                 <span ng-show="userDetailsfrm.first_name.$error.required">First name is required.</span>
             </span>
