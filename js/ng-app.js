@@ -554,13 +554,14 @@ app.controller('contactController', function ($http, $scope, $location, $rootSco
     });
 
     $scope.submitContact = function () {
+        console.log('contact');
         jQuery.ajax({
             type: "POST",
             url: domain + "/save-contact",
             data: jQuery("#contactForm input").serialize(),
             cache: false,
             success: function (data) {
-                // console.log(data);
+                 console.log(data);
 
                 if (data == "sent") {
                     alert("Thank you! Will contact you soon.");
