@@ -560,6 +560,7 @@ app.controller('userDashboardController', function ($http, $scope, $location, $r
     loaderShow();
     $http.get(domain + "/get-user-details?userId=" + window.localStorage.getItem('id')).success(function (data, status, headers, config) {
         $scope.userDetails = data;
+        console.log(data);
         $scope.$digest;
         loaderHide();
     });
