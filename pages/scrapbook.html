@@ -7,13 +7,13 @@
         <div class="clear"></div>
         <div class="decoration"></div>
         <div class="portfolio-adaptive adaptive-one">
-          <div ng-hide="products.length">
-                    <p>Oops, No Scrapbook found!</p>
-                    <a ng-href="#/create-scrapbook" class="create-scrap-link" title="">
+            <div ng-hide="products.length">
+                <p>Oops, No Scrapbook found!</p>
+                <a ng-href="#/create-scrapbook" class="create-scrap-link" title="">
                     Create New Scrapbook </a><br>
-                </div>
+            </div>
             <div class="adaptive-item" ng-repeat="sp in products">
-              
+
                 <a ng-href="#/scrapbook/{{sp.url_key}}" title="{{sp.product}}">
                     <img class="responsive-image" ng-src="{{imgPath + sp.small_image}}" alt="img">
                 </a>
@@ -26,10 +26,14 @@
                     </a>
                     <br/> {{sp.added_by.first_name}}
                 </p>
+                <div class="product-remove">
+                    <a href="" ng-click="removeScrapbook(sp.url_key)" class="remove remove_from_wishlist" title="Remove this product">×</a>
+                </div>
             </div>
+
         </div>
         <div class="decoration"></div>
-          <div class="pagination clearfix">
+        <div class="pagination clearfix">
             <button class="button">Previous</button>
             <button class="button pull-right">Next</button>
         </div>

@@ -163,7 +163,7 @@ app.controller('scrapbookController', function ($http, $scope, $rootScope, $cont
         loaderHide();
     });
 
-    $scope.removeScrapbookProduct = function (slug) {
+    $scope.removeScrapbook = function (slug) {
         var r = confirm("Do you want to delete this item!");
         if (r == true) {
             jQuery.ajax({
