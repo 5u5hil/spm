@@ -645,7 +645,7 @@ app.controller('contactController', function ($http, $scope, $location, $rootSco
         jQuery.ajax({
             type: "POST",
             url: domain + "/save-contact",
-            data: {'name':jQuery("#contactNameField").val(),'email':jQuery("#contactEmailField").val(),'msg':jQuery("#contactMessageTextarea").val()},
+            data: $("#contactForm").serialize(),
             cache: false,
             success: function (data) {
                 console.log(data);
