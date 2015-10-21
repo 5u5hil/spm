@@ -163,6 +163,25 @@ app.controller('scrapbookController', function ($http, $scope, $rootScope, $cont
         loaderHide();
     });
 
+    $scope.removeScrapbookProduct = function (slug) {
+        var r = confirm("Do you want to delete this item!");
+        if (r == true) {
+            jQuery.ajax({
+                type: "POST",
+                url: domain + "/remove-scrapbook-product",
+                data: {slug: slug},
+                cache: false,
+                success: function (data) {
+                    console.log(data);
+                    if (data == 'success') {
+                        window.location.href = "#/scrapbook";
+                    } else {
+                        alert('Please try again later');
+                    }
+                }
+            });
+        }
+    };
 
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
