@@ -9,6 +9,31 @@
             <a class="adaptive-one-activate"><i class="fa fa-navicon"></i></a>
         </div>
         <div class="clear"></div>
+        <div class="big-notification yellow-notification filter-wrap" style="display:none;">
+            <div id="filters" class='questionnaire'>
+                <div class="filters">
+                    <h3 class="widget-title">Filter by price</h3>
+                    <input type="number" id="min_price" name="min_price" min="0" placeholder="Min price" class="min-price-filter">
+                    <input type="number" id="max_price" name="max_price" placeholder="Max price" class="max-price-filter">
+                </div>
+                <div class="filters" on-finish-render="ngRepeatFinished" ng-repeat="filter in filters">
+                    <h3 class="widget-title" ng-click="showOptions('filter{{$index}}')">{{ filter.category}} <i class="fa fa-caret-right pull-right"></i></h3>
+                    <div id="filter{{$index}}" class="accordion-body filter-opt collapse {{ $index == 0 ? ' in' : ''}} ">
+                        <input type="text" placeholder="Search" ng-if="sizeOf(filter.child) > 10" ng-model="filterz[$index]" class="search-filter" />
+                        <div class="accordion-inner">
+                            <label ng-repeat="option in filter.child" class="category-filter lbl-filter">
+                                <input type="checkbox" class="checkbox vert-mid-filter checkbox-three" name="filter[]" value="{{  option.id}}" ng-checked="filtered.indexOf(option.id) > - 1" ng-click="filterProds(option.id, filter.category)">
+                                <span class="vert-mid-filter"> {{ option.category}}</span>
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="apply-filter filters">
+                    <button ng-click="applyFilters()" class="button">Apply Filter</button>
+                </div>
+            </div>
+        </div>
 
         <div class="decoration"></div>
 
