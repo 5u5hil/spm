@@ -74,7 +74,7 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
 
     loaderShow();
 
-    $http.get(domain + "/get-category-products/" + $routeParams.url_key + "?userId=" + window.localStorage.getItem('id')).success(function (data, status, headers, config) {
+    $http.get(domain + "/get-category-products/" + $routeParams.url_key + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
         $scope.products = data;
         $scope.filters = data.filters;
         $scope.$digest;
@@ -139,7 +139,7 @@ app.controller('productController', function ($http, $rootScope, $scope, $locati
 
     loaderShow();
 
-    $http.get(domain + "/product-details/" + $routeParams.url_key + "?userId=" + window.localStorage.getItem('id')).success(function (data, status, headers, config) {
+    $http.get(domain + "/product-details/" + $routeParams.url_key + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
         $scope.product = data;
         console.log(data);
         $scope.$digest;
@@ -174,7 +174,7 @@ app.controller('myScrapbookController', function ($http, $scope, $rootScope, $co
 
     loaderShow();
 
-    $http.get(domain + "/get-myscrapbook-products?userId=" + window.localStorage.getItem('id')).success(function (data, status, headers, config) {
+    $http.get(domain + "/get-myscrapbook-products" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
         $scope.products = data;
         $scope.imgPath = domain + "/public/frontend/uploads/scrapbooks/";
         loaderHide();
@@ -191,7 +191,7 @@ app.controller('scrapbookDetailsController', function ($http, $scope, $rootScope
 
     loaderShow();
 
-    $http.get(domain + "/scrapbook/" + $routeParams.url_key + "?userId=" + window.localStorage.getItem('id')).success(function (data, status, headers, config) {
+    $http.get(domain + "/scrapbook/" + $routeParams.url_key + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
         $scope.scrapbookproducts = data;
         console.log(data);
         $scope.imgPath = domain + "/public/frontend/uploads/scrapbooks/";
