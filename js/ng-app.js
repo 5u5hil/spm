@@ -174,7 +174,7 @@ app.controller('scrapbookController', function ($http, $scope, $rootScope, $cont
                 success: function (data) {
                     console.log(data);
                     if (data == 'success') {
-                        window.location.href = "#/scrapbook";
+                        window.location.href = "#/";
                     } else {
                         alert('Please try again later');
                     }
