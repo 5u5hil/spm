@@ -523,18 +523,64 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
 
     $http.get(domain + "/my-style/" + $routeParams.url_key).success(function (data, status, headers, config) {
         $scope.products = data;
+        
+        $scope.filters = data.filters;
         $scope.$digest;
         loaderHide();
     });
 
+    
+    
+     $scope.filtered = {};
+
+
     $scope.load = function (url) {
         loaderShow();
-        $http.get(url).success(function (data, status, headers, config) {
+        $http.get(url, {params: {'filters': $scope.filtered}}).success(function (data, status, headers, config) {
             $scope.products = data;
             $scope.$digest;
             loaderHide();
         });
     };
+
+
+    $scope.filterProds = function (option, parent) {
+        if (option) {
+            if (!(parent in $scope.filtered))
+                $scope.filtered[parent] = [];
+
+            var idx = $scope.filtered[parent].indexOf(option);
+
+            if (idx > -1)
+                $scope.filtered[parent].splice(idx, 1);
+            else
+                $scope.filtered[parent].push(option);
+
+            if ($scope.filtered[parent].length <= 0)
+                delete $scope.filtered[parent];
+        }
+    };
+
+    $scope.applyFilters = function () {
+        $http.get(domain + "/my-style/" + $routeParams.url_key, {params: {'filters': $scope.filtered}}).success(function (response) {
+            $scope.products = response;
+            $scope.$digest;
+            jQuery(".big-notification.yellow-notification").toggle("slideDown");
+        });
+    }
+
+    $scope.sizeOf = function (obj) {
+        return Object.keys(obj).length;
+    };
+
+    $scope.showFilters = function () {
+        jQuery(".big-notification.yellow-notification").toggle("slideDown");
+    }
+
+    $scope.showOptions = function (e) {
+        jQuery("#" + e).toggle();
+    }
+
 
 
     $scope.$on('$viewContentLoaded', function () {
