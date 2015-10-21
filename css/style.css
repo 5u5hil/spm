@@ -976,7 +976,7 @@ body {
 
 .main-logo {
     background-image: url(../images/logo-dark.png);
-    width: 100px;
+    width: 70px;
     height: 43px;
     background-size: contain;
     background-repeat: no-repeat;
@@ -1689,19 +1689,18 @@ h4.pname {
         width: 100%;
     
 }
+.bt-wrap{
+    width: 100%;
+    text-align: center;
+}
 .custom-add-cart{
     width: 48%;
 }
 div.img-wrapper-product {
-  
-    max-height: 315px;
-    min-height: 315px;
+    height: 245px;
     overflow: hidden;
 }
- 
-
 .img-wrapper-product img {
-    min-width: 100%;
-    min-height: 100%;
+    max-height: 100%;
 }
  

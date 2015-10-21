@@ -27,13 +27,15 @@
                     </div>
                     <p class="half-bottom">
                         {{ product.short_desc}}
-                    </p>            
-                    <span class="add-cart-wrap add-cart-home custom-add-cart" style="    margin-right: 15px;">
-                        <button class="button add-cart-btn "  ng-click="addToCart($event, product)">Add to Cart</button>
-                    </span>
-                  <span class="add-cart-wrap add-cart-home  custom-add-cart" > 
-                        <button ng-click="share($event, product)" class="button add-cart-btn "> Share</button>
-                   </span>
+                    </p>  
+                    <div class="bt-wrap">         
+                  
+                        <button class="button add-cart-btn  custom-add-cart"  ng-click="addToCart($event, product)">Add to Cart</button>
+      
+                  
+                        <button ng-click="share($event, product)" class="button add-cart-btn  custom-add-cart"> Share</button>
+               
+                   </div> 
                 </div>       
             </div>
         </div>

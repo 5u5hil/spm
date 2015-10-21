@@ -8,13 +8,13 @@
 <ul class="sidebar-navigation clearfix">
     <li><a href='#{{ loggedIn == 1 ? "/profile" : "/login"}}'><i class="fa fa-user"></i>My Profile<i class="fa fa-caret-right"></i></a></li>
     <li><a href='#{{ loggedIn == 1 ? "/chat" : "/login"}}'><i class="fa fa-comments-o"></i>Personal Stylist<i class="fa fa-caret-right"></i></a></li>
-    <li><a href='#{{ loggedIn == 1 ? "/wardrobe" : "/login"}}'><i class="fa fa-thumb-tack"></i>My Wardrobe<i class="fa fa-caret-right"></i></a></li>
-    <li><a href='#{{ loggedIn == 1 ? "/add-new-wardrobe" : "/login"}}'><i class="fa fa-magic"></i>Add to Wardrobe<i class="fa fa-caret-right"></i></a></li>
-    <li><a href='#{{ loggedIn == 1 ? "/my-scrapbook" : "/login"}}'><i class="fa fa-book"></i>My Scrapbook<i class="fa fa-caret-right"></i></a></li>
-    <li><a href='#{{ loggedIn == 1 ? "/create-scrapbook" : "/login"}}'><i class="fa fa-bookmark-o"></i>Create Scrapbook<i class="fa fa-caret-right"></i></a></li>
+    <li><a href='#{{ loggedIn == 1 ? "/wardrobe" : "/login"}}'><i class="fa fa-binoculars"></i>My Wardrobe<i class="fa fa-caret-right"></i></a></li>
+    <li><a href='#{{ loggedIn == 1 ? "/add-new-wardrobe" : "/login"}}'><i class="fa fa-plus-square"></i>Add to Wardrobe<i class="fa fa-caret-right"></i></a></li>
+    <li><a href='#{{ loggedIn == 1 ? "/my-scrapbook" : "/login"}}'><i class="fa fa-edit"></i>My Scrapbook<i class="fa fa-caret-right"></i></a></li>
+    <li><a href='#{{ loggedIn == 1 ? "/create-scrapbook" : "/login"}}'><i class="fa fa-plus-square"></i>Create Scrapbook<i class="fa fa-caret-right"></i></a></li>
     <li><a href='#{{ loggedIn == 1 ? "/favorites" : "/login"}}'><i class="fa fa-heart"></i>My Favourite<i class="fa fa-caret-right"></i></a></li>
     <li ng-if="loggedIn == 1" class="has-submenu">
-        <a class="deploy-submenu" ng-href=""><i class="fa fa-cog"></i>Your Styles<i class="fa fa-plus"></i></a>
+        <a class="deploy-submenu" ng-href=""><i class="fa fa-thumbs-up"></i>Your Styles<i class="fa fa-plus"></i></a>
         <ul class="submenu newStyle">
             <li>
                 <a ng-href="#/add-new-style" class="active-menu">
@@ -32,7 +32,7 @@
             </li>
         </ul>
     </li>
-    <li><a href='#{{ loggedIn == 1 ? "/logout" : "/login"}}'><i class="fa fa-user"></i>{{ loggedIn == 1 ? 'Logout' : 'Login / Register'}}<i class="fa fa-caret-right"></i></a></li>
+    <li><a href='#{{ loggedIn == 1 ? "/logout" : "/login"}}'><i class="fa {{ loggedIn == 1 ? 'fa-sign-out' : 'fa-sign-in'}}"></i>{{ loggedIn == 1 ? 'Logout' : 'Login / Register'}}<i class="fa fa-caret-right"></i></a></li>
 </ul>
 
 
