@@ -56,9 +56,9 @@
                             </div>
                             <div class="formTextareaWrap">
                                 <label class="field-title contactMessageTextarea" for="contactMessageTextarea">Message: <span>(required)</span></label>
-                                <textarea name="contactMessageTextarea" ng-model="contactMessageTextarea" class="contactTextarea requiredField" id="contactMessageTextarea" required></textarea>
-                                <span style="color:red" ng-show="contactForm.contactMessageTextarea.$dirty && contactForm.contactMessageTextarea.$invalid">
-                                    <span ng-show="contactForm.contactMessageTextarea.$error.required">Message field is empty.</span>
+                                <textarea name="txtMsg" ng-model="txtMsg" class="contactTextarea requiredField" id="txtMsg" required></textarea>
+                                <span style="color:red" ng-show="contactForm.txtMsg.$dirty && contactForm.txtMsg.$invalid">
+                                    <span ng-show="contactForm.txtMsg.$error.required">Message field is empty.</span>
                                 </span> 
 
                             </div>
