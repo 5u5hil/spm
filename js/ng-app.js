@@ -647,6 +647,8 @@ app.controller('contactController', function ($http, $scope, $location, $rootSco
             url: domain + "/save-contact",
             data: jQuery("#contactForm input").serialize(),
             cache: false,
+            contentType: false,
+            processData: false,
             success: function (data) {
                 console.log(data);
 
