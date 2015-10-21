@@ -380,7 +380,7 @@ app.controller('wardrobeListingController', function ($http, $scope, $rootScope,
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
-    
+
     $scope.removeWardrobeProduct = function (id) {
         var r = confirm("Do you want to delete this item!");
         if (r == true) {
@@ -600,11 +600,11 @@ app.controller('contactController', function ($http, $scope, $location, $rootSco
             data: jQuery("#contactForm input").serialize(),
             cache: false,
             success: function (data) {
-                 console.log(data);
+                console.log(data);
 
                 if (data == "sent") {
                     alert("Thank you! Will contact you soon.");
-                
+
                     window.location.href = "#/";
                 }
             }
@@ -666,7 +666,7 @@ app.controller('favoritesController', function ($http, $scope, $location, $rootS
 
 app.controller('commonController', function ($http, $scope, $location, $rootScope, $routeParams) {
 
-$scope.$on('$viewContentLoaded', function () {
+    $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
 
