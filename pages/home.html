@@ -79,7 +79,7 @@
                 <p class="sdetail">
                     <a href="#/product/{{product.url_key}}" class=""> 
                         <!--<span class="fprice" ng-if="product.spl_price == 0"><i class="fa fa-rupee"></i>{{product.price}}</span>-->   
-                        <span class="fprice">{{ ((product.spl_price > 0) && (product.spl_price < product.price)) ? }}<strike><i class="fa fa-rupee"></i>{{product.price}}</strike> {{ : }}<i class="fa fa-rupee"></i>{{product.spl_price}}</span>   
+                        <span class="fprice">{{ product.spl_price > 0 && (product.spl_price < product.price) ? }}<strike><i class="fa fa-rupee"></i>{{product.price}}</strike> {{ : }}<i class="fa fa-rupee"></i>{{product.spl_price}}</span>   
                         <!--<span class="dprice"><i class="fa fa-rupee"></i>{{ ((product.spl_price > 0) && (product.spl_price < product.price)) ? "<strike>" product.price "<strike>" product.spl_price : product.price }}</span>--> 
                         <br>
                          <span class="dd-cart-home ">
