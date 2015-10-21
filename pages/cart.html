@@ -27,7 +27,7 @@
                         <span>{{product.product}}</span>
                     </td>
                     <td width="60"><i class="fa fa-trash"></i></td>
-                    <td><i class="fa fa-rupee"></i>{{product.price}}</td>
+                    <td><i class="fa fa-rupee"></i>{{product.spl_price > 0 && product.spl_price < product.price ? product.spl_price : product.price }}</td>
                     <th><a href='{{ product.url}}' target="_system">Buy from {{ product.store}}</a></th>
                 </tr>
 

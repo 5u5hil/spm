@@ -18,8 +18,9 @@
                     </h3>
                     <em class="subtitle">From {{product.store}}</em>
                     <h3 class="desc_title"> 
-                        <span class="fprice" ng-if="product.spl_price > 0"><i class="fa fa-rupee"></i>{{product.price}}</span>   
-                        <span class="dprice"><i class="fa fa-rupee"></i>{{product.spl_price > 0 ? product.spl_price : product.price }}</span> 
+                         <span class="fprice" ng-if="product.spl_price > 0 && product.spl_price < product.price"><i class="fa fa-rupee"></i>{{product.price}}</span>   
+                        <span class="dprice"><i class="fa fa-rupee"></i>{{product.spl_price > 0 && product.spl_price < product.price ? product.spl_price : product.price }}</span> 
+                      
                     </h3>
                     <div class="portfolio-one-details">
                         <a href="#">In Stock</a>
