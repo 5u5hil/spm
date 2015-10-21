@@ -1,23 +1,22 @@
 <div id="content" class="snap-content">
-    <div class="header-clear"></div>   
-
+    <div class="header-clear"></div>
     <div class="content">
         <div class="widget container">
             <h4>{{ wardrobeList.category}} ({{wardrobeList.wardrobe.length}})</h4>
-
-
+            <div class="clear"></div>
+            <div  class="decoration"></div> 
             <ul class="wardroblisting">
-                <li ng-repeat="wcat in wardrobeList.wardrobe" >
+                <li ng-repeat="wcat in wardrobeList.wardrobe">
                     <div class="col-half">
                         <div class="thumb">
-                            <img ng-src="{{imgPath + wcat.image}}" alt="img"/>
+                            <img ng-src="{{imgPath + wcat.image}}" alt="img" />
                         </div>
                     </div>
                     <div class="col-half">
                         <div class="thumb_descr">
-                            <span>{{wcat.name}}</span><br/>
-                            Brand: {{wcat.brand}}<br/>
-                            Color: {{wcat.color}}
+                            <span>{{wcat.name}}</span>
+                            <br/> Brand: {{wcat.brand}}
+                            <br/> Color: {{wcat.color}}
                         </div>
                         <div class="product-remove">
                             <a href="" ng-click="removeWardrobeProduct(wcat.id)" class="remove remove_from_wishlist" title="Remove this product">×</a>
@@ -26,17 +25,7 @@
 
                 </li>
             </ul>
-
-
-
-        </div> 
-
-
-
-
+        </div>
     </div>
-
     <!-- Page Footer-->
-
 </div>
-

@@ -645,3 +645,11 @@ app.controller('favoritesController', function ($http, $scope, $location, $rootS
     });
 });
 
+app.controller('commonController', function ($http, $scope, $location, $rootScope, $routeParams) {
+
+$scope.$on('$viewContentLoaded', function () {
+        siteMainFn();
+    });
+
+});
+

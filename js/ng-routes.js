@@ -92,6 +92,14 @@ app.config(['$routeProvider', '$locationProvider',
                     templateUrl: 'pages/favorites.html',
                     controller: 'favoritesController'
                 }).
+                when('/privacy', {
+                    templateUrl: 'pages/privacy-policy.html',
+                    controller: 'commonController'
+                }).
+                when('/define-style', {
+                    templateUrl: 'pages/define-style.html',
+                    controller: 'commonController'
+                }).
                 otherwise({
                     redirectTo: '/'
                 });

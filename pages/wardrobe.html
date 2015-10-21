@@ -4,9 +4,7 @@
             <a href="index.html">
                 <img class="landing-logo" src="images/logo2.png"  alt="img" style="margin-top: 30px;">
                 <em class="landing-logo-sub">{{ name}}'s Wardrobe</em>
-
             </a>
-
             <div class="landing-navigation">
                 <a href="#/wardrobe-listing/{{wcat.id}}" ng-if="wcat.wardrobe.length != 0" ng-repeat="wcat in wardrobeprods" ><i class="fa">{{wcat.wardrobe.length}}</i>{{wcat.category}}</a>
                 <div class="clear"></div>
@@ -22,7 +20,6 @@
                 <p class="landing-copyright" style="color:#fff;">Add</p>
             </div>
         </div>
-
         <div class="landing-background">
             <div class="bg-pattern"></div>
         </div>
