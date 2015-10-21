@@ -361,6 +361,29 @@ app.controller('wardrobeListingController', function ($http, $scope, $rootScope,
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
+    
+    $scope.removeWardrobeProduct = function (id) {
+        var r = confirm("Do you want to delete this item!");
+        if (r == true) {
+            jQuery.ajax({
+                type: "POST",
+                url: domain + "/delete-wardrobe-product",
+                data: {id: id},
+                cache: false,
+                success: function (data) {
+                    if (data == 'success') {
+                        $http.get(domain + "/get-wardrobe-products").success(function (data, status, headers, config) {
+                            $scope.wardrobeList = data;
+                            $scope.$digest;
+                        });
+                    } else {
+                        alert('Please try again later');
+                    }
+
+                }
+            });
+        }
+    };
 });
 
 app.controller('createScrapbookController', function ($http, $scope, $rootScope, $location) {
