@@ -372,10 +372,7 @@ app.controller('wardrobeListingController', function ($http, $scope, $rootScope,
                 cache: false,
                 success: function (data) {
                     if (data == 'success') {
-                        $http.get(domain + "/get-wardrobe-products").success(function (data, status, headers, config) {
-                            $scope.wardrobeList = data;
-                            $scope.$digest;
-                        });
+                        window.location.href = domain + "#/wardrobe";
                     } else {
                         alert('Please try again later');
                     }
