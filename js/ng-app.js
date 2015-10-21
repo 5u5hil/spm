@@ -73,6 +73,9 @@ app.controller('homeController', function ($http, $scope, $rootScope, $controlle
 app.controller('categoryController', function ($http, $scope, $location, $rootScope, $routeParams) {
 
     loaderShow();
+    $scope.filtered = {};
+
+
 
     $http.get(domain + "/get-category-products/" + $routeParams.url_key + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
         $scope.products = data;
@@ -83,14 +86,13 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
 
     $scope.load = function (url) {
         loaderShow();
-        $http.get(url).success(function (data, status, headers, config) {
+        $http.get(url, {params: {'filters': $scope.filtered}}).success(function (data, status, headers, config) {
             $scope.products = data;
             $scope.$digest;
             loaderHide();
         });
     };
 
-    $scope.filtered = {};
 
     $scope.filterProds = function (option, parent) {
         if (option) {
