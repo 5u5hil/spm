@@ -576,7 +576,7 @@ app.controller('cartController', function ($http, $scope, $location, $rootScope,
     $scope.cart = jQuery.parseJSON(window.localStorage.getItem("cart"));
     $scope.cart.Total = 0;
     jQuery.each(jQuery.parseJSON(window.localStorage.getItem("cart")), function (k, v) {
-        $scope.cart.Total += parseInt(v.price);
+        $scope.cart.Total += parseInt(v.spl_price > 0 && v.spl_price < v.price ? v.spl_price : v.price);
     });
 
     loaderHide();
