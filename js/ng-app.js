@@ -645,7 +645,7 @@ app.controller('contactController', function ($http, $scope, $location, $rootSco
         jQuery.ajax({
             type: "POST",
             url: domain + "/save-contact",
-            data: $("#contactForm").serialize(),
+            data: jQuery("#contactForm").serialize(),
             cache: false,
             success: function (data) {
                 console.log(data);
