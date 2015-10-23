@@ -1,9 +1,9 @@
 <div class="sidebar-header">
-    <a href="https://www.facebook.com/StylePanache" target="_system"><i class="fa fa-facebook"></i></a>
-    <a href="https://twitter.com/style_panache"  target="_system"><i class="fa fa-twitter"></i></a>
-    <a href="https://instagram.com/style_panache"  target="_system"><i class="fa fa-instagram"></i></a>
-    <a href="https://www.pinterest.com/stylepanache"  target="_system"><i class="fa fa-pinterest"></i></a>
-    <a href="https://www.youtube.com/channel/UCinJuAEvFJu-AEMPKs8Te2A"  target="_system"><i class="fa fa-youtube"></i></a>                
+    <a onclick="openLink('https://www.facebook.com/StylePanache')" ><i class="fa fa-facebook"></i></a>
+    <a onclick="openLink('https://twitter.com/style_panache')"  ><i class="fa fa-twitter"></i></a>
+    <a onclick="openLink('https://instagram.com/style_panache')"  ><i class="fa fa-instagram"></i></a>
+    <a onclick="openLink('https://www.pinterest.com/stylepanache')"  ><i class="fa fa-pinterest"></i></a>
+    <a onclick="openLink('https://www.youtube.com/channel/UCinJuAEvFJu-AEMPKs8Te2A')"  ><i class="fa fa-youtube"></i></a>                
 </div>
 <ul class="sidebar-navigation clearfix">
     <li><a href='#{{ loggedIn == 1 ? "/profile" : "/login?rurl=profile"}}'><i class="fa fa-user"></i>My Profile<i class="fa fa-caret-right"></i></a></li>

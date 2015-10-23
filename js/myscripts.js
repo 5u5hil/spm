@@ -236,11 +236,9 @@ function fbSignUp() {
 
 function shareViaWhatsapp() {
 
-    if (device.platform == "iOS") {
-        url = "https://itunes.apple.com/in/app/whatsapp-messenger/id310633997?mt=8";
-    } else {
-        url = "https://play.google.com/store/apps/details?id=com.style.panache&hl=en";
-    }
+
+    url = "http://bit.ly/1Xo5121";
+
     window.plugins.socialsharing.shareViaWhatsApp('Checkout Style Panache ... Your Personal Style Guide!', null /* img */, url /* url */, function () {
         console.log('share ok')
     }, function (errormsg) {
@@ -263,6 +261,10 @@ function toast(msg) {
         alert(msg);
     }
 
+}
+
+function openLink(url) {
+    window.open(url, '_system');
 }
 
 $(document).ready(function () {
@@ -346,6 +348,8 @@ $(document).ready(function () {
     });
 
 });
+
+
 
 
 
