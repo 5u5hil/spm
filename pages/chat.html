@@ -7,8 +7,8 @@
                 <div class="clear"></div>
                 <div class="decoration"></div>
                 <a class="blog-post-image" href><img src="images/pictures/3ww.jpg" alt="img"></a>
-                <p ng-if="window.localStorage.getItem('member') == 0"><a href class="button button-blue full-button" onclick="checkPLogin()"> Subscribe Now</a></p>
-                <p ng-if="window.localStorage.getItem('member') == 1"><a href class="button button-blue full-button" onclick="startChat()"> Start Chat</a></p>
+                <p ng-if="window.localStorage.getItem('member') != null && window.localStorage.getItem('member') == 0"><a href class="button button-blue full-button" onclick="checkPLogin()"> Subscribe Now</a></p>
+                <p ng-if="window.localStorage.getItem('member') != null && window.localStorage.getItem('member') == 1"><a href class="button button-blue full-button" onclick="startChat()"> Start Chat</a></p>
                 <p class="blog-post-text">
                     Become a Member with us and get a dedicated stylist available for you, just a message away ! You can have your body traits saved with us, and accordingly, she will be there to find the best match for you on your occasion.
                 </p>
