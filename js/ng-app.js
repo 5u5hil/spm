@@ -720,3 +720,11 @@ app.controller('commonController', function ($http, $scope, $location, $rootScop
 
 });
 
+app.controller('resetPasswordController', function ($http, $scope, $location, $rootScope, $routeParams) {
+
+    $scope.$on('$viewContentLoaded', function () {
+        siteMainFn();
+    });
+
+});
+
