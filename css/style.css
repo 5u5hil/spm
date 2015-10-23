@@ -978,9 +978,9 @@ body {
     background-image: url(../images/logo-dark.png);
     width: 70px;
     height: 43px;
-    background-size: contain;
+    /*background-size: contain;*/
     background-repeat: no-repeat;
-    background-position: center center;
+       background-position: left center;
     margin-top: 0px;
     /*  margin-bottom:30px; */
     float: left;
