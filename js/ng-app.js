@@ -224,9 +224,11 @@ app.controller('scrapbookDetailsController', function ($http, $scope, $rootScope
     });
 });
 
-app.controller('loginController', function ($http, $rootScope, $location, $scope) {
+app.controller('loginController', function ($http, $rootScope, $location, $scope, $routeParams) {
     jQuery(".selectStyle").hide();
     loaderHide();
+
+    $scope.rurl = $routeParams.rurl;
 
     $scope.login = function () {
         loaderShow();
@@ -523,15 +525,15 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
 
     $http.get(domain + "/my-style/" + $routeParams.url_key).success(function (data, status, headers, config) {
         $scope.products = data;
-        
+
         $scope.filters = data.filters;
         $scope.$digest;
         loaderHide();
     });
 
-    
-    
-     $scope.filtered = {};
+
+
+    $scope.filtered = {};
 
 
     $scope.load = function (url) {
@@ -725,7 +727,7 @@ app.controller('resetPasswordController', function ($http, $scope, $location, $r
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
-    
+
     $scope.resetPassword = function () {
         jQuery.ajax({
             type: "POST",
