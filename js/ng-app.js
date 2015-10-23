@@ -486,7 +486,7 @@ app.controller('createScrapbookController', function($http, $scope, $rootScope, 
 });
 
 app.controller('chatController', function($http, $scope, $rootScope, $controller) {
-
+console.log(window.localStorage.getItem('member'));
     loaderHide();
 
     $scope.$on('$viewContentLoaded', function() {
