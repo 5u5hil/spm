@@ -503,19 +503,23 @@ app.controller('questionnaireController', function($http, $scope, $rootScope, $c
         siteMainFn();
     });
 
-    $scope.submitAns = function() {
-
+    $scope.submitAns = function () {
         jQuery.ajax({
             type: "POST",
             url: domain + "/save-questionnaire?userId=" + window.localStorage.getItem('id'),
             data: jQuery("#questionnairefrm input").serialize(),
             cache: false,
-            success: function(data) {
-                //                console.log(data);
-
+            success: function (data) {
                 if (data == "saved") {
-                    window.localStorage.setItem('department', 1);
-                    window.open("http://sp.boxcommerce.in/personal-chat.php?name=" + window.localStorage.getItem("name") + "&email=" + window.localStorage.getItem("email") + "&dep=" + window.localStorage.getItem("department"), '_blank', 'EnableViewPortScale=yes,location=no,closebuttoncaption=Close');
+
+                    jQuery.get(domain + "/update-membership?userId=" + window.localStorage.getItem('id')).success(function (data, status, headers, config) {
+                        console.log(data[0]);
+                        window.localStorage.setItem('department', data[0]);
+                        window.localStorage.setItem('member', 1);
+                        window.location.href = "#/chat";
+                    });
+
+//                    window.open("http://sp.boxcommerce.in/personal-chat.php?name=" + window.localStorage.getItem("name") + "&email=" + window.localStorage.getItem("email") + "&dep=" + window.localStorage.getItem("department"), '_blank', 'EnableViewPortScale=yes,location=no,closebuttoncaption=Close');
                 }
             }
         });
