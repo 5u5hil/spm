@@ -17,6 +17,8 @@
     </author>
     
     <icon src="icon.png" />
+    <gap:splash src="splash.png" />
+    
     <preference name="phonegap-version" value="cli-5.2.0" />
     
     <gap:plugin name="org.apache.cordova.splashscreen" source="npm" />
