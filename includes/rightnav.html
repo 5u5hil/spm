@@ -6,13 +6,13 @@
     <a href="https://www.youtube.com/channel/UCinJuAEvFJu-AEMPKs8Te2A"  target="_system"><i class="fa fa-youtube"></i></a>                
 </div>
 <ul class="sidebar-navigation clearfix">
-    <li><a href='#{{ loggedIn == 1 ? "/profile" : "/login"}}'><i class="fa fa-user"></i>My Profile<i class="fa fa-caret-right"></i></a></li>
-    <li><a href='#{{ loggedIn == 1 ? "/chat" : "/login"}}'><i class="fa fa-comments-o"></i>Personal Stylist<i class="fa fa-caret-right"></i></a></li>
-    <li><a href='#{{ loggedIn == 1 ? "/wardrobe" : "/login"}}'><i class="fa fa-binoculars"></i>My Wardrobe<i class="fa fa-caret-right"></i></a></li>
-    <li><a href='#{{ loggedIn == 1 ? "/add-new-wardrobe" : "/login"}}'><i class="fa fa-plus-square"></i>Add to Wardrobe<i class="fa fa-caret-right"></i></a></li>
-    <li><a href='#{{ loggedIn == 1 ? "/my-scrapbook" : "/login"}}'><i class="fa fa-edit"></i>My Scrapbook<i class="fa fa-caret-right"></i></a></li>
-    <li><a href='#{{ loggedIn == 1 ? "/create-scrapbook" : "/login"}}'><i class="fa fa-plus-square"></i>Create Scrapbook<i class="fa fa-caret-right"></i></a></li>
-    <li><a href='#{{ loggedIn == 1 ? "/favorites" : "/login"}}'><i class="fa fa-heart"></i>My Favourite<i class="fa fa-caret-right"></i></a></li>
+    <li><a href='#{{ loggedIn == 1 ? "/profile" : "/login?rurl=profile"}}'><i class="fa fa-user"></i>My Profile<i class="fa fa-caret-right"></i></a></li>
+    <li><a href='#{{ loggedIn == 1 ? "/chat" : "/login?rurl=chat"}}'><i class="fa fa-comments-o"></i>Personal Stylist<i class="fa fa-caret-right"></i></a></li>
+    <li><a href='#{{ loggedIn == 1 ? "/wardrobe" : "/login?rurl=wardrobe"}}'><i class="fa fa-binoculars"></i>My Wardrobe<i class="fa fa-caret-right"></i></a></li>
+    <li><a href='#{{ loggedIn == 1 ? "/add-new-wardrobe" : "/login?rurl=add-new-wardrobe"}}'><i class="fa fa-plus-square"></i>Add to Wardrobe<i class="fa fa-caret-right"></i></a></li>
+    <li><a href='#{{ loggedIn == 1 ? "/my-scrapbook" : "/login?rurl=my-scrapbook"}}'><i class="fa fa-edit"></i>My Scrapbook<i class="fa fa-caret-right"></i></a></li>
+    <li><a href='#{{ loggedIn == 1 ? "/create-scrapbook" : "/login?rurl=create-scrapbook"}}'><i class="fa fa-plus-square"></i>Create Scrapbook<i class="fa fa-caret-right"></i></a></li>
+    <li><a href='#{{ loggedIn == 1 ? "/favorites" : "/login?rurl=favorites"}}'><i class="fa fa-heart"></i>My Favourite<i class="fa fa-caret-right"></i></a></li>
     <li ng-if="loggedIn == 1" class="has-submenu">
         <a class="deploy-submenu" ng-href=""><i class="fa fa-thumbs-up"></i>Your Styles<i class="fa fa-plus"></i></a>
         <ul class="submenu newStyle">
