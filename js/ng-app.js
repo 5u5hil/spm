@@ -725,6 +725,24 @@ app.controller('resetPasswordController', function ($http, $scope, $location, $r
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
+    
+    $scope.resetPassword = function () {
+        jQuery.ajax({
+            type: "POST",
+            url: domain + "/save-contact",
+            data: jQuery("#contactForm").serialize(),
+            cache: false,
+            success: function (data) {
+                console.log(data);
+
+                if (data == "sent") {
+                    alert("Thank you! Will contact you soon.");
+
+                    window.location.href = "#/";
+                }
+            }
+        });
+    };
 
 });
 
