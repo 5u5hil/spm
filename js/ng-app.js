@@ -723,4 +723,33 @@ app.controller('commonController', function ($http, $scope, $location, $rootScop
         siteMainFn();
     });
 
+<<<<<<< HEAD
+=======
+});
+
+app.controller('resetPasswordController', function ($http, $scope, $location, $rootScope, $routeParams) {
+
+    $scope.$on('$viewContentLoaded', function () {
+        siteMainFn();
+    });
+    
+    $scope.resetPassword = function () {
+        jQuery.ajax({
+            type: "POST",
+            url: domain + "/reset-password?link=" + $routeParams.link,
+            data: jQuery("#custResetPassword input").serialize(),
+            cache: false,
+            success: function (data) {
+                console.log(data);
+
+                if (data == "success") {
+                    alert("Password reset successfully!");
+
+                    window.location.href = "#/login";
+                }
+            }
+        });
+    };
+
+>>>>>>> origin/master
 });
