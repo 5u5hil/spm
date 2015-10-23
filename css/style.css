@@ -1703,4 +1703,10 @@ div.img-wrapper-product {
 .img-wrapper-product img {
     max-height: 100%;
 }
+.w100{
+    width: 100%;
+}
  
+.mb10{
+    margin-bottom: 10px;
+}
