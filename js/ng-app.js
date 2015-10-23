@@ -178,7 +178,9 @@ app.controller('scrapbookController', function ($http, $scope, $rootScope, $cont
                     if (data == 'success') {
                         window.location.href = "#/";
                     } else {
-                        alert('Please try again later');
+                        toast('Please try again later');
+                        
+                      
                     }
                 }
             });
@@ -242,7 +244,7 @@ app.controller('loginController', function ($http, $rootScope, $location, $scope
                 loaderHide();
                 if (data[0] == "invalid") {
                     $rootScope.loggedIn = 0;
-                    alert("Invalid login");
+                    toast("Invalid login");
                 } else {
                     $rootScope.loggedIn = 1;
                     window.localStorage.setItem('id', data.id);
@@ -398,7 +400,7 @@ app.controller('wardrobeListingController', function ($http, $scope, $rootScope,
                     if (data == 'success') {
                         window.location.href = "#/wardrobe";
                     } else {
-                        alert('Please try again later');
+                        toast('Please try again later');
                     }
 
                 }
@@ -606,7 +608,7 @@ app.controller('signupController', function ($http, $scope, $location, $rootScop
                 // console.log(data);
 
                 if (data == "register") {
-                    alert("Email is already registered.");
+                    toast("Email is already registered.");
                 } else {
                     window.location.href = "#/login";
                 }
@@ -654,7 +656,7 @@ app.controller('contactController', function ($http, $scope, $location, $rootSco
                 console.log(data);
 
                 if (data == "sent") {
-                    alert("Thank you! Will contact you soon.");
+                    toast("Thank you! We will get back to you shortly.");
 
                     window.location.href = "#/";
                 }
@@ -687,9 +689,9 @@ app.controller('userDashboardController', function ($http, $scope, $location, $r
             success: function (data) {
                 console.log(data);
                 if (data[0] == "success")
-                    alert("Profile updated!");
+                    toast("Profile updated successfully!");
                 else
-                    alert("Error:Please try again later!");
+                    toast("Looks like something went wrong ..Please try again later!");
 
                 window.location.href = "#/profile";
             }
@@ -722,30 +724,3 @@ app.controller('commonController', function ($http, $scope, $location, $rootScop
     });
 
 });
-
-app.controller('resetPasswordController', function ($http, $scope, $location, $rootScope, $routeParams) {
-
-    $scope.$on('$viewContentLoaded', function () {
-        siteMainFn();
-    });
-
-    $scope.resetPassword = function () {
-        jQuery.ajax({
-            type: "POST",
-            url: domain + "/save-contact",
-            data: jQuery("#contactForm").serialize(),
-            cache: false,
-            success: function (data) {
-                console.log(data);
-
-                if (data == "sent") {
-                    alert("Thank you! Will contact you soon.");
-
-                    window.location.href = "#/";
-                }
-            }
-        });
-    };
-
-});
-

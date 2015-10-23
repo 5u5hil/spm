@@ -36,7 +36,7 @@ function initPushwoosh() {
             },
             function (status) {
                 console.warn('failed to register : ' + JSON.stringify(status));
-                alert(JSON.stringify(['failed to register ', status]));
+                toast(JSON.stringify(['failed to register ', status]));
             }
     );
 
@@ -57,7 +57,6 @@ function  initPushwooshAndroid() {
             console.warn('user data: ' + JSON.stringify(userData));
         }
 
-        alert(title);
     });
 
     //initialize Pushwoosh with projectid: "GOOGLE_PROJECT_ID", pw_appid : "PUSHWOOSH_APP_ID". This will trigger all pending push notifications on start.
@@ -165,7 +164,7 @@ function fbLogin() {
     facebookConnectPlugin.login(["public_profile", "email"], fbLoginSuccess,
             function (error) {
 
-                alert("Error " + JSON.stringify(error))
+                toast("Error " + JSON.stringify(error))
 
             }
 
@@ -227,7 +226,7 @@ function fbSignUp() {
     facebookConnectPlugin.login(["public_profile", "email"], fbLoginSuccess,
             function (error) {
 
-                alert("Error " + JSON.stringify(error))
+                toast("Error " + JSON.stringify(error))
 
             }
 
@@ -245,8 +244,24 @@ function shareViaWhatsapp() {
     window.plugins.socialsharing.shareViaWhatsApp('Checkout Style Panache ... Your Personal Style Guide!', null /* img */, url /* url */, function () {
         console.log('share ok')
     }, function (errormsg) {
-        alert(errormsg)
+        toast(errormsg)
     });
+
+}
+
+function toast(msg) {
+
+    try {
+        window.plugins.toast.show(msg, 'short', 'center', function (a) {
+            console.log('toast success: ' + a)
+        }, function (b) {
+            alert('toast error: ' + b)
+        })
+
+    }
+    catch (err) {
+        alert(msg);
+    }
 
 }
 
@@ -270,7 +285,7 @@ $(document).ready(function () {
         var cart = $.parseJSON(window.localStorage.getItem("cart"));
         cart.push(p);
         window.localStorage.setItem("cart", JSON.stringify(cart));
-        alert("Product Added to Cart");
+        toast("Product Added to Cart");
     };
 
     $rootScope.addToList = function (event, id) {
@@ -325,3 +340,6 @@ $(document).ready(function () {
     });
 
 });
+
+
+
