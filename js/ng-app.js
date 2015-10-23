@@ -179,8 +179,8 @@ app.controller('scrapbookController', function ($http, $scope, $rootScope, $cont
                         window.location.href = "#/";
                     } else {
                         toast('Please try again later');
-                        
-                      
+
+
                     }
                 }
             });
@@ -228,7 +228,7 @@ app.controller('scrapbookDetailsController', function ($http, $scope, $rootScope
 
 app.controller('loginController', function ($http, $rootScope, $location, $scope, $routeParams) {
     jQuery(".selectStyle").hide();
-    
+
     loaderHide();
 
     $scope.rurl = $routeParams.rurl;
@@ -631,6 +631,25 @@ app.controller('cartController', function ($http, $scope, $location, $rootScope,
     jQuery.each(jQuery.parseJSON(window.localStorage.getItem("cart")), function (k, v) {
         $scope.cart.Total += parseInt(v.spl_price > 0 && v.spl_price < v.price ? v.spl_price : v.price);
     });
+
+    $scope.delete = function (e, p) {
+
+        var cart = jQuery.parseJSON(window.localStorage.getItem("cart"));
+
+        cart = jQuery.grep(cart, function (n, i) {
+            return (n.id != p)
+        });
+
+
+        window.localStorage.setItem("cart", JSON.stringify(cart));
+
+        $scope.cart = cart;
+        $scope.cart.Total = 0;
+        jQuery.each(jQuery.parseJSON(window.localStorage.getItem("cart")), function (k, v) {
+            $scope.cart.Total += parseInt(v.spl_price > 0 && v.spl_price < v.price ? v.spl_price : v.price);
+        });
+
+    }
 
     loaderHide();
     $scope.$on('$viewContentLoaded', function () {

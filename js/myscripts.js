@@ -45,7 +45,7 @@ function initPushwoosh() {
 
 }
 
-function  initPushwooshAndroid() {
+function initPushwooshAndroid() {
     var pushNotification = cordova.require("com.pushwoosh.plugins.pushwoosh.PushNotification");
 
     //set push notifications handler
@@ -283,7 +283,13 @@ $(document).ready(function () {
         var $ = jQuery;
         e.preventDefault();
         var cart = $.parseJSON(window.localStorage.getItem("cart"));
-        cart.push(p);
+
+        c = jQuery.grep(cart, function (n, i) {
+            return (n.id == p.id)
+        });
+        if (c.length <= 0) {
+            cart.push(p);
+        }
         window.localStorage.setItem("cart", JSON.stringify(cart));
         toast("Product Added to Cart");
     };
