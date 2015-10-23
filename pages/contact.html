@@ -6,7 +6,7 @@
         <div class="decoration"></div>
         <div class="one-half-responsive">
             <h4>Send us an email!</h4>
-            <p>Use the form to send us a message, it's AJAX and PHP powered and it's easy to use!</p>
+            <p>Help us to get in touch with you </p>
             <div class="container no-bottom">
                 <div class="contact-form no-bottom"> 
                     <div class="formSuccessMessageWrap" id="formSuccessMessageWrap">
@@ -19,36 +19,17 @@
 
                     <form ng-cloak method="post" class="contactForm" id="contactForm" name="contactForm" novalidate ng-submit="submitContact()">
                         <fieldset>
-<!--                            <div class="formValidationError" id="contactNameFieldError">
-                                <div class="static-notification-red tap-dismiss-notification">
-                                    <p class="center-text uppercase">Name is required!</p>
-                                </div>
-                            </div>             
-                            <div class="formValidationError" id="contactEmailFieldError">
-                                <div class="static-notification-red tap-dismiss-notification">
-                                    <p class="center-text uppercase">Mail address required!</p>
-                                </div>
-                            </div> 
-                            <div class="formValidationError" id="contactEmailFieldError2">
-                                <div class="static-notification-red tap-dismiss-notification">
-                                    <p class="center-text uppercase">Mail address must be valid!</p>
-                                </div>
-                            </div> 
-                            <div class="formValidationError" id="contactMessageTextareaError">
-                                <div class="static-notification-red tap-dismiss-notification">
-                                    <p class="center-text uppercase">Message field is empty!</p>
-                                </div>
-                            </div>   -->
+
                             <div class="formFieldWrap">
                                 <label class="field-title contactNameField" for="contactNameField">Name:<span>(required)</span></label>
-                                <input type="text" name="contactNameField" ng-model="contactNameField" value="" class="contactField requiredField" id="contactNameField" required/>
+                                <input type="text" name="contactNameField" placeholder="Required" ng-model="contactNameField" value="" class="contactField requiredField" id="contactNameField" required/>
                                 <span style="color:red" ng-show="contactForm.contactNameField.$dirty && contactForm.contactNameField.$invalid">
                                     <span ng-show="contactForm.contactNameField.$error.required">First name is required.</span>
                                 </span>   
                             </div>
                             <div class="formFieldWrap">
                                 <label class="field-title contactEmailField" for="contactEmailField">Email: <span>(required)</span></label>
-                                <input type="email" name="contactEmailField" value="" ng-model="contactEmailField" class="contactField requiredField requiredEmailField" id="contactEmailField" required/>
+                                <input type="email" name="contactEmailField" placeholder="Required" value="" ng-model="contactEmailField" class="contactField requiredField requiredEmailField" id="contactEmailField" required/>
                                 <span style="color:red" ng-show="contactForm.contactEmailField.$dirty && contactForm.contactEmailField.$invalid">
                                     <span ng-show="contactForm.contactEmailField.$error.required">Email is required.</span>
                                     <span ng-show="contactForm.contactEmailField.$error.email">Invalid email address.</span>
@@ -56,7 +37,7 @@
                             </div>
                             <div class="formTextareaWrap">
                                 <label class="field-title contactMessageTextarea" for="contactMessageTextarea">Message: <span>(required)</span></label>
-                                <textarea name="contactMessageTextarea" ng-model="contactMessageTextarea" class="contactTextarea requiredField" required></textarea>
+                                <textarea name="contactMessageTextarea" placeholder="Required" ng-model="contactMessageTextarea" class="contactTextarea requiredField" required></textarea>
                                 <span style="color:red" ng-show="contactForm.contactMessageTextarea.$dirty && contactForm.contactMessageTextarea.$invalid">
                                     <span ng-show="contactForm.contactMessageTextarea.$error.required">Message field is empty.</span>
                                 </span> 
@@ -73,18 +54,18 @@
         <div class="decoration hide-if-responsive"></div>
         <div class="one-half-responsive last-column">
             <div class="container no-bottom">
-                <h4>Contact Information</h4>
+            <!--     <h4>Contact Information</h4>
                 <p>
                     <strong>Postal Information</strong><br>
                     PO Box 16122 Collins Street West<br>
                     Victoria 8007 Australia
-                </p>
+                </p> -->
 
                 <p>
                     <strong>Contact Information:</strong><br>
-                    <a href="#" class="contact-call"><i class="fa fa-phone"></i>Phone: + 123 456 7890</a>
-                    <a href="#" class="contact-text"><i class="fa fa-comments"></i>Message: + 123 456 7890</a>
-                    <a href="#" class="contact-mail"><i class="fa fa-envelope"></i>Email: mail@doamin.com</a>
+                    <a href="#" class="contact-call"><i class="fa fa-phone"></i>Phone: +91 9967532222</a>
+                 
+                    <a href="#" class="contact-mail"><i class="fa fa-envelope"></i>Email: rachit@stylepanache.in</a>
 
                 </p>
             </div>            
