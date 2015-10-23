@@ -400,7 +400,7 @@ app.controller('wardrobeListingController', function ($http, $scope, $rootScope,
                     if (data == 'success') {
                         window.location.href = "#/wardrobe";
                     } else {
-                        toast('Please try again later');
+                        toast('Looks like something went wrong... Please try again later');
                     }
 
                 }
@@ -691,7 +691,7 @@ app.controller('userDashboardController', function ($http, $scope, $location, $r
                 if (data[0] == "success")
                     toast("Profile updated successfully!");
                 else
-                    toast("Looks like something went wrong ..Please try again later!");
+                    toast("Looks like something went wrong... Please try again later!");
 
                 window.location.href = "#/profile";
             }
@@ -722,34 +722,4 @@ app.controller('commonController', function ($http, $scope, $location, $rootScop
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
-
-<<<<<<< HEAD
-=======
-});
-
-app.controller('resetPasswordController', function ($http, $scope, $location, $rootScope, $routeParams) {
-
-    $scope.$on('$viewContentLoaded', function () {
-        siteMainFn();
-    });
-    
-    $scope.resetPassword = function () {
-        jQuery.ajax({
-            type: "POST",
-            url: domain + "/reset-password?link=" + $routeParams.link,
-            data: jQuery("#custResetPassword input").serialize(),
-            cache: false,
-            success: function (data) {
-                console.log(data);
-
-                if (data == "success") {
-                    alert("Password reset successfully!");
-
-                    window.location.href = "#/login";
-                }
-            }
-        });
-    };
-
->>>>>>> origin/master
 });
