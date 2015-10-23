@@ -75,84 +75,6 @@ function  initPushwooshAndroid() {
     );
 }
 
-
-
-$(document).ready(function () {
-
-    if (window.localStorage.getItem('cart') === null) {
-        window.localStorage.setItem('cart', JSON.stringify([]));
-    }
-
-    var elem = angular.element(document.querySelector('[ng-app]'));
-    var injector = elem.injector();
-    var $rootScope = injector.get('$rootScope');
-
-    $rootScope.share = function (e, p) {
-        window.plugins.socialsharing.share(p.product, 'Hey! Checkout this cool Product from Style Panache', (p.large_image != '' ? p.large_image : (p.medium_image != '' ? p.medium_image : p.small_image)), 'http://stylepanache.clu.pw/#/' + p.url_key);
-    };
-
-    $rootScope.addToCart = function (e, p) {
-        var $ = jQuery;
-        e.preventDefault();
-        var cart = $.parseJSON(window.localStorage.getItem("cart"));
-        cart.push(p);
-        window.localStorage.setItem("cart", JSON.stringify(cart));
-        alert("Product Added to Cart");
-    };
-
-    $rootScope.addToList = function (event, id) {
-        if (window.localStorage.getItem('id') != null) {
-            jQuery.get(domain + "/add-to-savedlist?productID=" + id + "&userId=" + window.localStorage.getItem('id')).success(function (response) {
-                console.log(response);
-                if (response == 1) {
-                    angular.element(event.target).addClass("puffIn liked");
-
-                } else {
-                    angular.element(event.target).removeClass("puffIn liked");
-                }
-            });
-
-        } else {
-            window.location.href = '#/login';
-        }
-    };
-
-    $rootScope.addToSList = function (event, id) {
-        if (window.localStorage.getItem('id') != null) {
-            jQuery.get(domain + "/scrapbook-like?productID=" + id + "&userId=" + window.localStorage.getItem('id')).success(function (response) {
-                console.log(response);
-                if (response == 1) {
-                    angular.element(event.target).addClass("liked");
-
-                } else {
-                    angular.element(event.target).removeClass("liked");
-                }
-            });
-
-        } else {
-            window.location.href = '#/login';
-        }
-    };
-
-    if (window.localStorage.getItem('id') != null) {
-
-        $rootScope.$apply(function () {
-            $rootScope.loggedIn = 1;
-        });
-    } else {
-        $rootScope.$apply(function () {
-            $rootScope.loggedIn = 0;
-        });
-    }
-
-
-    $('body').on('click', '.remove-rag', function (event) {
-        event.preventDefault();
-        jQuery(this).parent().remove();
-    });
-
-});
-
 function loaderShow() {
     jQuery("#preloader,#status").show();
 
@@ -161,7 +83,6 @@ function loaderShow() {
 function loaderHide() {
     jQuery("#preloader,#status").hide();
 }
-
 
 function checkPLogin() {
     window.localStorage.setItem('member', 0);
@@ -186,9 +107,6 @@ function checkLogin() {
         jQuery("a:contains('Login')").click();
     }
 }
-
-
-
 
 function fbLogin() {
 
@@ -317,3 +235,93 @@ function fbSignUp() {
 
 }
 
+function shareViaWhatsapp() {
+
+    if (device.platform == "iOS") {
+        url = "https://itunes.apple.com/in/app/whatsapp-messenger/id310633997?mt=8";
+    } else {
+        url = "https://play.google.com/store/apps/details?id=com.style.panache&hl=en";
+    }
+    window.plugins.socialsharing.shareViaWhatsApp('Checkout Style Panache ... Your Personal Style Guide!', null /* img */, url /* url */, function () {
+        console.log('share ok')
+    }, function (errormsg) {
+        alert(errormsg)
+    });
+
+}
+
+$(document).ready(function () {
+
+    if (window.localStorage.getItem('cart') === null) {
+        window.localStorage.setItem('cart', JSON.stringify([]));
+    }
+
+    var elem = angular.element(document.querySelector('[ng-app]'));
+    var injector = elem.injector();
+    var $rootScope = injector.get('$rootScope');
+
+    $rootScope.share = function (e, p) {
+        window.plugins.socialsharing.share(p.product, 'Hey! Checkout this cool Product from Style Panache', (p.large_image != '' ? p.large_image : (p.medium_image != '' ? p.medium_image : p.small_image)), 'http://stylepanache.clu.pw/#/' + p.url_key);
+    };
+
+    $rootScope.addToCart = function (e, p) {
+        var $ = jQuery;
+        e.preventDefault();
+        var cart = $.parseJSON(window.localStorage.getItem("cart"));
+        cart.push(p);
+        window.localStorage.setItem("cart", JSON.stringify(cart));
+        alert("Product Added to Cart");
+    };
+
+    $rootScope.addToList = function (event, id) {
+        if (window.localStorage.getItem('id') != null) {
+            jQuery.get(domain + "/add-to-savedlist?productID=" + id + "&userId=" + window.localStorage.getItem('id')).success(function (response) {
+                console.log(response);
+                if (response == 1) {
+                    angular.element(event.target).addClass("puffIn liked");
+
+                } else {
+                    angular.element(event.target).removeClass("puffIn liked");
+                }
+            });
+
+        } else {
+            window.location.href = '#/login';
+        }
+    };
+
+    $rootScope.addToSList = function (event, id) {
+        if (window.localStorage.getItem('id') != null) {
+            jQuery.get(domain + "/scrapbook-like?productID=" + id + "&userId=" + window.localStorage.getItem('id')).success(function (response) {
+                console.log(response);
+                if (response == 1) {
+                    angular.element(event.target).addClass("liked");
+
+                } else {
+                    angular.element(event.target).removeClass("liked");
+                }
+            });
+
+        } else {
+            window.location.href = '#/login';
+        }
+    };
+
+    if (window.localStorage.getItem('id') != null) {
+
+        $rootScope.$apply(function () {
+            $rootScope.loggedIn = 1;
+        });
+    } else {
+        $rootScope.$apply(function () {
+            $rootScope.loggedIn = 0;
+        });
+    }
+
+
+    $('body').on('click', '.remove-rag', function (event) {
+        event.preventDefault();
+        jQuery(this).parent().remove();
+    });
+
+});
