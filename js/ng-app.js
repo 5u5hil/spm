@@ -226,6 +226,7 @@ app.controller('scrapbookDetailsController', function ($http, $scope, $rootScope
 
 app.controller('loginController', function ($http, $rootScope, $location, $scope, $routeParams) {
     jQuery(".selectStyle").hide();
+    
     loaderHide();
 
     $scope.rurl = $routeParams.rurl;
