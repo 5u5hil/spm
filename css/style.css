@@ -913,15 +913,15 @@ body {
 /*Fullscreen Slider Image*/
 
 .slider-image-1 {
-    background-image: url(../images/pictures/3.jpg);
-}
-
-.slider-image-2 {
     background-image: url(../images/pictures/1.jpg);
 }
 
+.slider-image-2 {
+    background-image: url(../images/pictures/2.jpg);
+}
+
 .slider-image-3 {
-    background-image: url(../images/pictures/5.jpg);
+    background-image: url(../images/pictures/3.jpg);
 }
 
 

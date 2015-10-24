@@ -9,8 +9,10 @@ app.config(['$routeProvider', '$locationProvider',
     function ($routeProvider, $locationProvider) {
         $routeProvider.
                 when('/', {
-                    templateUrl: 'pages/home.html',
-                    controller: 'homeController'
+                    templateUrl: 'pages/user-onboarding.html',
+                    controller: 'commonController'
+                    // templateUrl: 'pages/home.html',
+                    // controller: 'homeController'
                 }).
                 when('/cart', {
                     templateUrl: 'pages/cart.html',
@@ -98,6 +100,10 @@ app.config(['$routeProvider', '$locationProvider',
                 }).
                 when('/define-style', {
                     templateUrl: 'pages/define-style.html',
+                    controller: 'commonController'
+                }).
+                when('/onboarding', {
+                    templateUrl: 'pages/user-onboarding.html',
                     controller: 'commonController'
                 }).
                 otherwise({
