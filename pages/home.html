@@ -52,9 +52,11 @@
     <div class="content">
         <div class="portfolio-adaptive adaptive-two listing">
             <div class="adaptive-item" ng-repeat="product in new">
+            <div class="img-wrapper-product">
                 <a href="#/product/{{product.url_key}}"  title="{{product.product}}">
                     <img class="responsive-image" ng-src="{{product.small_image != '' ? product.small_image : (product.medium_image != '' ? product.medium_image : product.large_image) }}" alt="img">
                 </a>
+                </div>
                 <h4 class="pname">
                     <a href="#/product/{{product.url_key}}" class="lname">{{product.product}}</a> 
                     <a href="" class="lwishlit"><i class="fa fa-heart {{product.wishlist == 1? 'liked':''}}" ng-click="addToList($event, product.id)"></i></a></h4>
