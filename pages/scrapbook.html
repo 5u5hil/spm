@@ -3,6 +3,15 @@
     <div class="content">
         <div class="adaptive-style">
             <h4 style="font-size:17px;">Scrapbook</h4>
+           <div class="pull-right">
+           <select>
+
+   <option selected="select" class="inputfield ng-dirty ng-valid-parse ng-valid ng-valid-required ng-touched ">Sort By 
+</option>
+   <option>Most Popular</option>
+   <option>Most Recent</option>
+
+  </select></div>
         </div>
         <div class="clear"></div>
         <div class="decoration"></div>
@@ -11,20 +20,22 @@
                 <p>Oops, No Scrapbook found!</p>
                 <a ng-href="#/create-scrapbook" class="create-scrap-link" title="">
                     Create New Scrapbook </a><br>
-            </div>
+            </div>`
             <div class="adaptive-item" ng-repeat="sp in products">
 
                 <a ng-href="#/scrapbook/{{sp.url_key}}" title="{{sp.product}}">
                     <img class="responsive-image" ng-src="{{imgPath + sp.small_image}}" alt="img">
                 </a>
                 <h4 class="pname"><a ng-href="#/scrapbook/{{sp.url_key}}"  class="lname">{{sp.product}}</a></h4>
-                <span><i class="fa fa-heart {{sp.liked == 1? 'liked':''}}" ng-click="addToSList($event, sp.id)"></i></span>
-                <div class="meta meta--preview"><span>Total Likes: {{sp.scrapbooklikes.length}}</span></div>
+                <span class="red-hover"><i class=" fa fa-thumbs-up {{sp.liked == 1? 'liked':''}}" ng-click="addToSList($event, sp.id)"></i> <span class="count">{{sp.scrapbooklikes.length}}</span></span>
+                <div class="pull-right"><span class="product-count">{{sp.comboproducts.length}} Product(s)</span></div>
+
+                <!-- <div class="meta meta--preview"><span>Total Likes: </span></div> -->
                 <p class="sdetail">
-                    <a ng-href="#/scrapbook/{{sp.url_key}}" class="">
-                        <span class="save">  Total Products: {{sp.comboproducts.length}}</span>
-                    </a>
-                    <br/> {{sp.added_by.first_name}}
+                    <!-- <a ng-href="#/scrapbook/{{sp.url_key}}" class="">
+                         <span class="save">  Total Products: </span>
+                     </a> --> 
+                    <br/>By {{sp.added_by.first_name}}
                 </p>
                 <div class="product-remove">
                     <a href="" ng-if="userId == sp.added_by.id;" ng-click="removeScrapbook(sp.url_key)" class="remove remove_from_wishlist" title="Remove this product">×</a>
