@@ -166,6 +166,8 @@ app.controller('productController', function($http, $rootScope, $scope, $locatio
 app.controller('scrapbookController', function($http, $scope, $rootScope, $controller) {
 
     loaderShow();
+    
+    $scope.userId = window.localStorage.getItem('id');
 
     $http.get(domain + "/get-scrapbook-products").success(function(data, status, headers, config) {
         $scope.products = data;
