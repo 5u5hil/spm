@@ -598,8 +598,8 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
     };
 
     $scope.applyFilters = function () {
-        $scope.minp = jQuery("#min_price");
-        $scope.maxp = jQuery("#max_price");
+        $scope.minp = jQuery("#min_price").val();
+        $scope.maxp = jQuery("#max_price").val();
         
         console.log("n:"+$scope.minp+" x:"+$scope.maxp);
         
