@@ -74,6 +74,8 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
 
     loaderShow();
     $scope.filtered = {};
+    $scope.minp = 0;
+    $scope.maxp = 0;
 
 
 
@@ -88,7 +90,9 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
         loaderShow();
         $http.get(url, {
             params: {
-                'filters': $scope.filtered
+                'filters': $scope.filtered,
+                'minp': $scope.minp,
+                'maxp': $scope.maxp
             }
         }).success(function (data, status, headers, config) {
             $scope.products = data;
@@ -117,9 +121,14 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
     };
 
     $scope.applyFilters = function () {
+        $scope.minp = jQuery("#min_price").val();
+        $scope.maxp = jQuery("#max_price").val();
+
         $http.get(domain + "/get-filtered-products", {
             params: {
-                'filters': $scope.filtered
+                'filters': $scope.filtered,
+                'minp': $scope.minp,
+                'maxp': $scope.maxp
             }
         }).success(function (response) {
             $scope.products = response;
@@ -543,7 +552,7 @@ app.controller('logoutController', function ($http, $rootScope, $location, $scop
 });
 
 app.controller('myStyleController', function ($http, $scope, $location, $rootScope, $routeParams) {
-    console.log('ms');
+
     loaderShow();
 
     $http.get(domain + "/my-style/" + $routeParams.url_key).success(function (data, status, headers, config) {
@@ -559,7 +568,7 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
     $scope.filtered = {};
     $scope.minp = 0;
     $scope.maxp = 0;
-    
+
 
     $scope.load = function (url) {
         loaderShow();
@@ -594,16 +603,14 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
         }
     };
 
-    $scope.priceFilter = function() {
-        
+    $scope.priceFilter = function () {
+
     };
 
     $scope.applyFilters = function () {
         $scope.minp = jQuery("#min_price").val();
         $scope.maxp = jQuery("#max_price").val();
-        
-        console.log("n:"+$scope.minp+" x:"+$scope.maxp);
-        
+
         $http.get(domain + "/my-style/" + $routeParams.url_key, {
             params: {
                 'filters': $scope.filtered,
