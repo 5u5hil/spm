@@ -124,8 +124,6 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
         $scope.minp = jQuery("#min_price").val();
         $scope.maxp = jQuery("#max_price").val();
         
-        console.log($scope.minp + ", " + $scope.maxp);
-
         $http.get(domain + "/get-filtered-products", {
             params: {
                 'filters': $scope.filtered,
@@ -133,6 +131,7 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
                 'maxp': $scope.maxp
             }
         }).success(function (response) {
+            console.log(response);
             $scope.products = response;
             $scope.$digest;
             jQuery(".big-notification.yellow-notification").toggle("slideDown");
