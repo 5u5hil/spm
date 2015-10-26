@@ -548,7 +548,7 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
 
     $http.get(domain + "/my-style/" + $routeParams.url_key).success(function (data, status, headers, config) {
         $scope.products = data;
-
+console.log(data);
         $scope.filters = data.filters;
         $scope.$digest;
         loaderHide();
