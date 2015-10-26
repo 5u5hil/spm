@@ -594,13 +594,15 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
     $scope.maxp = 0;
     
     $scope.priceFilter = function() {
+        
+    };
+
+    $scope.applyFilters = function () {
         $scope.minp = jQuery("#min_price");
         $scope.maxp = jQuery("#max_price");
         
         console.log("n:"+$scope.minp+" x:"+$scope.maxp);
-    };
-
-    $scope.applyFilters = function () {
+        
         $http.get(domain + "/my-style/" + $routeParams.url_key, {
             params: {
                 'filters': $scope.filtered,

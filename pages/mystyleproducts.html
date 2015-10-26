@@ -10,13 +10,14 @@
         </div>
         <div class="clear"></div>
         <div class="big-notification yellow-notification filter-wrap" style="display:none;">
+            <form name="pricefrm" id="pricefrm" ng-click="applyFilters()">
             <div id="filters" class='questionnaire'>
                 <div class="filters">
                     <h3 class="widget-title">Filter by price</h3>
-                    <form name="pricefrm" id="pricefrm" ng-submit="priceFilter()">
+                    
                     <input type="number" id="min_price" name="min_price" min="0" placeholder="Min price" class="min-price-filter">
                     <input type="number" id="max_price" name="max_price" placeholder="Max price" class="max-price-filter">
-                    </form>
+                    
                 </div>
                 <div class="filters" on-finish-render="ngRepeatFinished" ng-repeat="filter in filters">
                     <h3 class="widget-title" ng-click="showOptions('filter{{$index}}')">{{ filter.category}} <i class="fa fa-caret-right pull-right"></i></h3>
@@ -32,9 +33,10 @@
 
                 </div>
                 <div class="apply-filter filters">
-                    <button ng-click="applyFilters()" class="button">Apply Filter</button>
+                    <button class="button">Apply Filter</button>
                 </div>
             </div>
+            </form>
         </div>
 
         <div class="decoration"></div>
