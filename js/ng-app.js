@@ -543,7 +543,7 @@ app.controller('logoutController', function ($http, $rootScope, $location, $scop
 });
 
 app.controller('myStyleController', function ($http, $scope, $location, $rootScope, $routeParams) {
-
+console.log('ms');
     loaderShow();
 
     $http.get(domain + "/my-style/" + $routeParams.url_key).success(function (data, status, headers, config) {
