@@ -557,13 +557,17 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
 
 
     $scope.filtered = {};
-
+    $scope.minp = 0;
+    $scope.maxp = 0;
+    
 
     $scope.load = function (url) {
         loaderShow();
         $http.get(url, {
             params: {
-                'filters': $scope.filtered
+                'filters': $scope.filtered,
+                'minp': $scope.minp,
+                'maxp': $scope.maxp
             }
         }).success(function (data, status, headers, config) {
             $scope.products = data;
@@ -590,9 +594,6 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
         }
     };
 
-    $scope.minp = 0;
-    $scope.maxp = 0;
-    
     $scope.priceFilter = function() {
         
     };
