@@ -124,6 +124,8 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
         $scope.minp = jQuery("#min_price").val();
         $scope.maxp = jQuery("#max_price").val();
         
+        console.log(jQuery("#min_price").val());
+        
         $http.get(domain + "/get-filtered-products", {
             params: {
                 'filters': $scope.filtered,
