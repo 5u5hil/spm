@@ -543,12 +543,12 @@ app.controller('logoutController', function ($http, $rootScope, $location, $scop
 });
 
 app.controller('myStyleController', function ($http, $scope, $location, $rootScope, $routeParams) {
-console.log('ms');
+    console.log('ms');
     loaderShow();
 
     $http.get(domain + "/my-style/" + $routeParams.url_key).success(function (data, status, headers, config) {
         $scope.products = data;
-console.log(data);
+        console.log(data);
         $scope.filters = data.filters;
         $scope.$digest;
         loaderHide();
@@ -590,10 +590,22 @@ console.log(data);
         }
     };
 
+    $scope.minp = 0;
+    $scope.maxp = 0;
+    
+    $scope.priceFilter = function() {
+        $scope.minp = jQuery("#min_price");
+        $scope.maxp = jQuery("#max_price");
+        
+        console.log("n:"+$scope.minp+" x:"+$scope.maxp);
+    };
+
     $scope.applyFilters = function () {
         $http.get(domain + "/my-style/" + $routeParams.url_key, {
             params: {
-                'filters': $scope.filtered
+                'filters': $scope.filtered,
+                'minp': $scope.minp,
+                'maxp': $scope.maxp
             }
         }).success(function (response) {
             $scope.products = response;
