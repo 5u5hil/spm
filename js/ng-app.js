@@ -182,7 +182,7 @@ app.controller('scrapbookController', function ($http, $scope, $rootScope, $cont
     });
     
     $scope.sortBy = function() {
-        console.log($scope.item);
+        console.log($scope.myOpt);
     };
 
     $scope.removeScrapbook = function (slug) {
