@@ -71,7 +71,7 @@ app.controller('homeController', function ($http, $scope, $rootScope, $controlle
 });
 
 app.controller('categoryController', function ($http, $scope, $location, $rootScope, $routeParams) {
-
+console.log('cc');
     loaderShow();
     $scope.filtered = {};
     $scope.minp = 0;
@@ -123,7 +123,7 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
     $scope.applyFilters = function () {
         $scope.minp = jQuery("#min_price").val();
         $scope.maxp = jQuery("#max_price").val();
-        
+        console.log('af');
         console.log(jQuery("#min_price").val());
         
         $http.get(domain + "/get-filtered-products", {
