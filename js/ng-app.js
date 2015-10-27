@@ -182,9 +182,9 @@ app.controller('scrapbookController', function ($http, $scope, $rootScope, $cont
     });
 
     $scope.changeState = "Most Popular";
-    $scope.sbSortBy = function (myOp) {
+    $scope.sbSortBy = function () {
 
-        console.log("hi " + myOp);
+        console.log("hi");
     };
 
     $scope.change = function (url) {
