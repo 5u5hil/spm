@@ -181,7 +181,9 @@ app.controller('scrapbookController', function ($http, $scope, $rootScope, $cont
         loaderHide();
     });
     
+    $scope.myOpt = "0";
     $scope.sortBy = function() {
+        
         console.log($scope.myOpt);
     };
 
