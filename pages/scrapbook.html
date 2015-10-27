@@ -3,15 +3,15 @@
     <div class="content">
         <div class="adaptive-style">
             <h4 style="font-size:17px;">Scrapbook</h4>
-           <div class="pull-right">
-           <select>
-
-   <option selected="select" class="inputfield ng-dirty ng-valid-parse ng-valid ng-valid-required ng-touched ">Sort By 
-</option>
-   <option>Most Popular</option>
-   <option>Most Recent</option>
-
-  </select></div>
+            <div class="pull-right">
+                <form name="sortbyfrm" id="sortbyfrm">
+                    <select ng-model="item" ng-change="sortBy()">
+                        <option selected class="inputfield ng-dirty ng-valid-parse ng-valid ng-valid-required ng-touched ">Sort By</option>
+                        <option value="Most Popular">Most Popular</option>
+                        <option value="Most Recent">Most Recent</option>
+                    </select>
+                </form>
+            </div>
         </div>
         <div class="clear"></div>
         <div class="decoration"></div>

@@ -180,6 +180,10 @@ app.controller('scrapbookController', function ($http, $scope, $rootScope, $cont
         $scope.imgPath = domain + "/public/frontend/uploads/scrapbooks/";
         loaderHide();
     });
+    
+    $scope.sortBy = function() {
+        console.log($scope.item);
+    };
 
     $scope.removeScrapbook = function (slug) {
         var r = confirm("Do you want to delete this item!");
