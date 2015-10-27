@@ -185,14 +185,13 @@ app.controller('scrapbookController', function ($http, $scope, $rootScope, $cont
 
     $scope.selectedItemChanged = function () {
         console.log('You selected ' + $scope.selectedItem);
-    }
 
-    $scope.sbSortBy = function () {
-        $scope.calculatedValue = 'You selected number ' + $scope.selectedItem;
-    };
-
-    $scope.change = function (url) {
-        console.log(url);
+        $http.get(domain + "/sb-mp").success(function (data, status, headers, config) {
+            $scope.products = data;
+            console.log(data);
+            $scope.$digest;
+            loaderHide();
+        });
     }
 
     $scope.removeScrapbook = function (slug) {
