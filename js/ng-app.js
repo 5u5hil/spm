@@ -71,13 +71,10 @@ app.controller('homeController', function ($http, $scope, $rootScope, $controlle
 });
 
 app.controller('categoryController', function ($http, $scope, $location, $rootScope, $routeParams) {
-console.log('cc');
     loaderShow();
     $scope.filtered = {};
     $scope.minp = 0;
     $scope.maxp = 0;
-
-
 
     $http.get(domain + "/get-category-products/" + $routeParams.url_key + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
         $scope.products = data;
@@ -102,7 +99,6 @@ console.log('cc');
         $anchorScroll();
     };
 
-
     $scope.filterProds = function (option, parent) {
         if (option) {
             if (!(parent in $scope.filtered))
@@ -123,7 +119,7 @@ console.log('cc');
     $scope.applyFilters = function () {
         $scope.minp = jQuery("#min_price").val();
         $scope.maxp = jQuery("#max_price").val();
-        console.log('af');
+
         console.log(jQuery("#min_price").val());
         
         $http.get(domain + "/get-filtered-products", {
