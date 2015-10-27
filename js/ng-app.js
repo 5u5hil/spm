@@ -186,13 +186,15 @@ app.controller('scrapbookController', function ($http, $scope, $rootScope, $cont
     $scope.selectedItemChanged = function () {
         console.log('You selected ' + $scope.selectedItem);
 
-        $http.get(domain + "/sb-mp").success(function (data, status, headers, config) {
-            $scope.products = data;
-            console.log(data);
-            $scope.$digest;
-            loaderHide();
-        });
-    }
+        if ($scope.selectedItem == 'Most Popular') {
+            $http.get(domain + "/sb-mp").success(function (data, status, headers, config) {
+                $scope.products = data;
+                console.log(data);
+                $scope.$digest;
+                loaderHide();
+            });
+        }
+    };
 
     $scope.removeScrapbook = function (slug) {
         var r = confirm("Do you want to delete this item!");
