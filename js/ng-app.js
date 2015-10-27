@@ -181,15 +181,14 @@ app.controller('scrapbookController', function ($http, $scope, $rootScope, $cont
         loaderHide();
     });
 
-    $scope.changeState = "Most Popular";
+    $scope.change = function (url) {
+        window.open('url');
+    }
+
     $scope.sbSortBy = function () {
 
         console.log("hi");
     };
-
-    $scope.change = function (url) {
-        console.log(url);
-    }
 
     $scope.removeScrapbook = function (slug) {
         var r = confirm("Do you want to delete this item!");

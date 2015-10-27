@@ -5,12 +5,21 @@
             <h4 style="font-size:17px;">Scrapbook</h4>
             <div class="pull-right">
                 <!--<form name="sortbyfrm" id="sortbyfrm">-->
-                <select ng-model="myOpt" ng-change="sbSortBy()">
-                    <option selected class="inputfield ng-dirty ng-valid-parse ng-valid ng-valid-required ng-touched ">Sort By</option>
-                    <option value="Most Popular">Most Popular</option>
-                    <option value="Most Recent">Most Recent</option>
-                </select>
+                <!--                <select ng-model="myOpt" ng-change="sbSortBy()">
+                                    <option selected class="inputfield ng-dirty ng-valid-parse ng-valid ng-valid-required ng-touched ">Sort By</option>
+                                    <option value="Most Popular">Most Popular</option>
+                                    <option value="Most Recent">Most Recent</option>
+                                </select>-->
                 <!--</form>-->
+
+                <select class="selectpicker" ng-model="changeState" ng-change="change(changeState)">
+                    <option value="https://google.com">Mustard</a>
+                    </option>
+                    <option value="/2.html">Ketchup</a>
+                    </option>
+                    <option value="/3.html">Relish</a>
+                    </option>
+                </select>
             </div>
         </div>
         <div class="clear"></div>
