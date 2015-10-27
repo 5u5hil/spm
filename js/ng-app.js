@@ -45,9 +45,10 @@ app.controller('homeController', function ($http, $scope, $rootScope, $controlle
 
     $scope.$on('ngRepeatFinished', function (ngRepeatFinishedEvent) {
         siteMainFn();
-        $rootScope.myFunc = function () {
-            siteMainFn();
-        };
+         $rootScope.myFunc = function () {
+            console.log('myFunc');
+         siteMainFn();
+      };
 
     });
 
@@ -686,7 +687,7 @@ app.controller('signupController', function ($http, $scope, $location, $rootScop
 
 });
 
-app.controller('cartController', function ($http, $scope, $location, $rootScope, $routeParams) {
+app.controller('cartController', function ($http, $scope, $location, $rootScope,$timeout, $routeParams) {
 
     loaderShow();
 
@@ -719,6 +720,11 @@ app.controller('cartController', function ($http, $scope, $location, $rootScope,
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
+      $timeout(function() {
+        siteMainFn();
+        console.log('finred');
+      
+    }, 2000);
 
 });
 

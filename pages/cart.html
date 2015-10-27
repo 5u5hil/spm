@@ -21,7 +21,7 @@
                 </tr>
 
 
-                <tr ng-repeat="product in cart track by $index">
+                <tr ng-repeat="product in cart track by $index" on-finish-render="ngRepeatFinished">
                     <td>
                         <img ng-src="{{product.small_image != '' ? product.small_image : (product.medium_image != '' ? product.medium_image : product.large_image) }}" alt="" width="50" height="" />
                         <span>{{product.product}}</span>
@@ -48,4 +48,4 @@
     <span class="col2"><a href="#">Checkout</a></span>
 </div> -->
 
-
+ 
