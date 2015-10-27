@@ -12,14 +12,11 @@
                                 </select>-->
                 <!--</form>-->
 
-                <select class="selectpicker" ng-model="changeState" ng-change="change(changeState)">
-                    <option value="https://google.com">Mustard</a>
-                    </option>
-                    <option value="/2.html">Ketchup</a>
-                    </option>
-                    <option value="/3.html">Relish</a>
-                    </option>
+                <select ng-options="option for option in listOfOptions" 
+                        ng-model="selectedItem"
+                        ng-change="selectedItemChanged()">
                 </select>
+
             </div>
         </div>
         <div class="clear"></div>
