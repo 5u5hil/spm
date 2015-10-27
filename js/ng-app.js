@@ -183,6 +183,7 @@ app.controller('scrapbookController', function ($http, $scope, $rootScope, $cont
 
     $scope.change = function (url) {
         window.open('url');
+        console.log("hi");
     }
 
     $scope.sbSortBy = function () {
