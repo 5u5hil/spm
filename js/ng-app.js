@@ -121,7 +121,7 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
         $scope.maxp = jQuery("#max_price").val();
 
         console.log(jQuery("#min_price").val());
-        
+
         $http.get(domain + "/get-filtered-products", {
             params: {
                 'filters': $scope.filtered,
@@ -180,12 +180,16 @@ app.controller('scrapbookController', function ($http, $scope, $rootScope, $cont
         $scope.imgPath = domain + "/public/frontend/uploads/scrapbooks/";
         loaderHide();
     });
-    
+
     $scope.myOpt = "Most Popular";
-    $scope.sbSortBy = function(myOp) {
-        
-        console.log("hi "+myOp);
+    $scope.sbSortBy = function (myOp) {
+
+        console.log("hi " + myOp);
     };
+
+    $scope.change = function (url) {
+        console.log(url);
+    }
 
     $scope.removeScrapbook = function (slug) {
         var r = confirm("Do you want to delete this item!");
