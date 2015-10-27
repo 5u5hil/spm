@@ -464,17 +464,17 @@ app.controller('createScrapbookController', function ($http, $scope, $rootScope,
             source: domain + "/search-products",
             minLength: 2,
             select: function (event, ui) {
-                $("#pdcts").val("");
+             
                 log(ui.item ?
-                        "<img  style='vertical-align: middle; margin-bottom: 5px;'src='" + (ui.item.large_image != '' ? ui.item.large_image : (ui.item.medium_image != '' ? ui.item.medium_image : ui.item.small_image)) + "' width='50px;' >" + ui.item.label + "<input type='hidden' name='pid[]' value='" + ui.item.id + "' ><a href='#' class='pull-right remove-rag'  ><i class='fa fa-trash'></i></a>" : "");
+                    " <img  style='vertical-align: middle; margin-bottom: 5px; width:60px; display:inline' src='" + (ui.item.large_image != '' ? ui.item.large_image : (ui.item.medium_image != '' ? ui.item.medium_image : ui.item.small_image)) + "'><span style='display:inline'>" + ui.item.label + "</span><input type='hidden' name='pid[]' value='" + ui.item.id + "' ><a href='#' style='display:inline; margin-left:15px' class='  remove-rag'  ><i class='fa fa-trash'></i></a>" : "");
             }
 
         });
 
         $products.data("ui-autocomplete")._renderItem = function (ul, item) {
-            $("#pdcts").val("");
+             
             return $("<li>")
-                    .append("<a><img style='vertical-align:middle' src='" + (item.large_image != '' ? item.large_image : (item.medium_image != '' ? item.medium_image : item.small_image)) + "' width='25px;'>" + item.label + "</a>")
+            .append("<a><div class='inline-autocom'><img style='width:60px' src='" + (item.large_image != '' ? item.large_image : (item.medium_image != '' ? item.medium_image : item.small_image)) + "'> </div><div class='inline-autocom'>" + item.label + "</div></a>")
                     .appendTo(ul);
 
         };

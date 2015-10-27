@@ -91,8 +91,9 @@ body {
     color: #fefefe;
 }
 
+
 .sidebar-header a i {
-    width: 53px;
+    width: 53px;  
     height: 72px;
     text-align: center;
     line-height: 72px;
@@ -102,7 +103,7 @@ body {
 .sidebar-header a {
     font-size: 14px;
     color: #bcbcbc;
-    width: 53px;
+    width: 53px;  /*53*/
     height: 72px;
     float: left;
     border-right: solid 1px rgba(255, 255, 255, 0.05);
@@ -111,7 +112,12 @@ body {
     transition: all 250ms ease;
     background-color: rgba(0, 0, 0, 0.1);
 }
-
+.sidebar-header-custom a i{
+     width: 66px !important;
+}
+.sidebar-header-custom a{
+     width: 66px !important;
+}
 .sidebar-header a:hover {
     background-color: rgba(255, 255, 255, 0.02);
     color: #FFFFFF;
@@ -1724,4 +1730,8 @@ div.img-wrapper-product {
 .down-arrow{
     float: right;
     color: #666 !important;
+}
+.inline-autocom{
+    display: inline-block;
+    vertical-align: middle;
 }
