@@ -180,7 +180,7 @@ app.controller('scrapbookController', function ($http, $scope, $rootScope, $cont
         $scope.imgPath = domain + "/public/frontend/uploads/scrapbooks/";
         loaderHide();
     });
-
+console.log("hiii");
     $scope.listOfOptions = ['One', 'Two', 'Three'];
 
     $scope.selectedItemChanged = function () {
