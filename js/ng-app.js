@@ -181,10 +181,14 @@ app.controller('scrapbookController', function ($http, $scope, $rootScope, $cont
         loaderHide();
     });
 
-    $scope.myOpt = "0";
+    $scope.listOfOptions = ['Most Popular', 'Most Recent'];
+
+    $scope.selectedItemChanged = function () {
+        console.log('You selected ' + $scope.selectedItem);
+    }
+
     $scope.sbSortBy = function () {
-        console.log(myOpt);
-        console.log("hi");
+        $scope.calculatedValue = 'You selected number ' + $scope.selectedItem;
     };
 
     $scope.change = function (url) {
