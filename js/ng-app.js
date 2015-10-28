@@ -203,6 +203,14 @@ app.controller('scrapbookController', function ($http, $scope, $rootScope, $cont
                 loaderHide();
             });
         }
+        else if ($scope.selectedItem == 'Recent') {
+            $http.get(domain + "/get-scrapbook-products").success(function (data, status, headers, config) {
+                $scope.products = data;
+                console.log(data);
+                $scope.$digest;
+                loaderHide();
+            });
+        }
     };
 
     $scope.removeScrapbook = function (slug) {
