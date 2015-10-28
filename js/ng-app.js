@@ -155,7 +155,7 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
 
 });
 
-app.controller('productController', function ($http, $rootScope, $scope, $location, $routeParams) {
+app.controller('productController', function ($http, $rootScope, $scope, $location, $routeParams, $timeout) {
 
     loaderShow();
 
@@ -169,6 +169,9 @@ app.controller('productController', function ($http, $rootScope, $scope, $locati
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
+    $timeout(function() {
+        siteMainFn();   
+    }, 2000);
 
 });
 
