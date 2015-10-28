@@ -97,7 +97,7 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
             $scope.$digest;
             loaderHide();
         });
-        $anchorScroll();
+//        $anchorScroll();
     };
 
     $scope.filterProds = function (option, parent) {
