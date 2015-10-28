@@ -30,11 +30,11 @@ angular.module('ChangePasswordConfirm', []).directive('changePasswordC', functio
 });
 
 app.controller('homeController', function ($http, $scope, $rootScope, $controller) {
- console.log(window.localStorage.getItem('showIntro'));
-        if(window.localStorage.getItem('showIntro') === null){
-        window.localStorage.setItem('showIntro',1)
-         window.location.href = "#/intro";
-         } 
+    console.log(window.localStorage.getItem('showIntro'));
+    if (window.localStorage.getItem('showIntro') === null) {
+        window.localStorage.setItem('showIntro', 1)
+        window.location.href = "#/intro";
+    }
     loaderShow();
 
     $http.get(domain + "/home" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, response, status, headers, config) {
@@ -49,10 +49,10 @@ app.controller('homeController', function ($http, $scope, $rootScope, $controlle
 
     $scope.$on('ngRepeatFinished', function (ngRepeatFinishedEvent) {
         siteMainFn();
-      //    $rootScope.myFunc = function () {
-      //       console.log('myFunc');
-      //    siteMainFn();
-      // };
+        //    $rootScope.myFunc = function () {
+        //       console.log('myFunc');
+        //    siteMainFn();
+        // };
 
     });
 
@@ -94,7 +94,8 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
             params: {
                 'filters': $scope.filtered,
                 'minp': $scope.minp,
-                'maxp': $scope.maxp
+                'maxp': $scope.maxp,
+                'slug': $routeParams.url_key
             }
         }).success(function (data, status, headers, config) {
             $scope.products = data;
@@ -125,13 +126,13 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
         $scope.minp = jQuery("#min_price").val();
         $scope.maxp = jQuery("#max_price").val();
 
-       
+
         $http.get(domain + "/get-filtered-products", {
             params: {
                 'filters': $scope.filtered,
                 'minp': $scope.minp,
                 'maxp': $scope.maxp,
-                'slug' : $routeParams.url_key
+                'slug': $routeParams.url_key
             }
         }).success(function (response) {
             console.log(response);
@@ -173,8 +174,8 @@ app.controller('productController', function ($http, $rootScope, $scope, $locati
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
-    $timeout(function() {
-        siteMainFn();   
+    $timeout(function () {
+        siteMainFn();
     }, 2000);
 
 });
@@ -474,17 +475,17 @@ app.controller('createScrapbookController', function ($http, $scope, $rootScope,
             source: domain + "/search-products",
             minLength: 2,
             select: function (event, ui) {
-             
+
                 log(ui.item ?
-                    " <img  style='vertical-align: middle; margin-bottom: 5px; width:60px; display:inline' src='" + (ui.item.large_image != '' ? ui.item.large_image : (ui.item.medium_image != '' ? ui.item.medium_image : ui.item.small_image)) + "'><span style='display:inline'>" + ui.item.label + "</span><input type='hidden' name='pid[]' value='" + ui.item.id + "' ><a href='#' style='display:inline; margin-left:15px' class='  remove-rag'  ><i class='fa fa-trash'></i></a>" : "");
+                        " <img  style='vertical-align: middle; margin-bottom: 5px; width:60px; display:inline' src='" + (ui.item.large_image != '' ? ui.item.large_image : (ui.item.medium_image != '' ? ui.item.medium_image : ui.item.small_image)) + "'><span style='display:inline'>" + ui.item.label + "</span><input type='hidden' name='pid[]' value='" + ui.item.id + "' ><a href='#' style='display:inline; margin-left:15px' class='  remove-rag'  ><i class='fa fa-trash'></i></a>" : "");
             }
 
         });
 
         $products.data("ui-autocomplete")._renderItem = function (ul, item) {
-             
+
             return $("<li>")
-            .append("<a><div class='inline-autocom'><img style='width:60px' src='" + (item.large_image != '' ? item.large_image : (item.medium_image != '' ? item.medium_image : item.small_image)) + "'> </div><div class='inline-autocom'>" + item.label + "</div></a>")
+                    .append("<a><div class='inline-autocom'><img style='width:60px' src='" + (item.large_image != '' ? item.large_image : (item.medium_image != '' ? item.medium_image : item.small_image)) + "'> </div><div class='inline-autocom'>" + item.label + "</div></a>")
                     .appendTo(ul);
 
         };
@@ -694,7 +695,7 @@ app.controller('signupController', function ($http, $scope, $location, $rootScop
 
 });
 
-app.controller('cartController', function ($http, $scope, $location, $rootScope,$timeout, $routeParams) {
+app.controller('cartController', function ($http, $scope, $location, $rootScope, $timeout, $routeParams) {
 
     loaderShow();
 
@@ -727,10 +728,10 @@ app.controller('cartController', function ($http, $scope, $location, $rootScope,
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
-      $timeout(function() {
+    $timeout(function () {
         siteMainFn();
         console.log('finred');
-      
+
     }, 2000);
 
 });
@@ -818,7 +819,7 @@ app.controller('commonController', function ($http, $scope, $location, $rootScop
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
-       $timeout(function() {
+    $timeout(function () {
         siteMainFn();
     }, 1000);
 });
