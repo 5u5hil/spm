@@ -125,13 +125,13 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
         $scope.minp = jQuery("#min_price").val();
         $scope.maxp = jQuery("#max_price").val();
 
-        console.log(jQuery("#min_price").val());
-
+       
         $http.get(domain + "/get-filtered-products", {
             params: {
                 'filters': $scope.filtered,
                 'minp': $scope.minp,
-                'maxp': $scope.maxp
+                'maxp': $scope.maxp,
+                'slug' : $routeParams.url_key
             }
         }).success(function (response) {
             console.log(response);
@@ -819,6 +819,7 @@ app.controller('commonController', function ($http, $scope, $location, $rootScop
         siteMainFn();
     });
 });
+
 app.controller('introController', function ($http, $scope, $location, $rootScope, $routeParams) {
 console.log(window.localStorage.getItem('showIntro'));
     $scope.$on('$viewContentLoaded', function () {
