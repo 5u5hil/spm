@@ -185,7 +185,7 @@ app.controller('scrapbookController', function ($http, $scope, $rootScope, $cont
         loaderHide();
     });
 
-    $scope.listOfOptions = ['Most Popular'];
+    $scope.listOfOptions = ['Recent', 'Most Popular'];
 
     $scope.selectedItemChanged = function () {
         console.log('You selected ' + $scope.selectedItem);

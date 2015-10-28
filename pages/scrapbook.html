@@ -4,7 +4,8 @@
         <div class="adaptive-style">
             <h4 style="font-size:17px;">Scrapbook</h4>
             <div class="pull-right">
-                <select ng-options="option for option in listOfOptions" 
+                <select ng-init="selectedItem = selectedItem[0]"
+                        ng-options="option for option in listOfOptions" 
                         ng-model="selectedItem"
                         ng-change="selectedItemChanged()">
                 </select>
