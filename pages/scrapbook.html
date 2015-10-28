@@ -20,7 +20,7 @@
                 <a ng-href="#/create-scrapbook" class="create-scrap-link" title="">
                     Create New Scrapbook </a><br>
             </div>`
-            <div class="adaptive-item" ng-repeat="sp in products" ng-if="sp.comboproducts.length != 0">
+            <div class="adaptive-item" ng-repeat="sp in products">
 
                 <a ng-href="#/scrapbook/{{sp.url_key}}" title="{{sp.product}}">
                     <img class="responsive-image" ng-src="{{imgPath + sp.small_image}}" alt="img">
