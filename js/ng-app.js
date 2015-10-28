@@ -45,10 +45,10 @@ app.controller('homeController', function ($http, $scope, $rootScope, $controlle
 
     $scope.$on('ngRepeatFinished', function (ngRepeatFinishedEvent) {
         siteMainFn();
-         $rootScope.myFunc = function () {
-            console.log('myFunc');
-         siteMainFn();
-      };
+      //    $rootScope.myFunc = function () {
+      //       console.log('myFunc');
+      //    siteMainFn();
+      // };
 
     });
 
@@ -149,7 +149,7 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
         jQuery("#" + e).toggle();
     }
 
-    $scope.$on('$viewContentLoaded', function () {
+    $scope.$on('ngRepeatFinished', function (ngRepeatFinishedEvent) {
         siteMainFn();
     });
 
