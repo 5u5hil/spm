@@ -30,7 +30,11 @@ angular.module('ChangePasswordConfirm', []).directive('changePasswordC', functio
 });
 
 app.controller('homeController', function ($http, $scope, $rootScope, $controller) {
-
+ console.log(window.localStorage.getItem('showIntro'));
+        if(window.localStorage.getItem('showIntro') === null){
+        window.localStorage.setItem('showIntro',1)
+         window.location.href = "#/intro";
+         } 
     loaderShow();
 
     $http.get(domain + "/home" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, response, status, headers, config) {
@@ -815,3 +819,9 @@ app.controller('commonController', function ($http, $scope, $location, $rootScop
         siteMainFn();
     });
 });
+app.controller('introController', function ($http, $scope, $location, $rootScope, $routeParams) {
+console.log(window.localStorage.getItem('showIntro'));
+    $scope.$on('$viewContentLoaded', function () {
+        siteMainFn();
+    });
+}); 

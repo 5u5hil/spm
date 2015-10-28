@@ -9,12 +9,13 @@ app.config(['$routeProvider', '$locationProvider',
     function($routeProvider, $locationProvider) {
         $routeProvider.
         when('/', {
-            templateUrl: 'pages/user-onboarding.html',
-            controller: 'commonController'
-        }).
-        when('/home', {
-            templateUrl: 'pages/home.html',
+          
+              templateUrl: 'pages/home.html',
             controller: 'homeController'
+        }).
+        when('/intro', {
+            templateUrl: 'pages/user-onboarding.html',
+            controller: 'introController'
         }).
         when('/cart', {
             templateUrl: 'pages/cart.html',
