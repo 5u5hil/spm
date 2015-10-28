@@ -71,7 +71,7 @@ app.controller('homeController', function ($http, $scope, $rootScope, $controlle
 
 });
 
-app.controller('categoryController', function ($http, $scope, $location, $rootScope, $routeParams) {
+app.controller('categoryController', function ($http, $scope, $location, $rootScope, $routeParams, $anchorScroll) {
     loaderShow();
     $scope.filtered = {};
     $scope.minp = 0;
@@ -97,7 +97,7 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
             $scope.$digest;
             loaderHide();
         });
-//        $anchorScroll();
+        $anchorScroll();
     };
 
     $scope.filterProds = function (option, parent) {
