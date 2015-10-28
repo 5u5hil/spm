@@ -813,11 +813,16 @@ app.controller('favoritesController', function ($http, $scope, $location, $rootS
     });
 });
 
-app.controller('commonController', function ($http, $scope, $location, $rootScope, $routeParams) {
+app.controller('commonController', function ($http, $scope, $location, $rootScope, $routeParams, $timeout) {
 
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
+       $timeout(function() {
+        siteMainFn();
+        console.log('finred');
+      
+    }, 1000);
 });
 
 app.controller('introController', function ($http, $scope, $location, $rootScope, $routeParams) {
