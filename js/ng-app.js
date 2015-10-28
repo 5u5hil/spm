@@ -820,13 +820,10 @@ app.controller('commonController', function ($http, $scope, $location, $rootScop
     });
        $timeout(function() {
         siteMainFn();
-        console.log('finred');
-      
     }, 1000);
 });
 
 app.controller('introController', function ($http, $scope, $location, $rootScope, $routeParams) {
-console.log(window.localStorage.getItem('showIntro'));
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
