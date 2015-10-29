@@ -333,7 +333,7 @@ $(document).ready(function () {
 console.log('sp');
                 jQuery.get(domain + "/get-scrapbook-products" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
                     $scope.products = data;
-                    $scope.imgPath = domain + "/public/frontend/uploads/scrapbooks/";
+                    $scope.$digest;
                 });
             });
 
