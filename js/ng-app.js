@@ -284,11 +284,12 @@ app.controller('myScrapbookController', function ($http, $scope, $rootScope, $co
 });
 
 app.controller('scrapbookDetailsController', function ($http, $scope, $rootScope, $location, $routeParams) {
-
+    $scope.userId = window.localStorage.getItem('id');
     loaderShow();
 
     $http.get(domain + "/scrapbook/" + $routeParams.url_key + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
         $scope.scrapbookproducts = data;
+        console.log(data);
         $scope.imgPath = domain + "/public/frontend/uploads/scrapbooks/";
         loaderHide();
     });
