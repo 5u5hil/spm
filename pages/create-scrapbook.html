@@ -6,7 +6,7 @@
         </div>
         <div class="clear"></div>
         <div class="decoration"></div>
-        <form method="post"  novalidate ng-cloak name="scrapbookfrm" enctype="multipart/form-data" id="scrapbookfrm" class="login custom-woo-login" ng-submit="addScrapbook()">
+        <form method="post" ng-cloak name="scrapbookfrm" enctype="multipart/form-data" id="scrapbookfrm" class="login custom-woo-login" ng-submit="addScrapbook()">
             <input type="text" name="sname" id="sname" ng-model="sname" class="inputfield" placeholder="Scrabook Title" required/>
             <span style="color:red" ng-show="scrapbookfrm.sname.$dirty && scrapbookfrm.sname.$invalid">
                 <span ng-show="scrapbookfrm.sname.$error.required">Title is required.</span>
