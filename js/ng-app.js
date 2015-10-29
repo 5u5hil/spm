@@ -158,10 +158,6 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
     $scope.$on('ngRepeatFinished', function (ngRepeatFinishedEvent) {
         siteMainFn();
     });
-      jQuery('.capture-event').one('click', function myFnnnn() {
-        siteMainFn();
-        jQuery(".capture-event").off("click", myFnnnn);
-    });
 
 });
 
@@ -351,10 +347,6 @@ app.controller('loginController', function ($http, $rootScope, $location, $scope
 
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
-    });
-      jQuery('.capture-event').one('click', function myFnnnn() {
-        siteMainFn();
-        jQuery(".capture-event").off("click", myFnnnn);
     });
 });
 
@@ -591,10 +583,6 @@ app.controller('questionnaireController', function ($http, $scope, $rootScope, $
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
-      jQuery('.capture-event').one('click', function myFnnnn() {
-        siteMainFn();
-        jQuery(".capture-event").off("click", myFnnnn);
-    });
 
     $scope.submitAns = function () {
         jQuery.ajax({
@@ -630,10 +618,6 @@ app.controller('logoutController', function ($http, $rootScope, $location, $scop
 
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
-    });
-      jQuery('.capture-event').one('click', function myFnnnn() {
-        siteMainFn();
-        jQuery(".capture-event").off("click", myFnnnn);
     });
 });
 
@@ -727,10 +711,6 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
-      jQuery('.capture-event').one('click', function myFnnnn() {
-        siteMainFn();
-        jQuery(".capture-event").off("click", myFnnnn);
-    });
 
 });
 
@@ -758,10 +738,6 @@ app.controller('signupController', function ($http, $scope, $location, $rootScop
 
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
-    });
-      jQuery('.capture-event').one('click', function myFnnnn() {
-        siteMainFn();
-        jQuery(".capture-event").off("click", myFnnnn);
     });
 
 });
@@ -799,15 +775,11 @@ app.controller('cartController', function ($http, $scope, $location, $rootScope,
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
-    // $timeout(function () {
-    //     siteMainFn();
-    //     console.log('finred');
-
-    // }, 2000);
-  jQuery('.capture-event').one('click', function myFnnnn() {
+    $timeout(function () {
         siteMainFn();
-        jQuery(".capture-event").off("click", myFnnnn);
-    });
+        console.log('finred');
+
+    }, 2000);
 
 });
 
@@ -905,13 +877,9 @@ app.controller('commonController', function ($http, $scope, $location, $rootScop
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
-    // $timeout(function () {
-    //     siteMainFn();
-    // }, 1000);
-  jQuery('.capture-event').one('click', function myFnnnn() {
+    $timeout(function () {
         siteMainFn();
-        jQuery(".capture-event").off("click", myFnnnn);
-    });
+    }, 1000);
 });
 
 app.controller('introController', function ($http, $scope, $location, $rootScope, $routeParams) {
