@@ -11,6 +11,10 @@
             {{scrapbookproducts.short_desc}}
         </p>
 
+        <div class="product-remove">
+            <a href="" ng-if="userId == scrapbookproducts.added_by.id;" ng-click="removeScrapbook(sp.url_key)" class="remove remove_from_wishlist" title="Remove this product">Delete</a>
+        </div>
+
         <img class="responsive-image" src="{{imgPath + scrapbookproducts.small_image}}" alt="img">
 
         <div class="clear"></div>
@@ -35,9 +39,7 @@
                     <span class="dd-cart-home ">
                         <button class="button add-cart-btn mt7"  ng-click="addToCart($event, product)">Add to Cart</button>
                     </span>
-                    <div class="product-remove">
-                    <a href="" ng-if="userId == scrapbookproducts.added_by.id;" ng-click="removeScrapbook(sp.url_key)" class="remove remove_from_wishlist" title="Remove this product">Delete</a>
-                </div>
+
                 </p>
             </div>
 
