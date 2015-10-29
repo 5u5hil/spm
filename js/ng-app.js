@@ -14,6 +14,7 @@ app.directive('onFinishRender', function ($timeout) {
 app.run(["$rootScope", "$anchorScroll", function ($rootScope, $anchorScroll) {
         $rootScope.$on("$stateChangeSuccess", function () {
             $anchorScroll();
+            window.scrollTo(0, 0);
         });
     }]);
 
