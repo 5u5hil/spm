@@ -105,7 +105,9 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
         $anchorScroll();
         console.log('hi');
         
-        $rootScope.$on('$viewContentLoaded', function(){ window.scrollTo(0, 0); });
+        window.scrollTop = 0;
+        
+        $rootScope.$on('$viewContentLoaded', function(){ window.scrollTop=0; });
 
     };
 
