@@ -102,12 +102,10 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
             $scope.$digest;
             loaderHide();
         });
-       jQuery('body').scrollTop(0);
-        
-        window.scrollTop = 0; 
-        
-        $rootScope.$on('$viewContentLoaded', function(){ window.scrollTop=0; });
 
+        $location.hash('content');
+        $anchorScroll();
+        console.log('hi');
     };
 
     $scope.filterProds = function (option, parent) {
