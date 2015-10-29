@@ -330,6 +330,11 @@ $(document).ready(function () {
                 } else {
                     angular.element(event.target).removeClass("liked");
                 }
+
+                $http.get(domain + "/get-scrapbook-products" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
+                    $scope.products = data;
+                    $scope.imgPath = domain + "/public/frontend/uploads/scrapbooks/";
+                });
             });
 
         } else {
