@@ -17,10 +17,10 @@
                 <span ng-show="scrapbookfrm.sdescription.$error.required">Description is required.</span>
             </span>
             
-            <input type="text" class="inputfield" placeholder="Add Products" required ng-model="pdcts" name="pdcts" ng-focus="autoCompleteFn()" ng-blur="autoCompleteFn()" id="pdcts">
-            <span style="color:red" ng-show="scrapbookfrm.pdcts.$dirty && scrapbookfrm.pdcts.$invalid">
+            <input type="text" class="inputfield" placeholder="Add Products" name="pdcts" ng-focus="autoCompleteFn()" ng-blur="autoCompleteFn()" id="pdcts">
+<!--            <span style="color:red" ng-show="scrapbookfrm.pdcts.$dirty && scrapbookfrm.pdcts.$invalid">
                 <span ng-show="scrapbookfrm.pdcts.$error.required">Add product is required.</span>
-            </span>
+            </span>-->
             
             <input type="file" class='inputfield' accept="image/*;capture=camera" ng-model="simg" name="simg" id="simg" required>
             <span style="color:red" ng-show="scrapbookfrm.simg.$dirty && scrapbookfrm.simg.$invalid">
