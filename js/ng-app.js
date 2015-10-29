@@ -219,7 +219,7 @@ console.log('sp');
         console.log('You selected ' + $scope.selectedItem);
 
         if ($scope.selectedItem == 'Most Popular') {
-            $http.get(domain + "/sb-mp").success(function (data, status, headers, config) {
+            $http.get(domain + "/sb-mp" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
                 $scope.products = data;
                 console.log(data);
                 $scope.$digest;
@@ -227,7 +227,7 @@ console.log('sp');
             });
         }
         if ($scope.selectedItem == 'Recent') {
-            $http.get(domain + "/get-scrapbook-products").success(function (data, status, headers, config) {
+            $http.get(domain + "/get-scrapbook-products" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
                 $scope.products = data;
                 console.log(data);
                 $scope.$digest;
