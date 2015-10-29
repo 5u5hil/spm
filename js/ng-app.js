@@ -100,8 +100,11 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
         }).success(function (data, status, headers, config) {
             $scope.products = data;
             $scope.$digest;
+            jQuery('#content').scrollTop(0);
             loaderHide();
+
         });
+<<<<<<< HEAD
 <<<<<<< HEAD
        jQuery('body').scrollTop(0);
         
@@ -114,6 +117,14 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
         $location.hash('body');
         $anchorScroll();
         console.log('hi');
+=======
+
+
+
+
+
+
+>>>>>>> origin/master
     };
 
     $scope.filterProds = function (option, parent) {
