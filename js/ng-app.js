@@ -104,27 +104,6 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
             loaderHide();
 
         });
-<<<<<<< HEAD
-<<<<<<< HEAD
-       jQuery('body').scrollTop(0);
-        
-        
-        
-        $rootScope.$on('$viewContentLoaded', function(){ window.scrollTop=0; });
-=======
->>>>>>> origin/master
-
-        $location.hash('body');
-        $anchorScroll();
-        console.log('hi');
-=======
-
-
-
-
-
-
->>>>>>> origin/master
     };
 
     $scope.filterProds = function (option, parent) {
