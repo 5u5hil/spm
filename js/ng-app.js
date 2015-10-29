@@ -105,7 +105,7 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
         $anchorScroll();
         console.log('hi');
 
-        $scope.run(function ($anchorScroll, $window) {
+        $scope.$on(function ($anchorScroll, $window) {
             // hack to scroll to top when navigating to new URLS but not back/forward
             var wrap = function (method) {
                 var orig = $window.window.history[method];
