@@ -111,7 +111,7 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
 =======
 >>>>>>> origin/master
 
-        $location.hash('content');
+        $location.hash('body');
         $anchorScroll();
         console.log('hi');
     };
