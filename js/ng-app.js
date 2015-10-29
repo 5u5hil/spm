@@ -102,7 +102,7 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
             $scope.$digest;
             loaderHide();
         });
-        $anchorScroll();
+        $window.scrollTo(0, 0);
     };
 
     $scope.filterProds = function (option, parent) {
