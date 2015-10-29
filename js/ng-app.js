@@ -11,6 +11,12 @@ app.directive('onFinishRender', function ($timeout) {
     };
 });
 
+app.run(["$rootScope", "$anchorScroll", function ($rootScope, $anchorScroll) {
+        $rootScope.$on("$stateChangeSuccess", function () {
+            $anchorScroll();
+        });
+    }]);
+
 angular.module('ChangePasswordConfirm', []).directive('changePasswordC', function () {
     return {
         require: 'ngModel',
@@ -105,19 +111,6 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
         $anchorScroll();
         console.log('hi');
 
-        $scope.$on(function ($anchorScroll, $window) {
-            // hack to scroll to top when navigating to new URLS but not back/forward
-            var wrap = function (method) {
-                var orig = $window.window.history[method];
-                $window.window.history[method] = function () {
-                    var retval = orig.apply(this, Array.prototype.slice.call(arguments));
-                    $anchorScroll();
-                    return retval;
-                };
-            };
-            wrap('pushState');
-            wrap('replaceState');
-        });
     };
 
     $scope.filterProds = function (option, parent) {
