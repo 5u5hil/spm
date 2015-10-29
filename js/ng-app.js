@@ -104,7 +104,7 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
         });
        jQuery('body').scrollTop(0);
         
-        window.scrollTop = 0; 
+        
         
         $rootScope.$on('$viewContentLoaded', function(){ window.scrollTop=0; });
 
