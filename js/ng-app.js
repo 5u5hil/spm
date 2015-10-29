@@ -529,6 +529,8 @@ app.controller('createScrapbookController', function ($http, $scope, $rootScope,
         });
 
         $products.data("ui-autocomplete")._renderItem = function (ul, item) {
+            
+            $("#pdcts").val('');
 
             return $("<li>")
                     .append("<a><div class='inline-autocom'><img style='width:60px' src='" + (item.large_image != '' ? item.large_image : (item.medium_image != '' ? item.medium_image : item.small_image)) + "'> </div><div class='inline-autocom'>" + item.label + "</div></a>")
