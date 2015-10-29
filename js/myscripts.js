@@ -85,7 +85,7 @@ function loaderHide() {
 
 function startChat() {
     if (window.localStorage.getItem('member') == 1) {
-        window.open("http://stylepanache.clu.pw/chat/personal-chat.php?name=" + window.localStorage.getItem("name") + "&email=" + window.localStorage.getItem("email") + "&dep=" + window.localStorage.getItem("department"), '_blank', 'EnableViewPortScale=yes,location=no,closebuttoncaption=Close');
+        window.open("http://stylepanache.clu.pw/chat/personal-chat.php?name=" + window.localStorage.getItem("name") + "&email=" + window.localStorage.getItem("email") + "&dep=" + window.localStorage.getItem("department"), '_self', 'EnableViewPortScale=yes,location=no,closebuttoncaption=Close');
 
     } else {
         window.open("http://stylepanache.clu.pw/chat/personal-chat.php?name=" + window.localStorage.getItem("name") + "&email=" + window.localStorage.getItem("email") + "&dep=" + window.localStorage.getItem("department"), '_blank', 'EnableViewPortScale=yes,location=no,closebuttoncaption=Close');
