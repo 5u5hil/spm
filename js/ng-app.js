@@ -11,13 +11,6 @@ app.directive('onFinishRender', function ($timeout) {
     };
 });
 
-app.run(["$rootScope", "$anchorScroll", function ($rootScope, $anchorScroll) {
-        $rootScope.$on("$stateChangeSuccess", function () {
-            $anchorScroll();
-            window.scrollTo(0, 0);
-        });
-    }]);
-
 angular.module('ChangePasswordConfirm', []).directive('changePasswordC', function () {
     return {
         require: 'ngModel',
@@ -111,6 +104,8 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
         });
         $anchorScroll();
         console.log('hi');
+        
+        $rootScope.$on('$viewContentLoaded', function(){ window.scrollTo(0, 0); });
 
     };
 
