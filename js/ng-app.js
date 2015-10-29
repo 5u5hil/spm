@@ -75,7 +75,7 @@ app.controller('homeController', function ($http, $scope, $rootScope, $controlle
 
 });
 
-app.controller('categoryController', function ($http, $scope, $location, $rootScope, $routeParams, $anchorScroll) {
+app.controller('categoryController', function ($http, $scope, $location, $rootScope, $routeParams, $anchorScroll, $window) {
     loaderShow();
     $scope.filtered = {};
     $scope.minp = 0;
