@@ -190,6 +190,28 @@ app.controller('scrapbookController', function ($http, $scope, $rootScope, $cont
         $scope.imgPath = domain + "/public/frontend/uploads/scrapbooks/";
         loaderHide();
     });
+    
+    $scope.addToSList = function (event, id) {
+        if (window.localStorage.getItem('id') != null) {
+            jQuery.get(domain + "/scrapbook-like?productID=" + id + "&userId=" + window.localStorage.getItem('id')).success(function (response) {
+                console.log(response);
+                if (response == 1) {
+                    angular.element(event.target).addClass("liked");
+
+                } else {
+                    angular.element(event.target).removeClass("liked");
+                }
+console.log('sp');
+                jQuery.get(domain + "/get-scrapbook-products" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
+                    $scope.products = data;
+                    $scope.$digest;
+                });
+            });
+
+        } else {
+            window.location.href = '#/login';
+        }
+    };
 
     $scope.listOfOptions = ['Recent', 'Most Popular'];
 

@@ -320,27 +320,27 @@ $(document).ready(function () {
         }
     };
 
-    $rootScope.addToSList = function (event, id) {
-        if (window.localStorage.getItem('id') != null) {
-            jQuery.get(domain + "/scrapbook-like?productID=" + id + "&userId=" + window.localStorage.getItem('id')).success(function (response) {
-                console.log(response);
-                if (response == 1) {
-                    angular.element(event.target).addClass("liked");
-
-                } else {
-                    angular.element(event.target).removeClass("liked");
-                }
-console.log('sp');
-                jQuery.get(domain + "/get-scrapbook-products" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
-                    $scope.products = data;
-                    $scope.$digest;
-                });
-            });
-
-        } else {
-            window.location.href = '#/login';
-        }
-    };
+//    $rootScope.addToSList = function (event, id) {
+//        if (window.localStorage.getItem('id') != null) {
+//            jQuery.get(domain + "/scrapbook-like?productID=" + id + "&userId=" + window.localStorage.getItem('id')).success(function (response) {
+//                console.log(response);
+//                if (response == 1) {
+//                    angular.element(event.target).addClass("liked");
+//
+//                } else {
+//                    angular.element(event.target).removeClass("liked");
+//                }
+//console.log('sp');
+//                jQuery.get(domain + "/get-scrapbook-products" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
+//                    $scope.products = data;
+//                    $scope.$digest;
+//                });
+//            });
+//
+//        } else {
+//            window.location.href = '#/login';
+//        }
+//    };
 
     if (window.localStorage.getItem('id') != null) {
 
