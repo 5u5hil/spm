@@ -103,6 +103,7 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
             loaderHide();
         });
         $anchorScroll();
+        window.scrollTo(0, 0);
         console.log('hi');
         
         window.scrollTop = 0; 
