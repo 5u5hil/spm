@@ -100,20 +100,16 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
         }).success(function (data, status, headers, config) {
             $scope.products = data;
             $scope.$digest;
+            jQuery('#content').scrollTop(0);
             loaderHide();
-        });
-<<<<<<< HEAD
-       jQuery('body').scrollTop(0);
-        
-        
-        
-        $rootScope.$on('$viewContentLoaded', function(){ window.scrollTop=0; });
-=======
->>>>>>> origin/master
 
-        $location.hash('content');
-        $anchorScroll();
-        console.log('hi');
+        });
+
+
+
+
+
+
     };
 
     $scope.filterProds = function (option, parent) {
