@@ -41,7 +41,6 @@ app.controller('homeController', function ($http, $scope, $rootScope, $controlle
         $rootScope.categories = data.categories;
         $scope.sliders = data.sliders;
         $scope.new = data.new;
-        console.log(data.new);
         $scope.imgPath = domain + "/public/admin/uploads/slider/";
         $rootScope.$digest;
         loaderHide();
@@ -136,7 +135,6 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
                 'slug': $routeParams.url_key
             }
         }).success(function (response) {
-            console.log(response);
             $scope.products = response;
             $scope.$digest;
             jQuery(".big-notification.yellow-notification").toggle("slideDown");
@@ -167,7 +165,6 @@ app.controller('productController', function ($http, $rootScope, $scope, $locati
 
     $http.get(domain + "/product-details/" + $routeParams.url_key + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
         $scope.product = data;
-        console.log(data);
         $scope.$digest;
         loaderHide();
     });
@@ -194,14 +191,13 @@ app.controller('scrapbookController', function ($http, $scope, $rootScope, $cont
     $scope.addToSList = function (event, id) {
         if (window.localStorage.getItem('id') != null) {
             $http.get(domain + "/scrapbook-like?productID=" + id + "&userId=" + window.localStorage.getItem('id')).success(function (response) {
-                console.log(response);
                 if (response == 1) {
                     angular.element(event.target).addClass("liked");
 
                 } else {
                     angular.element(event.target).removeClass("liked");
                 }
-console.log('sp');
+
                 $http.get(domain + "/get-scrapbook-products" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
                     $scope.products = data;
                     $scope.$digest;
@@ -216,12 +212,9 @@ console.log('sp');
     $scope.listOfOptions = ['Recent', 'Most Popular'];
 
     $scope.selectedItemChanged = function () {
-        console.log('You selected ' + $scope.selectedItem);
-
         if ($scope.selectedItem == 'Most Popular') {
             $http.get(domain + "/sb-mp" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
                 $scope.products = data;
-                console.log(data);
                 $scope.$digest;
                 loaderHide();
             });
@@ -229,7 +222,6 @@ console.log('sp');
         if ($scope.selectedItem == 'Recent') {
             $http.get(domain + "/get-scrapbook-products" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
                 $scope.products = data;
-                console.log(data);
                 $scope.$digest;
                 loaderHide();
             });
@@ -247,7 +239,6 @@ console.log('sp');
                 },
                 cache: false,
                 success: function (data) {
-                    console.log(data);
                     if (data == 'success') {
                         window.location.href = "#/";
                     } else {
@@ -298,7 +289,6 @@ app.controller('scrapbookDetailsController', function ($http, $scope, $rootScope
 
     $http.get(domain + "/scrapbook/" + $routeParams.url_key + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
         $scope.scrapbookproducts = data;
-        console.log(data);
         $scope.imgPath = domain + "/public/frontend/uploads/scrapbooks/";
         loaderHide();
     });
@@ -614,7 +604,6 @@ app.controller('questionnaireController', function ($http, $scope, $rootScope, $
                 if (data == "saved") {
 
                     jQuery.get(domain + "/update-membership?userId=" + window.localStorage.getItem('id')).success(function (data, status, headers, config) {
-                        console.log(data[0]);
                         window.localStorage.setItem('department', data[0]);
                         window.localStorage.setItem('member', 1);
                         window.location.href = "#/chat";
@@ -647,13 +636,10 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
 
     $http.get(domain + "/my-style/" + $routeParams.url_key).success(function (data, status, headers, config) {
         $scope.products = data;
-        console.log(data);
         $scope.filters = data.filters;
         $scope.$digest;
         loaderHide();
     });
-
-
 
     $scope.filtered = {};
     $scope.minp = 0;
@@ -745,8 +731,6 @@ app.controller('signupController', function ($http, $scope, $location, $rootScop
             data: jQuery("#signup input").serialize(),
             cache: false,
             success: function (data) {
-                // console.log(data);
-
                 if (data == "register") {
                     toast("Email is already registered.");
                 } else {
@@ -821,8 +805,6 @@ app.controller('contactController', function ($http, $scope, $location, $rootSco
             data: jQuery("#contactForm").serialize(),
             cache: false,
             success: function (data) {
-                console.log(data);
-
                 if (data == "sent") {
                     toast("Thank you! We will get back to you shortly.");
 
@@ -858,7 +840,6 @@ app.controller('userDashboardController', function ($http, $scope, $location, $r
             data: jQuery("#userDetailsfrm input").serialize(),
             cache: false,
             success: function (data) {
-                console.log(data);
                 if (data[0] == "success")
                     toast("Profile updated successfully!");
                 else
