@@ -75,7 +75,7 @@ app.controller('homeController', function ($http, $scope, $rootScope, $controlle
 
 });
 
-app.controller('categoryController', function ($http, $scope, $location, $rootScope, $routeParams, $anchorScroll, $window) {
+app.controller('categoryController', function ($http, $scope, $location, $rootScope, $routeParams, $anchorScroll) {
     loaderShow();
     $scope.filtered = {};
     $scope.minp = 0;
@@ -102,7 +102,8 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
             $scope.$digest;
             loaderHide();
         });
-        $window.scrollTo(0, 0);
+        $anchorScroll();
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
     };
 
     $scope.filterProds = function (option, parent) {
