@@ -608,6 +608,7 @@ app.controller('questionnaireController', function ($http, $scope, $rootScope, $
                     jQuery.get(domain + "/update-membership?userId=" + window.localStorage.getItem('id')).success(function (data, status, headers, config) {
                         window.localStorage.setItem('department', data[0]);
                         window.localStorage.setItem('member', 1);
+                        toast("Congratulations, you are an esteemed Style Panache member now!");
                         window.location.href = "#/chat";
                     });
 
