@@ -1,3 +1,14 @@
+ <div class=" header-custom" >
+            <div class="p25 float-left5">
+            <button ng-click="share($event, product)" class="button add-cart-btn share-btn hw100  "> <i class="fa fa-share-alt"></i><br>Share</button>
+            </div>
+            <div class="p25 float-left5">
+               <button ng-click="addToList($event, product.id)" class="button add-cart-btn hw100  fav-btn  "> <i class="fa fa-heart {{product.wishlist == 1? 'liked':''}}" ></i><br><span class="fav-text">Favorite</span> </button>
+             </div>
+            <div class="p50 float-left5">
+            <button class="button add-cart-btn  hw100 custom-add-cart "  ng-click="addToCart($event, product)"><i class="fa fa-shopping-cart"></i><br>Add to Cart</button>
+            </div>
+        </div>   
 <div id="content" class="snap-content">
     <div class="header-clear"></div>
 
@@ -14,7 +25,7 @@
                 <div class="portfolio-one-text">
                     <h3 class="title">
                         <a class="lname">{{product.product}}</a> 
-                        <i class="fa fa-heart {{product.wishlist == 1? 'liked':''}}" ng-click="addToList($event, product.id)"></i>
+                       
                     </h3>
                     <em class="subtitle">From {{product.store}}</em>
                     <h3 class="desc_title"> 
@@ -28,17 +39,59 @@
                     <p class="half-bottom">
                         {{ product.short_desc}}
                     </p>  
-                    <div class="bt-wrap">         
                   
-                        <button class="button add-cart-btn  custom-add-cart"  ng-click="addToCart($event, product)">Add to Cart</button>
-      
-                  
-                        <button ng-click="share($event, product)" class="button add-cart-btn  custom-add-cart"> Share</button>
-               
-                   </div> 
-                </div>       
+                </div>    
+             
             </div>
         </div>
     </div>
 
 </div>
+ <style>
+ 
+.header-custom {
+    pointer-events: all;
+    position: fixed;
+    height: 50px;
+    z-index: 999999;
+    background-color: #000;
+    width: 100%;
+    bottom:0;
+    max-height: 100%;
+    transform: translateY(0px);
+    -webkit-transform: translateY(0px);
+    transition: all 350ms ease-in-out;
+}
+ .float-left5{
+       float: left !important;
+    height: 100%;
+    text-align: center;
+}
+.p25{
+    width: 25%;
+}
+.hw100{
+    height: 100%;
+    width: 100%;
+}
+.like-pad{
+        padding: 15px 0px;
+}
+.fa-heart, .fa-share-alt, .fa-shopping-cart{
+    margin: 0px !important;
+}
+.custom-add-cart{
+    background-color: #1F1F1F;
+    color: #fff;
+}
+.custom-add-cart:hover{
+    color: #fff !important;
+}
+.share-btn{
+        border-right: 1px solid #BFBFBF;
+}
+.add-cart-btn{
+    text-align: center !important;
+}
+ 
+</style>
