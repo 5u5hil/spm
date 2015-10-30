@@ -1735,3 +1735,15 @@ div.img-wrapper-product {
     display: inline-block;
     vertical-align: middle;
 }
+.select-box{
+    appearance:select !important;
+       -webkit-appearance: select !important;
+    -moz-appearance:select !important;
+        border: 1px solid #eee;
+}
+.scrap-detail{
+    line-height: 10px !important;
+}
+.fa-heart{
+        padding-right: 1px !important;
+}

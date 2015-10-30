@@ -2,14 +2,18 @@
     <div class="header-clear"></div>
 
     <div class="content">
-
-        <h3>{{scrapbookproducts.product}}</h3>
-
-        <p class="sdetail">
-            <br/>
-            {{scrapbookproducts.added_by.first_name}}<br/><br/>
-            {{scrapbookproducts.short_desc}}
-        </p>
+   <div class="adaptive-style">
+         <h4 style="font-size:17px;">{{scrapbookproducts.product}}</h4>
+         
+      </div>
+      
+<div class="clear"></div>
+      <div class="decoration"></div>
+        
+           
+            <div>By {{scrapbookproducts.added_by.first_name}} </div>
+           <div> {{scrapbookproducts.short_desc}}</div>
+  <br>
 
         <div class="product-remove">
             <a href="" ng-if="userId == scrapbookproducts.added_by.id;" ng-click="removeScrapbook(scrapbookproducts.url_key)" class="remove remove_from_wishlist" title="Remove this product">Delete</a>
@@ -28,13 +32,14 @@
                 </a>
                 <h4 class="pname">
                     <a href="#/product/{{product.url_key}}" class="lname">{{product.product}}</a> 
-                    <i class="fa fa-heart {{product.wishlist == 1? 'liked':''}}" ng-click="addToList($event, product.id)"></i></h4>
-                <p class="sdetail">
+                    </h4>
+                <p class="scrap-detail">
                     <a href="#/product/{{product.url_key}}" class=""> 
                         <span class="fprice" ng-if="product.spl_price > 0 && product.spl_price < product.price"><i class="fa fa-rupee"></i>{{product.price}}</span>   
                         <span class="dprice"><i class="fa fa-rupee"></i>{{product.spl_price > 0 && product.spl_price < product.price ? product.spl_price : product.price }}</span> 
 
                     </a> 
+                    <a role="link" ng-click="addToList($event, product.id)" class="pull-right"><i class="fa fa-heart {{product.wishlist == 1? 'liked':''}}" ></i></a>
                     <br>
                     <span class="dd-cart-home ">
                         <button class="button add-cart-btn mt7"  ng-click="addToCart($event, product)">Add to Cart</button>

@@ -67,9 +67,9 @@ License:        You may not reuse or redistribute this framework
 /*	1. Reset  */ 
 
 * {
-	appearance:normal;
+	 appearance:normal;
 	-webkit-appearance: none;
-	-moz-appearance: none;
+	-moz-appearance: none; 
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -306,7 +306,7 @@ a:hover{
 }
 
 a{
-	color:#3498db;
+	color:#666;
 	tramsition:all 200ms ease;
 }
 
