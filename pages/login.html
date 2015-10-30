@@ -19,10 +19,23 @@
 
                 <div class="clearfix"></div>
                 <p> Create New account below, it's really easy! </p>
-                <form method="post" id="loginuser" >              
+                <form ng-cloak method="post" name="loginuser" id="loginuser">              
 
-                    <input type="email" class="signup-email" name="useremail"  placeholder="Email">
-                    <input type="password" class="signup-password"  name="password" placeholder="Password">
+                    <input type="email" class="signup-email" ng-model="useremail" name="useremail" id="useremail" placeholder="Email" required>
+                    <span style="color:red" ng-show="loginuser.useremail.$dirty && loginuser.useremail.$invalid">
+                        <span ng-show="loginuser.useremail.$error.required">Email is required.</span>
+                        <span ng-show="loginuser.useremail.$error.email">Invalid email address.</span>
+                    </span>
+
+                    <input type="password" class="signup-password" ng-model="password" name="password" id="password" placeholder="Password" required>
+                    <span style="color:red" ng-show="loginuser.password.$dirty && loginuser.password.$invalid">
+                        <span ng-show="loginuser.password.$error.required">Please enter password.</span>
+                    </span>
+                    
+                    <p>
+                        <a href="http://stylepanache.clu.pw/#/forgot-password" target="_blank" class="">Forgot Password?</a>
+                    </p>
+                    
                     <div class="one-half"><a ng-href="" ng-click="login()" class="button button-blue full-button">Login</a></div>
                     <div class="one-half last-column">
                         <a href="#/signup" class="button button-green full-button">Signup</a>
@@ -41,7 +54,7 @@
 
                     <div class="one-half"><a ng-href="" ng-click="setPreference()" class="button button-blue full-button">Add New Style</a></div>
                     <div class="one-half last-column">
-                        <a href="#/{{ rurl }}" class="button button-green full-button">Skip</a>
+                        <a href="#/{{ rurl}}" class="button button-green full-button">Skip</a>
                     </div>
                 </form>
                 <div class="clear"></div>
