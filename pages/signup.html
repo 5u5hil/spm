@@ -17,7 +17,7 @@
             </div>
 
             <div class="clearfix"></div>
-            <form name="log" id="signup" ng-controller="signupController" novalidate ng-cloak method="post" ng-submit="signup()">
+            <form name="log" id="signup" ng-controller="signupController" ng-cloak method="post" ng-submit="signup()">
                 <p> Create New account below, it's really easy! </p>
     
                     <input type="text" class="inputfield" name="fname" value="" placeholder="First Name" ng-model='fname' required/>
@@ -54,7 +54,7 @@
                     <span ng-show="log.phone.$error.required">Phone number is required.</span>
                 </span>    
 
-                <button type="submit" ng-disabled="log.$invalid" class="button button-blue full-button">Submit</button>
+                <button type="submit" class="button button-blue full-button">Submit</button>
             </form>
             <div class="clear"></div>
 
