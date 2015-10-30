@@ -10,14 +10,14 @@
             <br/>
             <form ng-cloak method="post" name="wardrobefrm" enctype="multipart/form-data" id="wardrobefrm" class="login custom-woo-login" ng-submit="addWardrobePref()">              
                 <select ng-model="wcategory" class="inputfield"  name="wcategory" id="wcategory" required>
-                    <option value="" selected="selected">Select Category</option>
+                    <option value="" selected="selected">Select Category*</option>
                     <option ng-repeat="wcat in wardrobecats"  on-finish-render="onFinishRenderAddWardrobe" value="{{ wcat.id}}">{{ wcat.category}}</option>
                 </select>
                 <p ng-show="wardrobefrm.wcategory.$dirty && wardrobefrm.wcategory.$invalid">
                     <span style="color:red" ng-show="wardrobefrm.wcategory.$error.required">Category is required.</span>
                 </p>
 
-                <input type="text" class="inputfield" name="wname" ng-model="wname" id="wname" placeholder="Product Name" required>
+                <input type="text" class="inputfield" name="wname" ng-model="wname" id="wname" placeholder="Product Name*" required>
                 <span style="color:red" ng-show="wardrobefrm.wname.$dirty && wardrobefrm.wname.$invalid">
                     <span ng-show="wardrobefrm.wname.$error.required">Name is required.</span>
                 </span>
