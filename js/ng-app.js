@@ -229,29 +229,6 @@ app.controller('scrapbookController', function ($http, $scope, $rootScope, $cont
         }
     };
 
-    $scope.removeScrapbook = function (slug) {
-        var r = confirm("Do you want to delete this item!");
-        if (r == true) {
-            jQuery.ajax({
-                type: "POST",
-                url: domain + "/remove-scrapbook-product",
-                data: {
-                    slug: slug
-                },
-                cache: false,
-                success: function (data) {
-                    if (data == 'success') {
-                        window.location.href = "#/";
-                    } else {
-                        toast('Please try again later');
-
-
-                    }
-                }
-            });
-        }
-    };
-
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
@@ -294,6 +271,29 @@ app.controller('scrapbookDetailsController', function ($http, $scope, $rootScope
         $scope.imgPath = domain + "/public/frontend/uploads/scrapbooks/";
         loaderHide();
     });
+    
+        $scope.removeScrapbook = function (slug) {
+        var r = confirm("Do you want to delete this item!");
+        if (r == true) {
+            jQuery.ajax({
+                type: "POST",
+                url: domain + "/remove-scrapbook-product",
+                data: {
+                    slug: slug
+                },
+                cache: false,
+                success: function (data) {
+                    if (data == 'success') {
+                        window.location.href = "#/scrapbook";
+                    } else {
+                        toast('Please try again later');
+
+
+                    }
+                }
+            });
+        }
+    };
 
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
