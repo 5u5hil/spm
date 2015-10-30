@@ -17,7 +17,7 @@
                         </div>
                     </div>
 
-                    <form ng-cloak method="post" class="contactForm" id="contactForm" name="contactForm" novalidate ng-submit="submitContact()">
+                    <form ng-cloak method="post" class="contactForm" id="contactForm" name="contactForm" ng-submit="submitContact()">
                         <fieldset>
 
                             <div class="formFieldWrap">
@@ -44,7 +44,7 @@
 
                             </div>
                             <div class="formSubmitButtonErrorsWrap">
-                                <button type="submit" ng-disabled="contactForm.$invalid" class="buttonWrap button button-green contactSubmitButton" value="SUBMIT" data-formId="contactForm">SUBMIT</button>
+                                <button type="submit" class="buttonWrap button button-green contactSubmitButton" value="SUBMIT" data-formId="contactForm">SUBMIT</button>
                             </div>
                         </fieldset>
                     </form>       
