@@ -13,7 +13,7 @@
             <input type="hidden" name="userId" value='{{ userId}}' />
 
             <div class="clearfix" ng-repeat="cat in categories" >
-                <h4>Select your {{cat.category}}</h4>
+                <h4>Select {{ (cat.category != "Occasion") ? 'your' : '' }} {{cat.category}}</h4>
                 <div class="portfolio-adaptive adaptive-three listing child">
                     <div class="adaptive-item" ng-repeat="child in cat.children"  >
                         <input type="radio" name="cat[{{cat.id}}][]" value="{{child.id}}" id="{{child.id}}" style="display:none  ;" />
