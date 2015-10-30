@@ -600,7 +600,7 @@ app.controller('questionnaireController', function ($http, $scope, $rootScope, $
         jQuery.ajax({
             type: "POST",
             url: domain + "/save-questionnaire?userId=" + window.localStorage.getItem('id'),
-            data: jQuery("#questionnairefrm input").serialize(),
+            data: jQuery("#questionnairefrm").serialize(),
             cache: false,
             success: function (data) {
                 if (data == "saved") {
