@@ -368,7 +368,7 @@ app.controller('loginController', function ($http, $rootScope, $location, $scope
     });
 });
 
-app.controller('bodyCharacteristicsController', function ($http, $scope, $rootScope, $location) {
+app.controller('bodyCharacteristicsController', function ($http, $scope, $rootScope, $location, $timeout) {
 
     loaderShow();
 
@@ -410,7 +410,11 @@ app.controller('bodyCharacteristicsController', function ($http, $scope, $rootSc
         siteMainFn();
         jQuery(".capture-event").off("click", myFnnnn);
     });
+ $timeout(function () {
+    jQuery('.to-cat-select:first').click();
+        console.log('fired'); 
 
+    }, 2000);
 });
 
 app.controller('addWardrobeController', function ($http, $scope, $rootScope, $location) {

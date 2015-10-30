@@ -13,28 +13,29 @@
             <input type="hidden" name="userId" value='{{ userId}}' />
 
             <div class="clearfix" ng-repeat="cat in categories" >
-                <h4>Select your {{cat.category}}</h4>
+                <h4 class="category-h4">Select your {{cat.category}}</h4>
                 <div class="portfolio-adaptive adaptive-three listing child">
-                    <div class="adaptive-item" ng-repeat="child in cat.children"  >
+                    <div class="adaptive-item custom-item" ng-repeat="child in cat.children"  >
                         <input type="radio" name="cat[{{cat.id}}][]" value="{{child.id}}" id="{{child.id}}" style="display:none  ;" />
 
                         <a href class="to-cat-select" ng-click="getGallery()" title="{{product.product}}">
                             <img class="responsive-image" ng-src="{{imgPath + child.image}}"  alt="{{child.category}}"> 
-                        </a>
-                        <h4 class="pname">
-                            <a ng-href="" class="lname"> 
-                                <label for="{{child.id}}"> <input type="radio" name="cat[{{cat.id}}][]" value="{{child.id}}" id="{{child.id}}" />
+                            <h4 class="pname">
+                            
+                                <label class="lbl-style" > 
                                     {{child.category}}
                                 </label>
-                            </a> 
+                       
                         </h4>
+                        </a>
+                        
                     </div>
 
                 </div>
 
             </div>
             <p class="form-row clearfix">
-                <input type="submit" class="button" value="submit">
+               <input type="submit" class="button button-blue full-button" style="background-color: #1f1f1f; margin-top:15px" value="Submit">
             </p>
         </form>
 
@@ -49,21 +50,34 @@
 </script>
 <style>
     a.item-selected, a.item-selected:hover {
-        box-shadow: 0px 1px 11px 3px #157913 !important;
-        -webkit-box-shadow: 0px 1px 11px 3px #157913;
-        -moz-box-shadow: 0px 1px 11px 3px #157913;
+        box-shadow:  0px 0px 3px 1px #343434 !important;
+        -webkit-box-shadow: 0px 0px 3px 1px #343434 !important;
+        -moz-box-shadow: 0px 0px 3px 1px #343434 !important;
         transition: all 0.3s ease 0s;
         -moz-transition: all 0.3s ease 0s;
         -webkit-transition: all 0.3s ease 0s;
         -o-transition: all 0.3s ease 0s;
     }
     a.to-cat-select:hover {
-        box-shadow: 0px 1px 11px 3px #b1b4b4;
-        -webkit-box-shadow: 0px 1px 11px 3px #b1b4b4;
-        -moz-box-shadow: 0px 1px 11px 3px #b1b4b4;
+            box-shadow: 0px 0px 3px 1px #343434 !important;
+        -webkit-box-shadow: 0px 0px 3px 1px #343434 !important;
+        -moz-box-shadow: 0px 0px 3px 1px #343434 !important;
         transition: all 0.3s ease 0s;
         -moz-transition: all 0.3s ease 0s;
         -webkit-transition: all 0.3s ease 0s;
         -o-transition: all 0.3s ease 0s;
     }
+    .lbl-style{
+            font-size: 12px;
+    text-align: center;
+    }
+/*.custom-item{
+    margin-left: 0% !important;
+}*/
+.category-h4{
+        padding: 10px 0px;
+}
 </style>
+<script>
+
+</script>
