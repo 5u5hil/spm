@@ -79,27 +79,42 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
     $scope.filtered = {};
     $scope.minp = 0;
     $scope.maxp = 0;
+    $scope.pdts = {};
 
     $http.get(domain + "/get-category-products/" + $routeParams.url_key + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
+
+
         $scope.products = data;
+        $scope.pdts = data.data
         $scope.filters = data.filters;
         $scope.$digest;
         loaderHide();
     });
 
-    $scope.load = function (url) {
-        loaderShow();
+    $scope.load = function (event, url) {
+        angular.element(event.target).children("i").addClass("fa fa-spinner fa-pulse");
         $http.get(url, {
             params: {
                 'filters': $scope.filtered,
                 'minp': $scope.minp,
                 'maxp': $scope.maxp,
-                'slug': $routeParams.url_key
+                'slug': $routeParams.url_key,
+                'userId': (window.localStorage.getItem('id') != null ? window.localStorage.getItem('id') : "")
             }
         }).success(function (data, status, headers, config) {
             $scope.products = data;
+            if (data.data.length > 0) {
+                jQuery.each(data.data, function (k, v) {
+                    $scope.pdts.push(v);
+                });
+                angular.element(event.target).children("i").removeClass("fa fa-spinner fa-pulse");
+            } else {
+                angular.element(event.target).removeAttr("ng-click");
+                angular.element(event.target).text("No More Products");
+            }
+
             $scope.$digest;
-            jQuery('#content').scrollTop(0);
+
             loaderHide();
 
         });
@@ -132,10 +147,13 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
                 'filters': $scope.filtered,
                 'minp': $scope.minp,
                 'maxp': $scope.maxp,
-                'slug': $routeParams.url_key
+                'slug': $routeParams.url_key,
+                'userId': (window.localStorage.getItem('id') != null ? window.localStorage.getItem('id') : "")
+
             }
         }).success(function (response) {
             $scope.products = response;
+            $scope.pdts = response.data
             $scope.$digest;
             jQuery(".big-notification.yellow-notification").toggle("slideDown");
         });
@@ -188,7 +206,7 @@ app.controller('scrapbookController', function ($http, $scope, $rootScope, $cont
         $scope.imgPath = domain + "/public/frontend/uploads/scrapbooks/";
         loaderHide();
     });
-    
+
     $scope.addToSList = function (event, id) {
         if (window.localStorage.getItem('id') != null) {
             $http.get(domain + "/scrapbook-like?productID=" + id + "&userId=" + window.localStorage.getItem('id')).success(function (response) {
@@ -271,8 +289,8 @@ app.controller('scrapbookDetailsController', function ($http, $scope, $rootScope
         $scope.imgPath = domain + "/public/frontend/uploads/scrapbooks/";
         loaderHide();
     });
-    
-        $scope.removeScrapbook = function (slug) {
+
+    $scope.removeScrapbook = function (slug) {
         var r = confirm("Do you want to delete this item!");
         if (r == true) {
             jQuery.ajax({

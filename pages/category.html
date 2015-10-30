@@ -37,7 +37,7 @@
         </div>
         <div class="decoration"></div>
         <div class="portfolio-adaptive adaptive-two listing">
-            <div class="adaptive-item" ng-repeat="product in products.data" on-finish-render="ngRepeatFinished">
+            <div class="adaptive-item" ng-repeat="product in pdts" on-finish-render="ngRepeatFinished">
                 <div class="img-wrapper-product">
                     <a href="#/product/{{product.url_key}}" title="{{product.product}}">
 
@@ -63,9 +63,8 @@
                 </p>
             </div>
         </div>
-        <div class="pagination clearfix">
-            <button class="button" ng-if="products.prev_page_url != null" ng-click="load(products.prev_page_url)">Previous</button>
-            <button class="button pull-right" ng-if="products.next_page_url != null" ng-click="load(products.next_page_url)">Next</button>
+        <div class="pagination clearfix" style="text-align: center;padding-top: 20px;">
+            <button class="button " ng-if="products.next_page_url != null" ng-click="load($event,products.next_page_url)"> <i></i> Load More</button>
         </div>
     </div>
 </div>
