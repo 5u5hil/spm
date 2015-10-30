@@ -318,7 +318,12 @@ app.controller('loginController', function ($http, $rootScope, $location, $scope
                 if (data[0] == "invalid") {
                     $rootScope.loggedIn = 0;
                     toast("Invalid login");
-                } else {
+                } 
+                else if (data[0] == "empty") {
+                    $rootScope.loggedIn = 0;
+                    toast("Please enter username and password!");
+                }
+                else {
                     $rootScope.loggedIn = 1;
                     window.localStorage.setItem('id', data.id);
                     window.localStorage.setItem('name', data.first_name);
