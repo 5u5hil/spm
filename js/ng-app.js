@@ -250,6 +250,27 @@ app.controller('myScrapbookController', function ($http, $scope, $rootScope, $co
         loaderHide();
     });
 
+    $scope.addToSList = function (event, id) {
+        if (window.localStorage.getItem('id') != null) {
+            $http.get(domain + "/scrapbook-like?productID=" + id + "&userId=" + window.localStorage.getItem('id')).success(function (response) {
+                if (response == 1) {
+                    angular.element(event.target).addClass("liked");
+
+                } else {
+                    angular.element(event.target).removeClass("liked");
+                }
+                $http.get(domain + "/get-myscrapbook-products" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
+                    $scope.products = data;
+                    console.log(data);
+                    loaderHide();
+                });
+
+            });
+
+        } else {
+            window.location.href = '#/login';
+        }
+    };
 
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
@@ -410,9 +431,9 @@ app.controller('bodyCharacteristicsController', function ($http, $scope, $rootSc
         siteMainFn();
         jQuery(".capture-event").off("click", myFnnnn);
     });
- $timeout(function () {
-    jQuery('.to-cat-select:first').click();
-        console.log('fired'); 
+    $timeout(function () {
+        jQuery('.to-cat-select:first').click();
+        console.log('fired');
 
     }, 2000);
 });
