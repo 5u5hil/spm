@@ -48,30 +48,7 @@ app.controller('homeController', function ($http, $scope, $rootScope, $controlle
 
     $scope.$on('ngRepeatFinished', function (ngRepeatFinishedEvent) {
         siteMainFn();
-        //    $rootScope.myFunc = function () {
-        //       console.log('myFunc');
-        //    siteMainFn();
-        // };
-
     });
-
-    //    $scope.addToList = function (event, id) {
-    //        if (window.localStorage.getItem('id') != null) {
-    //            $http.get(domain + "/add-to-savedlist?productID=" + id + "&userId=" + window.localStorage.getItem('id')).success(function (response) {
-    //                console.log(angular.element(event.target).parent());
-    //                if (response == 1) {
-    //                    angular.element(event.target).addClass("puffIn liked");
-    //
-    //                } else {
-    //                    angular.element(event.target).removeClass("puffIn liked");
-    //                }
-    //            });
-    //
-    //        } else {
-    //            window.location.href = '#/login';
-    //        }
-    //    };
-
 });
 
 app.controller('categoryController', function ($http, $scope, $location, $rootScope, $routeParams, $anchorScroll) {
@@ -654,33 +631,54 @@ app.controller('logoutController', function ($http, $rootScope, $location, $scop
 app.controller('myStyleController', function ($http, $scope, $location, $rootScope, $routeParams) {
 
     loaderShow();
+    $scope.filtered = {};
+    $scope.minp = 0;
+    $scope.maxp = 0;
 
-    $http.get(domain + "/my-style/" + $routeParams.url_key).success(function (data, status, headers, config) {
+    $scope.pdts = {};
+
+    $http.get(domain + "/my-style/" + $routeParams.url_key, {
+        'userId': (window.localStorage.getItem('id') != null ? window.localStorage.getItem('id') : "")
+    }).success(function (data, status, headers, config) {
         $scope.products = data;
+        $scope.pdts = data.data
         $scope.filters = data.filters;
         $scope.$digest;
         loaderHide();
     });
 
-    $scope.filtered = {};
-    $scope.minp = 0;
-    $scope.maxp = 0;
 
 
-    $scope.load = function (url) {
-        loaderShow();
+
+    $scope.load = function (event, url) {
+        angular.element(event.target).children("i").addClass("fa fa-spinner fa-pulse");
         $http.get(url, {
             params: {
                 'filters': $scope.filtered,
                 'minp': $scope.minp,
-                'maxp': $scope.maxp
+                'maxp': $scope.maxp,
+                'slug': $routeParams.url_key,
+                'userId': (window.localStorage.getItem('id') != null ? window.localStorage.getItem('id') : "")
             }
         }).success(function (data, status, headers, config) {
             $scope.products = data;
+            if (data.data.length > 0) {
+                jQuery.each(data.data, function (k, v) {
+                    $scope.pdts.push(v);
+                });
+                angular.element(event.target).children("i").removeClass("fa fa-spinner fa-pulse");
+            } else {
+                angular.element(event.target).removeAttr("ng-click");
+                angular.element(event.target).text("No More Products");
+            }
+
             $scope.$digest;
+
             loaderHide();
+
         });
     };
+
 
 
     $scope.filterProds = function (option, parent) {
@@ -712,10 +710,12 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
             params: {
                 'filters': $scope.filtered,
                 'minp': $scope.minp,
-                'maxp': $scope.maxp
+                'maxp': $scope.maxp,
+                'userId': (window.localStorage.getItem('id') != null ? window.localStorage.getItem('id') : "")
             }
         }).success(function (response) {
             $scope.products = response;
+            $scope.pdts = response.data
             $scope.$digest;
             jQuery(".big-notification.yellow-notification").toggle("slideDown");
         });
