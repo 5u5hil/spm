@@ -60,7 +60,11 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
 
     $http.get(domain + "/get-category-products/" + $routeParams.url_key + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
 
-
+        if (data.subcats.length > 0) {
+            window.localStorage.setItem("maincat", data.maincat);
+            window.localStorage.setItem("subcats", JSON.stringify(data.subcats));
+            window.location.href = "#/subcat";
+        }
         $scope.products = data;
         $scope.pdts = data.data
         $scope.filters = data.filters;
@@ -318,7 +322,7 @@ app.controller('loginController', function ($http, $rootScope, $location, $scope
                 if (data[0] == "invalid") {
                     $rootScope.loggedIn = 0;
                     toast("Invalid login");
-                } 
+                }
                 else if (data[0] == "empty") {
                     $rootScope.loggedIn = 0;
                     toast("Please enter username and password!");
@@ -913,6 +917,20 @@ app.controller('introController', function ($http, $scope, $location, $rootScope
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
+    jQuery('.capture-event').one('click', function myFnnnn() {
+        siteMainFn();
+        jQuery(".capture-event").off("click", myFnnnn);
+    });
+});
+
+app.controller('subcatController', function ($http, $scope, $location, $rootScope, $routeParams) {
+    $scope.$on('$viewContentLoaded', function () {
+        siteMainFn();
+    });
+
+    $scope.cat = window.localStorage.getItem("maincat");
+    $scope.subcats = jQuery.parseJSON(window.localStorage.getItem("subcats"));
+    loaderHide();
     jQuery('.capture-event').one('click', function myFnnnn() {
         siteMainFn();
         jQuery(".capture-event").off("click", myFnnnn);

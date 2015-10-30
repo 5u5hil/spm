@@ -1,0 +1,23 @@
+<div id="content" class="snap-content">
+    <div class="header-clear"></div>
+    <div class="content">
+        <div class="blog-posts custom-blog-posts">
+            <div class="blog-post">
+                <h3 class="blog-post-title">{{ cat }}</h3>
+                <div class="clear"></div>
+                <div class="decoration"></div>
+                <a class="blog-post-image" href><img src="images/pictures/3ww.jpg" alt="img"></a>
+                
+                <ul>
+                    <li ng-repeat="c in subcats">
+                        <a href="#/explore/{{ c.url_key }}">{{ c.category }}</a>
+                    </li>
+                </ul>
+                
+                
+            </div>
+        </div>
+        <div class="decoration"></div>
+    </div>
+    <!-- Page Footer-->
+</div>
