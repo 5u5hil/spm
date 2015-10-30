@@ -1,27 +1,26 @@
- <div class=" header-custom" >
-            <div class="p25 float-left5">
-            <button ng-click="share($event, product)" class="button add-cart-btn share-btn hw100  "> <i class="fa fa-share-alt"></i><br>Share</button>
-            </div>
-            <div class="p25 float-left5">
-               <button ng-click="addToList($event, product.id)" class="button add-cart-btn hw100  fav-btn   {{product.wishlist == 1? 'liked':''}}"> <i class="fa fa-heart" ></i><br><span class="fav-text">Favorite</span> </button>
-             </div>
-            <div class="p50 float-left5">
-            <button class="button add-cart-btn  hw100 custom-add-cart "  ng-click="addToCart($event, product)"><i class="fa fa-shopping-cart"></i><br>Add to Cart</button>
-            </div>
-        </div>   
+<div class=" header-custom">
+    <div class="p25 float-left5">
+        <button ng-click="share($event, product)" class="button add-cart-btn share-btn hw100  "> <i class="fa fa-share-alt"></i>
+            <br>Share</button>
+    </div>
+    <div class="p25 float-left5">
+        <button ng-click="addToList($event, product.id)" class="button add-cart-btn hw100  fav-btn   {{product.wishlist == 1? 'liked':''}}"> <i class="fa fa-heart"></i>
+            <br><span class="fav-text">Favorite</span> </button>
+    </div>
+    <div class="p50 float-left5">
+        <button class="button add-cart-btn  hw100 custom-add-cart " ng-click="addToCart($event, product)"><i class="fa fa-shopping-cart"></i>
+            <br>Add to Cart</button>
+    </div>
+</div>
 <div id="content" class="snap-content">
     <div class="header-clear"></div>
-
     <div class="content">
         <div class="portfolio-one">
             <div class="portfolio-one-item full-bottom">
                 <div class="portfolio-one-image">
                     <a href="{{product.large_image != '' ? product.large_image : (product.medium_image != '' ? product.medium_image : product.small_image) }}" class="swipebox" title="{{product.product}}"><i class="fa fa-plus"></i></a>
-                    
                     <img src="{{product.large_image != '' ? product.large_image : (product.medium_image != '' ? product.medium_image : product.small_image) }}" class="responsive-image">
-                 
                 </div>
-
                 <div class="portfolio-one-text">
                     <h3 class="title">
                         <a class="lname">{{product.product}}</a> 
@@ -38,17 +37,13 @@
                     </div>
                     <p class="half-bottom">
                         {{ product.short_desc}}
-                    </p>  
-                  
-                </div>    
-             
+                    </p>
+                </div>
             </div>
         </div>
     </div>
-
 </div>
- <style>
- 
+<style>
 .header-custom {
     pointer-events: all;
     position: fixed;
@@ -56,42 +51,56 @@
     z-index: 999999;
     background-color: #000;
     width: 100%;
-    bottom:0;
+    bottom: 0;
     max-height: 100%;
     transform: translateY(0px);
     -webkit-transform: translateY(0px);
     transition: all 350ms ease-in-out;
 }
- .float-left5{
-       float: left !important;
+
+.float-left5 {
+    float: left !important;
     height: 100%;
     text-align: center;
 }
-.p25{
+
+.p25 {
     width: 25%;
 }
-.hw100{
+
+.hw100 {
     height: 100%;
     width: 100%;
 }
-.like-pad{
-        padding: 15px 0px;
+
+.like-pad {
+    padding: 15px 0px;
 }
-.fa-heart, .fa-share-alt, .fa-shopping-cart{
+
+.fa-heart,
+.fa-share-alt,
+.fa-shopping-cart {
     margin: 0px !important;
 }
-.custom-add-cart{
+
+.custom-add-cart {
     background-color: #1F1F1F;
     color: #fff;
 }
-.custom-add-cart:hover{
+
+.custom-add-cart:hover {
     color: #fff !important;
 }
-.share-btn{
-        border-right: 1px solid #BFBFBF;
+
+.share-btn {
+    border-right: 1px solid #BFBFBF;
 }
-.add-cart-btn{
+
+.add-cart-btn {
     text-align: center !important;
 }
- 
+
+.fav-text, .fav-text:hover {
+    color: #000 !important;
+}
 </style>

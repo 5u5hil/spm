@@ -1591,7 +1591,7 @@ table.cartable tr:last-child td {
 }
 
 .liked {
-    color: red;
+   color: #ff0055;
 }
 
 .questionnaire input[type="checkbox"] {
