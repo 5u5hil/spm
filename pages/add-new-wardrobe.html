@@ -8,7 +8,7 @@
             <p> Add New Item to your Wardrobe </p>
 
             <br/>
-            <form ng-cloak method="post" novalidate name="wardrobefrm" enctype="multipart/form-data" id="wardrobefrm" class="login custom-woo-login" ng-submit="addWardrobePref()">              
+            <form ng-cloak method="post" name="wardrobefrm" enctype="multipart/form-data" id="wardrobefrm" class="login custom-woo-login" ng-submit="addWardrobePref()">              
                 <select ng-model="wcategory" class="inputfield"  name="wcategory" id="wcategory" required>
                     <option value="" selected="selected">Select Category</option>
                     <option ng-repeat="wcat in wardrobecats"  on-finish-render="onFinishRenderAddWardrobe" value="{{ wcat.id}}">{{ wcat.category}}</option>
@@ -32,8 +32,8 @@
 
                 <input type="hidden" name="userId" value='{{ userId}}'>
 
-                <input type='submit' name='submit' class="button button-blue full-button">
-
+                <!--<input type='submit' name='submit' class="button button-blue full-button">-->
+                <button type="submit" class="button button-blue full-button">Submit</button>
 
                 <div class="clear"></div>
 
