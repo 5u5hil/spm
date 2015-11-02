@@ -3,12 +3,15 @@
     <div class="content">
         <div class="blog-posts custom-blog-posts">
             <div class="blog-post">
-                <h3 class="blog-post-title">Personal Stylist</h3>
+                <h3 class="blog-post-title pull-left">Personal Stylist</h3>
+                <span class="pull-right">
+                <span style="  "><a href class="button button-blue full-button" onclick="checkPLogin()" ng-show="{{ismember == 0}}"> Subscribe</a></span>
+                <span style="  "><a href class="button button-blue full-button" onclick="startChat()" ng-show="{{ismember == 1 }}"> Start Chat</a></span>
+                </span>
                 <div class="clear"></div>
                 <div class="decoration"></div>
                 <a class="blog-post-image" href><img src="images/pictures/3ww.jpg" alt="img"></a>
-                <p style="    margin-bottom: 20px;"><a href class="button button-blue full-button" onclick="checkPLogin()" ng-show="{{ismember == 0}}"> Subscribe Now</a></p>
-                <p style="    margin-bottom: 20px;"><a href class="button button-blue full-button" onclick="startChat()" ng-show="{{ismember == 1 }}"> Start Chat</a></p>
+                
                 <p class="blog-post-text">
                    Become a Member with us and get a dedicated personal stylist available for you, just a message away! You can have your body traits saved with us, and accordingly, our stylists will help you prepare looks for daily wear, occasions, also consult on gifts & more.
                 </p>
@@ -18,6 +21,8 @@
                 <p class="blog-post-text">
                     Traveling somewhere, confused what to wear to suit the latest fashionistas there, talk to us. A simple method – tell us the place you are visiting, the purpose of your visit and we’ll suggest you with most amazing apparels. Our fashion advice goes a step forward by taking into consideration climatic conditions, nature of visit and trending fashion.
                 </p>
+                <p style="    margin-bottom: 20px;"><a href class="button button-blue full-button" onclick="checkPLogin()" ng-show="{{ismember == 0}}"> Subscribe</a></p>
+                <p style="    margin-bottom: 20px;"><a href class="button button-blue full-button" onclick="startChat()" ng-show="{{ismember == 1 }}"> Start Chat</a></p>
             </div>
         </div>
         <div class="decoration"></div>

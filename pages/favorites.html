@@ -6,7 +6,7 @@
             <h4>My Favorites</h4>
             <a class=""><i class="fa fa-filter"></i></a>
             <a class="adaptive-two-activate active-adaptive-style"><i class="fa fa-th-large"></i></a>
-            <a class="adaptive-one-activate"><i class="fa fa-navicon"></i></a>
+           <!--  <a class="adaptive-one-activate"><i class="fa fa-navicon"></i></a> -->
         </div>
         <div class="clear"></div>
 
@@ -14,12 +14,14 @@
 
         <div class="portfolio-adaptive adaptive-two listing">
             <div class="adaptive-item" ng-repeat="product in userFavorites">
+            <div class="img-wrapper-product">
                 <a href="#/product/{{product.url_key}}"  title="{{product.product}}">
                     <img class="responsive-image" ng-src="{{product.small_image != '' ? product.small_image : (product.medium_image != '' ? product.medium_image : product.large_image) }}" alt="img">
                 </a>
+            </div>
                 <h4 class="pname">
                     <a href="#/product/{{product.url_key}}" class="lname">{{product.product}}</a> 
-                    <a href="" class="lwishlit"><i class="fa fa-heart {{product.wishlist == 1? 'puffIn liked':''}}" ng-click="addToList($event, product.id)"></i></a></h4>
+                 </h4>
                 <p class="sdetail">
                 <span class="price-wrap">
                     <a href="#/product/{{product.url_key}}" class=""> 
@@ -27,6 +29,9 @@
                         <span class="dprice"><i class="fa fa-rupee"></i>{{product.spl_price > 0 ? product.spl_price : product.price }}</span> 
                     </a> 
                     </span>
+                     <span class="pull-right">
+                     <a href="" class="lwishlit"><i class="fa fa-heart {{product.wishlist == 1? 'puffIn liked':''}}" ng-click="addToList($event, product.id)"></i></a>
+                 </span>
                        <br>
                          <span class="dd-cart-home ">
                     <button class="button add-cart-btn mt7"  ng-click="addToCart($event, product)">Add to Cart</button>
@@ -43,8 +48,6 @@
         </div>
 
     </div>
-
-
-
 </div>
- 
+ <style>
+</style>

@@ -1806,3 +1806,8 @@ div.img-wrapper-product {
 .fav-text, .fav-text:hover {
     color: #000 !important;
 }
+.fa-heart, .fa-th-large, .fa-filter{
+
+        padding: 1px !important;
+        font-size: 15px !important;}
+  
