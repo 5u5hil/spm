@@ -13,6 +13,8 @@
            
             <div>By {{scrapbookproducts.added_by.first_name}} </div>
            <div> {{scrapbookproducts.short_desc}}</div>
+           
+           <span class="red-hover pull-right"><i class=" fa fa-thumbs-up {{scrapbookproducts.liked == 1? 'liked':''}}" ng-click="addToSList($event, scrapbookproducts.id)"></i> <span class="count">{{scrapbookproducts.scrapbooklikes.length}}</span></span>
   <br>
 
         <div class="product-remove">
