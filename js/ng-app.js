@@ -183,7 +183,6 @@ app.controller('scrapbookController', function ($http, $scope, $rootScope, $cont
 
     $http.get(domain + "/get-scrapbook-products" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
         $scope.products = data;
-        console.log(data);
         $scope.imgPath = domain + "/public/frontend/uploads/scrapbooks/";
         loaderHide();
     });
@@ -261,7 +260,6 @@ app.controller('myScrapbookController', function ($http, $scope, $rootScope, $co
                 }
                 $http.get(domain + "/get-myscrapbook-products" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
                     $scope.products = data;
-                    console.log(data);
                     loaderHide();
                 });
 
@@ -310,7 +308,6 @@ app.controller('scrapbookDetailsController', function ($http, $scope, $rootScope
 
     $http.get(domain + "/scrapbook/" + $routeParams.url_key + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
         $scope.scrapbookproducts = data;
-        console.log(data);
         $scope.imgPath = domain + "/public/frontend/uploads/scrapbooks/";
         loaderHide();
     });
@@ -526,7 +523,6 @@ app.controller('wardrobeController', function ($http, $scope, $rootScope, $locat
     $http.get(domain + "/get-wardrobe-products?userId=" + window.localStorage.getItem('id')).success(function (data, status, headers, config) {
         $scope.name = window.localStorage.getItem('name');
         $scope.wardrobeprods = data;
-        console.log(JSON.stringify(data));
         window.localStorage.setItem('wardrobeprods', JSON.stringify(data));
         loaderHide();
     });
@@ -547,7 +543,6 @@ app.controller('wardrobeListingController', function ($http, $scope, $rootScope,
     $scope.wardrobeList = $filter('filter')(jQuery.parseJSON(window.localStorage.getItem('wardrobeprods')), {
         id: $routeParams.id
     })[0];
-    console.log($scope.wardrobeList);
     loaderHide();
 
     $scope.$on('$viewContentLoaded', function () {
@@ -650,7 +645,6 @@ app.controller('createScrapbookController', function ($http, $scope, $rootScope,
 
 app.controller('chatController', function ($http, $scope, $rootScope, $controller) {
     $scope.ismember = window.localStorage.getItem('member');
-    console.log(window.localStorage.getItem('member'));
     loaderHide();
 
     $scope.$on('$viewContentLoaded', function () {
@@ -967,7 +961,6 @@ app.controller('favoritesController', function ($http, $scope, $location, $rootS
 
     $http.get(domain + "/wish-list-products?userId=" + window.localStorage.getItem('id')).success(function (data, status, headers, config) {
         $scope.userFavorites = data;
-        console.log(data);
         $scope.$digest;
         loaderHide();
     });
