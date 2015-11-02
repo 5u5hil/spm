@@ -9,14 +9,14 @@
 
         <div class="decoration"></div>
         <form name="addStyleForm" ng-submit="addPref()">
-            <input type="text" name="styleName" style="margin-top: 10px;" class="signup-password" placeholder="Style Name"/>
+            <input type="text" name="styleName" required style="margin-top: 10px;" class="signup-password" placeholder="Style Name"/>
             <input type="hidden" name="userId" value='{{ userId}}' />
 
             <div class="clearfix" ng-repeat="cat in categories" >
                 <h4 class="category-h4">Select your {{cat.category}}</h4>
                 <div class="portfolio-adaptive adaptive-three listing child">
                     <div class="adaptive-item custom-item" ng-repeat="child in cat.children"  >
-                        <input type="radio" name="cat[{{cat.id}}][]" value="{{child.id}}" id="{{child.id}}" style="display:none  ;" />
+                        <input type="radio" ng-model="{{child.id}}" ng-required="{{!child.id}}" name="cat[{{cat.id}}][]" value="{{child.id}}" id="{{child.id}}" style="display:none  ;" />
 
                         <a href class="to-cat-select" ng-click="getGallery()" title="{{product.product}}">
                             <img class="responsive-image" ng-src="{{imgPath + child.image}}"  alt="{{child.category}}"> 
