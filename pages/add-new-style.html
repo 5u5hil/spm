@@ -9,7 +9,7 @@
 
         <div class="decoration"></div>
         <form name="addStyleForm" ng-submit="addPref()">
-            <input type="text" name="styleName" style="margin-top: 10px;" class="signup-password" placeholder="Style Name"/>
+            <input type="text" name="styleName" required style="margin-top: 10px;" class="signup-password" placeholder="Style Name"/>
             <input type="hidden" name="userId" value='{{ userId}}' />
 
             <div class="clearfix" ng-repeat="cat in categories" >
