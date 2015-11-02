@@ -455,8 +455,6 @@ app.controller('bodyCharacteristicsController', function ($http, $scope, $rootSc
     $scope.addPref = function () {
         var Ffrm = jQuery("[type='radio']").serialize();
         var arr = Ffrm.split('&');
-        var styleErr = true;
-        console.log(arr);
 
         if (arr.length != 0 && arr.length < 5) {
             toast("Please select all style parameters!");
