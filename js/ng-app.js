@@ -271,7 +271,7 @@ app.controller('myScrapbookController', function ($http, $scope, $rootScope, $co
             window.location.href = '#/login';
         }
     };
-    
+
     $scope.removeScrapbook = function (slug) {
         var r = confirm("Do you want to delete this item!");
         if (r == true) {
@@ -335,6 +335,28 @@ app.controller('scrapbookDetailsController', function ($http, $scope, $rootScope
                     }
                 }
             });
+        }
+    };
+
+    $scope.addToSList = function (event, id) {
+        if (window.localStorage.getItem('id') != null) {
+            $http.get(domain + "/scrapbook-like?productID=" + id + "&userId=" + window.localStorage.getItem('id')).success(function (response) {
+                if (response == 1) {
+                    angular.element(event.target).addClass("liked");
+
+                } else {
+                    angular.element(event.target).removeClass("liked");
+                }
+
+                $http.get(domain + "/scrapbook/" + $routeParams.url_key + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
+                    $scope.scrapbookproducts = data;
+                    $scope.$digest;
+                    loaderHide();
+                });
+            });
+
+        } else {
+            window.location.href = '#/login';
         }
     };
 
