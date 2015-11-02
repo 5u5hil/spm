@@ -451,7 +451,18 @@ app.controller('bodyCharacteristicsController', function ($http, $scope, $rootSc
         })
 
     };
+    
     $scope.addPref = function () {
+        var Ffrm = jQuery("[type='radio']").serialize();
+        var arr = Ffrm.split('&');
+        var styleErr = true;
+        console.log(arr);
+
+        if (arr.length != 0 && arr.length < 5) {
+            toast("Please select all style parameters!");
+            return false;
+        }
+
         loaderShow();
         jQuery.ajax({
             type: "POST",
@@ -459,7 +470,6 @@ app.controller('bodyCharacteristicsController', function ($http, $scope, $rootSc
             data: jQuery("[name='addStyleForm']").serialize(),
             cache: false,
             success: function (data) {
-
                 jQuery(".newStyle").append('<li><a ng-href="#/explore-style/' + data.id + '" class="active-menu"><i class="fa fa-angle-right"></i>' + data.style_name + '<i class="fa fa-circle"></i></a></li>');
                 window.location.href = "#/explore-style/" + data.id;
             }
