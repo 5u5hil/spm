@@ -989,7 +989,7 @@ body {
 
 .main-logo {
     background-image: url(../images/logo-dark.png);
-    width: 70px;
+    width: 130px;
     height: 43px;
     /*background-size: contain;*/
     background-repeat: no-repeat;
@@ -1810,4 +1810,9 @@ div.img-wrapper-product {
 
         padding: 1px !important;
         font-size: 15px !important;}
-  
+.sub-cat-opt{
+        width: 100%;
+    list-style: none;
+    background: #EAEAEA;
+    padding: 10px;
+}
