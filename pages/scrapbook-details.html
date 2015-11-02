@@ -16,6 +16,7 @@
            
            <span class="red-hover pull-right"><i class=" fa fa-thumbs-up {{scrapbookproducts.liked == 1? 'liked':''}}" ng-click="addToSList($event, scrapbookproducts.id)"></i> <span class="count">{{scrapbookproducts.scrapbooklikes.length}}</span></span>
   <br>
+  <span class="product-count">{{scrapbookproducts.comboproducts.length}} Product(s)</span> 
 
         <div class="product-remove">
             <a href="" ng-if="userId == scrapbookproducts.added_by.id;" ng-click="removeScrapbook(scrapbookproducts.url_key)" class="remove remove_from_wishlist" title="Remove this product">Delete</a>
