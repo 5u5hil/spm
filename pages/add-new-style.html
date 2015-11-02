@@ -11,6 +11,7 @@
         <form name="addStyleForm" ng-submit="addPref()">
             <input type="text" name="styleName" required style="margin-top: 10px;" class="signup-password" placeholder="Style Name"/>
             <input type="hidden" name="userId" value='{{ userId}}' />
+            <input type="hidden" name="parameters" value='{{parameters}}' />
 
             <div class="clearfix" ng-repeat="cat in categories" >
                 <h4 class="category-h4">Select your {{cat.category}}</h4>

@@ -436,9 +436,15 @@ app.controller('bodyCharacteristicsController', function ($http, $scope, $rootSc
     loaderShow();
 
     $scope.userId = window.localStorage.getItem('id');
+    $scope.parameters = 0;
 
     $http.get(domain + '/body-characteristics').success(function (data, response, status, headers, config) {
         $scope.categories = data;
+
+        angular.forEach(data, function () {
+            $scope.parameters++;
+        });
+
         $scope.imgPath = domain + "/public/admin/uploads/catalog/category/";
         loaderHide();
     });
@@ -451,12 +457,12 @@ app.controller('bodyCharacteristicsController', function ($http, $scope, $rootSc
         })
 
     };
-    
+
     $scope.addPref = function () {
         var Ffrm = jQuery("[type='radio']").serialize();
         var arr = Ffrm.split('&');
 
-        if (arr.length != 0 && arr.length < 5) {
+        if (arr.length != 0 && arr.length < $scope.parameters) {
             toast("Please select all style parameters!");
             return false;
         }
