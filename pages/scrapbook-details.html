@@ -1,3 +1,17 @@
+<div class=" header-custom">
+    <div class="p25 float-left5">
+        <button ng-click="share($event, scrapbookproducts)" class="button add-cart-btn share-btn hw100  "> <i class="fa fa-share-alt"></i>
+            <br>Share</button>
+    </div>
+    <div class="p25 float-left5">
+        <button ng-click="addToList($event, scrapbookproducts.id)" class="button add-cart-btn hw100  fav-btn   {{scrapbookproducts.like == 1? 'liked':''}}"> <i class="fa fa-thumbs-up"></i>
+            <br><span class="fav-text">Favorite</span> </button>
+    </div>
+    <div class="p50 float-left5">
+        <button class="button add-cart-btn  hw100 custom-add-cart " ng-click="addToCart($event, scrapbookproducts)"><i class="fa fa-shopping-cart"></i>
+            <br>Add to Cart</button>
+    </div>
+</div>
 <div id="content" class="snap-content">
     <div class="header-clear"></div>
 
