@@ -3,7 +3,7 @@ var domain = "http://stylepanache.in";
 
 var app = angular.module('StylePanache', ['ngResource', 'ngSanitize', 'ngRoute', 'ngTouch', 'ChangePasswordConfirm']);
 
-angular.module('app').factory('httpInterceptor', function ($q, $rootScope, $log) {
+angular.module('StylePanache').factory('httpInterceptor', function ($q, $rootScope, $log) {
 
     var loadingCount = 0;
 
