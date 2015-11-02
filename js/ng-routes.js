@@ -31,13 +31,7 @@ angular.module('StylePanache').factory('httpInterceptor', function ($q, $rootSco
 
 });
 
-$rootScope.$on('loading:progress', function () {
-   console.log("started");
-});
 
-$rootScope.$on('loading:finish', function () {
-       console.log("ended");
-});
 
 app.config(['$routeProvider', '$locationProvider',
     function ($routeProvider, $locationProvider) {

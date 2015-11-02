@@ -1,3 +1,5 @@
+var timeout;
+
 document.addEventListener('deviceready', function () {
 
     if (device.platform == "iOS") {
@@ -274,6 +276,20 @@ function openLink(url) {
     window.open(url, '_system');
 }
 
+
+jQuery(document).ajaxStart(function () {
+
+    timeout = setTimeout(function () {
+        toast("Seems like the Internet Connection is too Slow! You may either continue shopping or switch to better internet.");
+    }, 5000);
+});
+
+jQuery(document).ajaxSuccess(function () {
+    clearTimeout(timeout);
+});
+
+
+
 $(document).ready(function () {
 
     if (window.localStorage.getItem('cart') === null) {
@@ -283,6 +299,16 @@ $(document).ready(function () {
     var elem = angular.element(document.querySelector('[ng-app]'));
     var injector = elem.injector();
     var $rootScope = injector.get('$rootScope');
+
+    $rootScope.$on('loading:progress', function () {
+         timeout = setTimeout(function () {
+        toast("Seems like the Internet Connection is too Slow! You may either continue shopping or switch to better internet.");
+    }, 5000);
+    });
+
+    $rootScope.$on('loading:finish', function () {
+      clearTimeout(timeout);
+    });
 
     $rootScope.share = function (e, p) {
         window.plugins.socialsharing.share(p.product, 'Hey! Checkout this cool Product from Style Panache', (p.large_image != '' ? p.large_image : (p.medium_image != '' ? p.medium_image : p.small_image)), 'http://stylepanache.in/#/' + p.url_key);
