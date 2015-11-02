@@ -3,7 +3,41 @@ var domain = "http://stylepanache.in";
 
 var app = angular.module('StylePanache', ['ngResource', 'ngSanitize', 'ngRoute', 'ngTouch', 'ChangePasswordConfirm']);
 
+angular.module('app').factory('httpInterceptor', function ($q, $rootScope, $log) {
 
+    var loadingCount = 0;
+
+    return {
+        request: function (config) {
+            if (++loadingCount === 1)
+                $rootScope.$broadcast('loading:progress');
+            return config || $q.when(config);
+        },
+        response: function (response) {
+            if (--loadingCount === 0)
+                $rootScope.$broadcast('loading:finish');
+            return response || $q.when(response);
+        },
+        responseError: function (response) {
+            if (--loadingCount === 0)
+                $rootScope.$broadcast('loading:finish');
+            return $q.reject(response);
+        }
+    };
+
+}).config(function ($httpProvider) {
+
+    $httpProvider.interceptors.push('httpInterceptor');
+
+});
+
+$rootScope.$on('loading:progress', function () {
+   console.log("started");
+});
+
+$rootScope.$on('loading:finish', function () {
+       console.log("ended");
+});
 
 app.config(['$routeProvider', '$locationProvider',
     function ($routeProvider, $locationProvider) {
