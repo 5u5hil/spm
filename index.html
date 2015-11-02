@@ -71,7 +71,7 @@
                 <a ng-href="" class="open-more capture-event"><i class="fa fa-user"></i></a>
                 <a ng-href="#/cart"  class="open-cart"><i class="fa fa-shopping-cart"></i></a>
                 
-                <a ng-href="" class="open-slide capture-event"><i class="fa fa-star"></i></a>
+            <!--     <a ng-href="" class="open-slide capture-event"><i class="fa fa-star"></i></a> -->
             </div>
         </div>    
 
@@ -99,5 +99,13 @@
         </div>
 
         <script src="js/custom.js"></script>
+        <script>
+        jQuery(document).ready(function() {
+                jQuery('body').on('click','.capture-event', function () {
+        siteMainFn();
+    });
+        });
+       
+           </script>
     </body>
 </html>
