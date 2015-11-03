@@ -248,7 +248,7 @@ function shareViaWhatsapp() {
 
     url = "http://bit.ly/1Xo5121";
 
-    window.plugins.socialsharing.shareViaWhatsApp('Checkout Style Panache ... Your Personal Style Guide!', null /* img */, url /* url */, function () {
+    window.plugins.socialsharing.shareViaWhatsApp('Hey, checkout this amazing App that I found! StylePanache, your Personal Guide to Styling!', null /* img */, url /* url */, function () {
         console.log('share ok')
     }, function (errormsg) {
         toast(errormsg)
@@ -311,11 +311,11 @@ $(document).ready(function () {
     });
 
     $rootScope.share = function (e, p) {
-        window.plugins.socialsharing.share(p.product, 'Hey! Checkout this cool Product from Style Panache', (p.large_image != '' ? p.large_image : (p.medium_image != '' ? p.medium_image : p.small_image)), 'http://stylepanache.in/#/' + p.url_key);
+        window.plugins.socialsharing.share(p.product, 'Hey, checkout this exciting Product that I found on StylePanache!', (p.large_image != '' ? p.large_image : (p.medium_image != '' ? p.medium_image : p.small_image)), 'http://stylepanache.in/#/' + p.url_key);
     };
 
     $rootScope.shareSp = function (e, p, u, i) {
-        window.plugins.socialsharing.share(p, 'Hey! Checkout this cool Scrapbook from Style Panache', i, 'http://stylepanache.in/#/' + u);
+        window.plugins.socialsharing.share(p, 'Hey, checkout this interesting Scrapbook that I found on StylePanache! ', i, 'http://stylepanache.in/#/' + u);
     };
 
     $rootScope.addToCart = function (e, p) {
