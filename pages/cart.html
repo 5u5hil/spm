@@ -23,8 +23,8 @@
 
                 <tr ng-repeat="product in cart track by $index" on-finish-render="ngRepeatFinished">
                     <td>
-                        <img ng-src="{{product.small_image != '' ? product.small_image : (product.medium_image != '' ? product.medium_image : product.large_image) }}" alt="" width="50" height="" />
-                        <span>{{product.product}}</span>
+                        <a ng-href="#/product/{{product.url_key}}"><img ng-src="{{product.small_image != '' ? product.small_image : (product.medium_image != '' ? product.medium_image : product.large_image) }}" alt="" width="50" height="" />
+                        <span>{{product.product}}</span></a>
                     </td>
                     <td width="60"><i ng-click="delete($event,product.id)" class="fa fa-trash"></i></td>
                     <td><i class="fa fa-rupee"></i>{{product.spl_price > 0 && product.spl_price < product.price ? product.spl_price : product.price }}</td>
