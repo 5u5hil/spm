@@ -1056,7 +1056,6 @@ app.factory('httpInterceptor', function ($q, $rootScope, $log) {
             }
 
             return response || $q.when(response);
-            delay(1500).siteMainFn();
         },
         responseError: function (response) {
 
