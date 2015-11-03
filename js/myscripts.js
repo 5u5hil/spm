@@ -281,7 +281,7 @@ jQuery(document).ajaxStart(function () {
 
     timeout = setTimeout(function () {
         toast("Seems like the Internet Connection is too Slow! You may either continue shopping or switch to better internet.");
-    }, 5000);
+    }, 8000);
 });
 
 jQuery(document).ajaxSuccess(function () {
@@ -303,7 +303,7 @@ $(document).ready(function () {
     $rootScope.$on('loading:progress', function () {
         timeout = setTimeout(function () {
             toast("Seems like the Internet Connection is too Slow! You may either continue shopping or switch to better internet.");
-        }, 5000);
+        }, 8000);
     });
 
     $rootScope.$on('loading:finish', function () {
