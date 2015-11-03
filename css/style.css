@@ -1816,3 +1816,6 @@ div.img-wrapper-product {
     background: #EAEAEA;
     padding: 10px;
 }
+.chat-btn{
+        padding: 2px 20px !important;
+}
