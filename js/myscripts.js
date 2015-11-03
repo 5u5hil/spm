@@ -301,17 +301,21 @@ $(document).ready(function () {
     var $rootScope = injector.get('$rootScope');
 
     $rootScope.$on('loading:progress', function () {
-         timeout = setTimeout(function () {
-        toast("Seems like the Internet Connection is too Slow! You may either continue shopping or switch to better internet.");
-    }, 5000);
+        timeout = setTimeout(function () {
+            toast("Seems like the Internet Connection is too Slow! You may either continue shopping or switch to better internet.");
+        }, 5000);
     });
 
     $rootScope.$on('loading:finish', function () {
-      clearTimeout(timeout);
+        clearTimeout(timeout);
     });
 
     $rootScope.share = function (e, p) {
         window.plugins.socialsharing.share(p.product, 'Hey! Checkout this cool Product from Style Panache', (p.large_image != '' ? p.large_image : (p.medium_image != '' ? p.medium_image : p.small_image)), 'http://stylepanache.in/#/' + p.url_key);
+    };
+
+    $rootScope.shareSp = function (e, p, u, i) {
+        window.plugins.socialsharing.share(p, 'Hey! Checkout this cool Scrapbook from Style Panache', i, 'http://stylepanache.in/#/' + u);
     };
 
     $rootScope.addToCart = function (e, p) {
