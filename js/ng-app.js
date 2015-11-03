@@ -150,7 +150,7 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
     $scope.closeFilter = function () {
         jQuery(".big-notification.yellow-notification").toggle("slideUp");
     }
- 
+
     $scope.showOptions = function (e) {
         jQuery("#" + e).toggle();
     }
@@ -388,12 +388,10 @@ app.controller('loginController', function ($http, $rootScope, $location, $scope
                 if (data[0] == "invalid") {
                     $rootScope.loggedIn = 0;
                     toast("Invalid login");
-                }
-                else if (data[0] == "empty") {
+                } else if (data[0] == "empty") {
                     $rootScope.loggedIn = 0;
                     toast("Please enter username and password!");
-                }
-                else {
+                } else {
                     $rootScope.loggedIn = 1;
                     window.localStorage.setItem('id', data.id);
                     window.localStorage.setItem('name', data.first_name);
@@ -451,7 +449,7 @@ app.controller('bodyCharacteristicsController', function ($http, $scope, $rootSc
         $scope.imgPath = domain + "/public/admin/uploads/catalog/category/";
         loaderHide();
     });
-     $scope.activePanel = 'female';
+    $scope.activePanel = 'female';
     $scope.activePanelFn = function (tab) {
         $scope.getGender = tab;
     };
@@ -714,6 +712,8 @@ app.controller('logoutController', function ($http, $rootScope, $location, $scop
     $rootScope.loggedIn = 0;
     $rootScope.$digest;
     localStorage.clear();
+    window.localStorage.setItem('showIntro', 1);
+
     window.location.href = "#/home";
 
 
@@ -822,7 +822,7 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
     $scope.showFilters = function () {
         jQuery(".big-notification.yellow-notification").toggle("slideDown");
     }
- $scope.closeFilter = function () {
+    $scope.closeFilter = function () {
         jQuery(".big-notification.yellow-notification").toggle("slideUp");
     }
     $scope.showOptions = function (e) {
@@ -1021,7 +1021,7 @@ app.controller('subcatController', function ($http, $scope, $location, $rootScop
         siteMainFn();
         jQuery(".capture-event").off("click", myFnnnn);
     });
-}); 
+});
 app.directive("loader", function ($rootScope) {
     return function ($scope, element, attrs) {
         $scope.$on("loader_show", function () {
@@ -1056,7 +1056,7 @@ app.factory('httpInterceptor', function ($q, $rootScope, $log) {
             }
 
             return response || $q.when(response);
-delay(1500).siteMainFn();
+            delay(1500).siteMainFn();
         },
         responseError: function (response) {
 
