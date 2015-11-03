@@ -448,6 +448,10 @@ app.controller('bodyCharacteristicsController', function ($http, $scope, $rootSc
         $scope.imgPath = domain + "/public/admin/uploads/catalog/category/";
         loaderHide();
     });
+     $scope.activePanel = 'female';
+    $scope.activePanelFn = function (tab) {
+        $scope.getGender = tab;
+    };
     $scope.getGallery = function () {
 
         jQuery('.to-cat-select').click(function (event) { /* Act on the event */
@@ -1013,3 +1017,52 @@ app.controller('subcatController', function ($http, $scope, $location, $rootScop
         jQuery(".capture-event").off("click", myFnnnn);
     });
 }); 
+app.directive("loader", function ($rootScope) {
+    return function ($scope, element, attrs) {
+        $scope.$on("loader_show", function () {
+            return element.show();
+        });
+        return $scope.$on("loader_hide", function () {
+            return element.hide();
+        });
+    };
+}
+);
+app.factory('httpInterceptor', function ($q, $rootScope, $log) {
+
+    var numLoadings = 0;
+
+    return {
+        request: function (config) {
+
+            numLoadings++;
+
+            // Show loader
+            $rootScope.$broadcast("loader_show");
+            return config || $q.when(config)
+
+        },
+        response: function (response) {
+
+            if ((--numLoadings) === 0) {
+                // Hide loader
+                $rootScope.$broadcast("loader_hide");
+            }
+
+            return response || $q.when(response);
+
+        },
+        responseError: function (response) {
+
+            if (!(--numLoadings)) {
+                // Hide loader
+                $rootScope.$broadcast("loader_hide");
+            }
+
+            return $q.reject(response);
+        }
+    };
+});
+app.config(function ($httpProvider) {
+    $httpProvider.interceptors.push('httpInterceptor');
+});
