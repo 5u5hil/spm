@@ -1047,10 +1047,11 @@ app.factory('httpInterceptor', function ($q, $rootScope, $log) {
             if ((--numLoadings) === 0) {
                 // Hide loader
                 $rootScope.$broadcast("loader_hide");
+
             }
 
             return response || $q.when(response);
-
+delay(1500).siteMainFn();
         },
         responseError: function (response) {
 
