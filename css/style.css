@@ -1819,3 +1819,11 @@ div.img-wrapper-product {
 .chat-btn{
         padding: 2px 20px !important;
 }
+.fb-login-btn{
+    text-align: center;
+    color: #fff;
+}
+.fb-login-btn:hover, .fb-login-btn:active, .fb-login-btn:focus {
+    text-align: center;
+    color: #fff;
+}

@@ -714,7 +714,7 @@ app.controller('logoutController', function ($http, $rootScope, $location, $scop
     localStorage.clear();
     window.localStorage.setItem('showIntro', 1);
 
-    window.location.href = "#/home";
+    window.location.href = "#/";
 
 
     $scope.$on('$viewContentLoaded', function () {
