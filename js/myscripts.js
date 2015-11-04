@@ -277,12 +277,12 @@ function openLink(url) {
 }
 
 
-jQuery(document).ajaxStart(function () {
+// jQuery(document).ajaxStart(function () {
 
-    timeout = setTimeout(function () {
-        toast("Seems like the Internet Connection is too Slow! You may either continue shopping or switch to better internet.");
-    }, 8000);
-});
+//     timeout = setTimeout(function () {
+//         toast("Seems like the Internet Connection is too Slow! You may either continue shopping or switch to better internet.");
+//     }, 8000);
+// });
 
 jQuery(document).ajaxSuccess(function () {
     clearTimeout(timeout);
