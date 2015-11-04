@@ -97,7 +97,7 @@ function startChat() {
 function checkPLogin() {
 //    window.localStorage.setItem('member', 0);
     if (window.localStorage.getItem('member') == 0) {
-        var r = confirm("Are you sure you want to subscribe to SP and be a Member?");
+        var r = confirm("Are you sure you want to subscribe to StylePanache and be a Member?");
         if (r == true) {
             window.location.href = "#/questionnaire";
 
