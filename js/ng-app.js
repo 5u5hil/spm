@@ -482,7 +482,10 @@ app.controller('bodyCharacteristicsController', function ($http, $scope, $rootSc
             data: jQuery("[name='addStyleForm']").serialize(),
             cache: false,
             success: function (data) {
-                jQuery(".newStyle").append('<li><a ng-href="#/explore-style/' + data.id + '" class="active-menu"><i class="fa fa-angle-right"></i>' + data.style_name + '<i class="fa fa-circle"></i></a></li>');
+                jQuery('<li><a ng-href="#/explore-style/' + data.id + '" class="active-menu"><i class="fa fa-angle-right"></i>' + data.style_name + '<i class="fa fa-circle"></i></a></li>').insertAfter(jQuery(".newStyle li:nth-child(1)"));
+
+
+
                 window.location.href = "#/explore-style/" + data.id;
             }
         });
