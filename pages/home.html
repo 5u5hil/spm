@@ -14,7 +14,9 @@
             <h3>Your Personalised Automated Stylist</h3>
 
             <em class="center-if-mobile small-text half-bottom">Receive suggestions from your personal stylist to fill your wardrobe with a versatile balance of trendy pieces.</em>
-            <p><a href='{{ loggedIn == 1 ? "#/add-new-style" : "#/login?rurl=add-new-style"}}' class="button button-blue full-button" style="background-color: #1f1f1f;">Add New Style!</a></p>
+            <p ng-if="styleslen <=1"><a href='{{ loggedIn == 1 ? "#/add-new-style" : "#/login?rurl=add-new-style"}}' class="button button-blue full-button" style="background-color: #1f1f1f;">Add New Style!</a></p>
+                    <p ng-if="styleslen >1"><a href='{{ url }}' class="button button-blue full-button" style="background-color: #1f1f1f;">{{ text }}</a></p>
+
         </div>
     </div>
 

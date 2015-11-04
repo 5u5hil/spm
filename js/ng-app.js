@@ -36,6 +36,9 @@ app.controller('homeController', function ($http, $scope, $rootScope, $controlle
         window.location.href = "#/intro";
     }
     loaderShow();
+    $scope.styleslen = jQuery(".newStyle li").length;
+    $scope.url = jQuery(".newStyle li:nth-child(2) a").attr("href");
+    $scope.text = jQuery(".newStyle li:nth-child(2)").text();
 
     $http.get(domain + "/home" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, response, status, headers, config) {
         $rootScope.categories = data.categories;
