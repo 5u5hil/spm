@@ -19,7 +19,7 @@
         <a class="deploy-submenu" ng-href=""><i class="fa " ng-class="{true: 'fa-mars', false: 'fa-venus'}[cat.category == 'Menswear']" ></i>{{ cat.category}}<i class="fa fa-plus"></i></a>
         <ul class="submenu">
             <li ng-repeat="child in cat.children"  on-finish-render="ngRepeatFinished">
-                <a ng-href="#/explore/{{child.url_key}}" class="active-menu">
+                <a ng-href='#{{child.children.length <=0 ? "/explore/"+child.url_key : "/subcat/"+child.id}}' class="active-menu">
                     <i class="fa fa-angle-right"></i>
                     {{ child.category}}
                     <i class="fa fa-circle"></i>

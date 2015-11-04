@@ -52,7 +52,7 @@ app.config(['$routeProvider', '$locationProvider',
                     templateUrl: 'pages/category.html',
                     controller: 'categoryController'
                 }).
-                when('/subcat', {
+                when('/subcat/:id', {
                     templateUrl: 'pages/subcat.html',
                     controller: 'subcatController'
                 }).

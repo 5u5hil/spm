@@ -41,10 +41,10 @@ app.controller('homeController', function ($http, $scope, $rootScope, $controlle
     $scope.text = jQuery(".newStyle li:nth-child(2)").text();
 
     $http.get(domain + "/home" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, response, status, headers, config) {
+        $scope.imgPath = domain + "/public/admin/uploads/slider/";
         $rootScope.categories = data.categories;
         $scope.sliders = data.sliders;
         $scope.new = data.new;
-        $scope.imgPath = domain + "/public/admin/uploads/slider/";
         $rootScope.$digest;
         loaderHide();
     });
@@ -62,12 +62,6 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
     $scope.pdts = {};
 
     $http.get(domain + "/get-category-products/" + $routeParams.url_key + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
-
-        if (data.subcats.length > 0) {
-            window.localStorage.setItem("maincat", data.maincat);
-            window.localStorage.setItem("subcats", JSON.stringify(data.subcats));
-            window.location.href = "#/subcat";
-        }
         $scope.products = data;
         $scope.pdts = data.data
         $scope.filters = data.filters;
@@ -159,7 +153,7 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
         siteMainFn();
     });
 
- 
+
 });
 
 app.controller('productController', function ($http, $rootScope, $scope, $location, $routeParams, $timeout) {
@@ -498,7 +492,7 @@ app.controller('bodyCharacteristicsController', function ($http, $scope, $rootSc
     });
     $timeout(function () {
         jQuery('.to-cat-select:first').click();
-       
+
 
     }, 2000);
 });
@@ -815,7 +809,7 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
             $scope.products = response;
             $scope.pdts = response.data
             $scope.$digest;
-           jQuery(".big-notification.yellow-notification").toggle("slideDown");
+            jQuery(".big-notification.yellow-notification").toggle("slideDown");
         });
     }
 
@@ -826,7 +820,7 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
     $scope.showFilters = function () {
         jQuery(".big-notification.yellow-notification").toggle("slideDown");
     }
-    
+
     $scope.showOptions = function (e) {
         jQuery("#" + e).toggle();
     }
@@ -851,8 +845,7 @@ app.controller('signupController', function ($http, $scope, $location, $rootScop
                     toast("Email is already registered.");
                 } else if (data[0] == "registered") {
                     toast("Email is already registered! Please use different email.");
-                }
-                else {
+                } else {
                     window.location.href = "#/login";
                 }
             }
@@ -1016,9 +1009,16 @@ app.controller('subcatController', function ($http, $scope, $location, $rootScop
         siteMainFn();
     });
 
-    $scope.cat = window.localStorage.getItem("maincat");
-    $scope.subcats = jQuery.parseJSON(window.localStorage.getItem("subcats"));
-    loaderHide();
+
+    loaderShow();
+    $http.get(domain + "/subcat/" + $routeParams.id).success(function (data, status, headers, config) {
+        $scope.imgPath = domain + "/public/admin/uploads/catalog/category/";
+        $scope.cat = data;
+        $scope.$digest;
+        loaderHide();
+    });
+
+
     jQuery('.capture-event').one('click', function myFnnnn() {
         siteMainFn();
         jQuery(".capture-event").off("click", myFnnnn);
@@ -1041,7 +1041,7 @@ app.factory('httpInterceptor', function ($q, $rootScope, $log) {
 
     return {
         request: function (config) {
-       
+
             numLoadings++;
             $rootScope.$broadcast("loader_show");
             return config || $q.when(config)

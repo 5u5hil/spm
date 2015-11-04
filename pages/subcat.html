@@ -4,12 +4,12 @@
         <div class="blog-posts custom-blog-posts">
             <div class="blog-post">
                
-                <a class="blog-post-image" href><img src="images/pictures/shop-category.jpg" alt="img"></a>
-                 <h3 class="blog-post-title">{{ cat }}</h3>
+                <a class="blog-post-image" href><img ng-src="{{ imgPath+image }}" alt="img"></a>
+                 <h3 class="blog-post-title">{{ cat.category }}</h3>
                 <div class="clear"></div>
                 <div class="decoration"></div>
                 <ul>
-                    <li ng-repeat="c in subcats" class="sub-cat-opt">
+                    <li ng-repeat="c in cat.children" class="sub-cat-opt">
                         <a href="#/explore/{{ c.url_key }}">{{ c.category }}</a>
                     </li>
                 </ul>
