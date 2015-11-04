@@ -159,6 +159,7 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
         siteMainFn();
     });
 
+ 
 });
 
 app.controller('productController', function ($http, $rootScope, $scope, $location, $routeParams, $timeout) {
@@ -497,7 +498,7 @@ app.controller('bodyCharacteristicsController', function ($http, $scope, $rootSc
     });
     $timeout(function () {
         jQuery('.to-cat-select:first').click();
-        console.log('fired');
+       
 
     }, 2000);
 });
@@ -1037,6 +1038,7 @@ app.factory('httpInterceptor', function ($q, $rootScope, $log) {
 
     return {
         request: function (config) {
+       
             numLoadings++;
             $rootScope.$broadcast("loader_show");
             return config || $q.when(config)

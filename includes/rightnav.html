@@ -14,8 +14,8 @@
     <li><a href='#{{ loggedIn == 1 ? "/create-scrapbook" : "/login?rurl=create-scrapbook"}}'><i class="fa fa-plus-square"></i>Create Scrapbook<i class="fa fa-caret-right"></i></a></li>
     <li><a href='#{{ loggedIn == 1 ? "/favorites" : "/login?rurl=favorites"}}'><i class="fa fa-heart"></i>My Favourite<i class="fa fa-caret-right"></i></a></li>
     <li ng-if="loggedIn == 1" class="has-submenu">
-        <a class="deploy-submenu" ng-href=""><i class="fa fa-magic"></i>Your Styles<i class="fa fa-plus"></i></a>
-        <ul class="submenu newStyle">
+        <a class="deploy-submenu active-submenu" ng-href=""><i class="fa fa-magic"></i>Your Styles<i class="fa fa-plus"></i></a>
+        <ul class="submenu newStyle active-submenu-items">
             <li>
                 <a ng-href="#/add-new-style" class="active-menu">
                     <i class="fa fa-angle-right"></i>
