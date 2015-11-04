@@ -277,12 +277,12 @@ function openLink(url) {
 }
 
 
-// jQuery(document).ajaxStart(function () {
-
-//     timeout = setTimeout(function () {
-//         toast("Seems like the Internet Connection is too Slow! You may either continue shopping or switch to better internet.");
-//     }, 8000);
-// });
+jQuery(document).ajaxStart(function () {
+ 
+    timeout = setTimeout(function () {
+        toast("Seems like the Internet Connection is too Slow! You may either continue shopping or switch to better internet.");
+    }, 8000);
+});
 
 jQuery(document).ajaxSuccess(function () {
     clearTimeout(timeout);
@@ -301,7 +301,7 @@ $(document).ready(function () {
     var $rootScope = injector.get('$rootScope');
 
     $rootScope.$on('loading:progress', function () {
-        timeout = setTimeout(function () {
+            timeout = setTimeout(function () {
             toast("Seems like the Internet Connection is too Slow! You may either continue shopping or switch to better internet.");
         }, 8000);
     });

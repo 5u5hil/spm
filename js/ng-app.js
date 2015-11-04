@@ -1037,9 +1037,6 @@ app.factory('httpInterceptor', function ($q, $rootScope, $log) {
 
     return {
         request: function (config) {
-        timeout = setTimeout(function () {
-        toast("Seems like the Internet Connection is too Slow! You may either continue shopping or switch to better internet.");
-         }, 8000);
             numLoadings++;
             $rootScope.$broadcast("loader_show");
             return config || $q.when(config)
