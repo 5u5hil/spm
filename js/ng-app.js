@@ -139,7 +139,7 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
             $scope.products = response;
             $scope.pdts = response.data
             $scope.$digest;
-            // jQuery(".big-notification.yellow-notification").toggle("slideDown");
+            jQuery(".big-notification.yellow-notification").toggle("slideDown");
         });
     }
 
@@ -149,9 +149,6 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
 
     $scope.showFilters = function () {
         jQuery(".big-notification.yellow-notification").toggle("slideDown");
-    }
-    $scope.closeFilter = function () {
-        jQuery(".big-notification.yellow-notification").toggle("slideUp");
     }
 
     $scope.showOptions = function (e) {
@@ -817,7 +814,7 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
             $scope.products = response;
             $scope.pdts = response.data
             $scope.$digest;
-            // jQuery(".big-notification.yellow-notification").toggle("slideDown");
+           jQuery(".big-notification.yellow-notification").toggle("slideDown");
         });
     }
 
@@ -828,15 +825,10 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
     $scope.showFilters = function () {
         jQuery(".big-notification.yellow-notification").toggle("slideDown");
     }
-    $scope.closeFilter = function () {
-        jQuery(".big-notification.yellow-notification").toggle("slideUp");
-    }
+    
     $scope.showOptions = function (e) {
         jQuery("#" + e).toggle();
     }
-
-
-
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
