@@ -1839,3 +1839,8 @@ span.vlc1 {
 .valc2{
     margin-right:0px !important;
 }
+ 
+button.liked:hover {
+color: #ff0055 !important;
+
+}
