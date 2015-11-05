@@ -42,7 +42,8 @@
         <div class="decoration"></div>
 
         <div class="portfolio-adaptive adaptive-two listing">
-            <div ng-if="pdts.length == 0">Message</div>
+            <div ng-if="pdts.length == 0">Your searched product does not require body characteristics 
+            so you can shop this product from our shop all category to get a wider range of options.</div>
             <div class="adaptive-item" ng-repeat="product in pdts" on-finish-render="ngRepeatFinished">
                 <div class="img-wrapper-product">
                     <a href="#/product/{{product.url_key}}" title="{{product.product}}">
