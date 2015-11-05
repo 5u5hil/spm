@@ -447,20 +447,10 @@ app.controller('bodyCharacteristicsController', function ($http, $scope, $rootSc
         $scope.imgPath = domain + "/public/admin/uploads/catalog/category/";
         loaderHide();
     });
-    $scope.activePanel = 'female';
+    $scope.getGender = 'female';
     $scope.activePanelFn = function (tab) {
         $scope.getGender = tab;
     };
-    $scope.getGallery = function () {
-
-        jQuery('.to-cat-select').click(function (event) { /* Act on the event */
-            event.preventDefault();
-            jQuery(this).closest("div.child").find(".item-selected").removeClass("item-selected");
-            jQuery(this).addClass("item-selected").prev(":radio").click();
-        })
-
-    };
-
     $scope.addPref = function () {
         var Ffrm = jQuery("[type='radio']").serialize();
         var arr = Ffrm.split('&');
@@ -493,11 +483,6 @@ app.controller('bodyCharacteristicsController', function ($http, $scope, $rootSc
         siteMainFn();
         jQuery(".capture-event").off("click", myFnnnn);
     });
-    $timeout(function () {
-        jQuery('.to-cat-select:first').click();
-
-
-    }, 2000);
 });
 
 app.controller('addWardrobeController', function ($http, $scope, $rootScope, $location) {
