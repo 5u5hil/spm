@@ -1033,8 +1033,7 @@ app.directive("loader", function ($rootScope) {
             return element.hide();
         });
     };
-}
-);
+});
 app.factory('httpInterceptor', function ($q, $rootScope, $log) {
 
     var numLoadings = 0;
