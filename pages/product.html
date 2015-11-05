@@ -4,7 +4,7 @@
             <br>Share</button>
     </div>
     <div class="p25 float-left5">
-        <button ng-click="addToList($event, product.id)" class="button add-cart-btn hw100  fav-btn   {{product.wishlist == 1? 'liked':''}}"> <i class="fa fa-heart"></i>
+        <button ng-click="addToList($event, product.id)" class="button add-cart-btn hw100  fav-btn"> <i class="fa fa-heart {{product.wishlist == 1? 'liked':''}}"></i>
             <br><span class="fav-text">Favorite</span> </button>
     </div>
     <div class="p50 float-left5">
