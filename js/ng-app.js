@@ -10,7 +10,6 @@ app.directive('onFinishRender', function ($timeout) {
         }
     };
 });
-
 angular.module('ChangePasswordConfirm', []).directive('changePasswordC', function () {
     return {
         require: 'ngModel',
@@ -1024,49 +1023,49 @@ app.controller('subcatController', function ($http, $scope, $location, $rootScop
         jQuery(".capture-event").off("click", myFnnnn);
     });
 });
-app.directive("loader", function ($rootScope) {
-    return function ($scope, element, attrs) {
-        $scope.$on("loader_show", function () {
-            return element.show();
-        });
-        return $scope.$on("loader_hide", function () {
-            return element.hide();
-        });
-    };
-});
-app.factory('httpInterceptor', function ($q, $rootScope, $log) {
-
-    var numLoadings = 0;
-
-    return {
-        request: function (config) {
-
-            numLoadings++;
-            $rootScope.$broadcast("loader_show");
-            return config || $q.when(config)
-
-        },
-        response: function (response) {
-
-            if ((--numLoadings) === 0) {
-                // Hide loader
-                $rootScope.$broadcast("loader_hide");
-
-            }
-
-            return response || $q.when(response);
-        },
-        responseError: function (response) {
-
-            if (!(--numLoadings)) {
-                // Hide loader
-                $rootScope.$broadcast("loader_hide");
-            }
-
-            return $q.reject(response);
-        }
-    };
-});
-app.config(function ($httpProvider) {
-    $httpProvider.interceptors.push('httpInterceptor');
-});
+//app.directive("loader", function ($rootScope) {
+//    return function ($scope, element, attrs) {
+//        $scope.$on("loader_show", function () {
+//            return element.show();
+//        });
+//        return $scope.$on("loader_hide", function () {
+//            return element.hide();
+//        });
+//    };
+//});
+//app.factory('httpInterceptor', function ($q, $rootScope, $log) {
+//
+//    var numLoadings = 0;
+//
+//    return {
+//        request: function (config) {
+//
+//            numLoadings++;
+//            $rootScope.$broadcast("loader_show");
+//            return config || $q.when(config)
+//
+//        },
+//        response: function (response) {
+//
+//            if ((--numLoadings) === 0) {
+//                // Hide loader
+//                $rootScope.$broadcast("loader_hide");
+//
+//            }
+//
+//            return response || $q.when(response);
+//        },
+//        responseError: function (response) {
+//
+//            if (!(--numLoadings)) {
+//                // Hide loader
+//                $rootScope.$broadcast("loader_hide");
+//            }
+//
+//            return $q.reject(response);
+//        }
+//    };
+//});
+//app.config(function ($httpProvider) {
+//    $httpProvider.interceptors.push('httpInterceptor');
+//});
