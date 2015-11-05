@@ -10,6 +10,7 @@ app.directive('onFinishRender', function ($timeout) {
         }
     };
 });
+
 angular.module('ChangePasswordConfirm', []).directive('changePasswordC', function () {
     return {
         require: 'ngModel',
@@ -29,7 +30,6 @@ angular.module('ChangePasswordConfirm', []).directive('changePasswordC', functio
 });
 
 app.controller('homeController', function ($http, $scope, $rootScope, $controller) {
-    console.log(window.localStorage.getItem('showIntro'));
     if (window.localStorage.getItem('showIntro') === null) {
         window.localStorage.setItem('showIntro', 1)
         window.location.href = "#/intro";
@@ -40,6 +40,8 @@ app.controller('homeController', function ($http, $scope, $rootScope, $controlle
     $scope.text = jQuery(".newStyle li:nth-child(2)").text();
 
     $http.get(domain + "/home" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, response, status, headers, config) {
+
+        window.localStorage.setItem('categories', JSON.stringify(data.categories));
         $scope.imgPath = domain + "/public/admin/uploads/slider/";
         $rootScope.categories = data.categories;
         $scope.sliders = data.sliders;
@@ -391,6 +393,8 @@ app.controller('loginController', function ($http, $rootScope, $location, $scope
                     window.localStorage.setItem('name', data.first_name);
                     window.localStorage.setItem('email', data.email);
                     window.localStorage.setItem('member', data.is_member);
+                    window.localStorage.setItem('prefs', JSON.stringify(data.preferences));
+
                     try {
                         window.localStorage.setItem('department', data.department.name);
 
@@ -1023,49 +1027,3 @@ app.controller('subcatController', function ($http, $scope, $location, $rootScop
         jQuery(".capture-event").off("click", myFnnnn);
     });
 });
-//app.directive("loader", function ($rootScope) {
-//    return function ($scope, element, attrs) {
-//        $scope.$on("loader_show", function () {
-//            return element.show();
-//        });
-//        return $scope.$on("loader_hide", function () {
-//            return element.hide();
-//        });
-//    };
-//});
-//app.factory('httpInterceptor', function ($q, $rootScope, $log) {
-//
-//    var numLoadings = 0;
-//
-//    return {
-//        request: function (config) {
-//
-//            numLoadings++;
-//            $rootScope.$broadcast("loader_show");
-//            return config || $q.when(config)
-//
-//        },
-//        response: function (response) {
-//
-//            if ((--numLoadings) === 0) {
-//                // Hide loader
-//                $rootScope.$broadcast("loader_hide");
-//
-//            }
-//
-//            return response || $q.when(response);
-//        },
-//        responseError: function (response) {
-//
-//            if (!(--numLoadings)) {
-//                // Hide loader
-//                $rootScope.$broadcast("loader_hide");
-//            }
-//
-//            return $q.reject(response);
-//        }
-//    };
-//});
-//app.config(function ($httpProvider) {
-//    $httpProvider.interceptors.push('httpInterceptor');
-//});

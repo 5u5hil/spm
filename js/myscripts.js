@@ -134,6 +134,8 @@ function fbLogin() {
                             window.localStorage.setItem('name', data.first_name);
                             window.localStorage.setItem('email', data.email);
                             window.localStorage.setItem('member', data.is_member);
+                            window.localStorage.setItem('prefs', JSON.stringify(data.preferences));
+
                             try {
                                 window.localStorage.setItem('department', data.department.name);
 
@@ -278,7 +280,7 @@ function openLink(url) {
 
 
 jQuery(document).ajaxStart(function () {
- 
+
     timeout = setTimeout(function () {
         toast("Seems like the Internet Connection is too Slow! You may either continue shopping or switch to better internet.");
     }, 8000);
@@ -301,7 +303,7 @@ $(document).ready(function () {
     var $rootScope = injector.get('$rootScope');
 
     $rootScope.$on('loading:progress', function () {
-            timeout = setTimeout(function () {
+        timeout = setTimeout(function () {
             toast("Seems like the Internet Connection is too Slow! You may either continue shopping or switch to better internet.");
         }, 8000);
     });
