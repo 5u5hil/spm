@@ -17,7 +17,7 @@
                 <h4 class="category-h4 ng-binding">Select your Gender</h4>
                 <div class="portfolio-adaptive adaptive-three listing child">
                     <!-- ngRepeat: child in cat.children --><div class="adaptive-item custom-item ng-scope" >
-                        <input type="radio" name="cat[8][]" value="10" id="10" style="display:none  ;">
+                        <input type="radio" name="cat[8][]" value="10" id="10" style="opacity:0;">
 
                         <a href="" class="to-cat-select" ng-click="; activePanelFn('female')" title="">
                             <img class="responsive-image"  alt="Female" src="http://stylepanache.in/public/admin/uploads/catalog/category/20151030085832-1.jpg"> 
@@ -31,7 +31,7 @@
                         </a>
                         
                     </div><!-- end ngRepeat: child in cat.children --><div class="adaptive-item custom-item ng-scope" >
-                        <input type="radio" name="cat[8][]" value="9" id="9" style="display:none  ;">
+                        <input type="radio" name="cat[8][]" value="9" id="9" style=" opacity:0;">
 
                         <a href="" class="to-cat-select" ng-click="; activePanelFn('male')" title="">
                             <img class="responsive-image"   alt="Male" src="http://stylepanache.in/public/admin/uploads/catalog/category/20151030085811-1.jpg"> 
@@ -41,7 +41,7 @@
                                     Male
                                 </label>
                        
-                        </h4>
+							</h4>
                         </a>
                         
                     </div><!-- end ngRepeat: child in cat.children -->
@@ -560,5 +560,9 @@
             event.preventDefault();
             jQuery(this).closest("div.child").find(".item-selected").removeClass("item-selected");
             jQuery(this).addClass("item-selected").prev(":radio").click();
+			$("p").off("click");
         });
+		 jQuery('body').swap(function(){
+			 $(this).off("click");
+		 });
 </script>
