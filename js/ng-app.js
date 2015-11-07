@@ -443,11 +443,18 @@ app.controller('bodyCharacteristicsController', function ($http, $scope, $rootSc
         $scope.getGender = tab;
     };
     $scope.getGallery = function (event) {
-
-        var vm = event.target;
-       
-            jQuery(vm).parent('a').closest("div.child").find(".item-selected").removeClass("item-selected");
-            jQuery(vm).parent('a').addClass("item-selected").prev(":radio").click();
+if(jQuery(event.target).hasClass('responsive-image')){
+        var vm = jQuery(event.target).parent('a');
+}
+if(jQuery(event.target).hasClass('lbl-style')){
+        var vm = jQuery(event.target).parent().parent('a');
+}
+if(jQuery(event.target).hasClass('to-cat-select')){
+    var vm = event.target;
+}
+      
+            jQuery(vm).closest("div.child").find(".item-selected").removeClass("item-selected");
+            jQuery(vm).addClass("item-selected").prev(":radio").click();
           
     
 
