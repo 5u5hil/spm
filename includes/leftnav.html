@@ -16,7 +16,7 @@
     <li><a ng-href="#/scrapbook"><i class="fa fa-edit"></i>Scrapbook<i class="fa fa-circle"></i></a></li>
     <!--<li><a ng-href=""><i class="fa fa-tag"></i>New Arrivals<i class="fa fa-circle"></i></a></li>-->
     <li class="has-submenu"  ng-repeat="cat in categories" on-finish-render="ngRepeatFinished">
-        <a class="deploy-submenu" ng-href=""><i class="fa " ng-class="{true: 'fa-mars', false: 'fa-venus'}[cat.category == 'Menswear']" ></i>{{ cat.category}}<i class="fa fa-plus"></i></a>
+        <a class="deploy-submenu" ng-click="menuFn($event)" ng-href=""><i class="fa " ng-class="{true: 'fa-mars', false: 'fa-venus'}[cat.category == 'Menswear']" ></i>{{ cat.category}}<i class="fa fa-plus"></i></a>
         <ul class="submenu">
             <li ng-repeat="child in cat.children"  on-finish-render="ngRepeatFinished">
                 <a ng-href='#{{child.children.length <=0 ? "/explore/"+child.url_key : "/subcat/"+child.id}}' class="active-menu">

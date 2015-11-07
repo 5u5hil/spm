@@ -351,6 +351,13 @@ $(document).ready(function () {
             window.location.href = '#/login';
         }
     };
+    
+$rootScope.menuFn = function(event){
+        var ele = event.target;
+        jQuery(ele).toggleClass('active-submenu');
+        jQuery(ele).parent().find('.submenu').toggleClass('active-submenu-items');
+        return false;
+    }
 
 //    $rootScope.addToSList = function (event, id) {
 //        if (window.localStorage.getItem('id') != null) {
