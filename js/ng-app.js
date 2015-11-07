@@ -229,10 +229,7 @@ app.controller('scrapbookController', function ($http, $scope, $rootScope, $cont
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
-    jQuery('.capture-event').one('click', function myFnnnn() {
-        siteMainFn();
-        jQuery(".capture-event").off("click", myFnnnn);
-    });
+    
 
 });
 
@@ -295,10 +292,7 @@ app.controller('myScrapbookController', function ($http, $scope, $rootScope, $co
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
-    jQuery('.capture-event').one('click', function myFnnnn() {
-        siteMainFn();
-        jQuery(".capture-event").off("click", myFnnnn);
-    });
+    
 });
 
 app.controller('scrapbookDetailsController', function ($http, $scope, $rootScope, $location, $routeParams) {
@@ -359,10 +353,7 @@ app.controller('scrapbookDetailsController', function ($http, $scope, $rootScope
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
-    jQuery('.capture-event').one('click', function myFnnnn() {
-        siteMainFn();
-        jQuery(".capture-event").off("click", myFnnnn);
-    });
+    
 });
 
 app.controller('loginController', function ($http, $rootScope, $location, $scope, $routeParams) {
@@ -492,10 +483,7 @@ app.controller('bodyCharacteristicsController', function ($http, $scope, $rootSc
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
-    jQuery('.capture-event').one('click', function myFnnnn() {
-        siteMainFn();
-        jQuery(".capture-event").off("click", myFnnnn);
-    });
+    
 });
 
 app.controller('addWardrobeController', function ($http, $scope, $rootScope, $location) {
@@ -528,10 +516,7 @@ app.controller('addWardrobeController', function ($http, $scope, $rootScope, $lo
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
-    jQuery('.capture-event').one('click', function myFnnnn() {
-        siteMainFn();
-        jQuery(".capture-event").off("click", myFnnnn);
-    });
+    
 });
 
 app.controller('wardrobeController', function ($http, $scope, $rootScope, $location, $routeParams) {
@@ -548,10 +533,7 @@ app.controller('wardrobeController', function ($http, $scope, $rootScope, $locat
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
-    jQuery('.capture-event').one('click', function myFnnnn() {
-        siteMainFn();
-        jQuery(".capture-event").off("click", myFnnnn);
-    });
+    
 });
 
 app.controller('wardrobeListingController', function ($http, $scope, $rootScope, $location, $routeParams, $filter) {
@@ -566,10 +548,7 @@ app.controller('wardrobeListingController', function ($http, $scope, $rootScope,
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
-    jQuery('.capture-event').one('click', function myFnnnn() {
-        siteMainFn();
-        jQuery(".capture-event").off("click", myFnnnn);
-    });
+    
 
     $scope.removeWardrobeProduct = function (id) {
         var r = confirm("Do you want to delete this item!");
@@ -598,11 +577,7 @@ app.controller('createScrapbookController', function ($http, $scope, $rootScope,
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
-    jQuery('.capture-event').one('click', function myFnnnn() {
-        siteMainFn();
-        jQuery(".capture-event").off("click", myFnnnn);
-        console.log('create scrap book mhRnnn')
-    });
+  
 
     $scope.userId = window.localStorage.getItem('id');
 
@@ -668,10 +643,7 @@ app.controller('chatController', function ($http, $scope, $rootScope, $controlle
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
-    jQuery('.capture-event').one('click', function myFnnnn() {
-        siteMainFn();
-        jQuery(".capture-event").off("click", myFnnnn);
-    });
+    
 });
 
 app.controller('questionnaireController', function ($http, $scope, $rootScope, $controller) {
@@ -906,10 +878,7 @@ app.controller('contactController', function ($http, $scope, $location, $rootSco
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
-    jQuery('.capture-event').one('click', function myFnnnn() {
-        siteMainFn();
-        jQuery(".capture-event").off("click", myFnnnn);
-    });
+    
 
     $scope.submitContact = function () {
         jQuery.ajax({
@@ -942,10 +911,7 @@ app.controller('userDashboardController', function ($http, $scope, $location, $r
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
-    jQuery('.capture-event').one('click', function myFnnnn() {
-        siteMainFn();
-        jQuery(".capture-event").off("click", myFnnnn);
-    });
+    
     $scope.updateUDetails = function () {
         jQuery.ajax({
             type: "POST",
@@ -973,10 +939,7 @@ app.controller('favoritesController', function ($http, $scope, $location, $rootS
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
-    jQuery('.capture-event').one('click', function myFnnnn() {
-        siteMainFn();
-        jQuery(".capture-event").off("click", myFnnnn);
-    });
+    
 
     $http.get(domain + "/wish-list-products?userId=" + window.localStorage.getItem('id')).success(function (data, status, headers, config) {
         $scope.userFavorites = data;
@@ -999,10 +962,7 @@ app.controller('introController', function ($http, $scope, $location, $rootScope
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
-    jQuery('.capture-event').one('click', function myFnnnn() {
-        siteMainFn();
-        jQuery(".capture-event").off("click", myFnnnn);
-    });
+    
 });
 
 app.controller('subcatController', function ($http, $scope, $location, $rootScope, $routeParams) {
@@ -1020,8 +980,5 @@ app.controller('subcatController', function ($http, $scope, $location, $rootScop
     });
 
 
-    jQuery('.capture-event').one('click', function myFnnnn() {
-        siteMainFn();
-        jQuery(".capture-event").off("click", myFnnnn);
-    });
+    
 });
