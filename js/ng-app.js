@@ -451,6 +451,19 @@ app.controller('bodyCharacteristicsController', function ($http, $scope, $rootSc
     $scope.activePanelFn = function (tab) {
         $scope.getGender = tab;
     };
+    $scope.getGallery = function (event) {
+
+        var vm = event.target;
+       
+            jQuery(vm).parent('a').closest("div.child").find(".item-selected").removeClass("item-selected");
+            jQuery(vm).parent('a').addClass("item-selected").prev(":radio").click();
+          
+    
+
+    };
+
+ 
+
     $scope.addPref = function () {
         var Ffrm = jQuery("[type='radio']").serialize();
         var arr = Ffrm.split('&');
