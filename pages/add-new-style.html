@@ -560,9 +560,8 @@
             event.preventDefault();
             jQuery(this).closest("div.child").find(".item-selected").removeClass("item-selected");
             jQuery(this).addClass("item-selected").prev(":radio").click();
-			$("p").off("click");
+			
         });
-		 jQuery('body').swap(function(){
-			 $(this).off("click");
-		 });
+		
+		
 </script>
