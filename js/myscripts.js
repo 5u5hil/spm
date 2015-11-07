@@ -353,7 +353,7 @@ $(document).ready(function () {
     };
     
 $rootScope.menuFn = function(event){
-        var ele = event.target;
+        var ele = jQuery(event.target).closest('.has-submenu').children('a.deploy-submenu');
         jQuery(ele).toggleClass('active-submenu');
         jQuery(ele).parent().find('.submenu').toggleClass('active-submenu-items');
         return false;
