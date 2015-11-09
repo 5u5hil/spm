@@ -920,6 +920,7 @@ app.controller('cartController', function ($http, $scope, $location, $rootScope,
     loaderShow();
 if(window.localStorage.getItem('id') === null){
   window.location.href = "#/login";
+  return false;
 
 }
     $scope.cart = jQuery.parseJSON(window.localStorage.getItem("cart"));
