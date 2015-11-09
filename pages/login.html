@@ -22,16 +22,16 @@
                 <form ng-cloak method="post" name="loginuser" id="loginuser">              
 
                     <input type="email" class="signup-email" ng-model="useremail" name="useremail" id="useremail" placeholder="Email" required>
-                    <span style="color:red" ng-show="loginuser.useremail.$dirty && loginuser.useremail.$invalid">
-                        <span ng-show="loginuser.useremail.$error.required">Email is required.</span>
-                        <span ng-show="loginuser.useremail.$error.email">Invalid email address.</span>
+                    <span style="color:red" >
+                        <span id="emailError" class="errorMsg"></span>
+                         
                     </span>
 
                     <input type="password" class="signup-password" ng-model="password" name="password" id="password" placeholder="Password" required>
-                    <span style="color:red" ng-show="loginuser.password.$dirty && loginuser.password.$invalid">
-                        <span ng-show="loginuser.password.$error.required">Please enter password.</span>
+                    <span style="color:red" >
+                        <span id="pwdError" class="errorMsg"></span>
                     </span>
-                    
+                    <p></p>
                     <p>
                         <a href="http://stylepanache.in/#/forgot-password" target="_blank" class="">Forgot Password?</a>
                     </p>
