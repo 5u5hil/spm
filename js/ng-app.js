@@ -918,7 +918,10 @@ if(document.log.phone.value === ''){
 app.controller('cartController', function ($http, $scope, $location, $rootScope, $timeout, $routeParams) {
 
     loaderShow();
+if(window.localStorage.getItem('id') === null){
+  window.location.href = "#/login";
 
+}
     $scope.cart = jQuery.parseJSON(window.localStorage.getItem("cart"));
     $scope.cart.Total = 0;
     jQuery.each(jQuery.parseJSON(window.localStorage.getItem("cart")), function (k, v) {
