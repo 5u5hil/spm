@@ -10,8 +10,8 @@
     <li><a href='#{{ loggedIn == 1 ? "/chat" : "/login?rurl=chat"}}'><i class="fa fa-comments-o"></i>Personal Stylist<i class="fa fa-caret-right"></i></a></li>
     <li><a href='#{{ loggedIn == 1 ? "/wardrobe" : "/login?rurl=wardrobe"}}'><i class="fa fa-binoculars"></i>My Wardrobe<i class="fa fa-caret-right"></i></a></li>
     <li><a href='#{{ loggedIn == 1 ? "/add-new-wardrobe" : "/login?rurl=add-new-wardrobe"}}'><i class="fa fa-plus-square"></i>Add to Wardrobe<i class="fa fa-caret-right"></i></a></li>
-    <li><a href='#{{ loggedIn == 1 ? "/my-scrapbook" : "/login?rurl=my-scrapbook"}}'><i class="fa fa-edit"></i>My Scrapbook<i class="fa fa-caret-right"></i></a></li>
-    <li><a href='#{{ loggedIn == 1 ? "/create-scrapbook" : "/login?rurl=create-scrapbook"}}'><i class="fa fa-plus-square"></i>Create Scrapbook<i class="fa fa-caret-right"></i></a></li>
+    <li><a href='#{{ loggedIn == 1 ? "/my-scrapbook" : "/login?rurl=my-scrapbook"}}'><i class="fa fa-edit"></i>My ExpressLook<i class="fa fa-caret-right"></i></a></li>
+    <li><a href='#{{ loggedIn == 1 ? "/create-scrapbook" : "/login?rurl=create-scrapbook"}}'><i class="fa fa-plus-square"></i>Create ExpressLook<i class="fa fa-caret-right"></i></a></li>
     <li><a href='#{{ loggedIn == 1 ? "/favorites" : "/login?rurl=favorites"}}'><i class="fa fa-heart"></i>My Favourite<i class="fa fa-caret-right"></i></a></li>
     <li ng-if="loggedIn == 1" class="has-submenu">
         <a class="deploy-submenu active-submenu" ng-click="menuFn($event)" ng-href=""><i class="fa fa-magic"></i>Your Styles<i class="fa fa-plus"></i></a>

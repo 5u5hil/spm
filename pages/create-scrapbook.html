@@ -2,12 +2,12 @@
     <div class="header-clear"></div>
     <div class="content">
         <div class="adaptive-style">
-            <h3>Create a Scrapbook</h3>
+            <h3>Create a Look</h3>
         </div>
         <div class="clear"></div>
         <div class="decoration"></div>
         <form method="post" ng-cloak name="scrapbookfrm" enctype="multipart/form-data" id="scrapbookfrm" class="login custom-woo-login" ng-submit="addScrapbook()">
-            <input type="text" name="sname" id="sname" ng-model="sname" class="inputfield" placeholder="Scrabook Title*" required/>
+            <input type="text" name="sname" id="sname" ng-model="sname" class="inputfield" placeholder="Title*" required/>
             <span style="color:red" ng-show="scrapbookfrm.sname.$dirty && scrapbookfrm.sname.$invalid">
                 <span ng-show="scrapbookfrm.sname.$error.required">Title is required.</span>
             </span>
@@ -17,7 +17,7 @@
                 <span ng-show="scrapbookfrm.sdescription.$error.required">Description is required.</span>
             </span>
             
-            <input type="text" class="inputfield" placeholder="Add Products*" name="pdcts" ng-focus="autoCompleteFn()" ng-blur="autoCompleteFn()" id="pdcts">
+            <input type="text" class="inputfield" placeholder="Add Products" name="pdcts" ng-focus="autoCompleteFn()" ng-blur="autoCompleteFn()" id="pdcts">
 <!--            <span style="color:red" ng-show="scrapbookfrm.pdcts.$dirty && scrapbookfrm.pdcts.$invalid">
                 <span ng-show="scrapbookfrm.pdcts.$error.required">Add product is required.</span>
             </span>-->
