@@ -117,74 +117,63 @@ function checkLogin() {
 }
 
 function fbLogin() {
-    
-    alert("gjgjkjhk");
 
     var fbLoginSuccess = function (userData) {
         if (userData.authResponse) {
             loaderShow();
             facebookConnectPlugin.api('/me?fields=id,name,first_name,last_name,email', null,
                     function (response) {
-                        
-                       // alert(response);
-                        
-                         var response = jQuery.parseJSON(response);
-                            if (typeof response == 'object'){
 
+                        var response = jQuery.parseJSON(response);
+                        if (typeof response == 'object') {
 
-                        
-                        email = response.email;
-                        
-                        alert(email);
-                        
-                        
-                        first_name = response.first_name;
-                         alert(first_name);
-                        
-                        last_name = response.last_name;
-                         alert(last_name);
-                        
-                        image = "http://graph.facebook.com/" + response.id + "/picture?type=large";
+                            email = response.email;
 
-                        jQuery.get(domain + "/check-create-user?email=" + email + '&first_name=' + first_name + "&last_name=" + last_name + "&image=" + image).success(function (data, status, headers, config) {
+                            first_name = response.first_name;
 
-                            window.localStorage.setItem('id', data.id);
-                            window.localStorage.setItem('name', data.first_name);
-                            window.localStorage.setItem('email', data.email);
-                            window.localStorage.setItem('member', data.is_member);
-                            window.localStorage.setItem('prefs', JSON.stringify(data.preferences));
+                            last_name = response.last_name;
 
-                            try {
-                                window.localStorage.setItem('department', data.department.name);
+                            image = "http://graph.facebook.com/" + response.id + "/picture?type=large";
 
-                            }
-                            catch (err) {
-                                console.log(err);
-                            }
-                            window.localStorage.setItem('image', data.image);
+                            jQuery.get(domain + "/check-create-user?email=" + email + '&first_name=' + first_name + "&last_name=" + last_name + "&image=" + image).success(function (data, status, headers, config) {
 
-                            var elem = angular.element(document.querySelector('[ng-app]'));
-                            var injector = elem.injector();
-                            var $rootScope = injector.get('$rootScope');
+                                window.localStorage.setItem('id', data.id);
+                                window.localStorage.setItem('name', data.first_name);
+                                window.localStorage.setItem('email', data.email);
+                                window.localStorage.setItem('member', data.is_member);
+                                window.localStorage.setItem('prefs', JSON.stringify(data.preferences));
 
-                            $rootScope.loggedIn = 1;
+                                try {
+                                    window.localStorage.setItem('department', data.department.name);
 
-                            $rootScope.$apply(function () {
-                                $rootScope.preferences = data.preferences;
+                                }
+                                catch (err) {
+                                    console.log(err);
+                                }
+                                window.localStorage.setItem('image', data.image);
+
+                                var elem = angular.element(document.querySelector('[ng-app]'));
+                                var injector = elem.injector();
+                                var $rootScope = injector.get('$rootScope');
+
+                                $rootScope.loggedIn = 1;
+
+                                $rootScope.$apply(function () {
+                                    $rootScope.preferences = data.preferences;
+                                });
+
+                                $rootScope.$apply(function () {
+                                    $rootScope.styles = data.preferences;
+                                });
+                                $rootScope.$digest;
+                                jQuery(".login").hide();
+                                jQuery(".selectStyle").show();
+
+                                loaderHide();
+
                             });
 
-                            $rootScope.$apply(function () {
-                                $rootScope.styles = data.preferences;
-                            });
-                            $rootScope.$digest;
-                            jQuery(".login").hide();
-                            jQuery(".selectStyle").show();
-
-                            loaderHide();
-
-                        });
-                        
-                }
+                        }
 
                     });
         }
@@ -372,8 +361,8 @@ $(document).ready(function () {
             window.location.href = '#/login';
         }
     };
-    
-$rootScope.menuFn = function(event){
+
+    $rootScope.menuFn = function (event) {
         var ele = jQuery(event.target).closest('.has-submenu').children('a.deploy-submenu');
         jQuery(ele).toggleClass('active-submenu');
         jQuery(ele).parent().find('.submenu').toggleClass('active-submenu-items');
