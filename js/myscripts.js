@@ -117,9 +117,9 @@ function checkLogin() {
 }
 
 function fbLogin() {
-    jQuery.get(domain + "/check-create-user?email=" + 'tapodnya@infiniteit.biz' + '&first_name=' + 'Tops' + "&last_name=" + 'TopsP' + "&image=" + 'image').success(function (data, status, headers, config) {
-        console.log('mail');
-    });
+//    jQuery.get(domain + "/check-create-user?email=" + 'tapodnya@infiniteit.biz' + '&first_name=' + 'Tops' + "&last_name=" + 'TopsP' + "&image=" + 'image').success(function (data, status, headers, config) {
+//        console.log('mail');
+//    });
 
     var fbLoginSuccess = function (userData) {
         if (userData.authResponse) {
