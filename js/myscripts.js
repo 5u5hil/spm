@@ -256,7 +256,8 @@ function shareViaWhatsapp() {
 
     url = "http://bit.ly/1Xo5121";
 
-    window.plugins.socialsharing.shareViaWhatsApp('Hey, checkout this really amazing App I found! StylePanache, a Personal Guide to Styling!', null /* img */, url /* url */, function () {
+
+    window.plugins.socialsharing.shareViaWhatsApp('Hey, checkout this amazing App that I found. StylePanache, your Personal Guide to Styling!', null /* img */, url /* url */, function () {
         console.log('share ok')
     }, function (errormsg) {
         toast(errormsg)
