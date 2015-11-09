@@ -117,6 +117,8 @@ function checkLogin() {
 }
 
 function fbLogin() {
+    
+    alert("gjgjkjhk");
 
     var fbLoginSuccess = function (userData) {
         if (userData.authResponse) {
