@@ -4,7 +4,7 @@
       <div class="adaptive-style">
          <h4 style="font-size:17px;">XpressUrSelf</h4>
          <div class="pull-right">
-            <select ng-init="selectedItem = listOfOptions[0]" ng-options="option for option in listOfOptions" ng-model="selectedItem" ng-change="selectedItemChanged()" class="select-box">
+            <select ng-init="selectedItem = listOfOptions[0]" ng-options="option for option in listOfOptions" ng-model="selectedItem" ng-change="selectedItemChanged()" class="select-box" ng-show="listOfOptions.length">
             </select>
          </div>
       </div>
@@ -17,7 +17,6 @@
             Create New Look </a>
             <br>
          </div>
-         `
          <div class="adaptive-item" ng-repeat="sp in products" on-finish-render="ngRepeatFinished">
             <a ng-href="#/scrapbook/{{sp.url_key}}" title="{{sp.product}}">
             <img class="responsive-image" ng-src="{{imgPath + sp.small_image}}" alt="img">
