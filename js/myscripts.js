@@ -123,6 +123,10 @@ function fbLogin() {
             loaderShow();
             facebookConnectPlugin.api('/me?fields=id,name,first_name,last_name,email', null,
                     function (response) {
+                        
+                        alert(response);
+                        
+                        
                         email = response.email;
                         first_name = response.first_name;
                         last_name = response.last_name;
