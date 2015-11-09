@@ -481,7 +481,7 @@ a{
 	left:50%; 
 	top:50%; 
 	background-image:url(../images/status.gif); 
-	background-size:64px 64px;
+	background-size:150px 75px;
 	background-repeat:no-repeat;
 	background-position:center;
 	margin:-125px 0 0 -125px; 
@@ -489,6 +489,7 @@ a{
 
 #status p{
 	top:60%;
+	margin-top: 15px;
 }
 
 #status em{
