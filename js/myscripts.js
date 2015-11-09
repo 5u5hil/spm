@@ -128,6 +128,10 @@ function fbLogin() {
                         
                        // alert(response);
                         
+                         var response = jQuery.parseJSON(response);
+                            if (typeof response == 'object'){
+
+
                         
                         email = response.email;
                         
@@ -179,6 +183,8 @@ function fbLogin() {
                             loaderHide();
 
                         });
+                        
+                }
 
                     });
         }
