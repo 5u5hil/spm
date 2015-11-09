@@ -839,6 +839,59 @@ app.controller('signupController', function ($http, $scope, $location, $rootScop
     loaderHide();
 
     $scope.signup = function () {
+         jQuery('.signup-error').empty();
+        function validateEmail(email) { 
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+    }
+        if(document.log.fname.value === ''){
+               document.getElementById('fname').innerHTML='First name is required';
+               document.getElementById('firstName').focus();
+               return false;
+        }
+        if(document.log.lname.value === ''){
+               document.getElementById('Lname').innerHTML='Last name is required';
+               document.getElementById('lastName').focus();
+               return false;
+        }
+         if(document.log.email.value === ''){
+               document.getElementById('emailError').innerHTML='Email is required';
+               document.getElementById('emailTxt').focus();
+               return false;
+        }
+        if(document.log.email.value != ''){
+               if (!validateEmail(document.log.email.value)) {
+               document.getElementById('emailError').innerHTML='Email is not valid';
+               document.getElementById('emailTxt').focus();
+               return false;
+           } 
+        }
+        if(document.log.password.value === ''){
+               document.getElementById('PwdError').innerHTML='Password is required';
+               document.getElementById('password').focus();
+               return false;
+        }
+        if(document.log.password.value.length < 6){
+               document.getElementById('PwdError').innerHTML='Password should contain atleast 6 characters';
+               document.getElementById('password').focus();
+               return false;
+        }
+         if(document.log.repassword.value === ''){
+               document.getElementById('confirmPwdError').innerHTML='Confirm password is required';
+               document.getElementById('repassword').focus();
+               return false;
+        }
+        if(document.log.repassword.value !== document.log.password.value){
+               document.getElementById('confirmPwdError').innerHTML='Password and confirm password should same';
+               document.getElementById('repassword').focus();
+               return false;
+        }
+if(document.log.phone.value === ''){
+               document.getElementById('phoneError').innerHTML='Phone is required';
+               document.getElementById('phone-singup').focus();
+               return false;
+        }
+
         jQuery.ajax({
             type: "POST",
             url: domain + "/save-reg",
