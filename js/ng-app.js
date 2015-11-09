@@ -357,12 +357,13 @@ app.controller('scrapbookDetailsController', function ($http, $scope, $rootScope
 });
 
 app.controller('loginController', function ($http, $rootScope, $location, $scope, $routeParams) {
+    if(window.localStorage.getItem('id') != null){
+  window.location.href = "#/";
+  return false;
+}
     jQuery(".selectStyle").hide();
-
     loaderHide();
-
     $scope.rurl = $routeParams.rurl;
-
     $scope.login = function () {
     function validateEmail(email) { 
     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -891,6 +892,7 @@ if(document.log.phone.value === ''){
                document.getElementById('phone-singup').focus();
                return false;
         }
+    loaderShow();
 
         jQuery.ajax({
             type: "POST",
@@ -921,7 +923,6 @@ app.controller('cartController', function ($http, $scope, $location, $rootScope,
 if(window.localStorage.getItem('id') === null){
   window.location.href = "#/login";
   return false;
-
 }
     $scope.cart = jQuery.parseJSON(window.localStorage.getItem("cart"));
     $scope.cart.Total = 0;
