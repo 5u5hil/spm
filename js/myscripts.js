@@ -126,10 +126,14 @@ function fbLogin() {
             facebookConnectPlugin.api('/me?fields=id,name,first_name,last_name,email', null,
                     function (response) {
                         
-                        alert(response);
+                       // alert(response);
                         
                         
                         email = response.email;
+                        
+                        alert(email);
+                        
+                        
                         first_name = response.first_name;
                         last_name = response.last_name;
                         image = "http://graph.facebook.com/" + response.id + "/picture?type=large";
