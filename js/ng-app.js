@@ -364,6 +364,30 @@ app.controller('loginController', function ($http, $rootScope, $location, $scope
     $scope.rurl = $routeParams.rurl;
 
     $scope.login = function () {
+    function validateEmail(email) { 
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+    }
+        document.getElementById('emailError').innerHTML = '';
+        document.getElementById('pwdError').innerHTML = '';
+        if(document.loginuser.useremail.value === ''){
+               document.getElementById('emailError').innerHTML='Email is Required';
+               document.getElementById('useremail').focus();
+               return false;
+        }
+        if(document.loginuser.useremail.value != ''){
+               if (!validateEmail(document.loginuser.useremail.value)) {
+               document.getElementById('emailError').innerHTML='Email is not valid';
+               document.getElementById('useremail').focus();
+               return false;
+           } 
+        }
+
+        if(document.loginuser.password.value === ''){
+               document.getElementById('pwdError').innerHTML='Password is Required';
+               document.getElementById('password').focus();
+               return false;
+        }
         loaderShow();
         jQuery.ajax({
             type: "POST",
