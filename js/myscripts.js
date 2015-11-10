@@ -128,10 +128,16 @@ function fbLogin() {
                         if (typeof response == 'object') {
 
                             email = response.email;
+                            
+                            alert(email);
 
                             first_name = response.first_name;
+                                                        alert(first_name);
+
 
                             last_name = response.last_name;
+                                                                                    alert(last_name);
+
 
                             image = "http://graph.facebook.com/" + response.id + "/picture?type=large";
 
