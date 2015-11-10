@@ -123,21 +123,15 @@ function fbLogin() {
             loaderShow();
             facebookConnectPlugin.api('/me?fields=id,name,first_name,last_name,email', null,
                     function (response) {
-                     //   alert("sdfsf")
 
-                      //  var response = jQuery.parseJSON(response);
-                      //  if (typeof response == 'object') {
 
                             email = response.email;
                             
-                      //      alert(email);
 
                             first_name = response.first_name;
-                                                    //    alert(first_name);
 
 
                             last_name = response.last_name;
-                                                                                 //   alert(last_name);
 
 
                             image = "http://graph.facebook.com/" + response.id + "/picture?type=large";
@@ -180,7 +174,6 @@ function fbLogin() {
 
                             });
 
-                      //  }
 
                     });
         }
