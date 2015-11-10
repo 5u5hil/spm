@@ -1,13 +1,13 @@
 <div class=" header-custom">
-    <div class="p25 float-left5">
+    <div class="{{scrapbookproducts.comboproducts.length == 0? 'p50':'p25'}} float-left5">
         <button ng-click="shareSp($event,scrapbookproducts.product,scrapbookproducts.url_key, imgPath + scrapbookproducts.small_image)" class="button add-cart-btn share-btn hw100  "> <i class="fa fa-share-alt"></i>
             <br>Share</button>
     </div>
-    <div class="p25 float-left5">
+    <div class="{{scrapbookproducts.comboproducts.length == 0? 'p50':'p25'}} float-left5">
         <button ng-click="addToSList($event, scrapbookproducts.id)" class="button add-cart-btn hw100  fav-btn {{scrapbookproducts.liked == 1? 'liked':''}}"> <i class=" fa fa-thumbs-up "></i>
             <br><span class="fav-text">Like</span> </button>
     </div>
-    <div class="p50 float-left5">
+    <div class="p50 float-left5" ng-show="scrapbookproducts.comboproducts.length">
         <button class="button add-cart-btn  hw100 custom-add-cart " ng-click="  "><i class="fa fa-shopping-cart"></i>
             <br>Add to Cart</button>
     </div>
