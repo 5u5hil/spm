@@ -668,7 +668,7 @@ app.controller('createScrapbookController', function($http, $scope, $rootScope, 
             contentType: false,
             processData: false,
             success: function(data) {
-                toast("Thank you for Expressing your Look. It will be published to all once the Admin team approves it!");
+                toast("Thank you for Expressing your Look. It will be published to all once our Admin team approves it!");
                 window.location.href = "#/scrapbook";
             }
         });
