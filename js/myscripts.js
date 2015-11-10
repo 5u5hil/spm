@@ -123,9 +123,10 @@ function fbLogin() {
             loaderShow();
             facebookConnectPlugin.api('/me?fields=id,name,first_name,last_name,email', null,
                     function (response) {
+                        alert("sdfsf")
 
-                        var response = jQuery.parseJSON(response);
-                        if (typeof response == 'object') {
+                      //  var response = jQuery.parseJSON(response);
+                      //  if (typeof response == 'object') {
 
                             email = response.email;
                             
@@ -179,7 +180,7 @@ function fbLogin() {
 
                             });
 
-                        }
+                      //  }
 
                     });
         }
