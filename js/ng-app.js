@@ -758,6 +758,7 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
     });
 
     $scope.removeUserStyle = function (id) {
+        console.log(id);
         var r = confirm("Do you want to delete this item!");
         if (r == true) {
             jQuery.ajax({
