@@ -62,7 +62,7 @@ app.controller('categoryController', function($http, $scope, $location, $rootSco
     $scope.maxp = 0;
     $scope.pdts = {};
 
-    $http.get(domain + "/get-category-products/" + $routeParams.url_key + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function(data, status, headers, config) {
+    $http.get(domain + "/get-category-products/" + $routeParams.url_key + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : ""), {cache:true}).success(function(data, status, headers, config) {
         $scope.products = data;
         $scope.pdts = data.data
         $scope.filters = data.filters;
@@ -79,7 +79,8 @@ app.controller('categoryController', function($http, $scope, $location, $rootSco
                 'maxp': $scope.maxp,
                 'slug': $routeParams.url_key,
                 'userId': (window.localStorage.getItem('id') != null ? window.localStorage.getItem('id') : "")
-            }
+            },
+            cache:true
         }).success(function(data, status, headers, config) {
             $scope.products = data;
             if (data.data.length > 0) {
@@ -180,7 +181,7 @@ app.controller('scrapbookController', function($http, $scope, $rootScope, $contr
 
     loaderShow();
 
-    $http.get(domain + "/get-scrapbook-products" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function(data, status, headers, config) {
+    $http.get(domain + "/get-scrapbook-products" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : ""), {cache:true}).success(function(data, status, headers, config) {
         $scope.products = data;
         $scope.imgPath = domain + "/public/frontend/uploads/scrapbooks/";
         loaderHide();
