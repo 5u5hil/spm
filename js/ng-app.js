@@ -750,6 +750,7 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
         'userId': (window.localStorage.getItem('id') != null ? window.localStorage.getItem('id') : "")
     }).success(function (data, status, headers, config) {
         $scope.products = data;
+        $scope.styleid = $routeParams.url_key;
         $scope.pdts = data.data
         $scope.filters = data.filters;
         $scope.$digest;
