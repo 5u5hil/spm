@@ -579,6 +579,15 @@ app.controller('wardrobeController', function ($http, $scope, $rootScope, $locat
 
 });
 
+app.controller('travelPlannerController', function ($http, $scope, $rootScope, $location, $routeParams) {
+    
+
+    
+    $scope.$on('$viewContentLoaded', function () {
+        siteMainFn();
+    });    
+});
+
 app.controller('wardrobeListingController', function ($http, $scope, $rootScope, $location, $routeParams, $filter) {
 
     loaderShow();
