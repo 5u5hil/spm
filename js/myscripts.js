@@ -140,8 +140,7 @@ function fbLogin() {
                                 window.localStorage.setItem('prefs', JSON.stringify(data.preferences));
                                 try {
                                     window.localStorage.setItem('department', data.department.name);
-                                }
-                                catch (err) {
+                                } catch (err) {
                                     console.log(err);
                                 }
                                 window.localStorage.setItem('image', data.image);
@@ -197,8 +196,7 @@ function fbSignUp() {
                                 window.localStorage.setItem('member', data.is_member);
                                 try {
                                     window.localStorage.setItem('department', data.department.name);
-                                }
-                                catch (err) {
+                                } catch (err) {
                                     console.log(err);
                                 }
                                 window.localStorage.setItem('image', data.image);
@@ -249,8 +247,7 @@ function toast(msg) {
             alert('toast error: ' + b)
         })
 
-    }
-    catch (err) {
+    } catch (err) {
         alert(msg);
     }
 
@@ -271,6 +268,10 @@ jQuery(document).ajaxSuccess(function () {
     clearTimeout(timeout);
 });
 $(document).ready(function () {
+
+    jQuery("body").on("change", "select.orderby", function () {
+        jQuery("form button").click();
+    });
 
     if (window.localStorage.getItem('cart') === null) {
         window.localStorage.setItem('cart', JSON.stringify([]));

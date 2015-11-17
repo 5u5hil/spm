@@ -78,6 +78,7 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
                 'minp': $scope.minp,
                 'maxp': $scope.maxp,
                 'slug': $routeParams.url_key,
+                'sort': jQuery("select.orderby").val(),
                 'userId': (window.localStorage.getItem('id') != null ? window.localStorage.getItem('id') : "")
             },
             cache: true
@@ -128,6 +129,7 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
                 'minp': $scope.minp,
                 'maxp': $scope.maxp,
                 'slug': $routeParams.url_key,
+                'sort': jQuery("select.orderby").val(),
                 'userId': (window.localStorage.getItem('id') != null ? window.localStorage.getItem('id') : "")
 
             }
@@ -135,7 +137,7 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
             $scope.products = response;
             $scope.pdts = response.data
             $scope.$digest;
-            jQuery(".big-notification.yellow-notification").toggle("slideDown");
+            jQuery(".big-notification.yellow-notification").slideUp();
         });
     }
 
@@ -580,12 +582,12 @@ app.controller('wardrobeController', function ($http, $scope, $rootScope, $locat
 });
 
 app.controller('travelPlannerController', function ($http, $scope, $rootScope, $location, $routeParams) {
-    
 
-    
+
+
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
-    });    
+    });
 });
 
 app.controller('wardrobeListingController', function ($http, $scope, $rootScope, $location, $routeParams, $filter) {
@@ -797,6 +799,7 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
                 'minp': $scope.minp,
                 'maxp': $scope.maxp,
                 'slug': $routeParams.url_key,
+                'sort': jQuery("select.orderby").val(),
                 'userId': (window.localStorage.getItem('id') != null ? window.localStorage.getItem('id') : "")
             }
         }).success(function (data, status, headers, config) {
@@ -850,6 +853,7 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
                 'filters': $scope.filtered,
                 'minp': $scope.minp,
                 'maxp': $scope.maxp,
+                'sort': jQuery("select.orderby").val(),
                 'userId': (window.localStorage.getItem('id') != null ? window.localStorage.getItem('id') : "")
             }
         }).success(function (response) {
