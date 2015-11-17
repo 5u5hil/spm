@@ -5,15 +5,15 @@
             <div class="blog-post">
                 <h3 class="blog-post-title pull-left">Travel Planner</h3>
                 <span class="pull-right">
-                <span style="  "><a href class="button button-blue full-button chat-btn" onclick="checkPLogin()" ng-show="{{ismember == 0}}"> Subscribe</a></span>
-                <span style="  "><a href class="button button-blue full-button chat-btn" onclick="startChat()" ng-show="{{ismember == 1 }}"> Start Chat</a></span>
+                    <span style="  "><a href class="button button-blue full-button chat-btn" onclick="checkPLogin()" ng-show="{{ismember == 0}}"> Subscribe</a></span>
+                    <span style="  "><a href class="button button-blue full-button chat-btn" onclick="startChat()" ng-show="{{ismember == 1}}"> Start Chat</a></span>
                 </span>
                 <div class="clear"></div>
                 <div class="decoration"></div>
                 <a class="blog-post-image" href><img src="images/pictures/3ww.jpg" alt="img"></a>
-                
+
                 <p class="blog-post-text">
-                   Become a Member with us and get a dedicated personal stylist available for you, just a message away! You can have your body traits saved with us, and accordingly, our stylists will help you prepare looks for daily wear, occasions, also consult on gifts & more.
+                    Become a Member with us and get a dedicated personal stylist available for you, just a message away! You can have your body traits saved with us, and accordingly, our stylists will help you prepare looks for daily wear, occasions, also consult on gifts & more.
                 </p>
                 <p class="blog-post-text">
                     Want to design your everyday fashion requirements? Start uploading your collection, and design your own wardrobe with the help of your personal stylist. Choose the best.
@@ -21,9 +21,48 @@
                 <p class="blog-post-text">
                     Traveling somewhere, confused what to wear to suit the latest fashionistas there, talk to us. A simple method – tell us the place you are visiting, the purpose of your visit and we’ll suggest you with most amazing apparels. Our fashion advice goes a step forward by taking into consideration climatic conditions, nature of visit and trending fashion.
                 </p>
-                
-                <p style="    margin-bottom: 20px;"><a href class="button button-blue full-button" onclick="checkPLogin()" ng-show="{{ismember == 0}}"> Subscribe</a></p>
-                <p style="    margin-bottom: 20px;"><a href class="button button-blue full-button" onclick="startChat()" ng-show="{{ismember == 1 }}"> Start Chat</a></p>
+
+                <form ng-cloak method="post" class="contactForm" id="planTravelFrm" name="planTravelFrm" ng-submit="submitPTFrm()">
+                    <fieldset>
+                        <div class="formFieldWrap">
+                            <h4>Where are you going to ?</h4>
+                            <p>
+                                <input type="text" class="inputfield" name="Where are you going to" placeholder="Place Name">
+                            </p>
+
+                            <h4>Which month ?</h4>
+                            <p>
+                                <input type="text" class="inputfield" name="Which month" placeholder="Month">
+                            </p>
+                            
+                            <h4>Duration of travel ?</h4>
+                            <p>
+                                <input type="text" class="inputfield" name="Duration of travel" placeholder="Duration">
+                            </p>
+                            
+                            <h4>Type of Travel ?</h4>
+                            <p>
+                                <select name="Type of Travel">
+                                    <option value="Leisure">Leisure</option>
+                                    <option value="Official">Official</option>
+                                    <option value="Business">Business</option>
+                                    <option value="Honeymoon">Honeymoon</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </p>
+                            
+                            <h4>Any special request ?</h4>
+                            <p>
+                                <input type="text" class="inputfield" name="Any special request" placeholder="Special request">
+                            </p>
+                        </div>
+
+                        <div class="formSubmitButtonErrorsWrap">
+                            <button type="submit" class="buttonWrap button button-green contactSubmitButton" value="SUBMIT" data-formId="contactForm">SUBMIT</button>
+                        </div>
+                    </fieldset>
+                </form>      
+
             </div>
         </div>
         <div class="decoration"></div>
