@@ -591,7 +591,7 @@ app.controller('travelPlannerController', function ($http, $scope, $rootScope, $
             cache: false,
             success: function (data) {
                 if (data == "saved") {
-
+                    alert("Detailes saved!");
                     console.log(data);
 
                 }
