@@ -954,11 +954,6 @@ app.controller('signupController', function ($http, $scope, $location, $rootScop
             return false;
         }
 
-        if (document.log.file.value === '') {
-            document.getElementById('fileError').innerHTML = 'Profile Pic is required';
-            document.getElementById('file').focus();
-            return false;
-        }
         loaderShow();
 
 
@@ -967,7 +962,7 @@ app.controller('signupController', function ($http, $scope, $location, $rootScop
         jQuery.ajax({
             type: "POST",
             url: domain + "/save-reg",
-            data: jQuery("#signup input").serialize(),
+            data: data,
             cache: false,
             contentType: false,
             processData: false,
@@ -1077,12 +1072,12 @@ app.controller('userDashboardController', function ($http, $scope, $location, $r
 
     $scope.updateUDetails = function () {
 
-
-        var data = new FormData(jQuery("#userDetailsfrm"));
+        loaderShow();
+        var data = new FormData(jQuery("#userDetailsfrm")[0]);
         jQuery.ajax({
             type: "POST",
             url: domain + "/update-user-details",
-            data: jQuery("#signup input").serialize(),
+            data: data,
             cache: false,
             contentType: false,
             processData: false,

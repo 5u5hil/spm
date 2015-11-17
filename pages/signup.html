@@ -17,7 +17,7 @@
             </div>
 
             <div class="clearfix"></div>
-            <form name="log" id="signup" ng-controller="signupController" novalidate ng-cloak method="post" ng-submit="signup()">
+            <form name="log" id="signup" enctype="multipart/form-data" ng-controller="signupController" novalidate ng-cloak method="post" ng-submit="signup()">
                 <p> Create New account below, it's really easy! </p>
 
                 <input type="text" class="inputfield" name="fname" id="firstName" value="" placeholder="First Name" ng-model='fname' required/>
@@ -62,11 +62,8 @@
 
                 </span>    
 
-                <input type="file" class="inputfield" name="file" id="file" value="" placeholder="Profile Pic" ng-model='file' required/>    
-                <span style="color:red">
-                    <span id="fileError"  class="signup-error"></span>
+                <input type="file" class="inputfield" name="file" id="file" value="" placeholder="Profile Pic" ng-model='file' />    
 
-                </span>    
 
 
                 <button type="submit" class="button button-blue full-button">Submit</button>
