@@ -19,48 +19,55 @@
             <div class="clearfix"></div>
             <form name="log" id="signup" ng-controller="signupController" novalidate ng-cloak method="post" ng-submit="signup()">
                 <p> Create New account below, it's really easy! </p>
-    
-                    <input type="text" class="inputfield" name="fname" id="firstName" value="" placeholder="First Name" ng-model='fname' required/>
-                    <span style="color:red">
-                        <span id="fname" class="signup-error"></span>
-                    </span>    
-               
+
+                <input type="text" class="inputfield" name="fname" id="firstName" value="" placeholder="First Name" ng-model='fname' required/>
+                <span style="color:red">
+                    <span id="fname" class="signup-error"></span>
+                </span>    
+
                 <input type="text" class="inputfield" name="lname" value="" id="lastName"  placeholder="Last Name" ng-model='lname' required/>
                 <span style="color:red">
-                        <span id="Lname" class="signup-error"></span>
-                   
+                    <span id="Lname" class="signup-error"></span>
+
                 </span>   
 
                 <input type="email" class="inputfield" name="email" id="emailTxt" value="" placeholder="Email" ng-model='email' required/>                    
                 <span style="color:red" >
-                        <span id="emailError" class="signup-error"></span>
-                    
+                    <span id="emailError" class="signup-error"></span>
+
                 </span>   
 
                 <input type="password" class="inputfield" name="password" value="" placeholder="Password" ng-model='password' id="password" ng-minlength='6' required />   
                 <span style="color:red" >
 
-                        <span id="PwdError" class="signup-error"></span></span>
+                    <span id="PwdError" class="signup-error"></span></span>
 
-              <!--   <span style="color:red" ng-show="log.password.$dirty && log.password.$invalid">                        
-                    <span ng-show="log.password.$dirty && log.password.$error.required">Password is required.</span>  
-                    <span style="color:red" ng-show="log.password.$error.minlength">Password Should Contain Atleast 6 Characters</span>
-                </span>   -->  
+                <!--   <span style="color:red" ng-show="log.password.$dirty && log.password.$invalid">                        
+                      <span ng-show="log.password.$dirty && log.password.$error.required">Password is required.</span>  
+                      <span style="color:red" ng-show="log.password.$error.minlength">Password Should Contain Atleast 6 Characters</span>
+                  </span>   -->  
 
                 <input type="password" class="inputfield" name="repassword" value="" placeholder="Confirm Password" name="repassword" ng-model='repassword' id="repassword" ng-minlength='6' change-password-c="{{password === repassword}}"/>                    
                 <span style="color:red" >
-                        <span id="confirmPwdError" class="signup-error"></span>
-           
-            <!--     <span style="color:red" ng-show="log.repassword.$dirty && log.repassword.$invalid">
-                    <span style="color:red" ng-show="log.repassword.$error.required">password is required.</span>
-                    <span style="color:red" ng-show="log.repassword.$error.minlength">Password Should Contain Atleast 6 Characters</span>   --> 
+                    <span id="confirmPwdError" class="signup-error"></span>
+
+                    <!--     <span style="color:red" ng-show="log.repassword.$dirty && log.repassword.$invalid">
+                            <span style="color:red" ng-show="log.repassword.$error.required">password is required.</span>
+                            <span style="color:red" ng-show="log.repassword.$error.minlength">Password Should Contain Atleast 6 Characters</span>   --> 
                 </span>
 
                 <input type="text" class="inputfield" name="phone" id="phone-singup" value="" placeholder="Phone" ng-model='phone' required/>    
                 <span style="color:red">
-                        <span id="phoneError"  class="signup-error"></span>
-                 
+                    <span id="phoneError"  class="signup-error"></span>
+
                 </span>    
+
+                <input type="file" class="inputfield" name="file" id="file" value="" placeholder="Profile Pic" ng-model='file' required/>    
+                <span style="color:red">
+                    <span id="fileError"  class="signup-error"></span>
+
+                </span>    
+
 
                 <button type="submit" class="button button-blue full-button">Submit</button>
             </form>

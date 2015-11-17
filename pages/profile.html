@@ -29,6 +29,9 @@
                 <span ng-show="userDetailsfrm.user_phone.$error.required">Phone is required.</span>
             </span>
             
+             <input type="file" class="inputfield" ng-model="userDetails.file" name="file" id="file" placeholder="Profile Pic" >
+           
+            
             <input type="hidden" name="userId" value='{{userId}}'>
             
             <input type='submit' name='submit' value="Update" class="button button-blue full-button">

@@ -953,13 +953,24 @@ app.controller('signupController', function ($http, $scope, $location, $rootScop
             document.getElementById('phone-singup').focus();
             return false;
         }
+
+        if (document.log.file.value === '') {
+            document.getElementById('fileError').innerHTML = 'Profile Pic is required';
+            document.getElementById('file').focus();
+            return false;
+        }
         loaderShow();
 
+
+
+        var data = new FormData(jQuery("#signup")[0]);
         jQuery.ajax({
             type: "POST",
             url: domain + "/save-reg",
             data: jQuery("#signup input").serialize(),
             cache: false,
+            contentType: false,
+            processData: false,
             success: function (data) {
                 if (data == "register") {
                     toast("Email is already registered.");
@@ -970,6 +981,8 @@ app.controller('signupController', function ($http, $scope, $location, $rootScop
                 }
             }
         });
+
+
     }
 
     $scope.$on('$viewContentLoaded', function () {
@@ -1063,11 +1076,16 @@ app.controller('userDashboardController', function ($http, $scope, $location, $r
     });
 
     $scope.updateUDetails = function () {
+
+
+        var data = new FormData(jQuery("#userDetailsfrm"));
         jQuery.ajax({
             type: "POST",
             url: domain + "/update-user-details",
-            data: jQuery("#userDetailsfrm input").serialize(),
+            data: jQuery("#signup input").serialize(),
             cache: false,
+            contentType: false,
+            processData: false,
             success: function (data) {
                 if (data[0] == "success")
                     toast("Profile updated successfully!");
@@ -1077,6 +1095,7 @@ app.controller('userDashboardController', function ($http, $scope, $location, $r
                 window.location.href = "#/profile";
             }
         });
+
     };
 
 });
