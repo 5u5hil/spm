@@ -583,7 +583,21 @@ app.controller('wardrobeController', function ($http, $scope, $rootScope, $locat
 
 app.controller('travelPlannerController', function ($http, $scope, $rootScope, $location, $routeParams) {
 
+    $scope.submitPTFrm = function () {
+        jQuery.ajax({
+            type: "POST",
+            url: domain + "/save-travel-plan?userId=" + window.localStorage.getItem('id'),
+            data: jQuery("#planTravelFrm").serialize(),
+            cache: false,
+            success: function (data) {
+                if (data == "saved") {
 
+                    console.log(data);
+
+                }
+            }
+        });
+    };
 
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
