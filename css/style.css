@@ -1847,3 +1847,60 @@ color: #ff0055 !important;
 .signup-password{
     margin-bottom: 0px !important;
 }
+
+figure.amp-ad-hover img {
+    height: 360px;
+    }
+
+    .fab-cls .fab {
+    cursor: pointer;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 999999;
+    box-sizing: content-box;
+    cursor: pointer;
+    }
+
+    .fab-cls .fab-backdrop {
+    color: #db4437;
+    }
+
+    .fab-cls .fab-primary,
+    .fab-cls .fab-secondary {
+    transition: all 0.35s ease-in-out;
+    }
+
+    .fab.active .fab-primary {
+    opacity: 0;
+    transform: rotate(225deg);
+    }
+
+    .fab-secondary {
+    opacity: 0;
+    transform: rotate(-225deg);
+    }
+
+    .fab.active .fab-secondary {
+    opacity: 1;
+    transform: rotate(0);
+    margin-top: -2px;
+    }
+
+    .by-brand-img img {
+    border: 1px solid #E4E4E4;
+    border-radius: 50%;
+    height: 46px;
+    width: 43px;
+    vertical-align: middle;
+    }
+
+    .custom-ad-hover img {
+    height: initial !important;
+    }
+    .add-container-custom{
+            width: 100% !important;
+    height: 38px !important;
+    padding-top: 15px !important;  
+    padding-right: 61px !important;
+    }
