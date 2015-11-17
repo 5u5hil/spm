@@ -289,10 +289,10 @@ $(document).ready(function () {
         clearTimeout(timeout);
     });
     $rootScope.share = function (e, p) {
-        window.plugins.socialsharing.share(p.product, 'Hey, checkout this exciting Product that I found on StylePanache!', (p.large_image != '' ? p.large_image : (p.medium_image != '' ? p.medium_image : p.small_image)), 'http://stylepanache.in/#/' + p.url_key);
+        window.plugins.socialsharing.share('Hey, checkout this exciting Product that I found on StylePanache!', p.product, (p.large_image != '' ? p.large_image : (p.medium_image != '' ? p.medium_image : p.small_image)), 'http://stylepanache.in/#/' + p.url_key);
     };
     $rootScope.shareSp = function (e, p, u, i) {
-        window.plugins.socialsharing.share(p, 'Hey, checkout this interesting Scrapbook that I found on StylePanache! ', i, 'http://stylepanache.in/#/' + u);
+        window.plugins.socialsharing.share('Hey, checkout this interesting Look that I found on StylePanache! ', p, i, 'http://stylepanache.in/#/' + u);
     };
     $rootScope.addToCart = function (e, p) {
         var $ = jQuery;
