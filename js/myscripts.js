@@ -292,7 +292,7 @@ $(document).ready(function () {
         window.plugins.socialsharing.share('Hey, checkout this exciting Product that I found on StylePanache!', p.product, (p.large_image != '' ? p.large_image : (p.medium_image != '' ? p.medium_image : p.small_image)), 'http://stylepanache.in/#/' + p.url_key);
     };
     $rootScope.shareSp = function (e, p, u, i) {
-        window.plugins.socialsharing.share('Hey, checkout this interesting Look that I found on StylePanache! ', p, i, 'http://stylepanache.in/#/scrapbook' + u);
+        window.plugins.socialsharing.share('Hey, checkout this interesting Look that I found on StylePanache! ', p, i, 'http://stylepanache.in/#/scrapbook/' + u);
     };
     $rootScope.addToCart = function (e, p) {
         var $ = jQuery;
@@ -300,7 +300,7 @@ $(document).ready(function () {
         var cart = $.parseJSON(window.localStorage.getItem("cart"));
         c = jQuery.grep(cart, function (n, i) {
             return (n.id == p.id)
-        });
+        }); 
         if (c.length <= 0) {
             cart.push(p);
         }
