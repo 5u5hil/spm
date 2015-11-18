@@ -630,9 +630,8 @@ app.controller('travelPlannerController', function($http, $scope, $rootScope, $l
             cache: false,
             success: function(data) {
                 if (data == "saved") {
-                    alert("Detailes saved!");
-                    console.log(data);
-
+                    toast("Thanks, our Stylist will review your details and suggest products that would be apt for your travel!");
+                    window.location.href = "#/";
                 }
             }
         });
