@@ -1024,8 +1024,6 @@ app.controller('cartController', function ($http, $scope, $location, $rootScope,
     });
     $timeout(function () {
         siteMainFn();
-        console.log('finred');
-
     }, 2000);
 
 });
