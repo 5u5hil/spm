@@ -194,6 +194,10 @@ app.controller('scrapbookController', function($http, $scope, $rootScope, $contr
     });
 
     $scope.addToSList = function(event, id) {
+        if (window.localStorage.getItem('id') === null)  {
+            window.location.href = '#/login';
+        return false;
+        }
         function checkLike(event) {
             return angular.element(event).hasClass('liked');
         }
@@ -222,9 +226,7 @@ app.controller('scrapbookController', function($http, $scope, $rootScope, $contr
                 });
             });
 
-        } else {
-            window.location.href = '#/login';
-        }
+        } 
     };
 
     $scope.listOfOptions = ['Recent', 'Most Popular'];
@@ -266,6 +268,11 @@ app.controller('myScrapbookController', function($http, $scope, $rootScope, $con
     });
 
     $scope.addToSList = function(event, id) {
+        if (window.localStorage.getItem('id') === null)  {
+            window.location.href = '#/login';
+        return false;
+        }
+    
         function checkLike(event) {
             return angular.element(event).hasClass('liked');
         }
@@ -292,9 +299,7 @@ app.controller('myScrapbookController', function($http, $scope, $rootScope, $con
 
             });
 
-        } else {
-            window.location.href = '#/login';
-        }
+        }  
     };
 
     $scope.removeScrapbook = function(slug) {
@@ -370,6 +375,11 @@ app.controller('scrapbookDetailsController', function($http, $scope, $rootScope,
     };
 
     $scope.addToSList = function(event, id) {
+        if (window.localStorage.getItem('id') === null)  {
+            window.location.href = '#/login';
+        return false;
+        }
+         
          function checkLike(event) {
             return angular.element(event).hasClass('liked');
         }
@@ -397,9 +407,7 @@ app.controller('scrapbookDetailsController', function($http, $scope, $rootScope,
                 });
             });
 
-        } else {
-            window.location.href = '#/login';
-        }
+        }  
     };
 
     $scope.$on('$viewContentLoaded', function() {
@@ -657,7 +665,7 @@ app.controller('wardrobeListingController', function($http, $scope, $rootScope, 
 
 
     $scope.removeWardrobeProduct = function(id) {
-        var r = confirm("Do you want to delete this item!");
+        var r = confirm("Do you want to delete this item?");
         if (r == true) {
             jQuery.ajax({
                 type: "POST",
