@@ -144,6 +144,10 @@ app.config(['$routeProvider', '$locationProvider',
                     templateUrl: 'pages/travel-planner.html',
                     controller: 'travelPlannerController'
                 }).
+                when('/faq', {
+                    templateUrl: 'pages/faq.html',
+                    controller: 'commonController'
+                }).
                 otherwise({
                     redirectTo: '/'
                 });

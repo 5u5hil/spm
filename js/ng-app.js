@@ -1115,9 +1115,7 @@ app.controller('commonController', function ($http, $scope, $location, $rootScop
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
-    $timeout(function () {
-        siteMainFn();
-    }, 1000);
+
 });
 
 app.controller('introController', function ($http, $scope, $location, $rootScope, $routeParams) {
