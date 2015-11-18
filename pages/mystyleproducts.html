@@ -5,15 +5,15 @@
         <div class="adaptive-style">
             <h4>{{products.maincat}}</h4>
             <a ng-href="">
-                <select name="orderby" class="orderby big-select alignright selectBox">
+                <select name="orderby" class="orderby big-select alignright selectBox" style="margin-bottom: 5px;">
                     <option value="1" selected="selected">Default Sorting</option>
                     <option value="2">Newness</option>
                     <option value="3">Price Low to High</option>
                     <option value="4">Price High to Low</option>
                 </select>
             </a>
-            <a class="" ng-click="showFilters()"><i class="fa fa-filter"></i></a>
-            <a class="" ng-click="removeUserStyle(styleid)"><i class="fa fa-trash"></i></a>
+            <a class="" ng-click="showFilters()" style="padding-top:7px"><i class="fa fa-filter"></i></a>
+            <a class="" ng-click="removeUserStyle(styleid)" style="padding-top:7px"><i class="fa fa-trash"></i></a>
             <!-- <a class="adaptive-two-activate active-adaptive-style"><i class="fa fa-th-large"></i></a>
             <a class="adaptive-one-activate"><i class="fa fa-navicon"></i></a> -->
         </div>

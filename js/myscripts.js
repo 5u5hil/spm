@@ -308,6 +308,16 @@ $(document).ready(function () {
         toast("Product Added to Cart");
     };
     $rootScope.addToList = function (event, id) {
+        function checkLike(event) {
+            return angular.element(event).hasClass('liked');
+        }
+        var isLiked = checkLike(event.target);
+        if (isLiked) {
+            angular.element(event.target).removeClass("liked");          
+        }
+        if (!isLiked) {
+            angular.element(event.target).addClass("liked");
+       }
         if (window.localStorage.getItem('id') != null) {
             jQuery.get(domain + "/add-to-savedlist?productID=" + id + "&userId=" + window.localStorage.getItem('id')).success(function (response) {
                 console.log(response);

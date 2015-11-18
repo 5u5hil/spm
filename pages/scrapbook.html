@@ -23,7 +23,7 @@
             </a>
             <h4 class="pname"><a ng-href="#/scrapbook/{{sp.url_key}}"  class="lname">{{sp.product}}</a></h4>
              <span class="product-count">{{sp.comboproducts.length}} Product(s)</span> 
-            <span class="red-hover pull-right"><i class=" fa fa-thumbs-up {{sp.liked == 1? 'liked':''}}" ng-click="addToSList($event, sp.id)"></i> <span class="count">{{sp.scrapbooklikes.length}}</span></span>
+            <span class="red-hover pull-right"><i class=" fa fa-thumbs-up {{sp.liked == 1? 'liked':''}}" ng-click="addToSList($event, sp.id)" ></i> <span class="count">{{sp.scrapbooklikes.length}}</span></span>
            
             <!-- <div class="meta meta--preview"><span>Total Likes: </span></div> -->
             <div class=" ">
