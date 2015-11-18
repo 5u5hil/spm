@@ -300,7 +300,7 @@ $(document).ready(function () {
         var cart = $.parseJSON(window.localStorage.getItem("cart"));
         c = jQuery.grep(cart, function (n, i) {
             return (n.id == p.id)
-        }); 
+        });
         if (c.length <= 0) {
             cart.push(p);
         }
@@ -328,27 +328,7 @@ $(document).ready(function () {
         return false;
     }
 
-//    $rootScope.addToSList = function (event, id) {
-//        if (window.localStorage.getItem('id') != null) {
-//            jQuery.get(domain + "/scrapbook-like?productID=" + id + "&userId=" + window.localStorage.getItem('id')).success(function (response) {
-//                console.log(response);
-//                if (response == 1) {
-//                    angular.element(event.target).addClass("liked");
-//
-//                } else {
-//                    angular.element(event.target).removeClass("liked");
-//                }
-//console.log('sp');
-//                jQuery.get(domain + "/get-scrapbook-products" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
-//                    $scope.products = data;
-//                    $scope.$digest;
-//                });
-//            });
-//
-//        } else {
-//            window.location.href = '#/login';
-//        }
-//    };
+
 
     if (window.localStorage.getItem('id') != null) {
 
@@ -358,6 +338,20 @@ $(document).ready(function () {
     } else {
         $rootScope.$apply(function () {
             $rootScope.loggedIn = 0;
+        });
+    }
+
+    if (window.localStorage.getItem('categories') != null) {
+        var cats = jQuery.parseJSON(window.localStorage.getItem('categories'));
+        $rootScope.$apply(function () {
+            $rootScope.categories = cats;
+        });
+    }
+
+    if (window.localStorage.getItem('prefs') != null) {
+        var prefs = jQuery.parseJSON(window.localStorage.getItem('prefs'));
+        $rootScope.$apply(function () {
+            $rootScope.styles = prefs;
         });
     }
 

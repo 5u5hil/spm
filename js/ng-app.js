@@ -517,9 +517,9 @@ app.controller('bodyCharacteristicsController', function ($http, $scope, $rootSc
             cache: false,
             success: function (data) {
                 jQuery('<li><a ng-href="#/explore-style/' + data.id + '" class="active-menu"><i class="fa fa-angle-right"></i>' + data.style_name + '<i class="fa fa-circle"></i></a></li>').insertAfter(jQuery(".newStyle li:nth-child(1)"));
-
-
-
+                var prefs = jQuery.parseJSON(window.localStorage.getItem('prefs'));
+                prefs.unshift(data);
+                window.localStorage.setItem('prefs', JSON.stringify(prefs));
                 window.location.href = "#/explore-style/" + data.id;
             }
         });
@@ -783,7 +783,7 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
     });
 
     $scope.removeUserStyle = function (id) {
-        console.log(id);
+        var pid = id;
         var r = confirm("Do you want to delete this item!");
         if (r == true) {
             jQuery.ajax({
@@ -792,8 +792,18 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
                 data: {id: id},
                 cache: false,
                 success: function (data) {
-                    console.log(data);
                     if (data == 'success') {
+                        var prefs = jQuery.parseJSON(window.localStorage.getItem('prefs'));
+                        prefs = prefs.filter(function (el) {
+                            return el.id !== parseInt(pid);
+                        });
+
+                     
+                        $rootScope.$apply(function () {
+                            $rootScope.styles = prefs;
+                        });
+
+                        window.localStorage.setItem('prefs', JSON.stringify(prefs));
 
                         window.location.href = "#/";
 
