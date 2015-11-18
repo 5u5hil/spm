@@ -1855,22 +1855,27 @@ figure.amp-ad-hover img {
     .fab-cls .fab {
     cursor: pointer;
     position: fixed;
-    bottom: 10px;
-    right: 10px;
+    bottom: 25px;
+    right: 25px;
     z-index: 999999;
     box-sizing: content-box;
     cursor: pointer;
     }
 
     .fab-cls .fab-backdrop {
-    color: #db4437;
+    color: #FF0055;
+    line-height: 47px;
+        font-size: 60px;
     }
+ .fab-cls .fa-plus{
+            margin-left: 2px !important;
 
+ }
     .fab-cls .fab-primary,
     .fab-cls .fab-secondary {
     transition: all 0.35s ease-in-out;
     }
-
+     
     .fab.active .fab-primary {
     opacity: 0;
     transform: rotate(225deg);
