@@ -232,7 +232,6 @@ function shareViaWhatsapp() {
 
     url = "http://bit.ly/1Xo5121";
     window.plugins.socialsharing.shareViaWhatsApp('Hey, checkout this amazing App that I found. StylePanache, your Personal Guide to Styling!', null /* img */, url /* url */, function () {
-        console.log('share ok')
     }, function (errormsg) {
         toast(errormsg)
     });
@@ -289,7 +288,7 @@ $(document).ready(function () {
         clearTimeout(timeout);
     });
     $rootScope.share = function (e, p) {
-        window.plugins.socialsharing.share('Hey, checkout this exciting Product that I found on StylePanache!', p.product, (p.large_image != '' ? p.large_image : (p.medium_image != '' ? p.medium_image : p.small_image)), 'http://stylepanache.in/#/' + p.url_key);
+        window.plugins.socialsharing.share('Hey, checkout this exciting Product that I found on StylePanache!', p.product, (p.large_image != '' ? p.large_image : (p.medium_image != '' ? p.medium_image : p.small_image)), 'http://stylepanache.in/#/explore/' + p.url_key);
     };
     $rootScope.shareSp = function (e, p, u, i) {
         window.plugins.socialsharing.share('Hey, checkout this interesting Look that I found on StylePanache! ', p, i, 'http://stylepanache.in/#/scrapbook/' + u);
