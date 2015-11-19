@@ -1138,8 +1138,10 @@ app.controller('userDashboardController', function($http, $scope, $location, $ro
             contentType: false,
             processData: false,
             success: function(data) {
-                if (data[0] == "success")
+                if (data[0] == "success"){
                     toast("Profile updated successfully!");
+                   window.location.href = "#/profile";
+                }
                 else
                     toast("Looks like something went wrong... Please try again later!");
 

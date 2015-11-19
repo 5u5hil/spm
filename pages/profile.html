@@ -29,16 +29,27 @@
                 <span ng-show="userDetailsfrm.user_phone.$error.required">Phone is required.</span>
             </span>
             
-             <input type="file" class="inputfield" ng-model="userDetails.file" name="file" id="file" placeholder="Profile Pic" >
+             <input type="file" style="background-image: url('http://stylepanache.in{{userDetails.image}}')" class="inputfield choose-file-img" ng-model="userDetails.file" name="file" id="file" placeholder="Profile Pic" >
+
            
             
             <input type="hidden" name="userId" value='{{userId}}'>
             
             <input type='submit' name='submit' value="Update" class="button button-blue full-button">
         </form>
-
     </div>
 
 
 
 </div>
+<style>
+    .choose-file-img{
+           width: 200px;
+    height: 200px;
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    padding-top: 173px;
+    }
+</style>
