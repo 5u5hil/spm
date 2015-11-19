@@ -202,14 +202,14 @@ app.controller('scrapbookController', function($http, $scope, $rootScope, $contr
             return angular.element(event).hasClass('liked');
         }
         var isLiked = checkLike(event.target);
-        var likes = angular.element(event.target).siblings('.count').text();
+        var likes = angular.element(event.target).children('.count').text();
         if (isLiked) {
             angular.element(event.target).removeClass("liked");
-            angular.element(event.target).siblings('.count').text(Number(likes)-1);            
+            angular.element(event.target).children('.count').text(Number(likes)-1);            
         }
         if (!isLiked) {
             angular.element(event.target).addClass("liked");
-            angular.element(event.target).siblings('.count').text(Number(likes)+1);
+            angular.element(event.target).children('.count').text(Number(likes)+1);
        }
         if (window.localStorage.getItem('id') != null) {
             $http.get(domain + "/scrapbook-like?productID=" + id + "&userId=" + window.localStorage.getItem('id')).success(function(response) {
