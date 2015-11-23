@@ -53,6 +53,12 @@ app.controller('homeController', function ($http, $scope, $rootScope, $controlle
     $scope.$on('ngRepeatFinished', function (ngRepeatFinishedEvent) {
         siteMainFn();
     });
+    $scope.$on('$viewContentLoaded', function () {
+        angular.element('.drawer').css('display', 'none');
+    });
+    $scope.$on('$destroy', function() {
+  angular.element('.drawer').css('display', 'block');
+});
 });
 
 app.controller('categoryController', function ($http, $scope, $location, $rootScope, $routeParams, $anchorScroll) {
