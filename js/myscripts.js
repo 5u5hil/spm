@@ -1,14 +1,12 @@
 var timeout;
+var devicePlatform = device.platform;
 
 document.addEventListener('deviceready', function () {
-
     if (device.platform == "iOS") {
         initPushwoosh();
     } else {
         initPushwooshAndroid();
     }
-
-
 }, false);
 
 function initPushwoosh() {
@@ -338,8 +336,16 @@ $(document).ready(function () {
     }
 
     $rootScope.iosBack = function(event){
-         window.history.back();
-    }
+         if(devicePlatform == "iOS"){
+            window.history.back();
+        }
+        if(devicePlatform == "Android"){
+        if(!jQuery( ".fa-navicon" ).closest( ".header").hasClass("hide-header-left")){
+            jQuery( ".fa-navicon" ).closest( ".header").removeClass("hide-header-left");
+        }
+     
+}
+    toast(devicePlatform);  }
 
     if (window.localStorage.getItem('id') != null) {
 
