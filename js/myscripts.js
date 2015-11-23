@@ -7,8 +7,8 @@ document.addEventListener('deviceready', function () {
     } else {
         initPushwooshAndroid();
     }
- 
- 
+toast(device.platform);
+
 }, false);
 
 function initPushwoosh() {
@@ -338,16 +338,9 @@ $(document).ready(function () {
     }
 
     $rootScope.iosBack = function(event){
-         if(device.platform == "iOS"){
-            window.history.back();
-        }
-        if(device.platform == "Android"){
-          jQuery( ".fa-navicon" ).trigger( "click" );
-        }
-        else{
-            alert('Device not found');
-        }
-    toast(devicePlatform);  }
+
+         window.history.back();
+    }
 
     if (window.localStorage.getItem('id') != null) {
 
