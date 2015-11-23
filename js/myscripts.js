@@ -1,12 +1,14 @@
 var timeout;
-var devicePlatform = device.platform;
 
 document.addEventListener('deviceready', function () {
+
     if (device.platform == "iOS") {
         initPushwoosh();
     } else {
         initPushwooshAndroid();
     }
+    var devicePlatform = device.platform;
+
 }, false);
 
 function initPushwoosh() {
