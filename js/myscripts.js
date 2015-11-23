@@ -7,8 +7,8 @@ document.addEventListener('deviceready', function () {
     } else {
         initPushwooshAndroid();
     }
-    var devicePlatform = device.platform;
-
+ 
+ 
 }, false);
 
 function initPushwoosh() {
@@ -338,15 +338,15 @@ $(document).ready(function () {
     }
 
     $rootScope.iosBack = function(event){
-         if(devicePlatform == "iOS"){
+         if(device.platform == "iOS"){
             window.history.back();
         }
-        if(devicePlatform == "Android"){
-        if(!jQuery( ".fa-navicon" ).closest( ".header").hasClass("hide-header-left")){
-            jQuery( ".fa-navicon" ).closest( ".header").removeClass("hide-header-left");
+        if(device.platform == "Android"){
+          jQuery( ".fa-navicon" ).trigger( "click" );
         }
-     
-}
+        else{
+            alert('Device not found');
+        }
     toast(devicePlatform);  }
 
     if (window.localStorage.getItem('id') != null) {
