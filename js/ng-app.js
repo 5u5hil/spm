@@ -1063,6 +1063,10 @@ app.controller('cartController', function ($http, $scope, $location, $rootScope,
         $scope.cart.Total += parseInt(v.spl_price > 0 && v.spl_price < v.price ? v.spl_price : v.price);
     });
 
+    $scope.openStoreLink = function(product){
+        window.open(product.url, "_system");
+    };
+
     $scope.delete = function (e, p) {
 
         var cart = jQuery.parseJSON(window.localStorage.getItem("cart"));

@@ -24,10 +24,7 @@
             </span>
             </textarea>
             
-            <input type="text" class="inputfield" placeholder="Add StylePanache Products (Optional)" name="pdcts" ng-focus="autoCompleteFn()" ng-blur="autoCompleteFn()" id="pdcts">
-<!--            <span style="color:red" ng-show="scrapbookfrm.pdcts.$dirty && scrapbookfrm.pdcts.$invalid">
-                <span ng-show="scrapbookfrm.pdcts.$error.required">Add product is required.</span>
-            </span>-->
+
             
             <input type="file" class='inputfield' accept="image/*;capture=camera" ng-model="simg" name="simg" id="simg" required>
             <span style="color:red" ng-show="scrapbookfrm.simg.$dirty && scrapbookfrm.simg.$invalid">
@@ -35,8 +32,7 @@
             </span>
             
             <input type="hidden" name="userId" value='{{ userId}}' />
-            <label for="sdescription">Selected Products</label>
-            <div id="log" style="height: 200px; width: 100%; overflow: auto;margin-bottom: 10px;" class="ui-widget-content"></div>
+            
             <button type='submit' name='submit' class="button button-blue full-button">Submit</button>
         </form>
     </div>
