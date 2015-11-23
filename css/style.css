@@ -1673,6 +1673,8 @@ padding-left: 10px;
 
 button.button.add-cart-btn.mt7 {
     width: 100%;
+        color: #FFF;
+    background-color: #ff0055;
 }
 
 h4.pname {
