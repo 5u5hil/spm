@@ -7,8 +7,9 @@ document.addEventListener('deviceready', function () {
     } else {
         initPushwooshAndroid();
     }
-toast(device.platform);
-
+    if(device.platform == "Android"){
+        jQuery('.drawer').remove();
+    }
 }, false);
 
 function initPushwoosh() {

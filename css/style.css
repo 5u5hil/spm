@@ -417,6 +417,8 @@ body {
     line-height: 36px;
     text-align: center;
     font-weight: 300;
+    margin-bottom: 15px;
+    margin-top: 15px;
 }
 
 .large-title a {
@@ -1934,4 +1936,15 @@ figure.amp-ad-hover img {
 }
 .fav-btn, .share-btn{
     background-color: #DDD;
+}
+.openRight{
+    text-align: center;
+}
+.openRightWrapper{
+        width: 100% !important;
+    text-align: center;
+        padding-bottom: 15px;
+}
+.prodFilter{
+    padding: 5px 15px;
 }
