@@ -31,7 +31,7 @@
 
         <div class="  no-bottom">
             <!-- Page Columns-->
-            <div class="one-half-responsive">
+            <div class="one-responsive">
                 
                 <a href="#/chat">
                     <img src="images/highlights/pstylist.png" class="w100 mb10" alt="img">
@@ -58,7 +58,10 @@
             <div class="adaptive-item" ng-repeat="product in new">
             <div class="img-wrapper-product">
                 <a href="#/product/{{product.url_key}}"  title="{{product.product}}">
-                    <img class="responsive-image" ng-src="{{product.small_image != '' ? product.small_image : (product.medium_image != '' ? product.medium_image : product.large_image) }}" alt="img">
+                <div class="img-listing-wrap" style="background-image:url('{{product.small_image != '' ? product.small_image : (product.medium_image != '' ? product.medium_image : product.large_image) }}')">
+                    
+                </div>
+                    
                 </a>
                 </div>
                 <h4 class="pname">
@@ -91,7 +94,7 @@
     jQuery('body').on('click', '.openRight', function(){
         jQuery('.open-more').click();
     });
-    
+
 
 
 </script>

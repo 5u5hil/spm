@@ -56,8 +56,10 @@
             <div class="adaptive-item" ng-repeat="product in pdts" on-finish-render="ngRepeatFinished">
                 <div class="img-wrapper-product">
                     <a href="#/product/{{product.url_key}}" title="{{product.product}}">
-
-                        <img class="responsive-image" ng-src="{{product.small_image != '' ? product.small_image : (product.medium_image != '' ? product.medium_image : product.large_image) }}" alt="img">
+                    <div class="img-listing-wrap" style="background-image:url('{{product.small_image != '' ? product.small_image : (product.medium_image != '' ? product.medium_image : product.large_image) }}')">
+                    
+                </div>
+                        <!-- <img class="responsive-image" ng-src="{{product.small_image != '' ? product.small_image : (product.medium_image != '' ? product.medium_image : product.large_image) }}" alt="img"> -->
                     </a>
                 </div>
 
@@ -83,7 +85,7 @@
 
         </div>
         <div class="pagination clearfix" style="text-align: center;padding-top: 20px;">
-            <button class="button " ng-if="products.next_page_url != null" ng-click="load($event, products.next_page_url)"> <i></i> Load More</button>
+            <button class="button cmn-btn" ng-if="products.next_page_url != null" ng-click="load($event, products.next_page_url)"> <i></i> Load More</button>
         </div>
 
     </div>

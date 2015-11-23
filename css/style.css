@@ -1920,3 +1920,18 @@ figure.amp-ad-hover img {
     padding: 5px 5px;
 
 }
+.img-listing-wrap{
+     height: 225px;
+    width: 100%;
+    background-size: auto 100% !important;
+    background-position: center top !important;
+    background-repeat: no-repeat !important;
+    background-color: #EFEBEB !important;
+}
+.cmn-btn{
+    color: #FFF;
+    background-color: #343434;
+}
+.fav-btn, .share-btn{
+    background-color: #DDD;
+}
