@@ -337,7 +337,11 @@ $(document).ready(function () {
         return false;
     }
 
-
+    $rootScope.iosBack = function(event){
+         window.history.back();
+         toast('im working');
+         console.log('im working back')
+    }
 
     if (window.localStorage.getItem('id') != null) {
 
