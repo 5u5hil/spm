@@ -312,7 +312,7 @@ app.controller('myScrapbookController', function ($http, $scope, $rootScope, $co
     };
 
     $scope.removeScrapbook = function (slug) {
-        var r = confirm("Do you want to delete this item!");
+        var r = confirm("Do you want to delete this look?");
         if (r == true) {
             loaderShow();
             jQuery.ajax({
@@ -329,7 +329,7 @@ app.controller('myScrapbookController', function ($http, $scope, $rootScope, $co
                             $http.get(domain + "/get-myscrapbook-products" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
                                 $scope.products = data;
                                 loaderHide();
-                                toast('Item deleted');
+                                toast('Look deleted');
 
                             });
                         });
@@ -361,7 +361,7 @@ app.controller('scrapbookDetailsController', function ($http, $scope, $rootScope
     });
 
     $scope.removeScrapbook = function (slug) {
-        var r = confirm("Do you want to delete this item!");
+        var r = confirm("Do you want to delete this look?");
         if (r == true) {
             jQuery.ajax({
                 type: "POST",
@@ -373,6 +373,7 @@ app.controller('scrapbookDetailsController', function ($http, $scope, $rootScope
                 success: function (data) {
                     if (data == 'success') {
                         window.location.href = "#/scrapbook";
+                         toast('Look deleted');
                     } else {
                         toast('Please try again later');
 
@@ -1171,10 +1172,11 @@ app.controller('userDashboardController', function ($http, $scope, $location, $r
                 if (data[0] == "success") {
                     toast("Profile updated successfully!");
                     window.location.href = "#/profile";
+                    loaderHide();
                 }
                 else
                     toast("Looks like something went wrong... Please try again later!");
-
+                 loaderHide();
                 window.location.href = "#/profile";
             }
         });
