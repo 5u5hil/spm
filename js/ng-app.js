@@ -784,7 +784,7 @@ app.controller('questionnaireController', function ($http, $scope, $rootScope, $
             success: function (data) {
                 if (data == "saved") {
 
-                    var data1 = jQuery("#cell_number");
+                    var data1 = jQuery("#cell_number").val();
                     console.log(data1);
                     jQuery.ajax({
                         type: "POST",
