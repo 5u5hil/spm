@@ -22,15 +22,12 @@
             <img class="responsive-image" ng-src="{{imgPath + sp.small_image}}" alt="img">
             </a>
             <h4 class="pname"><a ng-href="#/scrapbook/{{sp.url_key}}"  class="lname">{{sp.product}}</a></h4>
-             <span class="product-count">{{sp.comboproducts.length}} Product(s)</span> 
-            <span class=" pull-right"><i class=" fa fa-thumbs-up {{sp.liked == 1? 'liked':''}}" ng-click="addToSList($event, sp.id)" ><span class="count">{{sp.scrapbooklikes.length}}</span></i> </span>
+            
            
          
             <div class=" ">
-               <!-- <a ng-href="#/scrapbook/{{sp.url_key}}" class="">
-                  <span class="save">  Total Products: </span>
-                  </a> -->
-               By {{sp.added_by.first_name}}
+              
+                <span class="user-icon-scrap"></span>{{sp.added_by.first_name}}
             </div>
             <br>
              <div class="product-remove">

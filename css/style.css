@@ -1948,3 +1948,29 @@ figure.amp-ad-hover img {
 .prodFilter{
     padding: 5px 15px;
 }
+button.button.add-cart-btn.mt7:hover {
+    color: #FFF !important;
+}
+.content-wrap{
+    height: 400px;
+    margin-bottom: 15px;
+    background-repeat: no-repeat;
+    background-size: cover;
+background-image: url('../images/highlights/pstylist.png');}
+.btn-outer-wrap {
+    text-align: center;
+    top: 300px;
+}
+.btn-outer-wrap .btn-inner-wrap:first-child button{
+   margin-bottom: 15px; 
+}
+.user-icon-scrap{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background: red;
+    border: 1px solid #eee;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 7px;
+}
