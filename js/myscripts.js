@@ -10,9 +10,9 @@ document.addEventListener('deviceready', function () {
     if(device.platform == "Android"){
         jQuery('.drawer').remove();
     }
-
-}, false);
 document.addEventListener("offline", onOffline, false);
+}, false);
+
 function onOffline() {
    toast('Seems like you are not connected to the Internet')
 }

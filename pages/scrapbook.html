@@ -23,11 +23,23 @@
             </a>
             <h4 class="pname"><a ng-href="#/scrapbook/{{sp.url_key}}"  class="lname">{{sp.product}}</a></h4>
             
-           
+           <div class="scrap-desc">
+              <p class="one-liner">
+                 {{sp.short_desc}}
+              </p>
+           </div>
          
-            <div class=" ">
-              
-                <span class="user-icon-scrap"></span>{{sp.added_by.first_name}}
+            <div class="">
+        
+                              <span class="user-icon-scrap" style="background-image:url('http://stylepanache.in{{sp.added_by.image}}')" ng-show="sp.added_by.image"></span>
+                <span class="user-icon-scrap" style="background-image:url('images/user-icon.png')" ng-show="!sp.added_by.image"></span>
+                {{sp.added_by.first_name}}
+         
+          <span class=" pull-right like-sec-scrap">
+          <i class=" fa fa-thumbs-up {{sp.liked == 1? 'liked':''}}" ng-click="addToSList($event, sp.id)" ><span class="count">{{sp.scrapbooklikes.length}}</span></i>
+
+         <span class="follow-count"><i class="fa fa-user">15</i></span>
+           </span>
             </div>
             <br>
              <div class="product-remove">
