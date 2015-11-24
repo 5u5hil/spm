@@ -784,11 +784,12 @@ app.controller('questionnaireController', function ($http, $scope, $rootScope, $
             success: function (data) {
                 if (data == "saved") {
 
-                    var data = jQuery("#cell_number");
+                    var data1 = jQuery("#cell_number");
+                    console.log(data1);
                     jQuery.ajax({
                         type: "POST",
                         url: domain + "/update-user-phone",
-                        data: { user_phone : data },
+                        data: { user_phone : data1 },
                         cache: false,
                         contentType: false,
                         processData: false,
