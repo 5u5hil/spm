@@ -288,6 +288,13 @@ $(document).ready(function () {
     var elem = angular.element(document.querySelector('[ng-app]'));
     var injector = elem.injector();
     var $rootScope = injector.get('$rootScope');
+
+    $rootScope.$watch('online', function(newStatus) { 
+            if(newStatus === false){
+            toast('Please check your Internet Connection!');
+        }
+     });
+
     $rootScope.$on('loading:progress', function () {
         timeout = setTimeout(function () {
             toast("Seems like the Internet Connection is too Slow! You may either continue shopping or switch to better internet.");

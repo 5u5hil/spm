@@ -36,8 +36,8 @@ app.controller('homeController', function ($http, $scope, $rootScope, $controlle
     }
     loaderShow();
     $scope.styleslen = jQuery(".newStyle li").length;
-    $scope.url = jQuery(".newStyle li:nth-child(2) a").attr("href");
-    $scope.text = jQuery(".newStyle li:nth-child(2)").text();
+    $scope.url = jQuery(".newStyle li:last-child a").attr("href");
+    $scope.text = jQuery(".newStyle li:last-child").text();
 
     $http.get(domain + "/home" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, response, status, headers, config) {
 
@@ -1228,7 +1228,17 @@ app.controller('subcatController', function ($http, $scope, $location, $rootScop
         $scope.$digest;
         loaderHide();
     });
-
-
-
+});
+app.run(function($window, $rootScope) {
+      $rootScope.online = navigator.onLine;
+      $window.addEventListener("offline", function () {
+        $rootScope.$apply(function() {
+          $rootScope.online = false;
+        });
+      }, false);
+      $window.addEventListener("online", function () {
+        $rootScope.$apply(function() {
+          $rootScope.online = true;
+        });
+      }, false);
 });

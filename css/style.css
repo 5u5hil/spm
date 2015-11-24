@@ -1985,6 +1985,7 @@ background-image: url('../images/highlights/pstylist.png');}
         overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+        margin-bottom: 15px;
 }
 .like-sec-scrap{
     
@@ -1993,4 +1994,8 @@ background-image: url('../images/highlights/pstylist.png');}
 }
 .half-bottom{
     margin-bottom: 10px;
+}
+.custom-deco{
+        margin-top: 15px;
+    margin-bottom: 15px;
 }

@@ -40,9 +40,9 @@
                         <p class="color-ccc" style="visibility: hidden;">
                           Become a Member with us and get a dedicated personal stylist available for you, just a message away! You can have your body traits saved with us, and accordingly, our stylists will help you prepare looks for daily wear, occasions, also consult on gifts & more
                         </p>
-                       <a  ng-show="styleslen <=1" href='{{ loggedIn == 1 ? "#/add-new-style" : "#/login?rurl=add-new-style"}}' class="slider-button-1  full-button" style="top: 70px; background-color: #1f1f1f; color:#fff; top:70px;    width: 300px;     margin-bottom: 10px;" >Add New Style</a> 
+                       <a  ng-if="styleslen <=1" href='{{ loggedIn == 1 ? "#/add-new-style" : "#/login?rurl=add-new-style"}}' class="slider-button-1  full-button" style="top: 70px; background-color: #1f1f1f; color:#fff; top:70px;    width: 300px;     margin-bottom: 10px;" >Add New Style</a> 
 
-<a ng-show="styleslen >= 1" href='{{ url }}' class="slider-button-1  full-button" style="background-color: #1f1f1f; color:#fff; top:70px;width: 300px;     margin-bottom: 10px;">Stylist Picks for '{{text.trim()}}'</a>
+<a ng-if="styleslen >1" href='{{ url }}' class="slider-button-1  full-button" style="background-color: #1f1f1f; color:#fff; top:70px;width: 300px;     margin-bottom: 10px;">Stylist Picks for '{{text.trim()}}'</a>
                        <a href="#/login" class="slider-button-1  full-button" style="top: 70px; background-color: #1f1f1f; color:#fff;width: 300px">Know More</a> 
                     </div>
                 </div>

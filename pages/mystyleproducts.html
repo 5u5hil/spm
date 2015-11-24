@@ -3,7 +3,7 @@
 
     <div class="content">
         <div class="adaptive-style">
-            <h4>{{products.maincat}}</h4>
+           <div   style="text-align:center;"> <h3 style="float:none;">{{products.maincat}}</h3></div>
             <a ng-href="">
                 <select name="orderby" class="orderby big-select alignright selectBox" style="margin-bottom: 5px;">
                     <option value="1" selected="selected">Default Sorting</option>
@@ -13,7 +13,7 @@
                 </select>
             </a>
             <a class="prodFilter" ng-click="showFilters()" ><i class="fa fa-filter"></i></a>
-            <a class="prodFilter" ng-click="removeUserStyle(styleid)"  ><i class="fa fa-trash"></i></a>
+            <a class="prodFilter " style="float:left" ng-click="removeUserStyle(styleid)"  ><i class="fa fa-trash"></i></a>
             <!-- <a class="adaptive-two-activate active-adaptive-style"><i class="fa fa-th-large"></i></a>
             <a class="adaptive-one-activate"><i class="fa fa-navicon"></i></a> -->
         </div>
@@ -51,8 +51,8 @@
         <div class="decoration"></div>
 
         <div class="portfolio-adaptive adaptive-two listing">
-            <div ng-if="pdts.length == 0">Your searched product does not require body characteristics 
-                so you can shop this product from our shop all category to get a wider range of options.</div>
+            <div ng-if="pdts.length == 0">Oops, no product(s) found matching your criteria. 
+                You can shop more product(s) from our generic categories available on the left menu.</div>
             <div class="adaptive-item" ng-repeat="product in pdts" on-finish-render="ngRepeatFinished">
                 <div class="img-wrapper-product">
                     <a href="#/product/{{product.url_key}}" title="{{product.product}}">
