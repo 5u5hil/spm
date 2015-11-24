@@ -1051,10 +1051,11 @@ app.controller('signupController', function ($http, $scope, $location, $rootScop
             processData: false,
             success: function (data) {
                 if (data == "register") {
-                    toast("Email is already registered.");
+                    toast("Email is already registered");
                 } else if (data[0] == "registered") {
-                    toast("Email is already registered! Please use different email.");
+                    toast("Email is already registered! Please use different email");
                 } else {
+                      toast("Signup Successfull");
                     window.location.href = "#/login";
                 }
             }

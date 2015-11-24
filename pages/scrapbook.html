@@ -38,10 +38,11 @@
           <span class=" pull-right like-sec-scrap">
           <i class=" fa fa-thumbs-up {{sp.liked == 1? 'liked':''}}" ng-click="addToSList($event, sp.id)" ><span class="count">{{sp.scrapbooklikes.length}}</span></i>
 
-         <span class="follow-count"><i class="fa fa-user">15</i></span>
+         <!-- <span class="follow-count"><i class="fa fa-user">15</i></span> -->
            </span>
             </div>
-            <br>
+            <div class="decoration custom-deco" ></div>
+            
              <div class="product-remove">
             <a href="" ng-if="userId == sp.added_by.id;" ng-click="removeScrapbook(sp.url_key)" class="remove remove_from_wishlist" title="Remove this product">Delete</a>
         </div>

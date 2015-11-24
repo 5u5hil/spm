@@ -10,7 +10,7 @@ document.addEventListener('deviceready', function () {
     if(device.platform == "Android"){
         jQuery('.drawer').remove();
         jQuery('.open-menu1').remove();
-        
+
     }
 document.addEventListener("offline", onOffline, false);
 }, false);
@@ -270,7 +270,7 @@ jQuery(document).ajaxStart(function () {
 
     timeout = setTimeout(function () {
         toast("Seems like the Internet Connection is too Slow! You may either continue shopping or switch to better internet.");
-    }, 8000);
+    }, 15000);
 });
 jQuery(document).ajaxSuccess(function () {
     clearTimeout(timeout);
@@ -291,7 +291,7 @@ $(document).ready(function () {
     $rootScope.$on('loading:progress', function () {
         timeout = setTimeout(function () {
             toast("Seems like the Internet Connection is too Slow! You may either continue shopping or switch to better internet.");
-        }, 8000);
+        }, 15000);
     });
     $rootScope.$on('loading:finish', function () {
         clearTimeout(timeout);

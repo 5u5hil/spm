@@ -6,12 +6,12 @@
                 <h3 class="blog-post-title pull-left">Personal Stylist</h3>
                 <span class="pull-right">
                 <span style="  "><a href class="button button-blue full-button chat-btn" onclick="checkPLogin()" ng-show="{{ismember == 0}}"> Subscribe</a></span>
-                <span style="  "><a href class="button button-blue full-button chat-btn" onclick=" " ng-show="{{ismember == 1 }}"> Start Chat</a></span>
+                <!-- <span style="  "><a href class="button button-blue full-button chat-btn" onclick=" " ng-show="{{ismember == 1 }}"> Start Chat</a></span> -->
                 </span><!-- onclick="startChat()" -->
                 <div class="clear"></div>
                 <div class="decoration"></div>
                 <a class="blog-post-image" href><img src="images/pictures/3ww.jpg" alt="img"></a>
-                
+                    <span ng-show="{{ismember == 0}}">
                 <p class="blog-post-text">
                    Become a Member with us and get a dedicated personal stylist available for you, just a message away! You can have your body traits saved with us, and accordingly, our stylists will help you prepare looks for daily wear, occasions, also consult on gifts & more.
                 </p>
@@ -27,7 +27,12 @@
                 *Early Bird Offer for first 250 Sign ups & limited period only
                 </p>
                 <p style="    margin-bottom: 20px;"><a href class="button button-blue full-button" onclick="checkPLogin()" ng-show="{{ismember == 0}}"> Subscribe</a></p>
-                <p style="    margin-bottom: 20px;"><a href class="button button-blue full-button" onclick=" " ng-show="{{ismember == 1 }}"> Start Chat</a></p>
+               <!--  <p style="    margin-bottom: 20px;"><a href class="button button-blue full-button" onclick=" " ng-show="{{ismember == 1 }}"> Start Chat</a></p> -->
+                </span>
+
+                <span ng-show="{{ismember == 1 }}">
+                    
+                </span>
             </div>
         </div>
         <div class="decoration"></div>
