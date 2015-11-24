@@ -56,9 +56,9 @@ app.controller('homeController', function ($http, $scope, $rootScope, $controlle
     $scope.$on('$viewContentLoaded', function () {
         angular.element('.drawer').css('display', 'none');
     });
-    $scope.$on('$destroy', function() {
-  angular.element('.drawer').css('display', 'block');
-});
+    $scope.$on('$destroy', function () {
+        angular.element('.drawer').css('display', 'block');
+    });
 });
 
 app.controller('categoryController', function ($http, $scope, $location, $rootScope, $routeParams, $anchorScroll) {
@@ -784,6 +784,22 @@ app.controller('questionnaireController', function ($http, $scope, $rootScope, $
             success: function (data) {
                 if (data == "saved") {
 
+                    var data = jQuery("#cell_number");
+                    jQuery.ajax({
+                        type: "POST",
+                        url: domain + "/update-user-details",
+                        data: { user_phone : data },
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        success: function (data) {
+                            if (data[0] == "success") {
+                                console.log('cell updated');
+                            }
+                       
+                        }
+                    });
+
                     jQuery.get(domain + "/update-membership?userId=" + window.localStorage.getItem('id')).success(function (data, status, headers, config) {
                         window.localStorage.setItem('department', data[0]);
                         window.localStorage.setItem('member', 1);
@@ -1063,7 +1079,7 @@ app.controller('cartController', function ($http, $scope, $location, $rootScope,
         $scope.cart.Total += parseInt(v.spl_price > 0 && v.spl_price < v.price ? v.spl_price : v.price);
     });
 
-    $scope.openStoreLink = function(product){
+    $scope.openStoreLink = function (product) {
         window.open(product.url, "_system");
     };
 
