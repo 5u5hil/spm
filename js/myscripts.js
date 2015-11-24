@@ -9,6 +9,8 @@ document.addEventListener('deviceready', function () {
     }
     if(device.platform == "Android"){
         jQuery('.drawer').remove();
+        jQuery('.open-menu1').remove();
+        
     }
 document.addEventListener("offline", onOffline, false);
 }, false);
@@ -343,6 +345,7 @@ $(document).ready(function () {
         jQuery(ele).parent().find('.submenu').toggleClass('active-submenu-items');
         return false;
     }
+
 
     $rootScope.iosBack = function(event){
 

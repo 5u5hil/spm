@@ -55,9 +55,12 @@ app.controller('homeController', function ($http, $scope, $rootScope, $controlle
     });
     $scope.$on('$viewContentLoaded', function () {
         angular.element('.drawer').css('display', 'none');
+        angular.element('.open-menu1').css('display', 'none');
     });
     $scope.$on('$destroy', function () {
         angular.element('.drawer').css('display', 'block');
+        angular.element('.open-menu1').css('display', 'block');
+
     });
 });
 

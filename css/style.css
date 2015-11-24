@@ -962,6 +962,7 @@ body {
     transform: translateY(0px);
     -webkit-transform: translateY(0px);
     transition: all 350ms ease-in-out;
+    border-bottom: 1px solid #eee
 }
 
 .hide-header-left {
@@ -1989,4 +1990,7 @@ background-image: url('../images/highlights/pstylist.png');}
     
     padding-top: 14px;
 
+}
+.half-bottom{
+    margin-bottom: 10px;
 }
