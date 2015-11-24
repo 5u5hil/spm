@@ -788,7 +788,7 @@ app.controller('questionnaireController', function ($http, $scope, $rootScope, $
                     console.log(data1);
                     jQuery.ajax({
                         type: "POST",
-                        url: domain + "/update-user-phone?user_phone=" + data1,
+                        url: domain + "/update-user-phone?userId=" + window.localStorage.getItem('id') + "&" + "user_phone=" + data1,
                         cache: false,
                         contentType: false,
                         processData: false,
