@@ -1999,3 +1999,12 @@ background-image: url('../images/highlights/pstylist.png');}
         margin-top: 15px;
     margin-bottom: 15px;
 }
+.custom-btn{
+        width: 300px !important;
+    color: #FFF !important;
+    margin-bottom: 7px !important;
+}
+.mb7{
+    margin-bottom: 0px !important; 
+
+}
