@@ -258,27 +258,19 @@ app.controller('scrapbookController', function ($http, $scope, $rootScope, $cont
         }
     };
 
-    $scope.showProfile = function (id) {
-        jQuery.ajax({
-            type: "POST",
-            url: domain + "/user-profile",
-            data: {
-                id: id
-            },
-            cache: false,
-            success: function (data) {
-
-                console.log(data);
-//                if (data == 'success') {
-//
-//                } else {
-//                    toast('Please try again later');
-//                    loaderHide();
-//
-//                }
-            }
-        });
-    };
+//    $scope.showProfile = function (id) {
+//        jQuery.ajax({
+//            type: "POST",
+//            url: domain + "/user-profile",
+//            data: {
+//                id: id
+//            },
+//            cache: false,
+//            success: function (data) {
+//                console.log(data);
+//            }
+//        });
+//    };
 
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();

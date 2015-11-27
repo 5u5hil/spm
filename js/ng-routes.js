@@ -148,7 +148,7 @@ app.config(['$routeProvider', '$locationProvider',
                     templateUrl: 'pages/faq.html',
                     controller: 'commonController'
                 }).
-                when('/user-profile', {
+                when('/user-profile/:id', {
                     templateUrl: 'pages/user-profile.html',
                     controller: 'userProfileController'
                 }).
