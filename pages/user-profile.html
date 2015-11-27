@@ -46,12 +46,12 @@
       <div class="clear"></div>
       <div class="decoration"></div>
       <div class="portfolio-adaptive adaptive-one">
-         <div ng-hide="products.length">
-            <p>Oops, No Look created by Sushil!</p>
+         <div ng-hide="sbproducts.length">
+            <p>Oops, No Look created by {{ profile.user.first_name }} {{ profile.user.last_name }}!</p>
          
             <br>
          </div>
-         <div class="adaptive-item" ng-repeat="sp in products" on-finish-render="ngRepeatFinished">
+         <div class="adaptive-item" ng-repeat="sp in sbproducts" on-finish-render="ngRepeatFinished">
             <a ng-href="#/scrapbook/{{sp.url_key}}" title="{{sp.product}}">
             <img class="responsive-image" ng-src="{{imgPath + sp.small_image}}" alt="img">
             </a>

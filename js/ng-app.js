@@ -1245,18 +1245,18 @@ app.controller('userProfileController', function ($http, $scope, $location, $roo
     $http.get(domain + "/user-profile?userId=" + $routeParams.id ).success(function (data, status, headers, config) {
         $scope.profile = data;
         
-        console.log(data.scrapbooks);
-        
         angular.forEach(data.scrapbooks, function (value1, key1) {
-//            $scope.totalPrice = $scope.totalPrice + value.subtotal;
               console.log(value1);
-              $scope.totalSPLikes = $scope.totalSPLikes + value1.scrapbooklikes.length;
-              
+              $scope.totalSPLikes = $scope.totalSPLikes + value1.scrapbooklikes.length;              
         });
         
-        console.log($scope.totalSPLikes);
-        
         $scope.$digest;
+        loaderHide();
+    });
+    
+    $http.get(domain + "/get-myscrapbook-products" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
+        $scope.sbproducts = data;
+        $scope.imgPath = domain + "/public/frontend/uploads/scrapbooks/";
         loaderHide();
     });
 
