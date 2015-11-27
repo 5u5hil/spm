@@ -1250,7 +1250,7 @@ app.controller('userProfileController', function ($http, $scope, $location, $roo
         });
 
         $scope.$digest;
-        $scope.totalSPLikes = 0;
+        
         loaderHide();
     });
 
@@ -1284,9 +1284,11 @@ app.controller('userProfileController', function ($http, $scope, $location, $roo
                 });
 
                 $scope.$digest;
-                $scope.totalSPLikes = 0;
+                
                 loaderHide();
             });
+            
+            $scope.totalSPLikes = 0;
         });
 
     };
