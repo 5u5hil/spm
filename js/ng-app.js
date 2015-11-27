@@ -1249,11 +1249,9 @@ app.controller('userProfileController', function ($http, $scope, $location, $roo
         
         angular.forEach(data.scrapbooks, function (value1, key1) {
 //            $scope.totalPrice = $scope.totalPrice + value.subtotal;
+              console.log(value1);
               
               
-              angular.forEach(value1, function (value2, key2) {
-//                  console.log(value2);
-              });
         });
         
         $scope.$digest;
