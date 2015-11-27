@@ -1235,6 +1235,8 @@ app.controller('introController', function ($http, $scope, $location, $rootScope
 app.controller('userProfileController', function ($http, $scope, $location, $rootScope, $routeParams) {
 
     loaderShow();
+    
+    $scope.totalSPLikes = 0;
 
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
@@ -1242,7 +1244,14 @@ app.controller('userProfileController', function ($http, $scope, $location, $roo
 
     $http.get(domain + "/user-profile?userId=" + $routeParams.id ).success(function (data, status, headers, config) {
         $scope.profile = data;
-        console.log();
+        
+        console.log(data);
+        
+        angular.forEach(data, function (value, key) {
+//            $scope.totalPrice = $scope.totalPrice + value.subtotal;
+              console.log(value);
+        });
+        
         $scope.$digest;
         loaderHide();
     });
