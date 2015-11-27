@@ -46,7 +46,7 @@
       <div class="clear"></div>
       <div class="decoration"></div>
       <div class="portfolio-adaptive adaptive-one">
-         <div ng-hide="sbproducts.length">
+         <div ng-if="sbproducts == 0">
             <p>Oops, No Look created by {{ profile.user.first_name }} {{ profile.user.last_name }}!</p>
          
             <br>

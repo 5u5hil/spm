@@ -1246,7 +1246,6 @@ app.controller('userProfileController', function ($http, $scope, $location, $roo
         $scope.profile = data;
         
         angular.forEach(data.scrapbooks, function (value1, key1) {
-              console.log(value1);
               $scope.totalSPLikes = $scope.totalSPLikes + value1.scrapbooklikes.length;              
         });
         
