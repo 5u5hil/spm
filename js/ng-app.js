@@ -1250,9 +1250,11 @@ app.controller('userProfileController', function ($http, $scope, $location, $roo
         angular.forEach(data.scrapbooks, function (value1, key1) {
 //            $scope.totalPrice = $scope.totalPrice + value.subtotal;
               console.log(value1);
-              
+              $scope.totalSPLikes = $scope.totalSPLikes + value1.scrapbooklikes.length;
               
         });
+        
+        console.log($scope.totalSPLikes);
         
         $scope.$digest;
         loaderHide();
