@@ -2008,3 +2008,9 @@ background-image: url('../images/highlights/pstylist.png');}
     margin-bottom: 0px !important; 
 
 }
+.user-img-thumb{
+    float:left;    margin-bottom: 10px;
+}
+.remove{
+        margin-left: 15px;
+}

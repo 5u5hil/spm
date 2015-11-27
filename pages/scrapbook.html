@@ -31,10 +31,14 @@
          
             <div class="">
         
-                              <span class="user-icon-scrap" style="background-image:url('http://stylepanache.in{{sp.added_by.image}}')" ng-show="sp.added_by.image"></span>
+                         <a ng-href="#/user-profile/{{sp.added_by.id}}" class="user-img-thumb">     <span class="user-icon-scrap" style="background-image:url('http://stylepanache.in{{sp.added_by.image}}')" ng-show="sp.added_by.image"></span>
                 <span class="user-icon-scrap" style="background-image:url('images/user-icon.png')" ng-show="!sp.added_by.image"></span>
-                <a ng-href="#/user-profile/{{sp.added_by.id}}">{{sp.added_by.first_name}}</a>
-         
+                {{sp.added_by.first_name}}</a>
+          
+<span class=" pull-right like-sec-scrap">
+          <a href="" ng-if="userId == sp.added_by.id;" ng-click="removeScrapbook(sp.url_key)" class="remove  remove_from_wishlist" title="Remove this product"><i class="fa fa-trash"></i></a>
+</span>
+
           <span class=" pull-right like-sec-scrap">
           <i class=" fa fa-thumbs-up {{sp.liked == 1? 'liked':''}}" ng-click="addToSList($event, sp.id)" ><span class="count">{{sp.scrapbooklikes.length}}</span></i>
 
@@ -43,9 +47,7 @@
             </div>
             <div class="decoration custom-deco" ></div>
             
-             <div class="product-remove">
-            <a href="" ng-if="userId == sp.added_by.id;" ng-click="removeScrapbook(sp.url_key)" class="remove remove_from_wishlist" title="Remove this product">Delete</a>
-        </div>
+            
          </div>
       </div>
       <div class="decoration"></div>
