@@ -373,7 +373,7 @@ app.controller('scrapbookDetailsController', function ($http, $scope, $rootScope
                 success: function (data) {
                     if (data == 'success') {
                         window.location.href = "#/scrapbook";
-                         toast('Look deleted');
+                        toast('Look deleted');
                     } else {
                         toast('Please try again later');
 
@@ -800,7 +800,7 @@ app.controller('questionnaireController', function ($http, $scope, $rootScope, $
                             if (data[0] == "success") {
                                 console.log('cell updated');
                             }
-                       
+
                         }
                     });
 
@@ -1056,7 +1056,7 @@ app.controller('signupController', function ($http, $scope, $location, $rootScop
                 } else if (data[0] == "registered") {
                     toast("Email is already registered! Please use different email");
                 } else {
-                      toast("Signup Successfull");
+                    toast("Signup Successfull");
                     window.location.href = "#/login";
                 }
             }
@@ -1176,7 +1176,7 @@ app.controller('userDashboardController', function ($http, $scope, $location, $r
                 }
                 else
                     toast("Looks like something went wrong... Please try again later!");
-                 loaderHide();
+                loaderHide();
                 window.location.href = "#/profile";
             }
         });
@@ -1222,6 +1222,28 @@ app.controller('userProfileController', function ($http, $scope, $location, $roo
         siteMainFn();
     });
 
+    $scope.showProfile = function (id) {
+        jQuery.ajax({
+            type: "POST",
+            url: domain + "/user-profile",
+            data: {
+                id: id
+            },
+            cache: false,
+            success: function (data) {
+                
+                console.log(data);
+//                if (data == 'success') {
+//
+//                } else {
+//                    toast('Please try again later');
+//                    loaderHide();
+//
+//                }
+            }
+        });
+    };
+
 });
 
 app.controller('subcatController', function ($http, $scope, $location, $rootScope, $routeParams) {
@@ -1238,16 +1260,16 @@ app.controller('subcatController', function ($http, $scope, $location, $rootScop
         loaderHide();
     });
 });
-app.run(function($window, $rootScope) {
-      $rootScope.online = navigator.onLine;
-      $window.addEventListener("offline", function () {
-        $rootScope.$apply(function() {
-          $rootScope.online = false;
+app.run(function ($window, $rootScope) {
+    $rootScope.online = navigator.onLine;
+    $window.addEventListener("offline", function () {
+        $rootScope.$apply(function () {
+            $rootScope.online = false;
         });
-      }, false);
-      $window.addEventListener("online", function () {
-        $rootScope.$apply(function() {
-          $rootScope.online = true;
+    }, false);
+    $window.addEventListener("online", function () {
+        $rootScope.$apply(function () {
+            $rootScope.online = true;
         });
-      }, false);
+    }, false);
 });
