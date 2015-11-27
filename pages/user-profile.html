@@ -3,7 +3,7 @@
    <div class="content">
     <div class="one-half-responsive">
                     <p class="thumb-left no-bottom">
-                        <img src="images/pictures/3s.jpg" alt="img">
+                        <img src="images/{{profile.user.image == '' ? 'user-icon.png' : profile.user.image}}" alt="">
                         <strong>{{ profile.user.first_name }} {{ profile.user.last_name }}</strong><br>
                         <span class="like-wrap" style="display:inline-block">
                           <span class="like-count">
