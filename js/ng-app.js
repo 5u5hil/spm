@@ -1247,6 +1247,42 @@ app.controller('userProfileController', function ($http, $scope, $location, $roo
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
+    
+    $scope.followme = function (event, id) {
+        if (window.localStorage.getItem('id') === null) {
+            window.location.href = '#/login';
+            return false;
+        }
+        function checkLike(event) {
+            return angular.element(event).hasClass('liked');
+        }
+        var isLiked = checkLike(event.target);
+        var likes = angular.element(event.target).children('.count').text();
+        if (isLiked) {
+            angular.element(event.target).removeClass("liked");
+            angular.element(event.target).children('.count').text(Number(likes) - 1);
+        }
+        if (!isLiked) {
+            angular.element(event.target).addClass("liked");
+            angular.element(event.target).children('.count').text(Number(likes) + 1);
+        }
+        if (window.localStorage.getItem('id') != null) {
+            $http.get(domain + "/user-follow?followerID=" + id + "&userId=" + window.localStorage.getItem('id')).success(function (response) {
+                if (response == 1) {
+                    angular.element(event.target).addClass("liked");
+                } else {
+                    angular.element(event.target).removeClass("liked");
+
+                }
+
+                $http.get(domain + "/user-profile" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
+                    $scope.profile = data;
+                    $scope.$digest;
+                });
+            });
+
+        }
+    };
 });
 
 app.controller('subcatController', function ($http, $scope, $location, $rootScope, $routeParams) {
