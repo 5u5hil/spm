@@ -197,6 +197,7 @@ app.controller('scrapbookController', function ($http, $scope, $rootScope, $cont
     $http.get(domain + "/get-scrapbook-products" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : ""), {
         cache: true
     }).success(function (data, status, headers, config) {
+        console.log(data);
         $scope.products = data;
         $scope.imgPath = domain + "/public/frontend/uploads/scrapbooks/";
         loaderHide();
@@ -255,6 +256,28 @@ app.controller('scrapbookController', function ($http, $scope, $rootScope, $cont
                 loaderHide();
             });
         }
+    };
+    
+    $scope.showProfile = function (id) {
+        jQuery.ajax({
+            type: "POST",
+            url: domain + "/user-profile",
+            data: {
+                id: id
+            },
+            cache: false,
+            success: function (data) {
+                
+                console.log(data);
+//                if (data == 'success') {
+//
+//                } else {
+//                    toast('Please try again later');
+//                    loaderHide();
+//
+//                }
+            }
+        });
     };
 
     $scope.$on('$viewContentLoaded', function () {
@@ -1222,27 +1245,7 @@ app.controller('userProfileController', function ($http, $scope, $location, $roo
         siteMainFn();
     });
 
-    $scope.showProfile = function (id) {
-        jQuery.ajax({
-            type: "POST",
-            url: domain + "/user-profile",
-            data: {
-                id: id
-            },
-            cache: false,
-            success: function (data) {
-                
-                console.log(data);
-//                if (data == 'success') {
-//
-//                } else {
-//                    toast('Please try again later');
-//                    loaderHide();
-//
-//                }
-            }
-        });
-    };
+    
 
 });
 
