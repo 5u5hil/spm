@@ -1250,6 +1250,7 @@ app.controller('userProfileController', function ($http, $scope, $location, $roo
         });
 
         $scope.$digest;
+        $scope.totalSPLikes = 0;
         loaderHide();
     });
 
@@ -1266,7 +1267,7 @@ app.controller('userProfileController', function ($http, $scope, $location, $roo
             return false;
         }
         
-        $scope.totalSPLikes = 0;
+        
         
         $http.get(domain + "/user-follow?followerID=" + window.localStorage.getItem('id') + "&userId=" + id).success(function (response) {
             if (response == 1) {
@@ -1283,6 +1284,7 @@ app.controller('userProfileController', function ($http, $scope, $location, $roo
                 });
 
                 $scope.$digest;
+                $scope.totalSPLikes = 0;
                 loaderHide();
             });
         });
