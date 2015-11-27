@@ -1240,7 +1240,7 @@ app.controller('userProfileController', function ($http, $scope, $location, $roo
         siteMainFn();
     });
 
-    $http.get(domain + "/user-profile" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
+    $http.get(domain + "/user-profile?userId=" + $routeParams.id ).success(function (data, status, headers, config) {
         $scope.profile = data;
         console.log();
         $scope.$digest;
