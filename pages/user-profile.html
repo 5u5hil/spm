@@ -1,8 +1,91 @@
 <div id="content" class="snap-content">
    <div class="header-clear"></div>
    <div class="content">
-    
+    <div class="one-half-responsive">
+                    <p class="thumb-left no-bottom">
+                        <img src="images/pictures/3s.jpg" alt="img">
+                        <strong>Dimple Singh</strong><br>
+                        <span class="like-wrap" style="display:inline-block">
+                          <span class="like-count">
+                           24
+                           </span>
+                            <span   class=""  > 
+                            <span class="fav-text">Like</span>
+                           </span>
+                         </span>
+
+   
+                        <span class="follow-wrap" style="display:inline-block">
+                          <span class="follow-count">
+                            12 
+                        </span>
+                        <span   class="" > 
+                          <span class="fav-text">Followers</span>
+                         </span>
+                        </span><br><br>
+
+
+                        <span class="follow=btn" style="display:block">
+    <button ng-click="" class="button add-cart-btn">
+             <span class="fav-text">Follow</span> </button>
+                        </span>
+
+                    </p>
+                    <div class="thumb-clear"></div>
+                </div>
+
+
+       
+      <div class="adaptive-style">
+         <h4 style="font-size:17px;">XpressUrSelf</h4>
+         <div class="pull-right">
+            <select ng-init="selectedItem = listOfOptions[0]" ng-options="option for option in listOfOptions" ng-model="selectedItem" ng-change="selectedItemChanged()" class="select-box" ng-show="listOfOptions.length">
+            </select>
+         </div>
+      </div>
+      <div class="clear"></div>
       <div class="decoration"></div>
+      <div class="portfolio-adaptive adaptive-one">
+         <div ng-hide="products.length">
+            <p>Oops, No Look created by Sushil!</p>
+         
+            <br>
+         </div>
+         <div class="adaptive-item" ng-repeat="sp in products" on-finish-render="ngRepeatFinished">
+            <a ng-href="#/scrapbook/{{sp.url_key}}" title="{{sp.product}}">
+            <img class="responsive-image" ng-src="{{imgPath + sp.small_image}}" alt="img">
+            </a>
+            <h4 class="pname"><a ng-href="#/scrapbook/{{sp.url_key}}"  class="lname">{{sp.product}}</a></h4>
+            
+           <div class="scrap-desc">
+              <p class="one-liner">
+                 {{sp.short_desc}}
+              </p>
+           </div>
+         
+            <div class="">
+        
+                              <span class="user-icon-scrap" style="background-image:url('http://stylepanache.in{{sp.added_by.image}}')" ng-show="sp.added_by.image"></span>
+                <span class="user-icon-scrap" style="background-image:url('images/user-icon.png')" ng-show="!sp.added_by.image"></span>
+                {{sp.added_by.first_name}}
+         
+          <span class=" pull-right like-sec-scrap">
+          <i class=" fa fa-thumbs-up {{sp.liked == 1? 'liked':''}}" ng-click="addToSList($event, sp.id)" ><span class="count">{{sp.scrapbooklikes.length}}</span></i>
+
+         <!-- <span class="follow-count"><i class="fa fa-user">15</i></span> -->
+           </span>
+            </div>
+            <div class="decoration custom-deco" ></div>
+            
+         b
+         </div>
+      </div>
+      <div class="decoration"></div>
+<!--      <div class="pagination clearfix">
+         <button class="button">Previous</button>
+         <button class="button pull-right">Next</button>
+      </div>-->
+    
  
    </div>
  
