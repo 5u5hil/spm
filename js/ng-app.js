@@ -1235,24 +1235,24 @@ app.controller('introController', function ($http, $scope, $location, $rootScope
 app.controller('userProfileController', function ($http, $scope, $location, $rootScope, $routeParams) {
 
     loaderShow();
-    
+
     $scope.totalSPLikes = 0;
 
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
 
-    $http.get(domain + "/user-profile?userId=" + $routeParams.id ).success(function (data, status, headers, config) {
+    $http.get(domain + "/user-profile?userId=" + $routeParams.id).success(function (data, status, headers, config) {
         $scope.profile = data;
-        
+
         angular.forEach(data.scrapbooks, function (value1, key1) {
-              $scope.totalSPLikes = $scope.totalSPLikes + value1.scrapbooklikes.length;              
+            $scope.totalSPLikes = $scope.totalSPLikes + value1.scrapbooklikes.length;
         });
-        
+
         $scope.$digest;
         loaderHide();
     });
-    
+
     $http.get(domain + "/get-myscrapbook-products" + ($routeParams.id != null ? "?userId=" + $routeParams.id : "")).success(function (data, status, headers, config) {
         $scope.sbproducts = data;
         console.log(data);
@@ -1265,35 +1265,26 @@ app.controller('userProfileController', function ($http, $scope, $location, $roo
             window.location.href = '#/login';
             return false;
         }
-        function checkLike(event) {
-            return angular.element(event).hasClass('liked');
-        }
-        var isLiked = checkLike(event.target);
-        var likes = angular.element(event.target).children('.count').text();
-        if (isLiked) {
-            angular.element(event.target).removeClass("liked");
-            angular.element(event.target).children('.count').text(Number(likes) - 1);
-        }
-        if (!isLiked) {
-            angular.element(event.target).addClass("liked");
-            angular.element(event.target).children('.count').text(Number(likes) + 1);
-        }
-        if (window.localStorage.getItem('id') != null) {
-            $http.get(domain + "/user-follow?followerID=" + id + "&userId=" + window.localStorage.getItem('id')).success(function (response) {
-                if (response == 1) {
-                    angular.element(event.target).addClass("liked");
-                } else {
-                    angular.element(event.target).removeClass("liked");
 
-                }
+        $http.get(domain + "/user-follow?followerID=" + window.localStorage.getItem('id') + "&userId=" + id).success(function (response) {
+            if (response == 1) {
+                angular.element(event.target).text("Following");
+            } else {
+                angular.element(event.target).text("Follow");
+            }
 
-                $http.get(domain + "/user-profile" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
-                    $scope.profile = data;
-                    $scope.$digest;
-                });
-            });
+//                $http.get(domain + "/user-profile?userId=" + $routeParams.id).success(function (data, status, headers, config) {
+//                    $scope.profile = data;
+//
+//                    angular.forEach(data.scrapbooks, function (value1, key1) {
+//                        $scope.totalSPLikes = $scope.totalSPLikes + value1.scrapbooklikes.length;
+//                    });
+//
+//                    $scope.$digest;
+//                    loaderHide();
+//                });
+        });
 
-        }
     };
 });
 
