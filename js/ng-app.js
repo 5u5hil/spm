@@ -1241,6 +1241,9 @@ app.controller('introController', function ($http, $scope, $location, $rootScope
 });
 
 app.controller('userProfileController', function ($http, $scope, $location, $rootScope, $routeParams) {
+    
+    loaderShow();
+    
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
