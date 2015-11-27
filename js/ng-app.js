@@ -1244,9 +1244,6 @@ app.controller('userProfileController', function ($http, $scope, $location, $roo
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
-
-    
-
 });
 
 app.controller('subcatController', function ($http, $scope, $location, $rootScope, $routeParams) {
