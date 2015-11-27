@@ -1242,7 +1242,7 @@ app.controller('userProfileController', function ($http, $scope, $location, $roo
         siteMainFn();
     });
 
-    $http.get(domain + "/user-profile?userId=" + $routeParams.id).success(function (data, status, headers, config) {
+    $http.get(domain + "/user-profile?userId=" + $routeParams.id + "&uid=" + window.localStorage.getItem('id')).success(function (data, status, headers, config) {
         $scope.profile = data;
 
         angular.forEach(data.scrapbooks, function (value1, key1) {
