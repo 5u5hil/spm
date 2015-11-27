@@ -257,7 +257,7 @@ app.controller('scrapbookController', function ($http, $scope, $rootScope, $cont
             });
         }
     };
-    
+
     $scope.showProfile = function (id) {
         jQuery.ajax({
             type: "POST",
@@ -267,7 +267,7 @@ app.controller('scrapbookController', function ($http, $scope, $rootScope, $cont
             },
             cache: false,
             success: function (data) {
-                
+
                 console.log(data);
 //                if (data == 'success') {
 //
@@ -1241,13 +1241,20 @@ app.controller('introController', function ($http, $scope, $location, $rootScope
 });
 
 app.controller('userProfileController', function ($http, $scope, $location, $rootScope, $routeParams) {
-    
+
     loaderShow();
-    
+
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
-    
+
+    $http.get(domain + "/user-profile" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
+        $scope.profile = data;
+        console.log();
+        $scope.$digest;
+        loaderHide();
+    });
+
     $scope.followme = function (event, id) {
         if (window.localStorage.getItem('id') === null) {
             window.location.href = '#/login';
