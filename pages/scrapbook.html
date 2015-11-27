@@ -33,7 +33,7 @@
         
                               <span class="user-icon-scrap" style="background-image:url('http://stylepanache.in{{sp.added_by.image}}')" ng-show="sp.added_by.image"></span>
                 <span class="user-icon-scrap" style="background-image:url('images/user-icon.png')" ng-show="!sp.added_by.image"></span>
-                {{sp.added_by.first_name}}
+                <a href="_self" ng-click="showProfile(sp.added_by.id)">{{sp.added_by.first_name}}</a>
          
           <span class=" pull-right like-sec-scrap">
           <i class=" fa fa-thumbs-up {{sp.liked == 1? 'liked':''}}" ng-click="addToSList($event, sp.id)" ><span class="count">{{sp.scrapbooklikes.length}}</span></i>
