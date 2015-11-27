@@ -1245,7 +1245,7 @@ app.controller('userProfileController', function ($http, $scope, $location, $roo
     $http.get(domain + "/user-profile?userId=" + $routeParams.id ).success(function (data, status, headers, config) {
         $scope.profile = data;
         
-        console.log(data);
+//        console.log(data);
         
         angular.forEach(data, function (value1, key1) {
 //            $scope.totalPrice = $scope.totalPrice + value.subtotal;
