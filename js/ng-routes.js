@@ -148,6 +148,10 @@ app.config(['$routeProvider', '$locationProvider',
                     templateUrl: 'pages/faq.html',
                     controller: 'commonController'
                 }).
+                when('/user-profile', {
+                    templateUrl: 'pages/user-profile.html',
+                    controller: 'userProfileController'
+                }).
                 otherwise({
                     redirectTo: '/'
                 });
