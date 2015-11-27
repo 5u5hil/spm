@@ -1255,6 +1255,7 @@ app.controller('userProfileController', function ($http, $scope, $location, $roo
     
     $http.get(domain + "/get-myscrapbook-products" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
         $scope.sbproducts = data;
+        console.log(data);
         $scope.imgPath = domain + "/public/frontend/uploads/scrapbooks/";
         loaderHide();
     });
