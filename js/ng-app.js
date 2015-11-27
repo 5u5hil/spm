@@ -1247,9 +1247,13 @@ app.controller('userProfileController', function ($http, $scope, $location, $roo
         
         console.log(data);
         
-        angular.forEach(data, function (value, key) {
+        angular.forEach(data, function (value1, key1) {
 //            $scope.totalPrice = $scope.totalPrice + value.subtotal;
-              console.log(value);
+              
+              
+              angular.forEach(value1, function (value2, key2) {
+                  console.log(value2);
+              });
         });
         
         $scope.$digest;
