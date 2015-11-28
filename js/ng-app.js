@@ -663,7 +663,7 @@ app.controller('travelPlannerController', function ($http, $scope, $rootScope, $
             cache: false,
             success: function (data) {
                 if (data == "saved") {
-                    toast("Thanks, our Stylist will review your details and suggest products that would be apt for your travel!");
+                    alert("Thanks, our Stylist will review your details and suggest products that would be apt for your travel!");
                     window.location.href = "#/";
                 }
             }
@@ -779,7 +779,9 @@ app.controller('createScrapbookController', function ($http, $scope, $rootScope,
 app.controller('chatController', function ($http, $scope, $rootScope, $controller) {
     $scope.ismember = window.localStorage.getItem('member');
     loaderHide();
-
+    $scope.openDialer = function(){
+       window.open('tel:08692040777', '_system');
+    };
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
@@ -1102,6 +1104,7 @@ app.controller('cartController', function ($http, $scope, $location, $rootScope,
     $scope.openStoreLink = function (product) {
         window.open(product.url, "_system");
     };
+
 
     $scope.delete = function (e, p) {
 

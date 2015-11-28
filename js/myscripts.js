@@ -266,12 +266,12 @@ function openLink(url) {
 }
 
 
-jQuery(document).ajaxStart(function () {
+// jQuery(document).ajaxStart(function () {
 
-    timeout = setTimeout(function () {
-        toast("Seems like the Internet Connection is too Slow! You may either continue shopping or switch to better internet.");
-    }, 15000);
-});
+//     timeout = setTimeout(function () {
+//         toast("Seems like the Internet Connection is too Slow! You may either continue shopping or switch to better internet.");
+//     }, 15000);
+// });
 jQuery(document).ajaxSuccess(function () {
     clearTimeout(timeout);
 });
@@ -295,11 +295,11 @@ $(document).ready(function () {
         }
      });
 
-    $rootScope.$on('loading:progress', function () {
-        timeout = setTimeout(function () {
-            toast("Seems like the Internet Connection is too Slow! You may either continue shopping or switch to better internet.");
-        }, 15000);
-    });
+    // $rootScope.$on('loading:progress', function () {
+    //     timeout = setTimeout(function () {
+    //         toast("Seems like the Internet Connection is too Slow! You may either continue shopping or switch to better internet.");
+    //     }, 15000);
+    // });
     $rootScope.$on('loading:finish', function () {
         clearTimeout(timeout);
     });

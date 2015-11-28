@@ -40,7 +40,7 @@
     <h3 class="mbtm30 txtcenter">Latest Trending</h3>
     <div class="content">
         <div class="portfolio-adaptive adaptive-two listing">
-            <div class="adaptive-item" ng-repeat="product in new">
+            <div class="adaptive-item" ng-repeat="product in new | limitTo:12 | orderBy: 'updated_at':true">
             <div class="img-wrapper-product">
                 <a href="#/product/{{product.url_key}}"  title="{{product.product}}">
                 <div class="img-listing-wrap" style="background-image:url('{{product.small_image != '' ? product.small_image : (product.medium_image != '' ? product.medium_image : product.large_image) }}')">
