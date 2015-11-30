@@ -1278,6 +1278,7 @@ app.controller('userProfileController', function ($http, $scope, $location, $roo
 
             $http.get(domain + "/user-profile?userId=" + $routeParams.id + "&uid=" + window.localStorage.getItem('id')).success(function (data, status, headers, config) {
                 $scope.profile = data;
+                $scope.totalSPLikes = 0;
 
                 angular.forEach(data.scrapbooks, function (value1, key1) {
                     $scope.totalSPLikes = $scope.totalSPLikes + value1.scrapbooklikes.length;
@@ -1287,7 +1288,7 @@ app.controller('userProfileController', function ($http, $scope, $location, $roo
                 loaderHide();
             });
 
-            $scope.totalSPLikes = 0;
+//            $scope.totalSPLikes = 0;
         });
     };
 
