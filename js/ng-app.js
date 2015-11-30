@@ -1270,11 +1270,7 @@ app.controller('userProfileController', function ($http, $scope, $location, $roo
         }
 
         $http.get(domain + "/user-follow?followerID=" + window.localStorage.getItem('id') + "&userId=" + id).success(function (response) {
-            if (response == 1) {
-                angular.element(event.target).text("Following");
-            } else {
-                angular.element(event.target).text("Follow");
-            }
+
 
             $http.get(domain + "/user-profile?userId=" + $routeParams.id + "&uid=" + window.localStorage.getItem('id')).success(function (data, status, headers, config) {
                 $scope.profile = data;
@@ -1283,6 +1279,12 @@ app.controller('userProfileController', function ($http, $scope, $location, $roo
                 angular.forEach(data.scrapbooks, function (value1, key1) {
                     $scope.totalSPLikes = $scope.totalSPLikes + value1.scrapbooklikes.length;
                 });
+
+                if (response == 1) {
+                    angular.element(event.target).text("Following");
+                } else {
+                    angular.element(event.target).text("Follow");
+                }
 
                 $scope.$digest;
                 loaderHide();
@@ -1325,7 +1327,7 @@ app.controller('userProfileController', function ($http, $scope, $location, $roo
                 });
             });
         }
-        
+
     };
 
 });
