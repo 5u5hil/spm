@@ -779,8 +779,8 @@ app.controller('createScrapbookController', function ($http, $scope, $rootScope,
 app.controller('chatController', function ($http, $scope, $rootScope, $controller) {
     $scope.ismember = window.localStorage.getItem('member');
     loaderHide();
-    $scope.openDialer = function(){
-       window.open('tel:08692040777', '_system');
+    $scope.openDialer = function () {
+        window.open('tel:08692040777', '_system');
     };
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
@@ -1238,7 +1238,7 @@ app.controller('introController', function ($http, $scope, $location, $rootScope
 app.controller('userProfileController', function ($http, $scope, $location, $rootScope, $routeParams) {
 
     loaderShow();
-    
+
     $scope.userId = window.localStorage.getItem('id');
     $scope.totalSPLikes = 0;
 
@@ -1254,7 +1254,7 @@ app.controller('userProfileController', function ($http, $scope, $location, $roo
         });
 
         $scope.$digest;
-        
+
         loaderHide();
     });
 
@@ -1270,9 +1270,7 @@ app.controller('userProfileController', function ($http, $scope, $location, $roo
             window.location.href = '#/login';
             return false;
         }
-        
-        
-        
+
         $http.get(domain + "/user-follow?followerID=" + window.localStorage.getItem('id') + "&userId=" + id).success(function (response) {
             if (response == 1) {
                 angular.element(event.target).text("Following");
@@ -1288,14 +1286,49 @@ app.controller('userProfileController', function ($http, $scope, $location, $roo
                 });
 
                 $scope.$digest;
-                
                 loaderHide();
             });
-            
+
             $scope.totalSPLikes = 0;
         });
-
     };
+
+    $scope.addToSList = function (event, id) {
+        if (window.localStorage.getItem('id') === null) {
+            window.location.href = '#/login';
+            return false;
+        }
+        function checkLike(event) {
+            return angular.element(event).hasClass('liked');
+        }
+        var isLiked = checkLike(event.target);
+        var likes = angular.element(event.target).children('.count').text();
+        if (isLiked) {
+            angular.element(event.target).removeClass("liked");
+            angular.element(event.target).children('.count').text(Number(likes) - 1);
+        }
+        if (!isLiked) {
+            angular.element(event.target).addClass("liked");
+            angular.element(event.target).children('.count').text(Number(likes) + 1);
+        }
+        if (window.localStorage.getItem('id') != null) {
+            $http.get(domain + "/scrapbook-like?productID=" + id + "&userId=" + window.localStorage.getItem('id')).success(function (response) {
+                if (response == 1) {
+                    angular.element(event.target).addClass("liked");
+                } else {
+                    angular.element(event.target).removeClass("liked");
+                }
+
+                $http.get(domain + "/get-userscrapbook-products?userId=" + $routeParams.id + "&uid=" + window.localStorage.getItem('id')).success(function (data, status, headers, config) {
+                    $scope.sbproducts = data;
+                    $scope.imgPath = domain + "/public/frontend/uploads/scrapbooks/";
+                    $scope.$digest;
+                });
+            });
+        }
+        
+    };
+
 });
 
 app.controller('subcatController', function ($http, $scope, $location, $rootScope, $routeParams) {
