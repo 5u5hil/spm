@@ -1252,9 +1252,7 @@ app.controller('userProfileController', function ($http, $scope, $location, $roo
         angular.forEach(data.scrapbooks, function (value1, key1) {
             $scope.totalSPLikes = $scope.totalSPLikes + value1.scrapbooklikes.length;
         });
-
         $scope.$digest;
-
         loaderHide();
     });
 
