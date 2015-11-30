@@ -1238,7 +1238,8 @@ app.controller('introController', function ($http, $scope, $location, $rootScope
 app.controller('userProfileController', function ($http, $scope, $location, $rootScope, $routeParams) {
 
     loaderShow();
-
+    
+    $scope.userId = window.localStorage.getItem('id');
     $scope.totalSPLikes = 0;
 
     $scope.$on('$viewContentLoaded', function () {
