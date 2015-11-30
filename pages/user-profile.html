@@ -27,8 +27,8 @@
 
 
                         <span class="follow=btn" style="display:block">
-                            <button ng-click="" class="button add-cart-btn" ng-if=" profile.user.id != userId ">
-             <span class="fav-text" ng-click="followme($event, profile.user.id)">{{ profile.user.following == 1 ? 'Following' : 'Follow'}}</span> </button>
+                            <button ng-click="followme($event, profile.user.id)" class="button add-cart-btn" ng-if=" profile.user.id != userId ">
+             <span class="fav-text">{{ profile.user.following == 1 ? 'Following' : 'Follow'}}</span> </button>
              <!--<span ng-if="profile.user.following == 0" class="fav-text" ng-click="followme($event, profile.user.id)">Follow</span> </button>-->
                         </span>
 
