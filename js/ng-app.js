@@ -1320,7 +1320,7 @@ app.controller('userProfileController', function ($http, $scope, $location, $roo
                     angular.element(event.target).removeClass("liked");
                 }
 
-                $http.get(domain + "/get-userscrapbook-products?userId=" + $routeParams.id + "&uid=" + window.localStorage.getItem('id')).success(function (data, status, headers, config) {
+                $http.get(domain + "/get-userscrapbook-products?uid=" + $routeParams.id + "&userId=" + window.localStorage.getItem('id')).success(function (data, status, headers, config) {
                     $scope.sbproducts = data;
                     $scope.imgPath = domain + "/public/frontend/uploads/scrapbooks/";
                     $scope.$digest;
