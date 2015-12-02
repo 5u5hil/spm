@@ -46,6 +46,7 @@
         </div>
         <div class="decoration"></div>
         <div class="portfolio-adaptive adaptive-two listing">
+            <div ng-if="pdts.lenght == 0">Sorry, no products found!</div>
             <div class="adaptive-item" ng-repeat="product in pdts" on-finish-render="ngRepeatFinished">
                 <div class="img-wrapper-product">
                     <a href="#/product/{{product.url_key}}" title="{{product.product}}">
