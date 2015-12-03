@@ -91,6 +91,12 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
         $scope.products = jQuery.parseJSON(window.localStorage.getItem("products"));
         $scope.pdts = jQuery.parseJSON(window.localStorage.getItem("pdts"));
         $scope.filters = jQuery.parseJSON(window.localStorage.getItem("filters"));
+        $scope.filtered = jQuery.parseJSON(window.localStorage.getItem("filtered"));
+        $scope.minp = window.localStorage.getItem("minp");
+        $scope.maxp = window.localStorage.getItem("maxp");
+
+
+
         jQuery("#content").scrollTop(window.localStorage.getItem("scpos"))
     } else {
         loaderShow();
@@ -163,6 +169,11 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
         $scope.minp = jQuery("#min_price").val();
         $scope.maxp = jQuery("#max_price").val();
 
+        window.localStorage.setItem("minp", $scope.minp);
+        window.localStorage.setItem("maxp", $scope.maxp);
+        window.localStorage.setItem("sort", jQuery("select.orderby").val());
+        window.localStorage.setItem("filtered", JSON.stringify($scope.filtered));
+
 
         $http.get(domain + "/get-filtered-products", {
             params: {
@@ -191,6 +202,17 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
 
     $scope.showFilters = function () {
         jQuery(".big-notification.yellow-notification").toggle("slideDown");
+        if (window.localStorage.getItem('back') == 1) {
+
+            jQuery.each(jQuery.parseJSON(window.localStorage.getItem("filtered")), function (k, v) {
+                jQuery.each(v, function (kk, vv) {
+                    jQuery("input[value=" + vv + "]").prop("checked", true);
+
+                });
+            });
+
+
+        }
     }
 
     $scope.showOptions = function (e) {
@@ -206,7 +228,9 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
         });
         if (window.localStorage.getItem('back') == 1) {
             jQuery(".catpage").scrollTop(window.localStorage.getItem("scpos"))
-
+            jQuery("select.orderby").val(window.localStorage.getItem("sort"));
+            jQuery("[name='min_price']").val(window.localStorage.getItem("minp"));
+            jQuery("[name='max_price']").val(window.localStorage.getItem("maxp"));
         }
 
     });
