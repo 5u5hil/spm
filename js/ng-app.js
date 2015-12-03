@@ -1378,14 +1378,14 @@ app.controller('userProfileController', function ($http, $scope, $location, $roo
             angular.element(event.target).children('.count').text(Number(likes) + 1);
         }
         if (window.localStorage.getItem('id') != null) {
-            $http.get(domain + "/scrapbook-like?productID=" + id + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (response) {
+            $http.get(domain + "/scrapbook-like?productID=" + id + (window.localStorage.getItem('id') != null ? "&userId=" + window.localStorage.getItem('id') : "")).success(function (response) {
                 if (response == 1) {
                     angular.element(event.target).addClass("liked");
                 } else {
                     angular.element(event.target).removeClass("liked");
                 }
 
-                $http.get(domain + "/get-userscrapbook-products?uid=" + $routeParams.id + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
+                $http.get(domain + "/get-userscrapbook-products?uid=" + $routeParams.id + (window.localStorage.getItem('id') != null ? "&userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
                     $scope.sbproducts = data;
                     $scope.imgPath = domain + "/public/frontend/uploads/scrapbooks/";
                     $scope.$digest;
