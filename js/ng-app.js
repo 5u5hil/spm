@@ -1311,7 +1311,7 @@ app.controller('userProfileController', function ($http, $scope, $location, $roo
         siteMainFn();
     });
 
-    $http.get(domain + "/user-profile?uid=" + $routeParams.id + "&userId=" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
+    $http.get(domain + "/user-profile?uid=" + $routeParams.id + "&userId=" + (window.localStorage.getItem('id') != null ? window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
         $scope.profile = data;
         console.log(data);
         angular.forEach(data.scrapbooks, function (value1, key1) {
@@ -1321,7 +1321,7 @@ app.controller('userProfileController', function ($http, $scope, $location, $roo
         loaderHide();
     });
 
-    $http.get(domain + "/get-userscrapbook-products?uid=" + $routeParams.id + "&userId=" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
+    $http.get(domain + "/get-userscrapbook-products?uid=" + $routeParams.id + "&userId=" + (window.localStorage.getItem('id') != null ? window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
         $scope.sbproducts = data;
         console.log(data);
         $scope.imgPath = domain + "/public/frontend/uploads/scrapbooks/";
