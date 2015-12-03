@@ -14,9 +14,8 @@ app.directive('onFinishRender', function ($timeout) {
 app.run(function ($rootScope, $location) {
     $rootScope.$on('$locationChangeSuccess', function () {
         if ($rootScope.previousLocation == $location.path()) {
-            if ($rootScope.previousLocation.indexOf("explore") > -1) {
                 window.localStorage.setItem("back", 1);
-            }
+            
         } else {
 
             window.localStorage.removeItem("back");
