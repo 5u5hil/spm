@@ -1334,7 +1334,8 @@ app.controller('userProfileController', function ($http, $scope, $location, $roo
             return false;
         }
 
-        $http.get(domain + "/user-follow?followerID=" + (window.localStorage.getItem('id') != null ? window.localStorage.getItem('id') : "") + "&userId=" + id).success(function (response) {
+//        $http.get(domain + "/user-follow?followerID=" + (window.localStorage.getItem('id') != null ? window.localStorage.getItem('id') : "") + "&userId=" + id).success(function (response) {
+        $http.get(domain + "/user-follow?userId=" + (window.localStorage.getItem('id') != null ? window.localStorage.getItem('id') : "") + "&uid=" + id).success(function (response) {
 
 
             $http.get(domain + "/user-profile?uid=" + $routeParams.id + "&userId=" + (window.localStorage.getItem('id') != null ? window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
