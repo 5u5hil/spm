@@ -11,6 +11,22 @@ app.directive('onFinishRender', function ($timeout) {
     };
 });
 
+app.run(function ($rootScope, $location) {
+    $rootScope.$on('$locationChangeSuccess', function () {
+        if ($rootScope.previousLocation == $location.path()) {
+            if ($rootScope.previousLocation.indexOf("explore") > -1) {
+                window.localStorage.setItem("back", 1);
+            }
+        } else {
+
+            window.localStorage.removeItem("back");
+        }
+        $rootScope.previousLocation = $rootScope.actualLocation;
+        $rootScope.actualLocation = $location.path();
+    });
+});
+
+
 angular.module('ChangePasswordConfirm', []).directive('changePasswordC', function () {
     return {
         require: 'ngModel',
@@ -65,22 +81,33 @@ app.controller('homeController', function ($http, $scope, $rootScope, $controlle
 });
 
 app.controller('categoryController', function ($http, $scope, $location, $rootScope, $routeParams, $anchorScroll) {
-    loaderShow();
+
     $scope.filtered = {};
     $scope.minp = 0;
     $scope.maxp = 0;
     $scope.pdts = {};
 
-    $http.get(domain + "/get-category-products/" + $routeParams.url_key + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : ""), {
-        cache: true
-    }).success(function (data, status, headers, config) {
-        $scope.products = data;
-        $scope.pdts = data.data
-        $scope.filters = data.filters;
-        $scope.$digest;
-        loaderHide();
-    });
+    if (window.localStorage.getItem('back') == 1) {
+        $scope.products = jQuery.parseJSON(window.localStorage.getItem("products"));
+        $scope.pdts = jQuery.parseJSON(window.localStorage.getItem("pdts"));
+        $scope.filters = jQuery.parseJSON(window.localStorage.getItem("filters"));
+        jQuery("#content").scrollTop(window.localStorage.getItem("scpos"))
+    } else {
+        loaderShow();
+        $http.get(domain + "/get-category-products/" + $routeParams.url_key + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : ""), {
+            cache: true
+        }).success(function (data, status, headers, config) {
+            $scope.products = data;
+            $scope.pdts = data.data
+            $scope.filters = data.filters;
+            window.localStorage.setItem("pdts", JSON.stringify($scope.pdts));
+            window.localStorage.setItem("filters", JSON.stringify($scope.filters));
+            window.localStorage.setItem("products", JSON.stringify($scope.products));
 
+            $scope.$digest;
+            loaderHide();
+        });
+    }
     $scope.load = function (event, url) {
         angular.element(event.target).children("i").addClass("fa fa-spinner fa-pulse");
         $http.get(url, {
@@ -99,11 +126,14 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
                 jQuery.each(data.data, function (k, v) {
                     $scope.pdts.push(v);
                 });
+                window.localStorage.setItem("pdts", JSON.stringify($scope.pdts));
+
                 angular.element(event.target).children("i").removeClass("fa fa-spinner fa-pulse");
             } else {
                 angular.element(event.target).removeAttr("ng-click");
                 angular.element(event.target).text("No More Products");
             }
+            window.localStorage.setItem("products", JSON.stringify($scope.products));
 
             $scope.$digest;
 
@@ -148,6 +178,9 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
             $scope.products = response;
             $scope.pdts = response.data
             $scope.$digest;
+            window.localStorage.setItem("pdts", JSON.stringify($scope.pdts));
+            window.localStorage.setItem("products", JSON.stringify($scope.products));
+
             jQuery(".big-notification.yellow-notification").slideUp();
         });
     }
@@ -166,6 +199,16 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
 
     $scope.$on('ngRepeatFinished', function (ngRepeatFinishedEvent) {
         siteMainFn();
+        jQuery(".catpage").scroll(function () {
+            var scrolled_val = jQuery(".catpage").scrollTop().valueOf();
+            window.localStorage.setItem("scpos", scrolled_val);
+
+        });
+        if (window.localStorage.getItem('back') == 1) {
+            jQuery(".catpage").scrollTop(window.localStorage.getItem("scpos"))
+
+        }
+
     });
 
 
@@ -1191,8 +1234,7 @@ app.controller('userDashboardController', function ($http, $scope, $location, $r
                     toast("Profile updated successfully!");
                     window.location.href = "#/profile";
                     loaderHide();
-                }
-                else
+                } else
                     toast("Looks like something went wrong... Please try again later!");
                 loaderHide();
                 window.location.href = "#/profile";

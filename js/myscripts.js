@@ -7,16 +7,16 @@ document.addEventListener('deviceready', function () {
     } else {
         initPushwooshAndroid();
     }
-    if(device.platform == "Android"){
+    if (device.platform == "Android") {
         jQuery('.drawer').remove();
         jQuery('.open-menu1').remove();
 
     }
-document.addEventListener("offline", onOffline, false);
+    document.addEventListener("offline", onOffline, false);
 }, false);
 
 function onOffline() {
-   toast('Seems like you are not connected to the Internet')
+    toast('Seems like you are not connected to the Internet')
 }
 
 
@@ -276,7 +276,7 @@ jQuery(document).ajaxSuccess(function () {
     clearTimeout(timeout);
 });
 $(document).ready(function () {
-
+    
     jQuery("body").on("change", "select.orderby", function () {
         jQuery("form button").click();
     });
@@ -289,11 +289,11 @@ $(document).ready(function () {
     var injector = elem.injector();
     var $rootScope = injector.get('$rootScope');
 
-    $rootScope.$watch('online', function(newStatus) { 
-            if(newStatus === false){
+    $rootScope.$watch('online', function (newStatus) {
+        if (newStatus === false) {
             toast('Please check your Internet Connection!');
         }
-     });
+    });
 
     // $rootScope.$on('loading:progress', function () {
     //     timeout = setTimeout(function () {
@@ -328,11 +328,11 @@ $(document).ready(function () {
         }
         var isLiked = checkLike(event.target);
         if (isLiked) {
-            angular.element(event.target).removeClass("liked");          
+            angular.element(event.target).removeClass("liked");
         }
         if (!isLiked) {
             angular.element(event.target).addClass("liked");
-       }
+        }
         if (window.localStorage.getItem('id') != null) {
             jQuery.get(domain + "/add-to-savedlist?productID=" + id + "&userId=" + window.localStorage.getItem('id')).success(function (response) {
                 console.log(response);
@@ -354,9 +354,9 @@ $(document).ready(function () {
     }
 
 
-    $rootScope.iosBack = function(event){
+    $rootScope.iosBack = function (event) {
 
-         window.history.back();
+        window.history.back();
     }
 
     if (window.localStorage.getItem('id') != null) {
