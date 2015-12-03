@@ -1334,10 +1334,10 @@ app.controller('userProfileController', function ($http, $scope, $location, $roo
             return false;
         }
 
-        $http.get(domain + "/user-follow?followerID=" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "") + "&userId=" + id).success(function (response) {
+        $http.get(domain + "/user-follow?followerID=" + (window.localStorage.getItem('id') != null ? window.localStorage.getItem('id') : "") + "&userId=" + id).success(function (response) {
 
 
-            $http.get(domain + "/user-profile?uid=" + $routeParams.id + "&userId=" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
+            $http.get(domain + "/user-profile?uid=" + $routeParams.id + "&userId=" + (window.localStorage.getItem('id') != null ? window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
                 $scope.profile = data;
                 $scope.totalSPLikes = 0;
 
