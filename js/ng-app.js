@@ -30,7 +30,6 @@ angular.module('ChangePasswordConfirm', []).directive('changePasswordC', functio
     return {
         require: 'ngModel',
         link: function (scope, elm, attrs, ctrl) {
-
             ctrl.$setValidity('noMatch1', true);
 
             attrs.$observe('changePasswordC', function (newVal) {
@@ -205,12 +204,12 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
         if (window.localStorage.getItem('back') == 1) {
           if(window.localStorage.getItem('filtered') != "null") {  
 
-            jQuery.each(jQuery.parseJSON(window.localStorage.getItem("filtered")), function (k, v) {
-                jQuery.each(v, function (kk, vv) {
-                    jQuery("input[value=" + vv + "]").prop("checked", true);
+        jQuery.each(jQuery.parseJSON(window.localStorage.getItem("filtered")), function (k, v) {
+jQuery.each(v, function (kk, vv) {
+jQuery("input[value=" + vv + "]").prop("checked", true);
 
-                });
-            });
+});
+});
         }
 
 
@@ -1084,12 +1083,13 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
     $scope.showFilters = function () {
               if (window.localStorage.getItem('back') == 1) {
           if(window.localStorage.getItem('ms-filtered') != "null") {  
-            jQuery.each(jQuery.parseJSON(window.localStorage.getItem("ms-filtered")), function (k, v) {
-                          jQuery.each(v, function (kk, vv) {
-                              jQuery("input[value=" + vv + "]").prop("checked", true);
-          
-                          });
-                      });}
+               jQuery.each(jQuery.parseJSON(window.localStorage.getItem("ms-filtered")), function (k, v) {
+    jQuery.each(v, function (kk, vv) {
+    jQuery("input[value=" + vv + "]").prop("checked", true);
+
+});
+});
+        }
         }
 
         jQuery(".big-notification.yellow-notification").toggle("slideDown");
