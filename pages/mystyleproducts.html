@@ -1,4 +1,4 @@
-<div id="content" class="snap-content">
+<div id="content" class="snap-content catpage">
     <div class="header-clear"></div>
 
     <div class="content">
@@ -33,7 +33,7 @@
                         <div id="filter{{$index}}" class="accordion-body filter-opt collapse {{ $index == 0 ? ' in' : ''}} ">
                             <input type="text" placeholder="Search" ng-if="sizeOf(filter.child) > 10" ng-model="filterz[$index]" class="search-filter" />
                             <div class="accordion-inner">
-                                <label ng-repeat="option in filter.child" class="category-filter lbl-filter">
+                                <label ng-repeat="option in filter.child" on-finish-render="ngRepeatFinished" class="category-filter lbl-filter">
                                     <input type="checkbox" class="checkbox vert-mid-filter checkbox-three" name="filter[]" value="{{  option.id}}" ng-checked="filtered.indexOf(option.id) > - 1" ng-click="filterProds(option.id, filter.category)">
                                     <span class="vert-mid-filter"> {{ option.category}}</span>
                                 </label>

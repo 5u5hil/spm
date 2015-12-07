@@ -98,6 +98,7 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
 
         jQuery("#content").scrollTop(window.localStorage.getItem("scpos"))
     } else {
+
         loaderShow();
         $http.get(domain + "/get-category-products/" + $routeParams.url_key + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : ""), {
             cache: true
@@ -925,6 +926,19 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
     $scope.maxp = 0;
 
     $scope.pdts = {};
+       if (window.localStorage.getItem('back') == 1) {
+        $scope.products = jQuery.parseJSON(window.localStorage.getItem("ms-products"));
+        $scope.pdts = jQuery.parseJSON(window.localStorage.getItem("ms-pdts"));
+        $scope.filters = jQuery.parseJSON(window.localStorage.getItem("ms-filters"));
+        $scope.styleid = jQuery.parseJSON(window.localStorage.getItem("ms-styleid"));
+
+
+        $scope.filtered = jQuery.parseJSON(window.localStorage.getItem("ms-filtered"));
+        $scope.minp = window.localStorage.getItem("ms-minp");
+        $scope.maxp = window.localStorage.getItem("ms-maxp");
+        jQuery("#content").scrollTop(window.localStorage.getItem("scpos"))
+        loaderHide();
+    } else {
 
     $http.get(domain + "/my-style/" + $routeParams.url_key, {
         'userId': (window.localStorage.getItem('id') != null ? window.localStorage.getItem('id') : "")
@@ -933,10 +947,15 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
         $scope.styleid = $routeParams.url_key;
         $scope.pdts = data.data
         $scope.filters = data.filters;
+            window.localStorage.setItem("ms-pdts", JSON.stringify($scope.pdts));
+            window.localStorage.setItem("ms-filters", JSON.stringify($scope.filters));
+            window.localStorage.setItem("ms-products", JSON.stringify($scope.products));
+            window.localStorage.setItem("ms-styleid", JSON.stringify($scope.styleid));
+
         $scope.$digest;
         loaderHide();
     });
-
+}
     $scope.removeUserStyle = function (id) {
         var pid = id;
         var r = confirm("Do you want to delete this Style Profile?");
@@ -989,11 +1008,14 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
                 jQuery.each(data.data, function (k, v) {
                     $scope.pdts.push(v);
                 });
+                window.localStorage.setItem("ms-pdts", JSON.stringify($scope.pdts));
+
                 angular.element(event.target).children("i").removeClass("fa fa-spinner fa-pulse");
             } else {
                 angular.element(event.target).removeAttr("ng-click");
                 angular.element(event.target).text("No More Products");
             }
+            window.localStorage.setItem("ms-products", JSON.stringify($scope.products));
 
             $scope.$digest;
 
@@ -1029,6 +1051,11 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
         $scope.minp = jQuery("#min_price").val();
         $scope.maxp = jQuery("#max_price").val();
 
+        window.localStorage.setItem("ms-minp", $scope.minp);
+        window.localStorage.setItem("ms-maxp", $scope.maxp);
+        window.localStorage.setItem("ms-sort", jQuery("select.orderby").val());
+        window.localStorage.setItem("ms-filtered", JSON.stringify($scope.filtered));
+
         $http.get(domain + "/my-style/" + $routeParams.url_key, {
             params: {
                 'filters': $scope.filtered,
@@ -1041,6 +1068,9 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
             $scope.products = response;
             $scope.pdts = response.data
             $scope.$digest;
+
+            window.localStorage.setItem("ms-pdts", JSON.stringify($scope.pdts));
+            window.localStorage.setItem("ms-products", JSON.stringify($scope.products));
             jQuery(".big-notification.yellow-notification").toggle("slideDown");
         });
     }
@@ -1050,7 +1080,18 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
     };
 
     $scope.showFilters = function () {
+              if (window.localStorage.getItem('back') == 1) {
+          if(window.localStorage.getItem('ms-filtered') != "null") {  
+            jQuery.each(jQuery.parseJSON(window.localStorage.getItem("ms-filtered")), function (k, v) {
+                          jQuery.each(v, function (kk, vv) {
+                              jQuery("input[value=" + vv + "]").prop("checked", true);
+          
+                          });
+                      });}
+        }
+
         jQuery(".big-notification.yellow-notification").toggle("slideDown");
+
     }
 
     $scope.showOptions = function (e) {
@@ -1059,7 +1100,21 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
+    $scope.$on('ngRepeatFinished', function (ngRepeatFinishedEvent) {
+        siteMainFn();
+        jQuery(".catpage").scroll(function () {
+            var scrolled_val = jQuery(".catpage").scrollTop().valueOf();
+            window.localStorage.setItem("ms-scpos", scrolled_val);
 
+        });
+        if (window.localStorage.getItem('back') == 1) {
+            jQuery(".catpage").scrollTop(window.localStorage.getItem("ms-scpos"))
+            jQuery("select.orderby").val(window.localStorage.getItem("ms-sort"));
+            jQuery("[name='min_price']").val(window.localStorage.getItem("ms-minp"));
+            jQuery("[name='max_price']").val(window.localStorage.getItem("ms-maxp"));
+        }
+
+    });
 });
 
 app.controller('signupController', function ($http, $scope, $location, $rootScope, $routeParams) {
