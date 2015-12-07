@@ -203,6 +203,7 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
     $scope.showFilters = function () {
         jQuery(".big-notification.yellow-notification").toggle("slideDown");
         if (window.localStorage.getItem('back') == 1) {
+          if(window.localStorage.getItem('filtered') != "null") {  
 
             jQuery.each(jQuery.parseJSON(window.localStorage.getItem("filtered")), function (k, v) {
                 jQuery.each(v, function (kk, vv) {
@@ -210,6 +211,7 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
 
                 });
             });
+        }
 
 
         }
