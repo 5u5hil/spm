@@ -276,7 +276,7 @@ jQuery(document).ajaxSuccess(function () {
     clearTimeout(timeout);
 });
 $(document).ready(function () {
-    
+
     jQuery("body").on("change", "select.orderby", function () {
         jQuery("form button").click();
     });
@@ -288,6 +288,7 @@ $(document).ready(function () {
     var elem = angular.element(document.querySelector('[ng-app]'));
     var injector = elem.injector();
     var $rootScope = injector.get('$rootScope');
+    $rootScope.cartCnt = jQuery.parseJSON(window.localStorage.getItem('cart')).length > 0 ? jQuery.parseJSON(window.localStorage.getItem('cart')).length : "";
 
     $rootScope.$watch('online', function (newStatus) {
         if (newStatus === false) {
@@ -319,6 +320,8 @@ $(document).ready(function () {
         if (c.length <= 0) {
             cart.push(p);
         }
+        $rootScope.cartCnt = cart.length > 0 ? cart.length : "";
+
         window.localStorage.setItem("cart", JSON.stringify(cart));
         toast("Product Added to Cart");
     };

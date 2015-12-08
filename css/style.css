@@ -2014,3 +2014,8 @@ background-image: url('../images/highlights/pstylist.png');}
 .remove{
         margin-left: 15px;
 }
+.cart-count{
+        color: #ff0055;
+    font-weight: bold;
+    margin-left: 2px;
+}

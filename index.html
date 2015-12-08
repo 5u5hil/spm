@@ -24,7 +24,7 @@
 
         <script src="js/ng-routes.js"></script>
         <script src="js/ng-app.js"></script>
- 
+
 
         <script src="js/myscripts.js"></script>
     </head>
@@ -38,29 +38,29 @@
             </div>
         </div>
         <div class="drawer"  ng-swipe-right="iosBack($event)" >
-            
+
         </div>
-       <!--  <div class="menu-wrapper">
-            <em><i class="fa fa-question-circle"></i>Swipe the icons, tap to select!</em>
-            <div class="menu">
-               <a ng-href="#/chat" class="item">
-                    <img src="images/highlights/3.jpg" alt="img">
-                    Personal Stylist
-                </a>    
-                <a ng-href="#/define-style" class="item">
-                    <img src="images/highlights/4.jpg" alt="img">
-                    Define Style
-                </a>   
-                <a ng-href="#/wardrobe" class="item" id="selected">
-                    <img src="images/highlights/1.jpg" alt="img">
-                    Wardrobe 
-                </a>    
-                <a ng-href="#/scrapbook" class="item">
-                    <img src="images/highlights/2.jpg" alt="img">
-                    Scrapbook 
-                </a>    
-            </div>
-        </div> -->
+        <!--  <div class="menu-wrapper">
+             <em><i class="fa fa-question-circle"></i>Swipe the icons, tap to select!</em>
+             <div class="menu">
+                <a ng-href="#/chat" class="item">
+                     <img src="images/highlights/3.jpg" alt="img">
+                     Personal Stylist
+                 </a>    
+                 <a ng-href="#/define-style" class="item">
+                     <img src="images/highlights/4.jpg" alt="img">
+                     Define Style
+                 </a>   
+                 <a ng-href="#/wardrobe" class="item" id="selected">
+                     <img src="images/highlights/1.jpg" alt="img">
+                     Wardrobe 
+                 </a>    
+                 <a ng-href="#/scrapbook" class="item">
+                     <img src="images/highlights/2.jpg" alt="img">
+                     Scrapbook 
+                 </a>    
+             </div>
+         </div> -->
 
         <div class="header" >
             <div class="header-controls">
@@ -69,9 +69,9 @@
 
                 <a ng-href="#/home" class="main-logo"></a>
                 <a ng-href="" class="open-more capture-event"><i class="fa fa-user"></i></a>
-                <a ng-href="#/cart"  class="open-cart"><i class="fa fa-shopping-cart"></i></a>
-                
-            <!--     <a ng-href="" class="open-slide capture-event"><i class="fa fa-star"></i></a> -->
+                <a ng-href="#/cart"  class="open-cart"><i class="fa fa-shopping-cart"></i><span class="cart-count">{{ cartCnt}}</span></a>
+
+                <!--     <a ng-href="" class="open-slide capture-event"><i class="fa fa-star"></i></a> -->
             </div>
         </div>    
 
@@ -91,40 +91,40 @@
 
 
         </div>
-        
+
         <div class="sticyfooter">
-    <a ng-href="" class="face"><i class="fa fa-facebook"></i></a>
-    <a ng-href ="whatsapp://send?text=" class="what"><i class="fa fa-whatsapp"></i></a>
-    <a ng-href="" class="chat"><i class="fa fa-comment"></i></a>
+            <a ng-href="" class="face"><i class="fa fa-facebook"></i></a>
+            <a ng-href ="whatsapp://send?text=" class="what"><i class="fa fa-whatsapp"></i></a>
+            <a ng-href="" class="chat"><i class="fa fa-comment"></i></a>
         </div>
 
         <script src="js/custom.js"></script>
 
-       <style>
-           .drawer{
- 
-    background-color: #ff0055;
-    position: fixed;
-    z-index: 2500;
-    top: 50px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(192, 57, 43, 0);
-    z-index: 99999999;
-    width: 40px;
-}
-.open-menu1 {
-    float: left;
-    width: 60px;
-    height: 40px;
-    line-height: 40px;
-    font-size: 14px;
-    text-align: center;
-    color: #1f1f1f;
-    border-right: dashed 1px #cacaca;
-}
-    </style>
- 
+        <style>
+            .drawer{
+
+                background-color: #ff0055;
+                position: fixed;
+                z-index: 2500;
+                top: 50px;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(192, 57, 43, 0);
+                z-index: 99999999;
+                width: 40px;
+            }
+            .open-menu1 {
+                float: left;
+                width: 60px;
+                height: 40px;
+                line-height: 40px;
+                font-size: 14px;
+                text-align: center;
+                color: #1f1f1f;
+                border-right: dashed 1px #cacaca;
+            }
+        </style>
+
     </body>
 </html>

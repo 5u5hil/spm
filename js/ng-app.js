@@ -14,8 +14,8 @@ app.directive('onFinishRender', function ($timeout) {
 app.run(function ($rootScope, $location) {
     $rootScope.$on('$locationChangeSuccess', function () {
         if ($rootScope.previousLocation == $location.path()) {
-                window.localStorage.setItem("back", 1);
-            
+            window.localStorage.setItem("back", 1);
+
         } else {
 
             window.localStorage.removeItem("back");
@@ -202,15 +202,15 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
     $scope.showFilters = function () {
         jQuery(".big-notification.yellow-notification").toggle("slideDown");
         if (window.localStorage.getItem('back') == 1) {
-          if(window.localStorage.getItem('filtered') != "null") {  
+            if (window.localStorage.getItem('filtered') != "null") {
 
-        jQuery.each(jQuery.parseJSON(window.localStorage.getItem("filtered")), function (k, v) {
-jQuery.each(v, function (kk, vv) {
-jQuery("input[value=" + vv + "]").prop("checked", true);
+                jQuery.each(jQuery.parseJSON(window.localStorage.getItem("filtered")), function (k, v) {
+                    jQuery.each(v, function (kk, vv) {
+                        jQuery("input[value=" + vv + "]").prop("checked", true);
 
-});
-});
-        }
+                    });
+                });
+            }
 
 
         }
@@ -906,6 +906,7 @@ app.controller('questionnaireController', function ($http, $scope, $rootScope, $
 
 app.controller('logoutController', function ($http, $rootScope, $location, $scope) {
     loaderHide();
+    $rootScope.cartCnt = "";
     $rootScope.loggedIn = 0;
     $rootScope.$digest;
     localStorage.clear();
@@ -927,7 +928,7 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
     $scope.maxp = 0;
 
     $scope.pdts = {};
-       if (window.localStorage.getItem('back') == 1) {
+    if (window.localStorage.getItem('back') == 1) {
         $scope.products = jQuery.parseJSON(window.localStorage.getItem("ms-products"));
         $scope.pdts = jQuery.parseJSON(window.localStorage.getItem("ms-pdts"));
         $scope.filters = jQuery.parseJSON(window.localStorage.getItem("ms-filters"));
@@ -941,22 +942,22 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
         loaderHide();
     } else {
 
-    $http.get(domain + "/my-style/" + $routeParams.url_key, {
-        'userId': (window.localStorage.getItem('id') != null ? window.localStorage.getItem('id') : "")
-    }).success(function (data, status, headers, config) {
-        $scope.products = data;
-        $scope.styleid = $routeParams.url_key;
-        $scope.pdts = data.data
-        $scope.filters = data.filters;
+        $http.get(domain + "/my-style/" + $routeParams.url_key, {
+            'userId': (window.localStorage.getItem('id') != null ? window.localStorage.getItem('id') : "")
+        }).success(function (data, status, headers, config) {
+            $scope.products = data;
+            $scope.styleid = $routeParams.url_key;
+            $scope.pdts = data.data
+            $scope.filters = data.filters;
             window.localStorage.setItem("ms-pdts", JSON.stringify($scope.pdts));
             window.localStorage.setItem("ms-filters", JSON.stringify($scope.filters));
             window.localStorage.setItem("ms-products", JSON.stringify($scope.products));
             window.localStorage.setItem("ms-styleid", JSON.stringify($scope.styleid));
 
-        $scope.$digest;
-        loaderHide();
-    });
-}
+            $scope.$digest;
+            loaderHide();
+        });
+    }
     $scope.removeUserStyle = function (id) {
         var pid = id;
         var r = confirm("Do you want to delete this Style Profile?");
@@ -1081,15 +1082,15 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
     };
 
     $scope.showFilters = function () {
-              if (window.localStorage.getItem('back') == 1) {
-          if(window.localStorage.getItem('ms-filtered') != "null") {  
-               jQuery.each(jQuery.parseJSON(window.localStorage.getItem("ms-filtered")), function (k, v) {
-    jQuery.each(v, function (kk, vv) {
-    jQuery("input[value=" + vv + "]").prop("checked", true);
+        if (window.localStorage.getItem('back') == 1) {
+            if (window.localStorage.getItem('ms-filtered') != "null") {
+                jQuery.each(jQuery.parseJSON(window.localStorage.getItem("ms-filtered")), function (k, v) {
+                    jQuery.each(v, function (kk, vv) {
+                        jQuery("input[value=" + vv + "]").prop("checked", true);
 
-});
-});
-        }
+                    });
+                });
+            }
         }
 
         jQuery(".big-notification.yellow-notification").toggle("slideDown");
@@ -1237,6 +1238,7 @@ app.controller('cartController', function ($http, $scope, $location, $rootScope,
             return (n.id != p)
         });
 
+        $rootScope.cartCnt = cart.length > 0 ? cart.length : "";
 
         window.localStorage.setItem("cart", JSON.stringify(cart));
 
