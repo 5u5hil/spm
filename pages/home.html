@@ -2,7 +2,9 @@
     <div class="slider-container half-bottom mb7">
         <div class="homepage-slider" data-snap-ignore="true">                
             <div ng-repeat="slider in sliders" on-finish-render="ngRepeatFinished">
+            <a ng-href="{{ slider.link}}">
                 <img ng-src="{{ imgPath + slider.slider_img}}" class="responsive-image" alt="img">
+            </a>
             </div>
         </div>
     </div>
