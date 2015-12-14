@@ -321,6 +321,7 @@ app.controller('scrapbookController', function($http, $scope, $rootScope, $contr
     $scope.listOfOptions = ['Recent', 'Most Popular'];
 
     $scope.selectedItemChanged = function() {
+         loaderShow();
         if ($scope.selectedItem == 'Most Popular') {
             $http.get(domain + "/sb-mp" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function(data, status, headers, config) {
                 $scope.products = data;
