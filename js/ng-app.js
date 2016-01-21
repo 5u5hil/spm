@@ -348,7 +348,7 @@ app.controller('scrapbookController', function($http, $scope, $rootScope, $contr
                 }
 
                 $http.get(domain + "/get-scrapbook-products" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function(data, status, headers, config) {
-                    $scope.products = data;
+                    $scope.products = data.data;
                     $scope.$digest;
                 });
             });
