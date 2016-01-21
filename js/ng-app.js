@@ -276,6 +276,7 @@ app.controller('scrapbookController', function($http, $scope, $rootScope, $contr
         }).success(function(data, status, headers, config) {
             console.log(data);
             $scope.products = data.data;
+            $scope.next_page_url = data.next_page_url;
             $scope.imgPath = domain + "/public/frontend/uploads/scrapbooks/";
             window.localStorage.setItem("scrapbooks", JSON.stringify($scope.products));
              window.localStorage.setItem("scrapbooks-sort", 'Recent');
