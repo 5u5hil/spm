@@ -320,27 +320,39 @@ app.controller('scrapbookController', function($http, $scope, $rootScope, $contr
 
     $scope.listOfOptions = ['Recent', 'Most Popular'];
 
-    $scope.selectedItemChanged = function() {
-         loaderShow();
+    $scope.selectedItemChanged = function () {
+        loaderShow();
         if ($scope.selectedItem == 'Most Popular') {
-            $http.get(domain + "/sb-mp" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function(data, status, headers, config) {
-                $scope.products = data;
+            $http.get(domain + "/get-scrapbook-products?sort=2").success(function (data, status, headers, config) {
+                $scope.products = data.data;
+                $scope.next_page_url = data.next_page_url;
+                console.log($scope.next_page_url);
                 window.localStorage.setItem("scrapbooks", JSON.stringify($scope.products));
-
+                window.localStorage.setItem("scrapbooks-sort", 'Most Popular');
                 $scope.$digest;
                 loaderHide();
             });
+//            $http.get(domain + "/sb-mp" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
+//                $scope.products = data;
+//                window.localStorage.setItem("scrapbooks", JSON.stringify($scope.products));
+//
+//                $scope.$digest;
+//                loaderHide();
+//            });
         }
+
         if ($scope.selectedItem == 'Recent') {
-            $http.get(domain + "/get-scrapbook-products" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function(data, status, headers, config) {
-                $scope.products = data;
+            $http.get(domain + "/get-scrapbook-products" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
+                $scope.products = data.data;
+                $scope.next_page_url = data.next_page_url;
                 window.localStorage.setItem("scrapbooks", JSON.stringify($scope.products));
+                window.localStorage.setItem("scrapbooks-sort", 'Recent');
 
                 $scope.$digest;
                 loaderHide();
             });
         }
-      window.localStorage.setItem("scrapbooks-sort", JSON.stringify($scope.selectedItem));
+//        window.localStorage.setItem("scrapbooks-sort", JSON.stringify($scope.selectedItem));
 
     };
 
