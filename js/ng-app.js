@@ -261,6 +261,8 @@ app.controller('productController', function($http, $rootScope, $scope, $locatio
 app.controller('scrapbookController', function($http, $scope, $rootScope, $controller) {
 
     loaderShow();
+    
+    $scope.products = {};
 
     if (window.localStorage.getItem('back') == 1) {
             $scope.imgPath = domain + "/public/frontend/uploads/scrapbooks/";
