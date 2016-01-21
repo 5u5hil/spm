@@ -281,6 +281,39 @@ app.controller('scrapbookController', function($http, $scope, $rootScope, $contr
             loaderHide();
         });
     }
+    
+    $scope.load = function (event, url) {
+        angular.element(event.target).children("i").addClass("fa fa-spinner fa-pulse");
+        $http.get(url, {
+            params: {
+                'sort': (window.localStorage.getItem('scrapbooks-sort') == 'Recent' ? '' : 2),
+                'userId': (window.localStorage.getItem('id') != null ? window.localStorage.getItem('id') : "")
+            },
+            cache: true
+        }).success(function (data, status, headers, config) {
+
+            if (data.data.length > 0) {
+                jQuery.each(data.data, function (k, v) {
+                    $scope.products.push(v);
+                });
+
+                $scope.next_page_url = data.next_page_url;
+
+                window.localStorage.setItem("scrapbooks", JSON.stringify($scope.products));
+
+                angular.element(event.target).children("i").removeClass("fa fa-spinner fa-pulse");
+            } else {
+                angular.element(event.target).removeAttr("ng-click");
+                angular.element(event.target).text("No More Products");
+            }
+
+            $scope.$digest;
+
+            loaderHide();
+
+        });
+    };
+    
     $scope.addToSList = function(event, id) {
         if (window.localStorage.getItem('id') === null) {
             window.location.href = '#/login';
