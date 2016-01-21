@@ -267,6 +267,7 @@ app.controller('scrapbookController', function($http, $scope, $rootScope, $contr
     if (window.localStorage.getItem('back') == 1) {
             $scope.imgPath = domain + "/public/frontend/uploads/scrapbooks/";
         $scope.products = jQuery.parseJSON(window.localStorage.getItem("scrapbooks"));
+        $scope.next_page_url = jQuery.parseJSON(window.localStorage.getItem("next_page_url"));
         jQuery("#content").scrollTop(window.localStorage.getItem("scrap-scroll"))
         loaderHide();
 
@@ -303,6 +304,7 @@ app.controller('scrapbookController', function($http, $scope, $rootScope, $contr
                 $scope.next_page_url = data.next_page_url;
 
                 window.localStorage.setItem("scrapbooks", JSON.stringify($scope.products));
+                window.localStorage.setItem("next_page_url", JSON.stringify($scope.next_page_url));
 
                 angular.element(event.target).children("i").removeClass("fa fa-spinner fa-pulse");
             } else {
