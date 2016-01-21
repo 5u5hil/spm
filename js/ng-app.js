@@ -262,12 +262,16 @@ app.controller('scrapbookController', function($http, $scope, $rootScope, $contr
 
     loaderShow();
     
+    $scope.listOfOptions = ['Recent', 'Most Popular'];
+    
     $scope.products = {};
 
     if (window.localStorage.getItem('back') == 1) {
             $scope.imgPath = domain + "/public/frontend/uploads/scrapbooks/";
         $scope.products = jQuery.parseJSON(window.localStorage.getItem("scrapbooks"));
         $scope.next_page_url = jQuery.parseJSON(window.localStorage.getItem("next_page_url"));
+        $scope.listOfOptions = (window.localStorage.getItem("scrapbooks-sort") == 'Recent') ?  ['Recent', 'Most Popular'] : ['Most Popular', 'Recent'];
+//        $scope.selectedItem = window.localStorage.getItem("scrapbooks-sort");
         jQuery("#content").scrollTop(window.localStorage.getItem("scrap-scroll"))
         loaderHide();
 
@@ -356,7 +360,6 @@ app.controller('scrapbookController', function($http, $scope, $rootScope, $contr
         }
     };
 
-    $scope.listOfOptions = ['Recent', 'Most Popular'];
 
     $scope.selectedItemChanged = function () {
         loaderShow();
