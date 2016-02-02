@@ -1,0 +1,82 @@
+<div id="content" class="snap-content catpage">
+    <div class="content">
+        <div class="adaptive-style">
+            <h4>{{products.maincat}}</h4>
+            <a ng-href="">
+                <select name="orderby" class="orderby big-select alignright selectBox">
+                    <option value="1" selected="selected">Default Sorting</option>
+                    <option value="2">Most Recent</option>
+                    <option value="3">Price Low to High</option>
+                    <option value="4">Price High to Low</option>
+                </select>
+            </a>  
+            <a class="prodFilter" ng-click="showFilters()"><i class="fa fa-filter"></i></a>
+
+            <!--  <a class="adaptive-two-activate active-adaptive-style"><i class="fa fa-th-large"></i></a> -->
+            <!-- <a class="adaptive-one-activate"><i class="fa fa-navicon"></i></a> -->
+        </div>
+        <div class="clear"></div>
+        <div class="big-notification yellow-notification filter-wrap" style="display:none;">
+            <form name="pricefrm" id="pricefrm" ng-submit="applyFilters()">
+                <div id="filters" class='questionnaire'>
+                    <div class="filters">
+                        <h3 class="widget-title">Filter by price</h3>
+                        <input type="number" id="min_price" name="min_price" min="0" placeholder="Min price" class="min-price-filter">
+                        <input type="number" id="max_price" name="max_price" placeholder="Max price" class="max-price-filter">
+                    </div>
+                    <div class="filters" on-finish-render="ngRepeatFinished" ng-repeat="filter in filters">
+                        <h3 class="widget-title" ng-click="showOptions('filter{{$index}}')">{{ filter.category}} <i class="fa fa-caret-right pull-right"></i></h3>
+                        <div id="filter{{$index}}" class="accordion-body filter-opt collapse {{ $index == 0 ? ' in' : ''}} ">
+                            <input type="text" placeholder="Search" ng-if="sizeOf(filter.child) > 10" ng-model="filterz[$index]" class="search-filter" />
+                            <div class="accordion-inner">
+
+                                <label ng-repeat="option in filter.child" on-finish-render="ngRepeatFinished" class="category-filter lbl-filter">
+                                    <input type="checkbox" class="vert-mid-filter " name="filter[]" value="{{  option.id}}" ng-checked="filtered.indexOf(option.id) > - 1" ng-click="filterProds(option.id, filter.category)">
+                                    <span class="vert-mid-filter"> {{ option.category}}</span>
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="apply-filter filters">
+                        <button class="button" >Apply Filter</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="decoration"></div>
+        <div class="portfolio-adaptive adaptive-two listing">
+            <div ng-if="products.data.length == 0">Sorry, no products found!</div>
+            <div class="adaptive-item" ng-repeat="product in pdts" on-finish-render="ngRepeatFinished">
+                <div class="img-wrapper-product">
+                    <a href="#/product/{{product.url_key}}" title="{{product.product}}">
+<div class="img-listing-wrap" style="background-image:url('{{product.large_image != '' ? product.large_image : (product.medium_image != '' ? product.medium_image : product.small_image) }}')">
+                    
+                </div>
+                       <!--  <img class="responsive-image" ng-src="{{product.small_image != '' ? product.small_image : (product.medium_image != '' ? product.medium_image : product.large_image) }}" alt="img"> -->
+                    </a>
+                </div>
+
+                <h4 class="pname">
+                    <a href="#/product/{{product.url_key}}" class="lname">{{product.product}}</a> </h4>
+                <p class="sdetail">
+                    <span class="price-wrap">
+                        <a href="#/product/{{product.url_key}}" class=""> 
+                            <span class="fprice" ng-if="product.spl_price > 0 && product.spl_price < product.price"><i class="fa fa-rupee"></i>{{product.price}}</span>   
+                            <span class="dprice"><i class="fa fa-rupee"></i>{{product.spl_price > 0 && product.spl_price < product.price ? product.spl_price : product.price }}</span> 
+                        </a>
+
+                        <a href="" class="lwishlit"><i class="fa fa-heart {{product.wishlist == 1? 'liked':''}}" ng-click="addToList($event, product.id)"></i></a>
+                    </span>
+                    <br>
+                    <span class="dd-cart-home ">
+                        <button class="button add-cart-btn mt7"  ng-click="addToCart($event, product)">Add to Cart</button>
+                    </span>
+                </p>
+            </div>
+        </div>
+        <div class="pagination clearfix" style="text-align: center;padding-top: 20px;">
+            <button class="button " ng-if="products.next_page_url != null" ng-click="load($event, products.next_page_url)"> <i></i> Load More</button>
+        </div>
+    </div>
+</div>

@@ -239,6 +239,166 @@ app.controller('categoryController', function($http, $scope, $location, $rootSco
 
 });
 
+app.controller('searchListingController', function($http, $scope, $location, $rootScope, $routeParams, $anchorScroll) {
+
+    $scope.filtered = {};
+    $scope.minp = 0;
+    $scope.maxp = 0;
+    $scope.pdts = {};
+
+    if (window.localStorage.getItem('back') == 1) {
+        $scope.products = jQuery.parseJSON(window.localStorage.getItem("products2"));
+        $scope.pdts = jQuery.parseJSON(window.localStorage.getItem("pdts2"));
+        $scope.filters = jQuery.parseJSON(window.localStorage.getItem("filters2"));
+        $scope.filtered = jQuery.parseJSON(window.localStorage.getItem("filtered2"));
+        $scope.minp = window.localStorage.getItem("minp2");
+        $scope.maxp = window.localStorage.getItem("maxp2");
+        $scope.orderby = window.localStorage.getItem("sort2");
+
+        jQuery("#content").scrollTop(window.localStorage.getItem("scpos2"));
+    } else {
+
+        loaderShow();
+        $http.get(domain + "/search/" + $routeParams.search_key + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : ""), {
+            cache: true
+        }).success(function(data, status, headers, config) {
+            $scope.products = data;
+            $scope.pdts = data.data
+            $scope.filters = data.filters;
+            window.localStorage.setItem("pdts2", JSON.stringify($scope.pdts));
+            window.localStorage.setItem("filters2", JSON.stringify($scope.filters));
+            window.localStorage.setItem("products2", JSON.stringify($scope.products));
+            window.localStorage.setItem("sort2", jQuery("select.orderby").val());
+            $scope.$digest;
+            loaderHide();
+        });
+    }
+    $scope.load = function(event, url) {
+        angular.element(event.target).children("i").addClass("fa fa-spinner fa-pulse");
+        $http.get(url, {
+            params: {
+                'filters': $scope.filtered,
+                'minp': $scope.minp,
+                'maxp': $scope.maxp,
+                'slug': $routeParams.search_key,
+                'sort': jQuery("select.orderby").val(),
+                'userId': (window.localStorage.getItem('id') != null ? window.localStorage.getItem('id') : "")
+            },
+            cache: true
+        }).success(function(data, status, headers, config) {
+            $scope.products = data;
+            if (data.data.length > 0) {
+                jQuery.each(data.data, function(k, v) {
+                    $scope.pdts.push(v);
+                });
+                window.localStorage.setItem("pdts2", JSON.stringify($scope.pdts));
+
+                angular.element(event.target).children("i").removeClass("fa fa-spinner fa-pulse");
+            } else {
+                angular.element(event.target).removeAttr("ng-click");
+                angular.element(event.target).text("No More Products");
+            }
+            window.localStorage.setItem("products2", JSON.stringify($scope.products));
+
+            $scope.$digest;
+
+            loaderHide();
+
+        });
+    };
+
+    $scope.filterProds = function(option, parent) {
+        if (option) {
+            if (!(parent in $scope.filtered))
+                $scope.filtered[parent] = [];
+
+            var idx = $scope.filtered[parent].indexOf(option);
+
+            if (idx > -1)
+                $scope.filtered[parent].splice(idx, 1);
+            else
+                $scope.filtered[parent].push(option);
+
+            if ($scope.filtered[parent].length <= 0)
+                delete $scope.filtered[parent];
+        }
+    };
+
+    $scope.applyFilters = function() {
+        $scope.minp = jQuery("#min_price").val();
+        $scope.maxp = jQuery("#max_price").val();
+
+        window.localStorage.setItem("minp2", $scope.minp);
+        window.localStorage.setItem("maxp2", $scope.maxp);
+        window.localStorage.setItem("sort2", jQuery("select.orderby").val());
+        window.localStorage.setItem("filtered2", JSON.stringify($scope.filtered));
+
+
+        $http.get(domain + "/get-search-filtered-products?", {
+            params: {
+                'filters': $scope.filtered,
+                'minp': $scope.minp,
+                'maxp': $scope.maxp,
+                'slug': $routeParams.search_key,
+                'sort': jQuery("select.orderby").val(),
+                'userId': (window.localStorage.getItem('id') != null ? window.localStorage.getItem('id') : "")
+
+            }
+        }).success(function(response) {
+            $scope.products = response;
+            $scope.pdts = response.data
+            $scope.$digest;
+            window.localStorage.setItem("pdts2", JSON.stringify($scope.pdts));
+            window.localStorage.setItem("products2", JSON.stringify($scope.products));
+
+            jQuery(".big-notification.yellow-notification").slideUp();
+        });
+    }
+
+    $scope.sizeOf = function(obj) {
+        return Object.keys(obj).length;
+    };
+
+    $scope.showFilters = function() {
+        jQuery(".big-notification.yellow-notification").toggle("slideDown");
+        if (window.localStorage.getItem('back') == 1) {
+            if (window.localStorage.getItem('filtered2') != "null") {
+
+                jQuery.each(jQuery.parseJSON(window.localStorage.getItem("filtered2")), function(k, v) {
+                    jQuery.each(v, function(kk, vv) {
+                        jQuery("input[value=" + vv + "]").prop("checked", true);
+
+                    });
+                });
+            }
+
+
+        }
+    }
+
+    $scope.showOptions = function(e) {
+        jQuery("#" + e).toggle();
+    }
+
+    $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
+        siteMainFn();
+        jQuery(".catpage").scroll(function() {
+            var scrolled_val = jQuery(".catpage").scrollTop().valueOf();
+            window.localStorage.setItem("scpos2", scrolled_val);
+
+        });
+        if (window.localStorage.getItem('back') == 1) {
+            jQuery(".catpage").scrollTop(window.localStorage.getItem("scpos2"))
+            jQuery("select.orderby").val(window.localStorage.getItem("sort2"));
+            jQuery("[name='min_price']").val(window.localStorage.getItem("minp2"));
+            jQuery("[name='max_price']").val(window.localStorage.getItem("maxp2"));
+        }
+
+    });
+
+
+});
+
 app.controller('productController', function($http, $rootScope, $scope, $location, $routeParams, $timeout) {
 
     loaderShow();

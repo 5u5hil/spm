@@ -52,6 +52,10 @@ app.config(['$routeProvider', '$locationProvider',
                     templateUrl: 'pages/category.html',
                     controller: 'categoryController'
                 }).
+                when('/search/:search_key', {
+                    templateUrl: 'pages/search-listing.html',
+                    controller: 'searchListingController'
+                }).
                 when('/subcat/:id', {
                     templateUrl: 'pages/subcat.html',
                     controller: 'subcatController'
