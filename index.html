@@ -42,27 +42,7 @@
         <div class="drawer"  ng-swipe-right="iosBack($event)" >
 
         </div>
-        <!--  <div class="menu-wrapper">
-             <em><i class="fa fa-question-circle"></i>Swipe the icons, tap to select!</em>
-             <div class="menu">
-                <a ng-href="#/chat" class="item">
-                     <img src="images/highlights/3.jpg" alt="img">
-                     Personal Stylist
-                 </a>    
-                 <a ng-href="#/define-style" class="item">
-                     <img src="images/highlights/4.jpg" alt="img">
-                     Define Style
-                 </a>   
-                 <a ng-href="#/wardrobe" class="item" id="selected">
-                     <img src="images/highlights/1.jpg" alt="img">
-                     Wardrobe 
-                 </a>    
-                 <a ng-href="#/scrapbook" class="item">
-                     <img src="images/highlights/2.jpg" alt="img">
-                     Scrapbook 
-                 </a>    
-             </div>
-         </div> -->
+  
 
         <div class="header" >
             <div class="header-controls">
@@ -73,6 +53,17 @@
                 <a ng-href="" class="open-more capture-event"><i class="fa fa-user"></i></a>
                 <a ng-href="#/cart"  class="open-cart"><i class="fa fa-shopping-cart"></i><span class="cart-count">{{ cartCnt}}</span></a>
 
+                <!--     <a ng-href="" class="open-slide capture-event"><i class="fa fa-star"></i></a> -->
+            </div>
+<div class="clear"></div>
+ 
+            <div class="header-controls custom-header-ctrl">
+                <div class="searchbar custom-searchbar">
+                <form ng-submit="searchProd(searchString)">
+    <input class="w78" type="text"  ng-model="searchString"  placeholder="Search Category or Brand">
+    <button type="submit"class="button button-blue">GO</button> 
+    </form>
+</div>
                 <!--     <a ng-href="" class="open-slide capture-event"><i class="fa fa-star"></i></a> -->
             </div>
         </div>    

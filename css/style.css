@@ -1,9 +1,9 @@
 /*---------------------------
 [Template Structure]
 
-Project:     SlideOut
+Project:     Style Panache
 Version:     1.0
-Primary Use: Site Template 
+Primary Use: Ecom
 Layout:      Responsive
 Platforms:   Mobile & Tablet
 -----------------------------
@@ -943,7 +943,7 @@ body {
 /*Page Header*/
 
 #content {
-    padding-top: 50px;
+    padding-top: 90px;
     padding-bottom: 35px;
 }
 
@@ -2018,4 +2018,19 @@ background-image: url('../images/highlights/pstylist.png');}
         color: #ff0055;
     font-weight: bold;
     margin-left: 2px;
+}
+.w78{
+    width: 78%;
+}
+.custom-searchbar{
+        background: #EFEBEB;
+    padding: 5px 0px;
+}
+.custom-header-ctrl{
+        width: 100%;
+    text-align: center;
+    margin-top: 0px;
+}
+.search-btn, .search-btn:hover, .search-btn:focus, .search-btn:active{
+background-color: #FF0055;
 }

@@ -288,6 +288,8 @@ $(document).ready(function () {
     var elem = angular.element(document.querySelector('[ng-app]'));
     var injector = elem.injector();
     var $rootScope = injector.get('$rootScope');
+    var $location = injector.get('$location');
+
     $rootScope.cartCnt = jQuery.parseJSON(window.localStorage.getItem('cart')).length > 0 ? jQuery.parseJSON(window.localStorage.getItem('cart')).length : "";
 
     $rootScope.$watch('online', function (newStatus) {
@@ -355,7 +357,15 @@ $(document).ready(function () {
         jQuery(ele).parent().find('.submenu').toggleClass('active-submenu-items');
         return false;
     }
-
+$rootScope.searchProd = function(string){
+      if(!string){
+        toast('Search field is required');
+        return false;
+      }
+    var url = '/search/'+string;
+    console.log(url);
+    $location.path(url);
+}
 
     $rootScope.iosBack = function (event) {
 
