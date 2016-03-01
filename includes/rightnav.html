@@ -7,7 +7,8 @@
 </div>
 <ul class="sidebar-navigation clearfix">
     <li><a href='#{{ loggedIn == 1 ? "/profile" : "/login?rurl=profile"}}'><i class="fa fa-user"></i>My Profile<i class="fa fa-caret-right"></i></a></li>
-    <li><a href='#{{ loggedIn == 1 ? "/chat" : "/login?rurl=chat"}}'><i class="fa fa-comments-o"></i>Personal Stylist<i class="fa fa-caret-right"></i></a></li>
+    <!--<li><a href='#{{ loggedIn == 1 ? "/chat" : "/login?rurl=chat"}}'><i class="fa fa-comments-o"></i>Personal Stylist<i class="fa fa-caret-right"></i></a></li>-->
+    <li><a href='#/chat'><i class="fa fa-comments-o"></i>Personal Stylist<i class="fa fa-caret-right"></i></a></li>
     <li><a href='#{{ loggedIn == 1 ? "/travel-planner" : "/login?rurl=travel-planner"}}'><i class="fa fa-plane"></i>Plan My Travel<i class="fa fa-caret-right"></i></a></li>
     <li><a href='#{{ loggedIn == 1 ? "/wardrobe" : "/login?rurl=wardrobe"}}'><i class="fa fa-binoculars"></i>My Wardrobe<i class="fa fa-caret-right"></i></a></li>
     <li><a href='#{{ loggedIn == 1 ? "/add-new-wardrobe" : "/login?rurl=add-new-wardrobe"}}'><i class="fa fa-plus-square"></i>Add to Wardrobe<i class="fa fa-caret-right"></i></a></li>
