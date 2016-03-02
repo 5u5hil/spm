@@ -61,7 +61,9 @@
                 <div class="searchbar custom-searchbar">
                 <form ng-submit="searchProd(searchString)">
     <input class="w78" type="text"  ng-model="searchString"  placeholder="Search Category or Brand">
-    <button type="submit"class="button button-blue">GO</button> 
+    <!--<button type="submit"class="button button-blue">GO</button>--> 
+    
+    <input type="button" value="Go" class="button button-blue" ng-click="searchProd(searchString)" />
     </form>
 </div>
                 <!--     <a ng-href="" class="open-slide capture-event"><i class="fa fa-star"></i></a> -->
