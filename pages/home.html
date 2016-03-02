@@ -20,7 +20,7 @@
                     <img src="images/highlights/defineyourstyle.jpg" class="w100 mb10" alt="img">
                     </a>
 
-                    <span ng-if="styleslen <=1"><a href='{{ loggedIn == 1 ? "#/add-new-style" : "#/login?rurl=add-new-style"}}' class="slider-button-1  full-button custom-btn" style="background-color: #1f1f1f;">Add New Style</a></span>
+                    <span ng-if="styleslen <=1"><a href='#/add-new-style' class="slider-button-1  full-button custom-btn" style="background-color: #1f1f1f;">Add New Style</a></span>
 
                     <span ng-if="styleslen >1"><a href='{{ url }}' class="slider-button-1  full-button custom-btn" style="background-color: #1f1f1f;">Stylist Picks for '{{text.trim()}}'</a></span>
 
