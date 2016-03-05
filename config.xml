@@ -44,6 +44,7 @@
     <preference name="webviewbounce" value="false" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="UIWebViewBounce" value="false" />
+    <preference name="android-build-tool" value="gradle" /> 
 
     <gap:plugin name="org.apache.cordova.splashscreen" source="npm" />
     <gap:plugin name="org.apache.cordova.inappbrowser" source="npm" />
@@ -68,6 +69,7 @@
         <param name="APP_ID" value="567167313435908" />
         <param name="APP_NAME" value="Style Panache" />
     </gap:plugin>
+    
     <gap:plugin name="cordova-plugin-appsflyer" source="npm" />
 
     
