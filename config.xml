@@ -68,7 +68,7 @@
         <param name="APP_ID" value="567167313435908" />
         <param name="APP_NAME" value="Style Panache" />
     </gap:plugin>
-    <gap:plugin name="cordova-plugin-appsflyer" version="3.3.1" />
+    <gap:plugin name="cordova-plugin-appsflyer" source="npm" />
 
     
 
