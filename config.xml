@@ -40,7 +40,7 @@
     <!-- Retina iPad -->
     <splash src="splash/ios/Defaultipr.png" platform="ios" width="1536" height="2048" />
     
-    <preference name="phonegap-version" value="3.9.1" />
+    <preference name="phonegap-version" value="cli-5.2.0" />
     <preference name="webviewbounce" value="false" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="UIWebViewBounce" value="false" />
@@ -68,7 +68,7 @@
         <param name="APP_ID" value="567167313435908" />
         <param name="APP_NAME" value="Style Panache" />
     </gap:plugin>
-    <plugin name="com.appsflyer.phonegap.plugins.appsflyer" spec="1.0.1" source="pgb" />
+    <gap:plugin name="cordova-plugin-appsflyer" version="3.3.1" />
 
     
 
