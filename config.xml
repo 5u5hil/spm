@@ -40,10 +40,11 @@
     <!-- Retina iPad -->
     <splash src="splash/ios/Defaultipr.png" platform="ios" width="1536" height="2048" />
     
-    <preference name="phonegap-version" value="3.9.1" />
+    <preference name="phonegap-version" value="cli-5.2.0" />
     <preference name="webviewbounce" value="false" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="UIWebViewBounce" value="false" />
+<!--    <preference name="android-build-tool" value="gradle" /> -->
 
     <gap:plugin name="org.apache.cordova.splashscreen" source="npm" />
     <gap:plugin name="org.apache.cordova.inappbrowser" source="npm" />
