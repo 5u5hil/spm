@@ -68,7 +68,7 @@
         <param name="APP_ID" value="567167313435908" />
         <param name="APP_NAME" value="Style Panache" />
     </gap:plugin>
-    <gap:plugin name="com.appsflyer.phonegap.plugins.appsflyer" version="1.0.1" />
+    <plugin name="com.appsflyer.phonegap.plugins.appsflyer" spec="1.0.1" source="pgb" />
 
     
 
