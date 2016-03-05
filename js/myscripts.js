@@ -1,6 +1,20 @@
 var timeout;
 
 document.addEventListener('deviceready', function () {
+    
+      var args = [];
+    var devKey = "B6KZfAcSxa9gy5gXMrDBX8";   // your AppsFlyer devKey
+    args.push(devKey);
+    var userAgent = window.navigator.userAgent.toLowerCase();
+
+    if (/iphone|ipad|ipod/.test( userAgent )) {
+        var appId = "1061620079";            // your ios app id in app store
+        args.push(appId);
+    }
+    window.plugins.appsFlyer.initSdk(args);
+    
+    
+    
 
     if (device.platform == "iOS") {
         initPushwoosh();
