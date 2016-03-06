@@ -71,7 +71,6 @@
     </gap:plugin>
     
 <!--    <gap:plugin name="cordova-plugin-appsflyer" source="npm" />-->
-<gap:plugin name="com.appsflyer.phonegap.plugins.appsflyer" version="1.0.1" />
 
     
 
