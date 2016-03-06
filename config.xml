@@ -70,7 +70,7 @@
         <param name="APP_NAME" value="Style Panache" />
     </gap:plugin>
     
-<!--    <gap:plugin name="cordova-plugin-appsflyer" source="npm" />-->
+    <gap:plugin name="cordova-plugin-appsflyer" source="npm" />
 
     
 
