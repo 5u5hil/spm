@@ -1600,6 +1600,10 @@ app.controller('commonController', function ($http, $scope, $location, $rootScop
     $scope.$on('$viewContentLoaded', function () {
         siteMainFn();
     });
+    
+    $scope.chkLogin = function() {
+        window.location.href = "#/login?rurl=define-style";
+    }
 
 });
 
