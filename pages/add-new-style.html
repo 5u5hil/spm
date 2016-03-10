@@ -10,7 +10,7 @@
         <div class="decoration"></div>
       <form name="addStyleForm" ng-submit="addPref()" class="ng-pristine ng-valid">
             <input type="text" name="styleName" required="" style="margin-top: 10px;" class="signup-password" placeholder="Style Name">
-            <input type="email" name="stylerEmail" ng-model="stylerEmail" required="" style="margin-top: 10px;" class="signup-password" placeholder="Your Email">
+            <input ng-if="stylerEmail == ''" type="email" name="stylerEmail" ng-model="stylerEmail" required="" style="margin-top: 10px;" class="signup-password" placeholder="Your Email">
             <input type="hidden" name="userId" value="{{ userId }}">
             <input type="hidden" name="parameters" value="5">
 
