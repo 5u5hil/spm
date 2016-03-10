@@ -63,8 +63,8 @@ app.controller('homeController', function ($http, $scope, $rootScope, $controlle
         $scope.styles = data.userstyles;
         var recentProduct = null;
         if($scope.styles.length){
-         recentProduct = $scope.styles[$scope.styles.length - 1].id;
-                $scope.styleName = $scope.styles[$scope.styles.length - 1].style_name;
+         recentProduct = $scope.styles[0].id;
+                $scope.styleName = $scope.styles[0].style_name;
 
      } 
         if (window.localStorage.getItem('id') != null && recentProduct)
