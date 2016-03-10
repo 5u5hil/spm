@@ -76,7 +76,7 @@
     </div>
 </span>
 <span   ng-if="styles.length">
-    <h3 class="mbtm30 txtcenter">Products matching your Style!</h3>
+    <h3 class="mbtm30 txtcenter">Last Style: {{styleName}}</h3>
     <div class="content">
         <div class="portfolio-adaptive adaptive-two listing">
             <div class="adaptive-item" ng-repeat="product in styleProducts | limitTo:12">
