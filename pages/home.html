@@ -40,11 +40,46 @@
         </div>
         <div class="decoration"></div>             
     </div>
-
+<span  ng-if="!styles.length ">
     <h3 class="mbtm30 txtcenter">Latest Trending</h3>
     <div class="content">
         <div class="portfolio-adaptive adaptive-two listing">
-            <div class="adaptive-item" ng-repeat="product in new | limitTo:12 | orderBy: 'updated_at':true">
+            <div class="adaptive-item" ng-repeat="product in new | limitTo:12">
+            <div class="img-wrapper-product">
+                <a href="#/product/{{product.url_key}}"  title="{{product.product}}">
+                <div class="img-listing-wrap" style="background-image:url('{{product.small_image != '' ? product.small_image : (product.medium_image != '' ? product.medium_image : product.large_image) }}')">
+                    
+                </div>
+                    
+                </a>
+                </div>
+                <h4 class="pname">
+                    <a href="#/product/{{product.url_key}}" class="lname">{{product.product}}</a> 
+                   </h4>
+                <p class="sdetail">
+                    <a href="#/product/{{product.url_key}}" class=""> 
+                        <span class="fprice" ng-if="product.spl_price > 0 && product.spl_price < product.price"><i class="fa fa-rupee"></i>{{product.price}}</span>   
+                        <span class="dprice"><i class="fa fa-rupee"></i>{{product.spl_price > 0 && product.spl_price < product.price ? product.spl_price : product.price }}</span>
+                        <a href="" class="lwishlit pull-right"><i class="fa fa-heart {{product.wishlist == 1? 'liked':''}}" ng-click="addToList($event, product.id)"></i></a> 
+                        <br>
+                         <span class="dd-cart-home ">
+                    <button class="button add-cart-btn mt7"  ng-click="addToCart($event, product)">Add to Cart</button>
+                     </span>
+                    </a> 
+
+                </p>
+            </div>
+
+        </div>
+<!-- 
+        <p><a href="#" class="button button-blue full-button" style="background-color: #1f1f1f;">More</a></p> -->
+    </div>
+</span>
+<span   ng-if="styles.length">
+    <h3 class="mbtm30 txtcenter">Products matching your Style!</h3>
+    <div class="content">
+        <div class="portfolio-adaptive adaptive-two listing">
+            <div class="adaptive-item" ng-repeat="product in styleProducts | limitTo:12">
             <div class="img-wrapper-product">
                 <a href="#/product/{{product.url_key}}"  title="{{product.product}}">
                 <div class="img-listing-wrap" style="background-image:url('{{product.small_image != '' ? product.small_image : (product.medium_image != '' ? product.medium_image : product.large_image) }}')">
@@ -72,9 +107,9 @@
 
         </div>
 
-        <p><a href="#" class="button button-blue full-button" style="background-color: #1f1f1f;">More</a></p>
+        <!-- <p><a href="#" class="button button-blue full-button" style="background-color: #1f1f1f;">More</a></p> -->
     </div>
-
+</span>
 </div>
 <script>
     jQuery('body').on('click', '.openRight', function(){

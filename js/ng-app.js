@@ -60,6 +60,18 @@ app.controller('homeController', function ($http, $scope, $rootScope, $controlle
         $rootScope.categories = data.categories;
         $scope.sliders = data.sliders;
         $scope.new = data.new;
+        $scope.styles = data.userstyles;
+        var recentProduct = null;
+        if($scope.styles.length){
+         recentProduct = $scope.styles[$scope.styles.length - 1].id;} 
+        if (window.localStorage.getItem('id') != null && recentProduct)
+        {
+            $http.get(domain + "/my-style/" + recentProduct).success(function (data, status, headers, config) {
+                $scope.styleProducts = data.data;
+                console.log($scope.styleProducts);
+            });
+        }
+
         $rootScope.$digest;
         loaderHide();
     });
