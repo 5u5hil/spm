@@ -2,9 +2,9 @@
     <div class="slider-container half-bottom mb7">
         <div class="homepage-slider" data-snap-ignore="true">                
             <div ng-repeat="slider in sliders" on-finish-render="ngRepeatFinished">
-            <a ng-href="{{ slider.link}}">
-                <img ng-src="{{ imgPath + slider.slider_img}}" class="responsive-image" alt="img">
-            </a>
+                <a ng-href="{{ slider.link}}">
+                    <img ng-src="{{ imgPath + slider.slider_img}}" class="responsive-image" alt="img">
+                </a>
             </div>
         </div>
     </div>
@@ -13,106 +13,118 @@
         <div class="  no-bottom">
             <!-- Page Columns-->
             <div class="one-responsive">
-                
-                 <a href="#/chat">
+
+                <a href="#/chat">
 
                     <a href="" role="link">
-                    <img src="images/highlights/defineyourstyle.jpg" class="w100 mb10" alt="img">
+                        <img src="images/highlights/defineyourstyle.jpg" class="w100 mb10" alt="img">
                     </a>
 
-                    <span ng-if="styleslen <=1"><a href='#/add-new-style' class="slider-button-1  full-button custom-btn" style="background-color: #1f1f1f;">Add New Style</a></span>
+                    <span ng-if="styleslen <= 1"><a href='#/add-new-style' class="slider-button-1  full-button custom-btn" style="background-color: #1f1f1f;">Add New Style</a></span>
 
-                    <span ng-if="styleslen >1"><a href='{{ url }}' class="slider-button-1  full-button custom-btn" style="background-color: #1f1f1f;">Stylist Picks for '{{text.trim()}}'</a></span>
+                    <span ng-if="styleslen > 1"><a href='{{ url}}' class="slider-button-1  full-button custom-btn" style="background-color: #1f1f1f;">Stylist Picks for '{{text.trim()}}'</a></span>
 
                     <span><a href='#/define-style' class="slider-button-1  full-button custom-btn" style="background-color: #1f1f1f;">Know More</a></span>
 
-                      </a>  
-                      <a href="#/chat">
+                </a>  
+                <a href="#/chat">
                     <img src="images/highlights/pstylist.jpg" class="w100 mb10" alt="img">
-                    </a>
-                    
-                     <a href="#/scrapbook">
+                </a>
+
+                <a href="#/scrapbook">
                     <img src="images/highlights/scrapbook.png" class="w100 " alt="img">
-                    </a>
-                 
+                </a>
+
                 <div class="thumb-clear"></div>
             </div>
         </div>
         <div class="decoration"></div>             
     </div>
-<span  ng-if="!styles.length ">
-    <h3 class="mbtm30 txtcenter">Latest Trending</h3>
-    <div class="content">
-        <div class="portfolio-adaptive adaptive-two listing">
-            <div class="adaptive-item" ng-repeat="product in new | limitTo:12">
-            <div class="img-wrapper-product">
-                <a href="#/product/{{product.url_key}}"  title="{{product.product}}">
-                <div class="img-listing-wrap" style="background-image:url('{{product.small_image != '' ? product.small_image : (product.medium_image != '' ? product.medium_image : product.large_image) }}')">
-                    
-                </div>
-                    
-                </a>
-                </div>
-                <h4 class="pname">
-                    <a href="#/product/{{product.url_key}}" class="lname">{{product.product}}</a> 
-                   </h4>
-                <p class="sdetail">
-                    <a href="#/product/{{product.url_key}}" class=""> 
-                        <span class="fprice" ng-if="product.spl_price > 0 && product.spl_price < product.price"><i class="fa fa-rupee"></i>{{product.price}}</span>   
-                        <span class="dprice"><i class="fa fa-rupee"></i>{{product.spl_price > 0 && product.spl_price < product.price ? product.spl_price : product.price }}</span>
-                        <a href="" class="lwishlit pull-right"><i class="fa fa-heart {{product.wishlist == 1? 'liked':''}}" ng-click="addToList($event, product.id)"></i></a> 
-                        <br>
-                         <span class="dd-cart-home ">
-                    <button class="button add-cart-btn mt7"  ng-click="addToCart($event, product)">Add to Cart</button>
-                     </span>
-                    </a> 
+    <span  ng-if="!styles.length">
+        <h3 class="mbtm30 txtcenter">Latest Trending</h3>
+        <div class="content">
+            <div class="portfolio-adaptive adaptive-two listing">
+                <div class="adaptive-item" ng-repeat="product in new | limitTo:12">
+                    <div class="img-wrapper-product">
+                        <a href="#/product/{{product.url_key}}"  title="{{product.product}}">
+                            <div class="img-listing-wrap" style="background-image:url('{{product.small_image != '' ? product.small_image : (product.medium_image != '' ? product.medium_image : product.large_image) }}')">
 
-                </p>
+                            </div>
+
+                        </a>
+                    </div>
+                    <h4 class="pname">
+                        <a href="#/product/{{product.url_key}}" class="lname">{{product.product}}</a> 
+                    </h4>
+                    <p class="sdetail">
+                        <a href="#/product/{{product.url_key}}" class="">
+                            <span  ng-if="product.spl_price != '0.00' && product.price != product.spl_price">
+                                <del><span class="fprice"><i class="fa fa-rupee"></i>{{product.price| number:0}}</span></del> 
+                                <ins><span class="dprice"><i class="fa fa-rupee"></i>{{product.spl_price| number:0}}</span></ins>
+                            </span>
+                            <span  ng-if="product.spl_price == '0.00' || product.price == product.spl_price" >
+                                <ins><span class="dprice"><i class="fa fa-rupee"></i>{{product.price| number:0}}</span></ins>
+                            </span>
+
+                            <a href="" class="lwishlit pull-right"><i class="fa fa-heart {{product.wishlist == 1? 'liked':''}}" ng-click="addToList($event, product.id)"></i></a> 
+                            <br>
+                            <span class="dd-cart-home ">
+                                <button class="button add-cart-btn mt7"  ng-click="addToCart($event, product)">Add to Cart</button>
+                            </span>
+                        </a> 
+
+                    </p>
+                </div>
+
+            </div>
+            <!-- 
+                    <p><a href="#" class="button button-blue full-button" style="background-color: #1f1f1f;">More</a></p> -->
+        </div>
+    </span>
+    <span   ng-if="styles.length">
+        <h3 class="mbtm30 txtcenter">Last Style: {{styleName}}</h3>
+        <div class="content">
+            <div class="portfolio-adaptive adaptive-two listing">
+                <div class="adaptive-item" ng-repeat="product in styleProducts| limitTo:12">
+                    <div class="img-wrapper-product">
+                        <a href="#/product/{{product.url_key}}"  title="{{product.product}}">
+                            <div class="img-listing-wrap" style="background-image:url('{{product.small_image != '' ? product.small_image : (product.medium_image != '' ? product.medium_image : product.large_image) }}')">
+
+                            </div>
+
+                        </a>
+                    </div>
+                    <h4 class="pname">
+                        <a href="#/product/{{product.url_key}}" class="lname">{{product.product}}</a> 
+                    </h4>
+                    <p class="sdetail">
+                        <a href="#/product/{{product.url_key}}" class=""> 
+                            <span  ng-if="product.spl_price != '0.00' && product.price != product.spl_price">
+                                <del><span class="fprice"><i class="fa fa-rupee"></i>{{product.price| number:0}}</span></del> 
+                                <ins><span class="dprice"><i class="fa fa-rupee"></i>{{product.spl_price| number:0}}</span></ins>
+                            </span>
+                            <span  ng-if="product.spl_price == '0.00' || product.price == product.spl_price" >
+                                <ins><span class="dprice"><i class="fa fa-rupee"></i>{{product.price| number:0}}</span></ins>
+                            </span>
+
+                            <a href="" class="lwishlit pull-right"><i class="fa fa-heart {{product.wishlist == 1? 'liked':''}}" ng-click="addToList($event, product.id)"></i></a> 
+                            <br>
+                            <span class="dd-cart-home ">
+                                <button class="button add-cart-btn mt7"  ng-click="addToCart($event, product)">Add to Cart</button>
+                            </span>
+                        </a> 
+
+                    </p>
+                </div>
+
             </div>
 
+            <!-- <p><a href="#" class="button button-blue full-button" style="background-color: #1f1f1f;">More</a></p> -->
         </div>
-<!-- 
-        <p><a href="#" class="button button-blue full-button" style="background-color: #1f1f1f;">More</a></p> -->
-    </div>
-</span>
-<span   ng-if="styles.length">
-    <h3 class="mbtm30 txtcenter">Last Style: {{styleName}}</h3>
-    <div class="content">
-        <div class="portfolio-adaptive adaptive-two listing">
-            <div class="adaptive-item" ng-repeat="product in styleProducts | limitTo:12">
-            <div class="img-wrapper-product">
-                <a href="#/product/{{product.url_key}}"  title="{{product.product}}">
-                <div class="img-listing-wrap" style="background-image:url('{{product.small_image != '' ? product.small_image : (product.medium_image != '' ? product.medium_image : product.large_image) }}')">
-                    
-                </div>
-                    
-                </a>
-                </div>
-                <h4 class="pname">
-                    <a href="#/product/{{product.url_key}}" class="lname">{{product.product}}</a> 
-                   </h4>
-                <p class="sdetail">
-                    <a href="#/product/{{product.url_key}}" class=""> 
-                        <span class="fprice" ng-if="product.spl_price > 0 && product.spl_price < product.price"><i class="fa fa-rupee"></i>{{product.price}}</span>   
-                        <span class="dprice"><i class="fa fa-rupee"></i>{{product.spl_price > 0 && product.spl_price < product.price ? product.spl_price : product.price }}</span>
-                        <a href="" class="lwishlit pull-right"><i class="fa fa-heart {{product.wishlist == 1? 'liked':''}}" ng-click="addToList($event, product.id)"></i></a> 
-                        <br>
-                         <span class="dd-cart-home ">
-                    <button class="button add-cart-btn mt7"  ng-click="addToCart($event, product)">Add to Cart</button>
-                     </span>
-                    </a> 
-
-                </p>
-            </div>
-
-        </div>
-
-        <!-- <p><a href="#" class="button button-blue full-button" style="background-color: #1f1f1f;">More</a></p> -->
-    </div>
-</span>
+    </span>
 </div>
 <script>
-    jQuery('body').on('click', '.openRight', function(){
+    jQuery('body').on('click', '.openRight', function () {
         jQuery('.open-more').click();
     });
 

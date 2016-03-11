@@ -27,10 +27,14 @@
 
                     </h3>
                     <em class="subtitle">From {{product.store}}</em>
-                    <h3 class="desc_title"> 
-                        <span class="fprice" ng-if="product.spl_price > 0 && product.spl_price < product.price"><i class="fa fa-rupee"></i>{{product.price}}</span>   
-                        <span class="dprice"><i class="fa fa-rupee"></i>{{product.spl_price > 0 && product.spl_price < product.price ? product.spl_price : product.price }}</span> 
-
+                    <h3 class="desc_title">
+                        <span  ng-if="product.spl_price != '0.00' && product.price != product.spl_price">
+                            <del><span class="fprice"><i class="fa fa-rupee"></i>{{product.price| number:0}}</span></del> 
+                            <ins><span class="dprice"><i class="fa fa-rupee"></i>{{product.spl_price| number:0}}</span></ins>
+                        </span>
+                        <span  ng-if="product.spl_price == '0.00' || product.price == product.spl_price" >
+                            <ins><span class="dprice"><i class="fa fa-rupee"></i>{{product.price| number:0}}</span></ins>
+                        </span>
                     </h3>
                     <div class="portfolio-one-details">
                         <a href="#">In Stock (Product already at its best price)</a>
@@ -62,8 +66,14 @@
                         </h4>
                         <p class="sdetail">
                             <a href="#/product/{{product.url_key}}" class=""> 
-                                <span class="fprice" ng-if="product.spl_price > 0 && product.spl_price < product.price"><i class="fa fa-rupee"></i>{{product.price}}</span>   
-                                <span class="dprice"><i class="fa fa-rupee"></i>{{product.spl_price > 0 && product.spl_price < product.price ? product.spl_price : product.price }}</span>
+                                <span  ng-if="product.spl_price != '0.00' && product.price != product.spl_price">
+                                    <del><span class="fprice"><i class="fa fa-rupee"></i>{{product.price| number:0}}</span></del> 
+                                    <ins><span class="dprice"><i class="fa fa-rupee"></i>{{product.spl_price| number:0}}</span></ins>
+                                </span>
+                                <span  ng-if="product.spl_price == '0.00' || product.price == product.spl_price" >
+                                    <ins><span class="dprice"><i class="fa fa-rupee"></i>{{product.price| number:0}}</span></ins>
+                                </span>                                
+
                                 <a href="" class="lwishlit pull-right"><i class="fa fa-heart {{product.wishlist == 1? 'liked':''}}" ng-click="addToList($event, product.id)"></i></a> 
                                 <br>
                                 <span class="dd-cart-home ">
