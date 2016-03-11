@@ -2034,3 +2034,9 @@ background-image: url('../images/highlights/pstylist.png');}
 .search-btn, .search-btn:hover, .search-btn:focus, .search-btn:active{
 background-color: #FF0055;
 }
+div#promoContainer {
+    z-index: 9999999 !important;
+}
+button.view-look:hover {
+    background-color: #FF0055 !important;
+}

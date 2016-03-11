@@ -431,6 +431,23 @@ app.controller('productController', function ($http, $rootScope, $scope, $locati
         siteMainFn();
     }, 2000);
 
+    $scope.showLook = function(img){
+           promoBox({
+            imagePath: '//stylepanache.in/public/admin/uploads/prodlooks/'+img, 
+            fadeInDuration: 0.33,
+            fadeOutDuration: 0.2,
+            loadDelay: 0
+        });
+    }  
+     $scope.showProduct = function(img){
+           promoBox({
+            imagePath: img, 
+            fadeInDuration: 0.33,
+            fadeOutDuration: 0.2,
+            loadDelay: 0
+        });
+    }
+
 });
 
 app.controller('scrapbookController', function ($http, $scope, $rootScope, $controller) {
