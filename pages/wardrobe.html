@@ -1,6 +1,7 @@
 <div id="content" class="snap-content">
     <div class="landing-page">
         <div class="landing-wrapper">
+        <div class="landing-wrapper-inner">
             <a role="link">
                 <img class="landing-logo" src="images/logo2.png"  alt="img" style="margin-top: 30px;">
                 <em class="landing-logo-sub">{{ name}}'s Wardrobe</em>
@@ -19,6 +20,7 @@
                 <div class="clear"></div>
                 <p class="landing-copyright" style="color:#fff;">Add</p>
             </div>
+            </div>
         </div>
         <div class="landing-background">
             <div class="bg-pattern"></div>
@@ -26,7 +28,21 @@
     </div>
 </div>
 <style>
+.landing-wrapper{
+        position: relative;
+    z-index: 999999;
+    background-image: url('images/bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
     #content{
              padding-bottom: 0px !important; 
     }
+    .landing-copyright{
+        margin-bottom: 0px !important;
+    }
+    .landing-wrapper-inner{
+        background-image: url('images/bgpat.png');
+    }
+
 </style>

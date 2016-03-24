@@ -1,8 +1,18 @@
 var timeout;
 
 document.addEventListener('deviceready', function () {
-    
-      var args = [];
+    if (device.platform == "Android") {
+        jQuery('.drawer').remove();
+        jQuery('.open-menu1').remove();
+    }
+    window.plugins.appsFlyer.initSdk(args);
+    if (device.platform == "iOS") {
+        initPushwoosh();
+    } else {
+        initPushwooshAndroid();
+    } 
+    document.addEventListener("offline", onOffline, false);
+    var args = [];
     var devKey = "B6KZfAcSxa9gy5gXMrDBX8";   // your AppsFlyer devKey
     args.push(devKey);
     var userAgent = window.navigator.userAgent.toLowerCase();
@@ -11,18 +21,6 @@ document.addEventListener('deviceready', function () {
         var appId = "1061620079";            // your ios app id in app store
         args.push(appId);
     }
-    window.plugins.appsFlyer.initSdk(args);
-    if (device.platform == "iOS") {
-        initPushwoosh();
-    } else {
-        initPushwooshAndroid();
-    } 
-    if (device.platform == "Android") {
-        jQuery('.drawer').remove();
-        jQuery('.open-menu1').remove();
-
-    }
-    document.addEventListener("offline", onOffline, false);
 }, false);
 
 function onOffline() {
