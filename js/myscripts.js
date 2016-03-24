@@ -12,15 +12,11 @@ document.addEventListener('deviceready', function () {
         args.push(appId);
     }
     window.plugins.appsFlyer.initSdk(args);
-    
-    
-    
-
     if (device.platform == "iOS") {
         initPushwoosh();
     } else {
         initPushwooshAndroid();
-    }
+    } 
     if (device.platform == "Android") {
         jQuery('.drawer').remove();
         jQuery('.open-menu1').remove();
