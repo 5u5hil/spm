@@ -5,22 +5,22 @@ document.addEventListener('deviceready', function () {
         jQuery('.drawer').remove();
         jQuery('.open-menu1').remove();
     }
-    window.plugins.appsFlyer.initSdk(args);
     if (device.platform == "iOS") {
         initPushwoosh();
     } else {
         initPushwooshAndroid();
     } 
-    document.addEventListener("offline", onOffline, false);
-    var args = [];
-    var devKey = "B6KZfAcSxa9gy5gXMrDBX8";   // your AppsFlyer devKey
-    args.push(devKey);
-    var userAgent = window.navigator.userAgent.toLowerCase();
+    // window.plugins.appsFlyer.initSdk(args);
+    // document.addEventListener("offline", onOffline, false);
+    // var args = [];
+    // var devKey = "B6KZfAcSxa9gy5gXMrDBX8";   // your AppsFlyer devKey
+    // args.push(devKey);
+    // var userAgent = window.navigator.userAgent.toLowerCase();
 
-    if (/iphone|ipad|ipod/.test( userAgent )) {
-        var appId = "1061620079";            // your ios app id in app store
-        args.push(appId);
-    }
+    // if (/iphone|ipad|ipod/.test( userAgent )) {
+    //     var appId = "1061620079";            // your ios app id in app store
+    //     args.push(appId);
+    // }
 }, false);
 
 function onOffline() {
