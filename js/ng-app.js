@@ -433,7 +433,7 @@ app.controller('productController', function ($http, $rootScope, $scope, $locati
 
     $scope.showLook = function(img){
            promoBox({
-            imagePath: '//stylepanache.in/public/admin/uploads/prodlooks/'+img, 
+            imagePath: 'http://stylepanache.in/public/admin/uploads/prodlooks/'+img, 
             fadeInDuration: 0.33,
             fadeOutDuration: 0.2,
             loadDelay: 0
