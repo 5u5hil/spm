@@ -61,15 +61,15 @@ app.controller('homeController', function ($http, $scope, $rootScope, $controlle
         $scope.sliders = data.sliders;
         $scope.new = data.new;
         $scope.styles = data.userstyles;
-        var recentProduct = null;
+         $scope.recentProduct = null;
         if($scope.styles.length){
-         recentProduct = $scope.styles[0].id;
+         $scope.recentProduct = $scope.styles[0].id;
                 $scope.styleName = $scope.styles[0].style_name;
 
      } 
-        if (window.localStorage.getItem('id') != null && recentProduct)
+        if (window.localStorage.getItem('id') != null && $scope.recentProduct)
         {
-            $http.get(domain + "/my-style/" + recentProduct).success(function (data, status, headers, config) {
+            $http.get(domain + "/my-style/" + $scope.recentProduct).success(function (data, status, headers, config) {
                 $scope.styleProducts = data.data;
                 console.log($scope.styleProducts);
             });

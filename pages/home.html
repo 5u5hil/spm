@@ -47,7 +47,7 @@
                 <div class="adaptive-item" ng-repeat="product in new | limitTo:12">
                     <div class="img-wrapper-product">
                         <a href="#/product/{{product.url_key}}"  title="{{product.product}}">
-                            <div class="img-listing-wrap" style="background-image:url('{{product.small_image != '' ? product.small_image : (product.medium_image != '' ? product.medium_image : product.large_image) }}')">
+                            <div class="img-listing-wrap" style="background-image:url('{{product.large_image != '' ? product.large_image : (product.medium_image != '' ? product.medium_image : product.small_image) }}')">
 
                             </div>
 
@@ -88,7 +88,7 @@
                 <div class="adaptive-item" ng-repeat="product in styleProducts| limitTo:12">
                     <div class="img-wrapper-product">
                         <a href="#/product/{{product.url_key}}"  title="{{product.product}}">
-                            <div class="img-listing-wrap" style="background-image:url('{{product.small_image != '' ? product.small_image : (product.medium_image != '' ? product.medium_image : product.large_image) }}')">
+                            <div class="img-listing-wrap" style="background-image:url('{{product.large_image != '' ? product.large_image : (product.medium_image != '' ? product.medium_image : product.small_image) }}')">
 
                             </div>
 
@@ -116,10 +116,11 @@
 
                     </p>
                 </div>
-
+            <div><a ng-href="#/explore-style/{{recentProduct}}" class="button button-blue full-button" style="background-color: #1f1f1f;">View More</a></div>  
+            </div> 
             </div>
 
-            <!-- <p><a href="#" class="button button-blue full-button" style="background-color: #1f1f1f;">More</a></p> -->
+
         </div>
     </span>
 </div>
