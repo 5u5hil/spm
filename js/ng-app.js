@@ -1755,6 +1755,15 @@ app.controller('subcatController', function ($http, $scope, $location, $rootScop
         loaderHide();
     });
 });
+app.controller('offerController', function ($http, $scope, $location, $rootScope, $routeParams) {
+ 
+    loaderShow(); 
+
+    $http.get(domain + "/get-offers").success(function (data, status, headers, config) { 
+        $scope.offers = data; 
+        loaderHide();
+    });
+});
 app.run(function ($window, $rootScope) {
     $rootScope.online = navigator.onLine;
     $window.addEventListener("offline", function () {

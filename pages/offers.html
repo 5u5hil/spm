@@ -1,0 +1,25 @@
+<div id="content" class="snap-content"> 
+    <div class="header-clear"></div>
+    <div class="content">
+        <div class="blog-posts custom-blog-posts">
+            <div class="blog-post">
+               
+                 <h2 class="blog-post-title">Offers</h2>
+                <div class="clear"></div>
+                <div class="decoration"></div>
+                <ul>
+                    <li  class="sub-cat-opt offer-li" ng-repeat="offer in offers"> 
+                            <h2> {{::offer.offer_name}}</h2>
+                            <p class="mb10">{{::offer.description}}</p>
+                        <p class="mb10"><a ng-href="{{offer.link}}"><button class="button add-cart-btn mt7">Explore</button> </a></p>
+                       
+                    </li> 
+                </ul>
+                
+                
+            </div>
+        </div>
+        <div class="decoration"></div>
+    </div>
+    <!-- Page Footer-->
+</div>

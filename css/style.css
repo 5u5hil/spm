@@ -1814,7 +1814,7 @@ div.img-wrapper-product {
 #content .fa{
 
         padding: 1px !important;
-        font-size: 15px !important;}
+        font-size: 15px  }
 .sub-cat-opt{
         width: 100%;
     list-style: none;
@@ -2039,4 +2039,35 @@ div#promoContainer {
 }
 button.view-look:hover {
     background-color: #FF0055 !important;
+}
+.clear-fix{
+    clear: both;
+}
+.text-center{
+    text-align: center !important;
+}.mt5 {
+    margin-top: 5px !important;
+}
+i.fa.stylist-icon {
+    color: red;
+    font-size: 31px !important;
+}
+.how-it-wrap{
+        background-color: #f4f4f4;
+    padding: 30px 10px;
+}
+.fz16{
+        font-size: 16px;
+}
+.mb10{
+        margin-bottom: 20px;
+}
+.mb40{
+    margin-bottom: 40px;
+}
+p.mb10{
+    margin-bottom: 10px !important;
+}
+.offer-li{
+        padding-top: 20px;
 }

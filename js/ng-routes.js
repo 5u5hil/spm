@@ -156,6 +156,10 @@ app.config(['$routeProvider', '$locationProvider',
                     templateUrl: 'pages/user-profile.html',
                     controller: 'userProfileController'
                 }).
+                when('/offers', {
+                    templateUrl: 'pages/offers.html',
+                    controller: 'offerController'
+                }).
                 otherwise({
                     redirectTo: '/'
                 });

@@ -13,7 +13,7 @@
     Start Shopping
 </div>
 <ul class="sidebar-navigation">
-    <li><a ng-href="#/scrapbook"><i class="fa fa-edit"></i>Look Book<i class="fa fa-circle"></i></a></li>
+    <li><a ng-href="#/offers"><i class="fa fa-edit"></i>Offers<i class="fa fa-circle"></i></a></li>
     <!--<li><a ng-href=""><i class="fa fa-tag"></i>New Arrivals<i class="fa fa-circle"></i></a></li>-->
     <li class="has-submenu"   ng-repeat="cat in categories" on-finish-render="ngRepeatFinished">
         <a class="deploy-submenu" ng-click="menuFn($event)" ng-href=""><i class="fa " ng-class="{true: 'fa-mars', false: 'fa-venus'}[cat.category == 'Menswear']" ></i>{{ cat.category}}<i class="fa fa-plus"></i></a>
