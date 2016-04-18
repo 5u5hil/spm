@@ -9,19 +9,18 @@ document.addEventListener('deviceready', function () {
         initPushwoosh();
     } else {
         initPushwooshAndroid();
-    }
+    } 
+    // window.plugins.appsFlyer.initSdk(args);
+    // document.addEventListener("offline", onOffline, false);
+    // var args = [];
+    // var devKey = "B6KZfAcSxa9gy5gXMrDBX8";   // your AppsFlyer devKey
+    // args.push(devKey);
+    // var userAgent = window.navigator.userAgent.toLowerCase();
 
-
-    var args = [];
-    var devKey = "B6KZfAcSxa9gy5gXMrDBX8";   // your AppsFlyer devKey
-    args.push(devKey);
-    var userAgent = window.navigator.userAgent.toLowerCase();
-
-    if (/iphone|ipad|ipod/.test(userAgent)) {
-        var appId = "1061620079";            // your ios app id in app store
-        args.push(appId);
-    }
-    window.plugins.appsFlyer.initSdk(args);
+    // if (/iphone|ipad|ipod/.test( userAgent )) {
+    //     var appId = "1061620079";            // your ios app id in app store
+    //     args.push(appId);
+    // }
 }, false);
 
 function onOffline() {
@@ -366,15 +365,15 @@ $(document).ready(function () {
         jQuery(ele).parent().find('.submenu').toggleClass('active-submenu-items');
         return false;
     }
-    $rootScope.searchProd = function (string) {
-        if (!string) {
-            toast('Search field is required');
-            return false;
-        }
-        var url = '/search/' + string;
-        console.log(url);
-        $location.path(url);
-    }
+$rootScope.searchProd = function(string){
+      if(!string){
+        toast('Search field is required');
+        return false;
+      }
+    var url = '/search/'+string;
+    console.log(url);
+    $location.path(url);
+}
 
     $rootScope.iosBack = function (event) {
 
