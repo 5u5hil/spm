@@ -96,24 +96,24 @@ function openInStore (app) {
 
     if (device.platform  == "Android") {
       if(app == 'fb') {
-        window.location.href = 'https://play.google.com/store/apps/details?id=com.facebook.katana&hl=en';
+        window.open('https://play.google.com/store/apps/details?id=com.facebook.katana&hl=en');
       }
       if(app == 'telegram') {
-        window.location.href = 'https://play.google.com/store/apps/details?id=org.telegram.messenger&hl=en';
+        window.open('https://play.google.com/store/apps/details?id=org.telegram.messenger&hl=en');
       }
       if(app == 'wechat') {
-        window.location.href = 'https://play.google.com/store/apps/details?id=com.tencent.mm&hl=en';
+        window.open('https://play.google.com/store/apps/details?id=com.tencent.mm&hl=en');
       }
     }
     if (device.platform  == "iOS") {
          if(app == 'fb') {
-        window.location.href = 'https://itunes.apple.com/us/app/facebook/id284882215?mt=8&ign-mpt=uo%3D2';
+        window.open('https://itunes.apple.com/us/app/facebook/id284882215?mt=8&ign-mpt=uo%3D2');
       }
       if(app == 'telegram') {
-        window.location.href = 'https://itunes.apple.com/us/app/telegram/id747648890?mt=12&ign-mpt=uo%3D2';
+        window.open('https://itunes.apple.com/us/app/telegram/id747648890?mt=12&ign-mpt=uo%3D2');
       }
       if(app == 'wechat') {
-window.location.href = 'https://itunes.apple.com/us/app/wechat/id836500024?mt=12&ign-mpt=uo%3D2';
+ window.open('https://itunes.apple.com/us/app/wechat/id836500024?mt=12&ign-mpt=uo%3D2');
       }
     }
 }
