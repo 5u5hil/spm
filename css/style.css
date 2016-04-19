@@ -2071,3 +2071,15 @@ p.mb10{
 .offer-li{
         padding-top: 20px;
 }
+.medium-icon .fa-facebook-official{
+
+    color: #3B5998 !important;
+}
+.medium-icon .fa-send{
+
+    color: #2BA1DB !important;
+}
+.medium-icon .fa-wechat{
+
+    color: #76a70a !important;
+}
