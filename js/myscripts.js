@@ -1,11 +1,11 @@
 var timeout;
 
-document.addEventListener('deviceready', function () {
-    if (device.platform == "Android") {
+document.addEventListener('deviceready', function () {  
+    if (device.platform == "Android") { 
         jQuery('.drawer').remove();
         jQuery('.open-menu1').remove();
     }
-    if (device.platform == "iOS") {
+    if (device.platform == "iOS") { 
         initPushwoosh();
     } else {
         initPushwooshAndroid();
@@ -21,11 +21,11 @@ document.addEventListener('deviceready', function () {
     //     var appId = "1061620079";            // your ios app id in app store
     //     args.push(appId);
     // }
-}, false);
 
 function onOffline() {
     toast('Seems like you are not connected to the Internet')
 }
+}, false);
 
 
 function initPushwoosh() {
@@ -92,7 +92,31 @@ function initPushwooshAndroid() {
             }
     );
 }
+function openInStore (app) { 
 
+    if (device.platform  == "Android") {
+      if(app == 'fb') {
+        window.location.href = 'https://play.google.com/store/apps/details?id=com.facebook.katana&hl=en';
+      }
+      if(app == 'telegram') {
+        window.location.href = 'https://play.google.com/store/apps/details?id=org.telegram.messenger&hl=en';
+      }
+      if(app == 'wechat') {
+        window.location.href = 'https://play.google.com/store/apps/details?id=com.tencent.mm&hl=en';
+      }
+    }
+    if (device.platform  == "iOS") {
+         if(app == 'fb') {
+        window.location.href = 'https://itunes.apple.com/us/app/facebook/id284882215?mt=8&ign-mpt=uo%3D2';
+      }
+      if(app == 'telegram') {
+        window.location.href = 'https://itunes.apple.com/us/app/telegram/id747648890?mt=12&ign-mpt=uo%3D2';
+      }
+      if(app == 'wechat') {
+window.location.href = 'https://itunes.apple.com/us/app/wechat/id836500024?mt=12&ign-mpt=uo%3D2';
+      }
+    }
+}
 function loaderShow() {
     jQuery("#preloader,#status").show();
 
