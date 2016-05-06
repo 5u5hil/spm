@@ -2082,4 +2082,11 @@ p.mb10{
 .medium-icon .fa-wechat{
 
     color: #76a70a !important;
+} 
+#promoLink {
+        height: 100% !important;
+    text-align: center;
+}
+#promoContent {
+    height: 100%;
 }

@@ -43,10 +43,20 @@ angular.module('ChangePasswordConfirm', []).directive('changePasswordC', functio
     };
 });
 
-app.controller('homeController', function ($http, $scope, $rootScope, $controller) {
+app.controller('homeController', function ($http, $scope, $rootScope, $controller, $timeout) {
     if (window.localStorage.getItem('showIntro') === null) {
         window.localStorage.setItem('showIntro', 1)
         window.location.href = "#/intro";
+    }
+    if (window.localStorage.getItem('firstLoad') === null) {
+        window.localStorage.setItem('firstLoad', 1)
+         promoBox({
+            imagePath: 'images/chat-popup.jpg', 
+            link: 'http://stylepanache.in/chat/chat.php?name=guest&email=anonymous',
+            fadeInDuration: 0,
+            fadeOutDuration: 0.2,
+            loadDelay: 0
+        }); 
     }
     loaderShow();
     $scope.styleslen = jQuery(".newStyle li").length;
