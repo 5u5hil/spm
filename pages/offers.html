@@ -8,7 +8,7 @@
                 <div class="clear"></div>
                 <div class="decoration"></div>
                 <ul>
-                    <li  class="sub-cat-opt offer-li" ng-repeat="offer in offers"> 
+                    <li  class="sub-cat-opt offer-li" ng-repeat="offer in offers" on-finish-render="ngRepeatFinished"> 
                             <h2> {{::offer.offer_name}}</h2>
                             <p class="mb10">{{::offer.description}}</p>
                         <p class="mb10"><a ng-href="{{offer.link}}"><button class="button add-cart-btn mt7">Explore</button> </a></p>

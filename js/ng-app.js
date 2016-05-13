@@ -1,9 +1,9 @@
-app.directive('onFinishRender', function ($timeout) {
+app.directive('onFinishRender', function($timeout) {
     return {
         restrict: 'A',
-        link: function (scope, element, attr) {
+        link: function(scope, element, attr) {
             if (scope.$last === true) {
-                $timeout(function () {
+                $timeout(function() {
                     scope.$emit('ngRepeatFinished');
                 });
             }
@@ -11,8 +11,8 @@ app.directive('onFinishRender', function ($timeout) {
     };
 });
 
-app.run(function ($rootScope, $location) {
-    $rootScope.$on('$locationChangeSuccess', function () {
+app.run(function($rootScope, $location) {
+    $rootScope.$on('$locationChangeSuccess', function() {
         if ($rootScope.previousLocation == $location.path()) {
             window.localStorage.setItem("back", 1);
 
@@ -26,13 +26,13 @@ app.run(function ($rootScope, $location) {
 });
 
 
-angular.module('ChangePasswordConfirm', []).directive('changePasswordC', function () {
+angular.module('ChangePasswordConfirm', []).directive('changePasswordC', function() {
     return {
         require: 'ngModel',
-        link: function (scope, elm, attrs, ctrl) {
+        link: function(scope, elm, attrs, ctrl) {
             ctrl.$setValidity('noMatch1', true);
 
-            attrs.$observe('changePasswordC', function (newVal) {
+            attrs.$observe('changePasswordC', function(newVal) {
                 if (newVal === 'true') {
                     ctrl.$setValidity('noMatch1', true);
                 } else {
@@ -43,36 +43,38 @@ angular.module('ChangePasswordConfirm', []).directive('changePasswordC', functio
     };
 });
 
-app.controller('homeController', function ($http, $scope, $rootScope, $controller, $timeout) {
+app.controller('homeController', function($http, $scope, $rootScope, $controller, $timeout) {
     if (window.localStorage.getItem('showIntro') === null) {
         window.localStorage.setItem('showIntro', 1)
         window.location.href = "#/intro";
     }
- 
+
     loaderShow();
     $scope.styleslen = jQuery(".newStyle li").length;
     $scope.url = jQuery(".newStyle li:last-child a").attr("href");
     $scope.text = jQuery(".newStyle li:last-child").text();
 
-    $http.get(domain + "/home" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, response, status, headers, config) {
 
+    $http.get(domain + "/home" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : ""), { cache: true }).success(function(data, response, status, headers, config) {
         window.localStorage.setItem('categories', JSON.stringify(data.categories));
         $scope.imgPath = domain + "/public/admin/uploads/slider/";
         $rootScope.categories = data.categories;
         $scope.sliders = data.sliders;
         $scope.new = data.new;
-        $scope.styles = data.userstyles;
-         $scope.recentProduct = null;
-        if($scope.styles.length){
-         $scope.recentProduct = $scope.styles[0].id;
-                $scope.styleName = $scope.styles[0].style_name;
+        $scope.recentProduct = null;
+        if ($scope.styles.length) {
+            $scope.recentProduct = $scope.styles[0].id;
+            $scope.styleName = $scope.styles[0].style_name;
 
-     } 
-        if (window.localStorage.getItem('id') != null && $scope.recentProduct)
-        {
-            $http.get(domain + "/my-style/" + $scope.recentProduct).success(function (data, status, headers, config) {
+        }
+        if (window.localStorage.getItem('id') != null && $scope.recentProduct) {
+            $http.get(domain + "/my-style/" + $scope.recentProduct).success(function(data, status, headers, config) {
+                if (window.localStorage.getItem('back') == 1 && jQuery.parseJSON(window.localStorage.getItem("styleProducts"))) {
+                    $scope.styleProducts = jQuery.parseJSON(window.localStorage.getItem("styleProducts"));
+                } else { 
                 $scope.styleProducts = data.data;
-                console.log($scope.styleProducts);
+                window.localStorage.setItem("styleProducts", JSON.stringify($scope.styleProducts)); 
+                } 
             });
         }
 
@@ -80,21 +82,21 @@ app.controller('homeController', function ($http, $scope, $rootScope, $controlle
         loaderHide();
     });
 
-    $scope.$on('ngRepeatFinished', function (ngRepeatFinishedEvent) {
+    $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
         siteMainFn();
     });
-    $scope.$on('$viewContentLoaded', function () {
+    $scope.$on('$viewContentLoaded', function() {
         angular.element('.drawer').css('display', 'none');
         angular.element('.open-menu1').css('display', 'none');
     });
-    $scope.$on('$destroy', function () {
+    $scope.$on('$destroy', function() {
         angular.element('.drawer').css('display', 'block');
         angular.element('.open-menu1').css('display', 'block');
 
     });
 });
 
-app.controller('categoryController', function ($http, $scope, $location, $rootScope, $routeParams, $anchorScroll) {
+app.controller('categoryController', function($http, $scope, $location, $rootScope, $routeParams, $anchorScroll) {
 
     $scope.filtered = {};
     $scope.minp = 0;
@@ -117,7 +119,7 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
         loaderShow();
         $http.get(domain + "/get-category-products/" + $routeParams.url_key + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : ""), {
             cache: true
-        }).success(function (data, status, headers, config) {
+        }).success(function(data, status, headers, config) {
             $scope.products = data;
             $scope.pdts = data.data
             $scope.filters = data.filters;
@@ -129,7 +131,7 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
             loaderHide();
         });
     }
-    $scope.load = function (event, url) {
+    $scope.load = function(event, url) {
         angular.element(event.target).children("i").addClass("fa fa-spinner fa-pulse");
         $http.get(url, {
             params: {
@@ -141,10 +143,10 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
                 'userId': (window.localStorage.getItem('id') != null ? window.localStorage.getItem('id') : "")
             },
             cache: true
-        }).success(function (data, status, headers, config) {
+        }).success(function(data, status, headers, config) {
             $scope.products = data;
             if (data.data.length > 0) {
-                jQuery.each(data.data, function (k, v) {
+                jQuery.each(data.data, function(k, v) {
                     $scope.pdts.push(v);
                 });
                 window.localStorage.setItem("pdts", JSON.stringify($scope.pdts));
@@ -163,7 +165,7 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
         });
     };
 
-    $scope.filterProds = function (option, parent) {
+    $scope.filterProds = function(option, parent) {
         if (option) {
             if (!(parent in $scope.filtered))
                 $scope.filtered[parent] = [];
@@ -180,7 +182,7 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
         }
     };
 
-    $scope.applyFilters = function () {
+    $scope.applyFilters = function() {
         $scope.minp = jQuery("#min_price").val();
         $scope.maxp = jQuery("#max_price").val();
 
@@ -200,7 +202,7 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
                 'userId': (window.localStorage.getItem('id') != null ? window.localStorage.getItem('id') : "")
 
             }
-        }).success(function (response) {
+        }).success(function(response) {
             $scope.products = response;
             $scope.pdts = response.data
             $scope.$digest;
@@ -211,17 +213,17 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
         });
     }
 
-    $scope.sizeOf = function (obj) {
+    $scope.sizeOf = function(obj) {
         return Object.keys(obj).length;
     };
 
-    $scope.showFilters = function () {
+    $scope.showFilters = function() {
         jQuery(".big-notification.yellow-notification").toggle("slideDown");
         if (window.localStorage.getItem('back') == 1) {
             if (window.localStorage.getItem('filtered') != "null") {
 
-                jQuery.each(jQuery.parseJSON(window.localStorage.getItem("filtered")), function (k, v) {
-                    jQuery.each(v, function (kk, vv) {
+                jQuery.each(jQuery.parseJSON(window.localStorage.getItem("filtered")), function(k, v) {
+                    jQuery.each(v, function(kk, vv) {
                         jQuery("input[value=" + vv + "]").prop("checked", true);
 
                     });
@@ -232,13 +234,13 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
         }
     }
 
-    $scope.showOptions = function (e) {
+    $scope.showOptions = function(e) {
         jQuery("#" + e).toggle();
     }
 
-    $scope.$on('ngRepeatFinished', function (ngRepeatFinishedEvent) {
+    $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
         siteMainFn();
-        jQuery(".catpage").scroll(function () {
+        jQuery(".catpage").scroll(function() {
             var scrolled_val = jQuery(".catpage").scrollTop().valueOf();
             window.localStorage.setItem("scpos", scrolled_val);
 
@@ -255,7 +257,7 @@ app.controller('categoryController', function ($http, $scope, $location, $rootSc
 
 });
 
-app.controller('searchListingController', function ($http, $scope, $location, $rootScope, $routeParams, $anchorScroll) {
+app.controller('searchListingController', function($http, $scope, $location, $rootScope, $routeParams, $anchorScroll) {
 
     $scope.filtered = {};
     $scope.minp = 0;
@@ -277,7 +279,7 @@ app.controller('searchListingController', function ($http, $scope, $location, $r
         loaderShow();
         $http.get(domain + "/search/" + $routeParams.search_key + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : ""), {
             cache: true
-        }).success(function (data, status, headers, config) {
+        }).success(function(data, status, headers, config) {
             $scope.products = data;
             $scope.pdts = data.data
             $scope.filters = data.filters;
@@ -289,7 +291,7 @@ app.controller('searchListingController', function ($http, $scope, $location, $r
             loaderHide();
         });
     }
-    $scope.load = function (event, url) {
+    $scope.load = function(event, url) {
         angular.element(event.target).children("i").addClass("fa fa-spinner fa-pulse");
         $http.get(url, {
             params: {
@@ -301,10 +303,10 @@ app.controller('searchListingController', function ($http, $scope, $location, $r
                 'userId': (window.localStorage.getItem('id') != null ? window.localStorage.getItem('id') : "")
             },
             cache: true
-        }).success(function (data, status, headers, config) {
+        }).success(function(data, status, headers, config) {
             $scope.products = data;
             if (data.data.length > 0) {
-                jQuery.each(data.data, function (k, v) {
+                jQuery.each(data.data, function(k, v) {
                     $scope.pdts.push(v);
                 });
                 window.localStorage.setItem("pdts2", JSON.stringify($scope.pdts));
@@ -323,7 +325,7 @@ app.controller('searchListingController', function ($http, $scope, $location, $r
         });
     };
 
-    $scope.filterProds = function (option, parent) {
+    $scope.filterProds = function(option, parent) {
         if (option) {
             if (!(parent in $scope.filtered))
                 $scope.filtered[parent] = [];
@@ -340,7 +342,7 @@ app.controller('searchListingController', function ($http, $scope, $location, $r
         }
     };
 
-    $scope.applyFilters = function () {
+    $scope.applyFilters = function() {
         $scope.minp = jQuery("#min_price").val();
         $scope.maxp = jQuery("#max_price").val();
 
@@ -360,7 +362,7 @@ app.controller('searchListingController', function ($http, $scope, $location, $r
                 'userId': (window.localStorage.getItem('id') != null ? window.localStorage.getItem('id') : "")
 
             }
-        }).success(function (response) {
+        }).success(function(response) {
             $scope.products = response;
             $scope.pdts = response.data
             $scope.$digest;
@@ -371,17 +373,17 @@ app.controller('searchListingController', function ($http, $scope, $location, $r
         });
     }
 
-    $scope.sizeOf = function (obj) {
+    $scope.sizeOf = function(obj) {
         return Object.keys(obj).length;
     };
 
-    $scope.showFilters = function () {
+    $scope.showFilters = function() {
         jQuery(".big-notification.yellow-notification").toggle("slideDown");
         if (window.localStorage.getItem('back') == 1) {
             if (window.localStorage.getItem('filtered2') != "null") {
 
-                jQuery.each(jQuery.parseJSON(window.localStorage.getItem("filtered2")), function (k, v) {
-                    jQuery.each(v, function (kk, vv) {
+                jQuery.each(jQuery.parseJSON(window.localStorage.getItem("filtered2")), function(k, v) {
+                    jQuery.each(v, function(kk, vv) {
                         jQuery("input[value=" + vv + "]").prop("checked", true);
 
                     });
@@ -392,13 +394,13 @@ app.controller('searchListingController', function ($http, $scope, $location, $r
         }
     }
 
-    $scope.showOptions = function (e) {
+    $scope.showOptions = function(e) {
         jQuery("#" + e).toggle();
     }
 
-    $scope.$on('ngRepeatFinished', function (ngRepeatFinishedEvent) {
+    $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
         siteMainFn();
-        jQuery(".catpage").scroll(function () {
+        jQuery(".catpage").scroll(function() {
             var scrolled_val = jQuery(".catpage").scrollTop().valueOf();
             window.localStorage.setItem("scpos2", scrolled_val);
 
@@ -415,34 +417,34 @@ app.controller('searchListingController', function ($http, $scope, $location, $r
 
 });
 
-app.controller('productController', function ($http, $rootScope, $scope, $location, $routeParams, $timeout) {
+app.controller('productController', function($http, $rootScope, $scope, $location, $routeParams, $timeout) {
 
     loaderShow();
 
-    $http.get(domain + "/product-details/" + $routeParams.url_key + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
+    $http.get(domain + "/product-details/" + $routeParams.url_key + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function(data, status, headers, config) {
         $scope.product = data;
         $scope.$digest;
         loaderHide();
     });
 
-    $scope.$on('$viewContentLoaded', function () {
+    $scope.$on('$viewContentLoaded', function() {
         siteMainFn();
     });
-    $timeout(function () {
+    $timeout(function() {
         siteMainFn();
     }, 2000);
 
-    $scope.showLook = function(img){
-           promoBox({
-            imagePath: 'http://stylepanache.in/public/admin/uploads/prodlooks/'+img, 
+    $scope.showLook = function(img) {
+        promoBox({
+            imagePath: 'http://stylepanache.in/public/admin/uploads/prodlooks/' + img,
             fadeInDuration: 0.33,
             fadeOutDuration: 0.2,
             loadDelay: 0
         });
-    }  
-     $scope.showProduct = function(img){
-           promoBox({
-            imagePath: img, 
+    }
+    $scope.showProduct = function(img) {
+        promoBox({
+            imagePath: img,
             fadeInDuration: 0.33,
             fadeOutDuration: 0.2,
             loadDelay: 0
@@ -451,7 +453,7 @@ app.controller('productController', function ($http, $rootScope, $scope, $locati
 
 });
 
-app.controller('scrapbookController', function ($http, $scope, $rootScope, $controller) {
+app.controller('scrapbookController', function($http, $scope, $rootScope, $controller) {
 
     loaderShow();
 
@@ -464,14 +466,14 @@ app.controller('scrapbookController', function ($http, $scope, $rootScope, $cont
         $scope.products = jQuery.parseJSON(window.localStorage.getItem("scrapbooks"));
         $scope.next_page_url = jQuery.parseJSON(window.localStorage.getItem("next_page_url"));
         $scope.listOfOptions = (window.localStorage.getItem("scrapbooks-sort") == 'Recent') ? ['Recent', 'Most Popular'] : ['Most Popular', 'Recent'];
-//        $scope.selectedItem = window.localStorage.getItem("scrapbooks-sort");
+        //        $scope.selectedItem = window.localStorage.getItem("scrapbooks-sort");
         jQuery("#content").scrollTop(window.localStorage.getItem("scrap-scroll"))
         loaderHide();
 
     } else {
         $http.get(domain + "/get-scrapbook-products" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : ""), {
             cache: true
-        }).success(function (data, status, headers, config) {
+        }).success(function(data, status, headers, config) {
             console.log(data);
             $scope.products = data.data;
             $scope.next_page_url = data.next_page_url;
@@ -483,7 +485,7 @@ app.controller('scrapbookController', function ($http, $scope, $rootScope, $cont
         });
     }
 
-    $scope.load = function (event, url) {
+    $scope.load = function(event, url) {
         angular.element(event.target).children("i").addClass("fa fa-spinner fa-pulse");
         $http.get(url, {
             params: {
@@ -491,10 +493,10 @@ app.controller('scrapbookController', function ($http, $scope, $rootScope, $cont
                 'userId': (window.localStorage.getItem('id') != null ? window.localStorage.getItem('id') : "")
             },
             cache: true
-        }).success(function (data, status, headers, config) {
+        }).success(function(data, status, headers, config) {
 
             if (data.data.length > 0) {
-                jQuery.each(data.data, function (k, v) {
+                jQuery.each(data.data, function(k, v) {
                     $scope.products.push(v);
                 });
 
@@ -516,7 +518,7 @@ app.controller('scrapbookController', function ($http, $scope, $rootScope, $cont
         });
     };
 
-    $scope.addToSList = function (event, id) {
+    $scope.addToSList = function(event, id) {
         if (window.localStorage.getItem('id') === null) {
             window.location.href = '#/login';
             return false;
@@ -536,7 +538,7 @@ app.controller('scrapbookController', function ($http, $scope, $rootScope, $cont
             angular.element(event.target).children('.count').text(Number(likes) + 1);
         }
         if (window.localStorage.getItem('id') != null) {
-            $http.get(domain + "/scrapbook-like?productID=" + id + "&userId=" + window.localStorage.getItem('id')).success(function (response) {
+            $http.get(domain + "/scrapbook-like?productID=" + id + "&userId=" + window.localStorage.getItem('id')).success(function(response) {
                 if (response == 1) {
                     angular.element(event.target).addClass("liked");
                 } else {
@@ -544,7 +546,7 @@ app.controller('scrapbookController', function ($http, $scope, $rootScope, $cont
 
                 }
 
-                $http.get(domain + "/get-scrapbook-products" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
+                $http.get(domain + "/get-scrapbook-products" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function(data, status, headers, config) {
                     $scope.products = data.data;
                     $scope.$digest;
                 });
@@ -554,10 +556,10 @@ app.controller('scrapbookController', function ($http, $scope, $rootScope, $cont
     };
 
 
-    $scope.selectedItemChanged = function () {
+    $scope.selectedItemChanged = function() {
         loaderShow();
         if ($scope.selectedItem == 'Most Popular') {
-            $http.get(domain + "/get-scrapbook-products?sort=2").success(function (data, status, headers, config) {
+            $http.get(domain + "/get-scrapbook-products?sort=2").success(function(data, status, headers, config) {
                 $scope.products = data.data;
                 $scope.next_page_url = data.next_page_url;
                 console.log($scope.next_page_url);
@@ -566,17 +568,17 @@ app.controller('scrapbookController', function ($http, $scope, $rootScope, $cont
                 $scope.$digest;
                 loaderHide();
             });
-//            $http.get(domain + "/sb-mp" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
-//                $scope.products = data;
-//                window.localStorage.setItem("scrapbooks", JSON.stringify($scope.products));
-//
-//                $scope.$digest;
-//                loaderHide();
-//            });
+            //            $http.get(domain + "/sb-mp" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
+            //                $scope.products = data;
+            //                window.localStorage.setItem("scrapbooks", JSON.stringify($scope.products));
+            //
+            //                $scope.$digest;
+            //                loaderHide();
+            //            });
         }
 
         if ($scope.selectedItem == 'Recent') {
-            $http.get(domain + "/get-scrapbook-products" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
+            $http.get(domain + "/get-scrapbook-products" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function(data, status, headers, config) {
                 $scope.products = data.data;
                 $scope.next_page_url = data.next_page_url;
                 window.localStorage.setItem("scrapbooks", JSON.stringify($scope.products));
@@ -586,18 +588,18 @@ app.controller('scrapbookController', function ($http, $scope, $rootScope, $cont
                 loaderHide();
             });
         }
-//        window.localStorage.setItem("scrapbooks-sort", JSON.stringify($scope.selectedItem));
+        //        window.localStorage.setItem("scrapbooks-sort", JSON.stringify($scope.selectedItem));
 
     };
 
-    $scope.$on('$viewContentLoaded', function () {
+    $scope.$on('$viewContentLoaded', function() {
         siteMainFn();
 
     });
 
-    $scope.$on('ngRepeatFinished', function (ngRepeatFinishedEvent) {
+    $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
         siteMainFn();
-        jQuery(".catpage").scroll(function () {
+        jQuery(".catpage").scroll(function() {
             var scrolled_val = jQuery(".catpage").scrollTop().valueOf();
             window.localStorage.setItem("scrap-scroll", scrolled_val);
 
@@ -613,19 +615,19 @@ app.controller('scrapbookController', function ($http, $scope, $rootScope, $cont
     });
 });
 
-app.controller('myScrapbookController', function ($http, $scope, $rootScope, $controller) {
+app.controller('myScrapbookController', function($http, $scope, $rootScope, $controller) {
 
     loaderShow();
 
     $scope.userId = window.localStorage.getItem('id');
 
-    $http.get(domain + "/get-myscrapbook-products" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
+    $http.get(domain + "/get-myscrapbook-products" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function(data, status, headers, config) {
         $scope.products = data;
         $scope.imgPath = domain + "/public/frontend/uploads/scrapbooks/";
         loaderHide();
     });
 
-    $scope.addToSList = function (event, id) {
+    $scope.addToSList = function(event, id) {
         if (window.localStorage.getItem('id') === null) {
             window.location.href = '#/login';
             return false;
@@ -643,14 +645,14 @@ app.controller('myScrapbookController', function ($http, $scope, $rootScope, $co
         }
 
         if (window.localStorage.getItem('id') != null) {
-            $http.get(domain + "/scrapbook-like?productID=" + id + "&userId=" + window.localStorage.getItem('id')).success(function (response) {
+            $http.get(domain + "/scrapbook-like?productID=" + id + "&userId=" + window.localStorage.getItem('id')).success(function(response) {
                 if (response == 1) {
                     angular.element(event.target).addClass("liked");
 
                 } else {
                     angular.element(event.target).removeClass("liked");
                 }
-                $http.get(domain + "/get-myscrapbook-products" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
+                $http.get(domain + "/get-myscrapbook-products" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function(data, status, headers, config) {
                     $scope.products = data;
                     loaderHide();
                 });
@@ -660,7 +662,7 @@ app.controller('myScrapbookController', function ($http, $scope, $rootScope, $co
         }
     };
 
-    $scope.removeScrapbook = function (slug) {
+    $scope.removeScrapbook = function(slug) {
         var r = confirm("Do you want to delete this look?");
         if (r == true) {
             loaderShow();
@@ -671,11 +673,11 @@ app.controller('myScrapbookController', function ($http, $scope, $rootScope, $co
                     slug: slug
                 },
                 cache: false,
-                success: function (data) {
+                success: function(data) {
                     if (data == 'success') {
 
-                        $scope.$apply(function () {
-                            $http.get(domain + "/get-myscrapbook-products" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
+                        $scope.$apply(function() {
+                            $http.get(domain + "/get-myscrapbook-products" + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function(data, status, headers, config) {
                                 $scope.products = data;
                                 loaderHide();
                                 toast('Look deleted');
@@ -693,23 +695,23 @@ app.controller('myScrapbookController', function ($http, $scope, $rootScope, $co
 
     };
 
-    $scope.$on('$viewContentLoaded', function () {
+    $scope.$on('$viewContentLoaded', function() {
         siteMainFn();
     });
 
 });
 
-app.controller('scrapbookDetailsController', function ($http, $scope, $rootScope, $location, $routeParams) {
+app.controller('scrapbookDetailsController', function($http, $scope, $rootScope, $location, $routeParams) {
     $scope.userId = window.localStorage.getItem('id');
     loaderShow();
 
-    $http.get(domain + "/scrapbook/" + $routeParams.url_key + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
+    $http.get(domain + "/scrapbook/" + $routeParams.url_key + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function(data, status, headers, config) {
         $scope.scrapbookproducts = data;
         $scope.imgPath = domain + "/public/frontend/uploads/scrapbooks/";
         loaderHide();
     });
 
-    $scope.removeScrapbook = function (slug) {
+    $scope.removeScrapbook = function(slug) {
         var r = confirm("Do you want to delete this look?");
         if (r == true) {
             jQuery.ajax({
@@ -719,7 +721,7 @@ app.controller('scrapbookDetailsController', function ($http, $scope, $rootScope
                     slug: slug
                 },
                 cache: false,
-                success: function (data) {
+                success: function(data) {
                     if (data == 'success') {
                         window.location.href = "#/scrapbook";
                         toast('Look deleted');
@@ -733,7 +735,7 @@ app.controller('scrapbookDetailsController', function ($http, $scope, $rootScope
         }
     };
 
-    $scope.addToSList = function (event, id) {
+    $scope.addToSList = function(event, id) {
         if (window.localStorage.getItem('id') === null) {
             window.location.href = '#/login';
             return false;
@@ -751,7 +753,7 @@ app.controller('scrapbookDetailsController', function ($http, $scope, $rootScope
         }
 
         if (window.localStorage.getItem('id') != null) {
-            $http.get(domain + "/scrapbook-like?productID=" + id + "&userId=" + window.localStorage.getItem('id')).success(function (response) {
+            $http.get(domain + "/scrapbook-like?productID=" + id + "&userId=" + window.localStorage.getItem('id')).success(function(response) {
                 if (response == 1) {
                     angular.element(event.target).addClass("liked");
 
@@ -759,7 +761,7 @@ app.controller('scrapbookDetailsController', function ($http, $scope, $rootScope
                     angular.element(event.target).removeClass("liked");
                 }
 
-                $http.get(domain + "/scrapbook/" + $routeParams.url_key + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
+                $http.get(domain + "/scrapbook/" + $routeParams.url_key + (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "")).success(function(data, status, headers, config) {
                     $scope.scrapbookproducts = data;
                     $scope.$digest;
                     loaderHide();
@@ -769,13 +771,13 @@ app.controller('scrapbookDetailsController', function ($http, $scope, $rootScope
         }
     };
 
-    $scope.$on('$viewContentLoaded', function () {
+    $scope.$on('$viewContentLoaded', function() {
         siteMainFn();
     });
 
 });
 
-app.controller('loginController', function ($http, $rootScope, $location, $scope, $routeParams) {
+app.controller('loginController', function($http, $rootScope, $location, $scope, $routeParams) {
     if (window.localStorage.getItem('id') != null) {
         window.location.href = "#/";
         return false;
@@ -783,7 +785,7 @@ app.controller('loginController', function ($http, $rootScope, $location, $scope
     jQuery(".selectStyle").hide();
     loaderHide();
     $scope.rurl = $routeParams.rurl;
-    $scope.login = function () {
+    $scope.login = function() {
         function validateEmail(email) {
             var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             return re.test(email);
@@ -814,7 +816,7 @@ app.controller('loginController', function ($http, $rootScope, $location, $scope
             url: domain + "/check-user",
             data: jQuery("#loginuser").serialize(),
             cache: false,
-            success: function (data) {
+            success: function(data) {
                 loaderHide();
                 if (data[0] == "invalid") {
                     $rootScope.loggedIn = 0;
@@ -836,11 +838,11 @@ app.controller('loginController', function ($http, $rootScope, $location, $scope
                     } catch (err) {
                         console.log(err);
                     }
-                    $scope.$apply(function () {
+                    $scope.$apply(function() {
                         $scope.preferences = data.preferences;
                     });
 
-                    $rootScope.$apply(function () {
+                    $rootScope.$apply(function() {
                         $rootScope.styles = data.preferences;
                     });
                     $rootScope.$digest;
@@ -851,7 +853,7 @@ app.controller('loginController', function ($http, $rootScope, $location, $scope
         });
     };
 
-    $scope.setPreference = function () {
+    $scope.setPreference = function() {
 
         loaderShow();
 
@@ -860,12 +862,12 @@ app.controller('loginController', function ($http, $rootScope, $location, $scope
 
     };
 
-    $scope.$on('$viewContentLoaded', function () {
+    $scope.$on('$viewContentLoaded', function() {
         siteMainFn();
     });
 });
 
-app.controller('bodyCharacteristicsController', function ($http, $scope, $rootScope, $location, $timeout) {
+app.controller('bodyCharacteristicsController', function($http, $scope, $rootScope, $location, $timeout) {
 
     loaderShow();
 
@@ -873,18 +875,17 @@ app.controller('bodyCharacteristicsController', function ($http, $scope, $rootSc
     $scope.parameters = 0;
 
     if (window.localStorage.getItem('id') !== null) {
-        $http.get(domain + "/get-user-details?userId=" + window.localStorage.getItem('id')).success(function (data, response, status, headers, config) {
+        $http.get(domain + "/get-user-details?userId=" + window.localStorage.getItem('id')).success(function(data, response, status, headers, config) {
             $scope.stylerEmail = data.email;
         });
-    }
-    else {
+    } else {
         $scope.stylerEmail = '';
     }
 
-    $http.get(domain + '/body-characteristics').success(function (data, response, status, headers, config) {
+    $http.get(domain + '/body-characteristics').success(function(data, response, status, headers, config) {
         $scope.categories = data;
 
-        angular.forEach(data, function () {
+        angular.forEach(data, function() {
             $scope.parameters++;
         });
 
@@ -892,10 +893,10 @@ app.controller('bodyCharacteristicsController', function ($http, $scope, $rootSc
         loaderHide();
     });
     $scope.getGender = 'female';
-    $scope.activePanelFn = function (tab) {
+    $scope.activePanelFn = function(tab) {
         $scope.getGender = tab;
     };
-    $scope.getGallery = function (event) {
+    $scope.getGallery = function(event) {
         if (jQuery(event.target).hasClass('responsive-image')) {
             var vm = jQuery(event.target).parent('a');
         }
@@ -915,7 +916,7 @@ app.controller('bodyCharacteristicsController', function ($http, $scope, $rootSc
 
 
 
-    $scope.addPref = function () {
+    $scope.addPref = function() {
         var Ffrm = jQuery("[type='radio']").serialize();
         var arr = Ffrm.split('&');
 
@@ -930,14 +931,13 @@ app.controller('bodyCharacteristicsController', function ($http, $scope, $rootSc
             url: domain + "/save-style-preference?userId=" + window.localStorage.getItem('id'),
             data: jQuery("[name='addStyleForm']").serialize(),
             cache: false,
-            success: function (data) {
+            success: function(data) {
                 console.log(data);
                 if (data[0] == 'registered') {
                     toast('Entered email is already present, kindly login or enter another id!');
                     loaderHide();
-//                    window.location.href = "#/add-new-style";
-                }
-                else if (data[0] != 'registered') {
+                    //                    window.location.href = "#/add-new-style";
+                } else if (data[0] != 'registered') {
                     jQuery('<li><a ng-href="#/explore-style/' + data.id + '" class="active-menu"><i class="fa fa-angle-right"></i>' + data.style_name + '<i class="fa fa-circle"></i></a></li>').insertAfter(jQuery(".newStyle li:nth-child(1)"));
                     var prefs = jQuery.parseJSON(window.localStorage.getItem('prefs'));
                     if (prefs != null)
@@ -949,24 +949,24 @@ app.controller('bodyCharacteristicsController', function ($http, $scope, $rootSc
         });
     };
 
-    $scope.$on('$viewContentLoaded', function () {
+    $scope.$on('$viewContentLoaded', function() {
         siteMainFn();
     });
 
 });
 
-app.controller('addWardrobeController', function ($http, $scope, $rootScope, $location) {
+app.controller('addWardrobeController', function($http, $scope, $rootScope, $location) {
 
     loaderShow();
 
-    $http.get(domain + "/get-wardrobe-category").success(function (data, status, headers, config) {
+    $http.get(domain + "/get-wardrobe-category").success(function(data, status, headers, config) {
         $scope.wardrobecats = data;
         $scope.userId = window.localStorage.getItem('id');
         $scope.$digest;
         loaderHide();
     });
 
-    $scope.addWardrobePref = function () {
+    $scope.addWardrobePref = function() {
         var data = new FormData(jQuery("[name='wardrobefrm']")[0]);
         loaderShow();
         jQuery.ajax({
@@ -976,44 +976,44 @@ app.controller('addWardrobeController', function ($http, $scope, $rootScope, $lo
             cache: false,
             contentType: false,
             processData: false,
-            success: function (data) {
+            success: function(data) {
                 window.location.href = "#/wardrobe";
             }
         });
     };
 
-    $scope.$on('$viewContentLoaded', function () {
+    $scope.$on('$viewContentLoaded', function() {
         siteMainFn();
     });
 
 });
 
-app.controller('wardrobeController', function ($http, $scope, $rootScope, $location, $routeParams) {
+app.controller('wardrobeController', function($http, $scope, $rootScope, $location, $routeParams) {
 
     loaderShow();
 
-    $http.get(domain + "/get-wardrobe-products?userId=" + window.localStorage.getItem('id')).success(function (data, status, headers, config) {
+    $http.get(domain + "/get-wardrobe-products?userId=" + window.localStorage.getItem('id')).success(function(data, status, headers, config) {
         $scope.name = window.localStorage.getItem('name');
         $scope.wardrobeprods = data;
         window.localStorage.setItem('wardrobeprods', JSON.stringify(data));
         loaderHide();
     });
 
-    $scope.$on('$viewContentLoaded', function () {
+    $scope.$on('$viewContentLoaded', function() {
         siteMainFn();
     });
 
 });
 
-app.controller('travelPlannerController', function ($http, $scope, $rootScope, $location, $routeParams) {
+app.controller('travelPlannerController', function($http, $scope, $rootScope, $location, $routeParams) {
 
-    $scope.submitPTFrm = function () {
+    $scope.submitPTFrm = function() {
         jQuery.ajax({
             type: "POST",
             url: domain + "/save-travel-plan?userId=" + window.localStorage.getItem('id'),
             data: jQuery("#planTravelFrm").serialize(),
             cache: false,
-            success: function (data) {
+            success: function(data) {
                 if (data == "saved") {
                     alert("Thanks, our Stylist will review your details and suggest products that would be apt for your travel!");
                     window.location.href = "#/";
@@ -1022,12 +1022,12 @@ app.controller('travelPlannerController', function ($http, $scope, $rootScope, $
         });
     };
 
-    $scope.$on('$viewContentLoaded', function () {
+    $scope.$on('$viewContentLoaded', function() {
         siteMainFn();
     });
 });
 
-app.controller('wardrobeListingController', function ($http, $scope, $rootScope, $location, $routeParams, $filter) {
+app.controller('wardrobeListingController', function($http, $scope, $rootScope, $location, $routeParams, $filter) {
 
     loaderShow();
     $scope.imgPath = domain + "/public/frontend/uploads/wardrobes/";
@@ -1036,12 +1036,12 @@ app.controller('wardrobeListingController', function ($http, $scope, $rootScope,
     })[0];
     loaderHide();
 
-    $scope.$on('$viewContentLoaded', function () {
+    $scope.$on('$viewContentLoaded', function() {
         siteMainFn();
     });
 
 
-    $scope.removeWardrobeProduct = function (id) {
+    $scope.removeWardrobeProduct = function(id) {
         var r = confirm("Do you want to delete this item?");
         if (r == true) {
             jQuery.ajax({
@@ -1051,7 +1051,7 @@ app.controller('wardrobeListingController', function ($http, $scope, $rootScope,
                     id: id
                 },
                 cache: false,
-                success: function (data) {
+                success: function(data) {
                     if (data == 'success') {
                         window.location.href = "#/wardrobe";
                     } else {
@@ -1064,15 +1064,15 @@ app.controller('wardrobeListingController', function ($http, $scope, $rootScope,
     };
 });
 
-app.controller('createScrapbookController', function ($http, $scope, $rootScope, $location) {
-    $scope.$on('$viewContentLoaded', function () {
+app.controller('createScrapbookController', function($http, $scope, $rootScope, $location) {
+    $scope.$on('$viewContentLoaded', function() {
         siteMainFn();
     });
 
 
     $scope.userId = window.localStorage.getItem('id');
 
-    $scope.autoCompleteFn = function () {
+    $scope.autoCompleteFn = function() {
         var $ = jQuery;
 
         function log(message) {
@@ -1087,26 +1087,26 @@ app.controller('createScrapbookController', function ($http, $scope, $rootScope,
         $products.autocomplete({
             source: domain + "/search-products",
             minLength: 2,
-            select: function (event, ui) {
+            select: function(event, ui) {
                 log(ui.item ?
-                        " <img  style='vertical-align: middle; margin-bottom: 5px; width:60px; display:inline' src='" + (ui.item.large_image != '' ? ui.item.large_image : (ui.item.medium_image != '' ? ui.item.medium_image : ui.item.small_image)) + "'><span style='display:inline'>" + ui.item.label + "</span><input type='hidden' name='pid[]' value='" + ui.item.id + "' ><a href='#' style='display:inline; margin-left:15px' class='  remove-rag'  ><i class='fa fa-trash'></i></a>" : "");
+                    " <img  style='vertical-align: middle; margin-bottom: 5px; width:60px; display:inline' src='" + (ui.item.large_image != '' ? ui.item.large_image : (ui.item.medium_image != '' ? ui.item.medium_image : ui.item.small_image)) + "'><span style='display:inline'>" + ui.item.label + "</span><input type='hidden' name='pid[]' value='" + ui.item.id + "' ><a href='#' style='display:inline; margin-left:15px' class='  remove-rag'  ><i class='fa fa-trash'></i></a>" : "");
                 jQuery("#pdcts").val('');
                 return false;
             }
         });
 
-        $products.data("ui-autocomplete")._renderItem = function (ul, item) {
+        $products.data("ui-autocomplete")._renderItem = function(ul, item) {
             return $("<li>")
-                    .append("<a><div class='inline-autocom'><img style='width:60px' src='" + (item.large_image != '' ? item.large_image : (item.medium_image != '' ? item.medium_image : item.small_image)) + "'> </div><div class='inline-autocom'>" + item.label + "</div></a>")
-                    .appendTo(ul);
+                .append("<a><div class='inline-autocom'><img style='width:60px' src='" + (item.large_image != '' ? item.large_image : (item.medium_image != '' ? item.medium_image : item.small_image)) + "'> </div><div class='inline-autocom'>" + item.label + "</div></a>")
+                .appendTo(ul);
         };
     };
 
-    $http.get(domain + "/get-scrapbook-products").success(function (data, status, headers, config) {
+    $http.get(domain + "/get-scrapbook-products").success(function(data, status, headers, config) {
         $scope.scrapbookprods = data;
     });
 
-    $scope.addScrapbook = function () {
+    $scope.addScrapbook = function() {
         loaderShow();
         var data = new FormData(jQuery("[name='scrapbookfrm']")[0]);
         jQuery.ajax({
@@ -1116,7 +1116,7 @@ app.controller('createScrapbookController', function ($http, $scope, $rootScope,
             cache: false,
             contentType: false,
             processData: false,
-            success: function (data) {
+            success: function(data) {
                 toast("Thank you for Expressing your Look. It will be published to all once our Admin team approves it!");
                 window.location.href = "#/scrapbook";
             }
@@ -1128,33 +1128,33 @@ app.controller('createScrapbookController', function ($http, $scope, $rootScope,
 
 });
 
-app.controller('chatController', function ($http, $scope, $rootScope, $controller) {
+app.controller('chatController', function($http, $scope, $rootScope, $controller) {
     $scope.ismember = window.localStorage.getItem('member');
     loaderHide();
-    $scope.openDialer = function () {
+    $scope.openDialer = function() {
         window.open('tel:08692040777', '_system');
     };
-    $scope.$on('$viewContentLoaded', function () {
+    $scope.$on('$viewContentLoaded', function() {
         siteMainFn();
     });
 
 });
 
-app.controller('questionnaireController', function ($http, $scope, $rootScope, $controller) {
+app.controller('questionnaireController', function($http, $scope, $rootScope, $controller) {
 
     loaderHide();
 
-    $scope.$on('$viewContentLoaded', function () {
+    $scope.$on('$viewContentLoaded', function() {
         siteMainFn();
     });
 
-    $scope.submitAns = function () {
+    $scope.submitAns = function() {
         jQuery.ajax({
             type: "POST",
             url: domain + "/save-questionnaire?userId=" + window.localStorage.getItem('id'),
             data: jQuery("#questionnairefrm").serialize(),
             cache: false,
-            success: function (data) {
+            success: function(data) {
                 if (data == "saved") {
 
                     var data1 = jQuery("#cell_number").val();
@@ -1165,7 +1165,7 @@ app.controller('questionnaireController', function ($http, $scope, $rootScope, $
                         cache: false,
                         contentType: false,
                         processData: false,
-                        success: function (data) {
+                        success: function(data) {
                             if (data[0] == "success") {
                                 console.log('cell updated');
                             }
@@ -1173,7 +1173,7 @@ app.controller('questionnaireController', function ($http, $scope, $rootScope, $
                         }
                     });
 
-                    jQuery.get(domain + "/update-membership?userId=" + window.localStorage.getItem('id')).success(function (data, status, headers, config) {
+                    jQuery.get(domain + "/update-membership?userId=" + window.localStorage.getItem('id')).success(function(data, status, headers, config) {
                         window.localStorage.setItem('department', data[0]);
                         window.localStorage.setItem('member', 1);
                         toast("Congratulations, you are an esteemed Style Panache member now!");
@@ -1188,7 +1188,7 @@ app.controller('questionnaireController', function ($http, $scope, $rootScope, $
 
 });
 
-app.controller('logoutController', function ($http, $rootScope, $location, $scope) {
+app.controller('logoutController', function($http, $rootScope, $location, $scope) {
     loaderHide();
     $rootScope.cartCnt = "";
     $rootScope.loggedIn = 0;
@@ -1199,12 +1199,12 @@ app.controller('logoutController', function ($http, $rootScope, $location, $scop
     window.location.href = "#/";
 
 
-    $scope.$on('$viewContentLoaded', function () {
+    $scope.$on('$viewContentLoaded', function() {
         siteMainFn();
     });
 });
 
-app.controller('myStyleController', function ($http, $scope, $location, $rootScope, $routeParams) {
+app.controller('myStyleController', function($http, $scope, $location, $rootScope, $routeParams) {
 
     loaderShow();
     $scope.filtered = {};
@@ -1228,7 +1228,7 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
 
         $http.get(domain + "/my-style/" + $routeParams.url_key, {
             'userId': (window.localStorage.getItem('id') != null ? window.localStorage.getItem('id') : "")
-        }).success(function (data, status, headers, config) {
+        }).success(function(data, status, headers, config) {
             $scope.products = data;
             $scope.styleid = $routeParams.url_key;
             $scope.pdts = data.data
@@ -1242,7 +1242,7 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
             loaderHide();
         });
     }
-    $scope.removeUserStyle = function (id) {
+    $scope.removeUserStyle = function(id) {
         var pid = id;
         var r = confirm("Do you want to delete this Style Profile?");
         if (r == true) {
@@ -1253,15 +1253,15 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
                     id: id
                 },
                 cache: false,
-                success: function (data) {
+                success: function(data) {
                     if (data == 'success') {
                         var prefs = jQuery.parseJSON(window.localStorage.getItem('prefs'));
-                        prefs = prefs.filter(function (el) {
+                        prefs = prefs.filter(function(el) {
                             return el.id !== parseInt(pid);
                         });
 
 
-                        $rootScope.$apply(function () {
+                        $rootScope.$apply(function() {
                             $rootScope.styles = prefs;
                         });
 
@@ -1277,7 +1277,7 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
         }
     };
 
-    $scope.load = function (event, url) {
+    $scope.load = function(event, url) {
         angular.element(event.target).children("i").addClass("fa fa-spinner fa-pulse");
         $http.get(url, {
             params: {
@@ -1288,10 +1288,10 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
                 'sort': jQuery("select.orderby").val(),
                 'userId': (window.localStorage.getItem('id') != null ? window.localStorage.getItem('id') : "")
             }
-        }).success(function (data, status, headers, config) {
+        }).success(function(data, status, headers, config) {
             $scope.products = data;
             if (data.data.length > 0) {
-                jQuery.each(data.data, function (k, v) {
+                jQuery.each(data.data, function(k, v) {
                     $scope.pdts.push(v);
                 });
                 window.localStorage.setItem("ms-pdts", JSON.stringify($scope.pdts));
@@ -1312,7 +1312,7 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
 
 
 
-    $scope.filterProds = function (option, parent) {
+    $scope.filterProds = function(option, parent) {
         if (option) {
             if (!(parent in $scope.filtered))
                 $scope.filtered[parent] = [];
@@ -1329,11 +1329,11 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
         }
     };
 
-    $scope.priceFilter = function () {
+    $scope.priceFilter = function() {
 
     };
 
-    $scope.applyFilters = function () {
+    $scope.applyFilters = function() {
         $scope.minp = jQuery("#min_price").val();
         $scope.maxp = jQuery("#max_price").val();
 
@@ -1350,7 +1350,7 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
                 'sort': jQuery("select.orderby").val(),
                 'userId': (window.localStorage.getItem('id') != null ? window.localStorage.getItem('id') : "")
             }
-        }).success(function (response) {
+        }).success(function(response) {
             $scope.products = response;
             $scope.pdts = response.data
             $scope.$digest;
@@ -1361,15 +1361,15 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
         });
     }
 
-    $scope.sizeOf = function (obj) {
+    $scope.sizeOf = function(obj) {
         return Object.keys(obj).length;
     };
 
-    $scope.showFilters = function () {
+    $scope.showFilters = function() {
         if (window.localStorage.getItem('back') == 1) {
             if (window.localStorage.getItem('ms-filtered') != "null") {
-                jQuery.each(jQuery.parseJSON(window.localStorage.getItem("ms-filtered")), function (k, v) {
-                    jQuery.each(v, function (kk, vv) {
+                jQuery.each(jQuery.parseJSON(window.localStorage.getItem("ms-filtered")), function(k, v) {
+                    jQuery.each(v, function(kk, vv) {
                         jQuery("input[value=" + vv + "]").prop("checked", true);
 
                     });
@@ -1381,15 +1381,15 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
 
     }
 
-    $scope.showOptions = function (e) {
+    $scope.showOptions = function(e) {
         jQuery("#" + e).toggle();
     }
-    $scope.$on('$viewContentLoaded', function () {
+    $scope.$on('$viewContentLoaded', function() {
         siteMainFn();
     });
-    $scope.$on('ngRepeatFinished', function (ngRepeatFinishedEvent) {
+    $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
         siteMainFn();
-        jQuery(".catpage").scroll(function () {
+        jQuery(".catpage").scroll(function() {
             var scrolled_val = jQuery(".catpage").scrollTop().valueOf();
             window.localStorage.setItem("ms-scpos", scrolled_val);
 
@@ -1404,11 +1404,11 @@ app.controller('myStyleController', function ($http, $scope, $location, $rootSco
     });
 });
 
-app.controller('signupController', function ($http, $scope, $location, $rootScope, $routeParams) {
+app.controller('signupController', function($http, $scope, $location, $rootScope, $routeParams) {
 
     loaderHide();
 
-    $scope.signup = function () {
+    $scope.signup = function() {
         jQuery('.signup-error').empty();
 
         function validateEmail(email) {
@@ -1475,7 +1475,7 @@ app.controller('signupController', function ($http, $scope, $location, $rootScop
             cache: false,
             contentType: false,
             processData: false,
-            success: function (data) {
+            success: function(data) {
                 if (data == "register") {
                     toast("Email is already registered");
                 } else if (data[0] == "registered") {
@@ -1490,32 +1490,32 @@ app.controller('signupController', function ($http, $scope, $location, $rootScop
 
     }
 
-    $scope.$on('$viewContentLoaded', function () {
+    $scope.$on('$viewContentLoaded', function() {
         siteMainFn();
     });
 
 });
 
-app.controller('cartController', function ($http, $scope, $location, $rootScope, $timeout, $routeParams) {
+app.controller('cartController', function($http, $scope, $location, $rootScope, $timeout, $routeParams) {
 
     loaderShow();
-    
+
     $scope.cart = jQuery.parseJSON(window.localStorage.getItem("cart"));
     $scope.cart.Total = 0;
-    jQuery.each(jQuery.parseJSON(window.localStorage.getItem("cart")), function (k, v) {
+    jQuery.each(jQuery.parseJSON(window.localStorage.getItem("cart")), function(k, v) {
         $scope.cart.Total += parseInt(v.spl_price > 0 && v.spl_price < v.price ? v.spl_price : v.price);
     });
 
-    $scope.openStoreLink = function (product) {
+    $scope.openStoreLink = function(product) {
         window.open(product.url, "_system");
     };
 
 
-    $scope.delete = function (e, p) {
+    $scope.delete = function(e, p) {
 
         var cart = jQuery.parseJSON(window.localStorage.getItem("cart"));
 
-        cart = jQuery.grep(cart, function (n, i) {
+        cart = jQuery.grep(cart, function(n, i) {
             return (n.id != p)
         });
 
@@ -1525,37 +1525,37 @@ app.controller('cartController', function ($http, $scope, $location, $rootScope,
 
         $scope.cart = cart;
         $scope.cart.Total = 0;
-        jQuery.each(jQuery.parseJSON(window.localStorage.getItem("cart")), function (k, v) {
+        jQuery.each(jQuery.parseJSON(window.localStorage.getItem("cart")), function(k, v) {
             $scope.cart.Total += parseInt(v.spl_price > 0 && v.spl_price < v.price ? v.spl_price : v.price);
         });
 
     }
 
     loaderHide();
-    $scope.$on('$viewContentLoaded', function () {
+    $scope.$on('$viewContentLoaded', function() {
         siteMainFn();
     });
-    $timeout(function () {
+    $timeout(function() {
         siteMainFn();
     }, 2000);
 
 });
 
-app.controller('contactController', function ($http, $scope, $location, $rootScope, $routeParams) {
+app.controller('contactController', function($http, $scope, $location, $rootScope, $routeParams) {
 
     loaderHide();
-    $scope.$on('$viewContentLoaded', function () {
+    $scope.$on('$viewContentLoaded', function() {
         siteMainFn();
     });
 
 
-    $scope.submitContact = function () {
+    $scope.submitContact = function() {
         jQuery.ajax({
             type: "POST",
             url: domain + "/save-contact",
             data: jQuery("#contactForm").serialize(),
             cache: false,
-            success: function (data) {
+            success: function(data) {
                 if (data == "sent") {
                     toast("Thank you! We will get back to you shortly.");
 
@@ -1567,21 +1567,21 @@ app.controller('contactController', function ($http, $scope, $location, $rootSco
 
 });
 
-app.controller('userDashboardController', function ($http, $scope, $location, $rootScope, $routeParams) {
+app.controller('userDashboardController', function($http, $scope, $location, $rootScope, $routeParams) {
     $scope.userId = window.localStorage.getItem('id');
 
     loaderShow();
-    $http.get(domain + "/get-user-details?userId=" + window.localStorage.getItem('id')).success(function (data, status, headers, config) {
+    $http.get(domain + "/get-user-details?userId=" + window.localStorage.getItem('id')).success(function(data, status, headers, config) {
         $scope.userDetails = data;
         $scope.$digest;
         loaderHide();
     });
 
-    $scope.$on('$viewContentLoaded', function () {
+    $scope.$on('$viewContentLoaded', function() {
         siteMainFn();
     });
 
-    $scope.updateUDetails = function () {
+    $scope.updateUDetails = function() {
 
         loaderShow();
         var data = new FormData(jQuery("#userDetailsfrm")[0]);
@@ -1592,7 +1592,7 @@ app.controller('userDashboardController', function ($http, $scope, $location, $r
             cache: false,
             contentType: false,
             processData: false,
-            success: function (data) {
+            success: function(data) {
                 if (data[0] == "success") {
                     toast("Profile updated successfully!");
                     window.location.href = "#/profile";
@@ -1608,84 +1608,84 @@ app.controller('userDashboardController', function ($http, $scope, $location, $r
 
 });
 
-app.controller('favoritesController', function ($http, $scope, $location, $rootScope, $routeParams) {
+app.controller('favoritesController', function($http, $scope, $location, $rootScope, $routeParams) {
     $scope.userId = window.localStorage.getItem('id');
 
     loaderShow();
 
-    $scope.$on('$viewContentLoaded', function () {
+    $scope.$on('$viewContentLoaded', function() {
         siteMainFn();
     });
 
 
-    $http.get(domain + "/wish-list-products?userId=" + window.localStorage.getItem('id')).success(function (data, status, headers, config) {
+    $http.get(domain + "/wish-list-products?userId=" + window.localStorage.getItem('id')).success(function(data, status, headers, config) {
         $scope.userFavorites = data;
         $scope.$digest;
         loaderHide();
     });
 });
 
-app.controller('commonController', function ($http, $scope, $location, $rootScope, $routeParams, $timeout) {
+app.controller('commonController', function($http, $scope, $location, $rootScope, $routeParams, $timeout) {
 
-    $scope.$on('$viewContentLoaded', function () {
+    $scope.$on('$viewContentLoaded', function() {
         siteMainFn();
     });
-    
+
     $scope.chkLogin = function() {
         window.location.href = "#/login?rurl=define-style";
     }
 
 });
 
-app.controller('introController', function ($http, $scope, $location, $rootScope, $routeParams) {
-    $scope.$on('$viewContentLoaded', function () {
+app.controller('introController', function($http, $scope, $location, $rootScope, $routeParams) {
+    $scope.$on('$viewContentLoaded', function() {
         siteMainFn();
     });
 
 });
 
-app.controller('userProfileController', function ($http, $scope, $location, $rootScope, $routeParams) {
+app.controller('userProfileController', function($http, $scope, $location, $rootScope, $routeParams) {
 
     loaderShow();
 
     $scope.userId = (window.localStorage.getItem('id') != null ? "?userId=" + window.localStorage.getItem('id') : "");
     $scope.totalSPLikes = 0;
 
-    $scope.$on('$viewContentLoaded', function () {
+    $scope.$on('$viewContentLoaded', function() {
         siteMainFn();
     });
 
-    $http.get(domain + "/user-profile?uid=" + $routeParams.id + "&userId=" + (window.localStorage.getItem('id') != null ? window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
+    $http.get(domain + "/user-profile?uid=" + $routeParams.id + "&userId=" + (window.localStorage.getItem('id') != null ? window.localStorage.getItem('id') : "")).success(function(data, status, headers, config) {
         $scope.profile = data;
         console.log(data);
-        angular.forEach(data.scrapbooks, function (value1, key1) {
+        angular.forEach(data.scrapbooks, function(value1, key1) {
             $scope.totalSPLikes = $scope.totalSPLikes + value1.scrapbooklikes.length;
         });
         $scope.$digest;
         loaderHide();
     });
 
-    $http.get(domain + "/get-userscrapbook-products?uid=" + $routeParams.id + "&userId=" + (window.localStorage.getItem('id') != null ? window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
+    $http.get(domain + "/get-userscrapbook-products?uid=" + $routeParams.id + "&userId=" + (window.localStorage.getItem('id') != null ? window.localStorage.getItem('id') : "")).success(function(data, status, headers, config) {
         $scope.sbproducts = data;
         console.log(data);
         $scope.imgPath = domain + "/public/frontend/uploads/scrapbooks/";
         loaderHide();
     });
 
-    $scope.followme = function (event, id) {
+    $scope.followme = function(event, id) {
         if (window.localStorage.getItem('id') === null) {
             window.location.href = '#/login';
             return false;
         }
 
         //        $http.get(domain + "/user-follow?followerID=" + (window.localStorage.getItem('id') != null ? window.localStorage.getItem('id') : "") + "&userId=" + id).success(function (response) {
-        $http.get(domain + "/user-follow?userId=" + (window.localStorage.getItem('id') != null ? window.localStorage.getItem('id') : "") + "&uid=" + id).success(function (response) {
+        $http.get(domain + "/user-follow?userId=" + (window.localStorage.getItem('id') != null ? window.localStorage.getItem('id') : "") + "&uid=" + id).success(function(response) {
 
-            $http.get(domain + "/user-profile?userId=" + (window.localStorage.getItem('id') != null ? window.localStorage.getItem('id') : "") + "&uid=" + id).success(function (data, status, headers, config) {
+            $http.get(domain + "/user-profile?userId=" + (window.localStorage.getItem('id') != null ? window.localStorage.getItem('id') : "") + "&uid=" + id).success(function(data, status, headers, config) {
                 $scope.profile = data;
                 $scope.totalSPLikes = 0;
 
-                angular.forEach(data.scrapbooks, function (value1, key1) {
+                angular.forEach(data.scrapbooks, function(value1, key1) {
                     $scope.totalSPLikes = $scope.totalSPLikes + value1.scrapbooklikes.length;
                 });
 
@@ -1703,7 +1703,7 @@ app.controller('userProfileController', function ($http, $scope, $location, $roo
         });
     };
 
-    $scope.addToSList = function (event, id) {
+    $scope.addToSList = function(event, id) {
         if (window.localStorage.getItem('id') === null) {
             window.location.href = '#/login';
             return false;
@@ -1723,14 +1723,14 @@ app.controller('userProfileController', function ($http, $scope, $location, $roo
             angular.element(event.target).children('.count').text(Number(likes) + 1);
         }
         if (window.localStorage.getItem('id') != null) {
-            $http.get(domain + "/scrapbook-like?productID=" + id + (window.localStorage.getItem('id') != null ? "&userId=" + window.localStorage.getItem('id') : "")).success(function (response) {
+            $http.get(domain + "/scrapbook-like?productID=" + id + (window.localStorage.getItem('id') != null ? "&userId=" + window.localStorage.getItem('id') : "")).success(function(response) {
                 if (response == 1) {
                     angular.element(event.target).addClass("liked");
                 } else {
                     angular.element(event.target).removeClass("liked");
                 }
 
-                $http.get(domain + "/get-userscrapbook-products?uid=" + $routeParams.id + (window.localStorage.getItem('id') != null ? "&userId=" + window.localStorage.getItem('id') : "")).success(function (data, status, headers, config) {
+                $http.get(domain + "/get-userscrapbook-products?uid=" + $routeParams.id + (window.localStorage.getItem('id') != null ? "&userId=" + window.localStorage.getItem('id') : "")).success(function(data, status, headers, config) {
                     $scope.sbproducts = data;
                     $scope.imgPath = domain + "/public/frontend/uploads/scrapbooks/";
                     $scope.$digest;
@@ -1742,38 +1742,42 @@ app.controller('userProfileController', function ($http, $scope, $location, $roo
 
 });
 
-app.controller('subcatController', function ($http, $scope, $location, $rootScope, $routeParams) {
-    $scope.$on('$viewContentLoaded', function () {
+app.controller('subcatController', function($http, $scope, $location, $rootScope, $routeParams) {
+    $scope.$on('$viewContentLoaded', function() {
         siteMainFn();
     });
 
 
     loaderShow();
-    $http.get(domain + "/subcat/" + $routeParams.id).success(function (data, status, headers, config) {
+    $http.get(domain + "/subcat/" + $routeParams.id).success(function(data, status, headers, config) {
         $scope.imgPath = domain + "/public/admin/uploads/catalog/category/";
         $scope.cat = data;
         $scope.$digest;
         loaderHide();
     });
 });
-app.controller('offerController', function ($http, $scope, $location, $rootScope, $routeParams) {
- 
-    loaderShow(); 
+app.controller('offerController', function($http, $scope, $location, $rootScope, $routeParams) {
 
-    $http.get(domain + "/get-offers").success(function (data, status, headers, config) { 
-        $scope.offers = data; 
+    loaderShow();
+
+    $http.get(domain + "/get-offers").success(function(data, status, headers, config) {
+        $scope.offers = data;
         loaderHide();
     });
+    $scope.$on('$viewContentLoaded', function() {
+        siteMainFn();
+    });
+
 });
-app.run(function ($window, $rootScope) {
+app.run(function($window, $rootScope) {
     $rootScope.online = navigator.onLine;
-    $window.addEventListener("offline", function () {
-        $rootScope.$apply(function () {
+    $window.addEventListener("offline", function() {
+        $rootScope.$apply(function() {
             $rootScope.online = false;
         });
     }, false);
-    $window.addEventListener("online", function () {
-        $rootScope.$apply(function () {
+    $window.addEventListener("online", function() {
+        $rootScope.$apply(function() {
             $rootScope.online = true;
         });
     }, false);
