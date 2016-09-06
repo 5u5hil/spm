@@ -62,11 +62,16 @@ app.controller('homeController', function($http, $scope, $rootScope, $controller
         $scope.sliders = data.sliders;
         $scope.new = data.new;
         $scope.recentProduct = null;
+        try {
         if ($scope.styles.length) {
             $scope.recentProduct = $scope.styles[0].id;
             $scope.styleName = $scope.styles[0].style_name;
 
         }
+        } catch(e) { 
+            console.log(e);
+        }
+        
         if (window.localStorage.getItem('id') != null && $scope.recentProduct) {
             $http.get(domain + "/my-style/" + $scope.recentProduct).success(function(data, status, headers, config) {
                 if (window.localStorage.getItem('back') == 1 && jQuery.parseJSON(window.localStorage.getItem("styleProducts"))) {
